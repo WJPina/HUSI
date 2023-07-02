@@ -1,0 +1,4 @@
+WORKING_FOLDER: "/mnt/data3/wangj2/AgingScore/Count_yao"
+DATA_FOLDER: "/mnt/data3/wangj2/AgingScore/Datasets/Train"
+STAR_REF: "/mnt/data3/wangj2/AgingScore/CRCh38_human/annotation_GRCh38/GRCh38_STAR_index"
+GTF: "/mnt/data3/wangj2/AgingScore/CRCh38_human/annotation_GRCh38/gencode.v31.annotation.gtf"
