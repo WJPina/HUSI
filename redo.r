@@ -1,5 +1,5 @@
 library(Seurat)
-setwd("~/wangj/AgingScore/AgingScorePro/Data1_Scripts/")
+setwd("~/wangj/AgingScore/BulkData/")
 # # load model
 # mm_l2 = readRDS("~/wangj/AgingScore/AgingScorePro/l2_model_add_dermal.rds")
 library(dplyr)
@@ -146,7 +146,7 @@ s_RS = list.files("GSE130306/", "GSM", full.names = T) %>%
 
 
 ### Microarray
-setwd("~/wangj/AgingScore/Data1/Bulk_Microarray/")
+setwd("~/wangj/AgingScore/BulkData/Bulk_Microarray/")
 # load raw data
 fs = paste(c('GSE19864','GSE16058','GSE83922','GSE11954','GSE100014','GSE77239'),"eSet.Rdata",sep = "_")
 ArrayList <- sapply(fs, function(x) mget(load(x)), simplify = TRUE) 
@@ -173,9 +173,6 @@ sapply(ScoreList,length)
 ################################# Batch Effect #################################
 data.matrix <- read.table("/home/wangjing/wangj/AgingScore/Data1/Bulk_BatchEffect/batch_IMR90_4OHT.tsv",sep = "\t",header = T,row.names = 1)
 s_batch <- data.matrix %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
-
-############################## Comparision ######################################
-
 ########################### model weight GSEA ###################################
 library(fgsea)
 library(msigdbr)
@@ -187,7 +184,8 @@ pathways_sene = msigdb_all %>%
                   mutate( gs_name=gsub("HALLMARK_", "", gs_name) ) %>% 
                   plyr::dlply(.variables = "gs_name", .fun = function(x) x$gene_symbol )
 
-res_fgsea_sene = fgseaMultilevel(pathways = pathways_sene, stats = mm_l2$w, nPermSimple = 10000)
+res_fgsea_sene = fgseaMultilevel(pathways = pathways_sene, stats = sort(mm_l2$w,decreasing=T), nPermSimple = 10000)
+############################## Comparision ######################################
 
 ############################### application on melanoma ########################
 ### load melanoma data
