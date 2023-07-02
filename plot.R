@@ -16,6 +16,15 @@ mytheme <- function () {
             axis.text.x = element_blank())
     }
 
+### model leave-one-out auc
+ggplot(aes(x = auc),data=data.frame(auc=auc))+
+    geom_density()+
+    theme_classic()+
+    theme(text=element_text(size=18))+
+    xlab("Leave-one-out cross-validation auc")+
+    ylab("Density")
+
+
 # Fig 3.1
 setwd("~/wangj/AgingScore/AgingScorePro/Data1_Scripts")
 load("ModelValidData.RData")
@@ -32,7 +41,7 @@ p3.1a <- data.frame(sene_score = s_IS) %>%
                 step_increase=0.1,
                 map_signif_level = T,
                 test.args = c("less")) + 
-    mythem()+
+    mytheme()+
     ylab('hUSI')
 # Fig 3.1b
 p3.1b <- data.frame(sene_score = s_RS) %>%
@@ -47,7 +56,7 @@ p3.1b <- data.frame(sene_score = s_RS) %>%
                 step_increase=0.1,
                 map_signif_level = T,
                 test.args = c("less")) + 
-    mythem()+
+    mytheme()+
     ylab('hUSI')
 # Fig 3.1c
 p3.1c <- data.frame(sene_score = s_RS) %>%
@@ -63,7 +72,7 @@ p3.1c <- data.frame(sene_score = s_RS) %>%
                 step_increase=0.1,
                 map_signif_level = T,
                 test.args = c("less")) + 
-    mythem()+           
+    mytheme()+           
     ylab('hUSI')
 
 fig3.1 <- ggarrange(p3.1a,p3.1b,p3.1c,ncol = 3,nrow = 1,common.legend = F)+ theme(plot.margin = unit(c(1,1,1,1), "cm"))
@@ -205,7 +214,7 @@ read.table("/home/wangjing/wangj/AgingScore/Data1/Bulk_BatchEffect/batch_IMR90_4
     geom_line(aes(group = study_accession), linetype="dashed", col="skyblue") + 
     theme_classic()+
     geom_signif(comparisons = list(c("other","senescent")),test = "t.test",test.args = c("less"),map_signif_level = T) + 
-    mythem()+
+    mytheme()+
     ylab('hUSI')
 dev.off()
 
