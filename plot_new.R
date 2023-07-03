@@ -115,7 +115,7 @@ dev.off()
 
 
 ### comparision auc
-auc = auc_Geo
+auc = auc_Tang
 auc %>%
     melt(value.name = "Accuracy") %>%
     mutate(feature=as.character(Var1)) %>% 
