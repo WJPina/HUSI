@@ -114,4 +114,29 @@ gseaplot2(fgsea,geneSetID = df$ID[8:11],
 dev.off()
 
 
+### comparision auc
+auc = auc_Geo
+auc %>%
+    melt(value.name = "Accuracy") %>%
+    mutate(feature=as.character(Var1)) %>% 
+    mutate(feature=forcats::fct_reorder(feature, Accuracy, mean, .desc = T) ) %>% 
+    ggplot(aes(feature, Accuracy)) + 
+    geom_boxplot(aes(color=feature), outlier.shape = NA, width=0.5) + 
+    geom_jitter(aes(color=feature), width = 0.2) + 
+    labs(x=NULL, y="AUC") +
+    theme(legend.position = "none")+
+    theme_classic()
 
+auc %>%
+    melt(value.name = "Accuracy") %>%
+    mutate( feature=forcats::fct_reorder(Var1, Accuracy, mean, .desc = T) ) %>%
+    Rmisc::summarySE(measurevar = "Accuracy", groupvars = "feature") %>%
+    {
+        ggplot(data = ., aes(feature, Accuracy, fill=feature)) +
+        geom_bar(stat = "identity", position = position_dodge(), width = 0.4) +
+        geom_errorbar(aes(ymin = Accuracy - sd, ymax = {Accuracy + sd} %>% ifelse(. >1, 1, .)),
+        width = 0.2, position = position_dodge(0.9)) +
+        labs(x=NULL, y="AUC") +
+        theme(legend.position = "none")+
+        theme_classic()
+    }
