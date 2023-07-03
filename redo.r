@@ -175,16 +175,33 @@ data.matrix <- read.table("/home/wangjing/wangj/AgingScore/Data1/Bulk_BatchEffec
 s_batch <- data.matrix %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 ########################### model weight GSEA ###################################
 library(fgsea)
+library(clusterProfiler)
+
 library(msigdbr)
 set.seed(233)
-
 msigdb_all = msigdbr()
 pathways_sene = msigdb_all %>% 
                   filter( (gs_cat %in% "H" ) ) %>% 
                   mutate( gs_name=gsub("HALLMARK_", "", gs_name) ) %>% 
                   plyr::dlply(.variables = "gs_name", .fun = function(x) x$gene_symbol )
-
 res_fgsea_sene = fgseaMultilevel(pathways = pathways_sene, stats = sort(mm_l2$w,decreasing=T), nPermSimple = 10000)
+
+hallmarker = read.gmt("/mnt/data3/wangj2/GeneSets/h.all.v2023.1.Hs.symbols.gmt")
+fgsea <- GSEA(sort(mm_l2$w,decreasing=T), 
+                exponent = 1, 
+                minGSSize = 10,
+                maxGSSize = 500, 
+                pvalueCutoff = 0.05, 
+                pAdjustMethod = "BH", 
+                TERM2GENE=hallmarker,
+                seed = 233,
+                by = "fgsea",
+                eps=0)
+
+df = fgsea@result
+df = filter(df,pvalue < 0.05)
+df = df[order(df$NES,decreasing=T),]
+df[,c('ID','NES')]
 ############################## Comparision ######################################
 
 ############################### application on melanoma ########################

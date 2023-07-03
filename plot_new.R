@@ -96,32 +96,21 @@ dev.off()
 
 ### GSEA
 library(enrichplot)
+library(gggsea)
+
 load('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/Model_GSEA.RData')
-png('/home/wangjing/codebase/HUSI/Figures/valid_GSEA_all.png',width = 1500,height = 1000,res = 200)
-plotGseaTable(pathways_sene[res_fgsea_sene[padj<0.05][order(NES,decreasing = T),pathway]], sort(mm_l2$w,decreasing=T), res_fgsea_sene, render = F ) %>% patchwork::wrap_elements()
-dev.off()
-
-pathwayIDs = res_fgsea_sene[padj<0.05][order(NES,decreasing = T),]$pathway
-id = pathwayIDs[1]
-p2.1 <- plotEnrichment(pathways_sene[[id]],sort(mm_l2$w,decreasing=T))+
-        mytheme()+
-        ggtitle(id)
-id = pathwayIDs[2]
-p2.2 <- plotEnrichment(pathways_sene[[id]],sort(mm_l2$w,decreasing=T))+
-        mytheme()+
-        ggtitle(id)
-id = pathwayIDs[3]
-p2.3 <- plotEnrichment(pathways_sene[[id]],sort(mm_l2$w,decreasing=T))+
-        mytheme()+
-        ggtitle(id)
-id = pathwayIDs[4]
-p2.4 <- plotEnrichment(pathways_sene[[id]],sort(mm_l2$w,decreasing=T))+
-        mytheme()+
-        ggtitle(id)
-
-fig2 <- ggarrange(p2.1,p2.2,p2.3,p2.4,ncol = 2,nrow = 2,common.legend = F)
-png('/home/wangjing/codebase/HUSI/Figures/valid_GSEA.png',width = 2500,height = 2000,res = 200)
-fig2
+cols = c("#B71C1C", "#C62828", "#D32F2F", "#E53935", "#F44336", "#EF5350", "#E57373","#0D47A1", "#1565C0", "#1976D2", "#1E88E5")
+names(cols) = df$ID
+png('/home/wangjing/codebase/HUSI/Figures/valid_GSEA_DOWN.png',width = 2500,height = 1500,res = 200)
+gseaplot2(fgsea,geneSetID = df$ID[8:11],
+          title = "Negative enriched hallmarker gene sets",
+          color= cols[8:11],
+          base_size = 14,
+          rel_heights = c(1, 0.2, 0.4),
+          subplots = 1:3,
+          pvalue_table = FALSE,
+          ES_geom = "line"
+)
 dev.off()
 
 

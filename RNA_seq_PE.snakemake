@@ -15,6 +15,25 @@ rule all:
         expand("{work_folder}/{dataset}/processed_BAM/{sample}.sorted.bai",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
         expand("{work_folder}/{dataset}/gene_expr/{sample}.geneExpr.stringtie.tab",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
         expand("{work_folder}/{dataset}/gene_expr/{sample}.stringtie.gff",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"])
+
+rule folder_and_rename_softlink:
+    input:
+        R1 = lambda wildcards: config["SAMPLES"][wildcards.sample]["R1"], 
+        R2 = lambda wildcards: config["SAMPLES"][wildcards.sample]["R2"]
+    output:
+        R1 = "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}_R1.fastq.gz",
+        R2 = "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}_R2.fastq.gz"
+    shell: """
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_FASTQ
+        mkdir -p {WORKING_FOLDER}/{DATASET}/FastQC
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_TrimGalore
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_STAR
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_BAM
+        ln -s {input.R1} {output.R1}
+        ln -s {input.R2} {output.R2}
+        touch -h {output.R1}
+        touch -h {output.R2}
+        """
         
 rule trim_galore:
     input:
@@ -35,7 +54,7 @@ rule star_mapping:
         R1 = "{WORKING_FOLDER}/{DATASET}/processed_TrimGalore/{sample}_R1_val_1.fq.gz", 
         R2 = "{WORKING_FOLDER}/{DATASET}/processed_TrimGalore/{sample}_R2_val_2.fq.gz"
     output:
-        "{WORKING_FOLDER}/{DATASET}/processed_STAR/{sample}"
+        directory("{WORKING_FOLDER}/{DATASET}/processed_STAR/{sample}")
     threads: 12
     shell: """
         mkdir -p {output}
@@ -92,25 +111,6 @@ rule stringtie_expr:
     threads: 6
     shell:
         "stringtie {input.bam} -p {threads} -G {GTF} -e -o {output.gff} -A {output.tab}"
-
-rule folder_and_rename_softlink:
-    input:
-        R1 = lambda wildcards: config["SAMPLES"][wildcards.sample]["R1"], 
-        R2 = lambda wildcards: config["SAMPLES"][wildcards.sample]["R2"]
-    output:
-        R1 = "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}_R1.fastq.gz",
-        R2 = "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}_R2.fastq.gz"
-    shell: """
-        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_FASTQ
-        mkdir -p {WORKING_FOLDER}/{DATASET}/FastQC
-        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_TrimGalore
-        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_STAR
-        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_BAM
-        ln -s {input.R1} {output.R1}
-        ln -s {input.R2} {output.R2}
-        touch -h {output.R1}
-        touch -h {output.R2}
-        """
 
 
 
