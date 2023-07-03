@@ -261,7 +261,7 @@ calc_auc <- function(data=data.frame(),type = '',scorelist){
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
         }
         else {
-            scorelist[['SenMarkers']][scorelist[['SenMarkers']] %in% colnames(data)] %>% 
+            c('hSI',scorelist[['SenMarkers']][scorelist[['SenMarkers']] %in% colnames(data)]) %>% 
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
         }
     })
@@ -286,8 +286,9 @@ dat = calc_scores(ScoreList,Teo2019)
 dat_Teo = dat %>% 
         mutate( condition=gsub("[0-9]$", "", Condition1) ) %>% 
         mutate(hSI=hSI)
-dat_Teo = dat_Geo[,complete.cases(t(dat_Teo))]
-auc_Teo <- calc_auc(dat_Teo,'marker',ScoreList)
+dat_Teo = dat_Teo[,complete.cases(t(dat_Teo))]
+auc_Teo <- calc_auc(dat_Teo,'method',ScoreList)
+
 ### Georgilis2018
 Georgilis2018 = CreateSeuratObject(
     fread("Georgilis2018/valid_TPM_dataset.tsv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
@@ -308,7 +309,7 @@ dat_Geo = dat %>%
         filter( !condition %in% "other" ) %>% 
         mutate( condition=as.factor(condition))
 dat_Geo = dat_Geo[,complete.cases(t(dat_Geo))]
-auc_Geo <- calc_auc(dat_Geo,'method',ScoreList)
+auc_Geo <- calc_auc(dat_Geo,'marker',ScoreList)
 
 ###Tang2019
 Tang2019List = list.files("Tang2019", full.names = T) %>% 
@@ -329,8 +330,7 @@ Tang2019List = list.files("Tang2019", full.names = T) %>%
 dat_Tang = data.table::rbindlist(Tang2019List,use.names=TRUE, fill=TRUE, idcol="sample") %>% data.frame
 dat_Tang = dat_Tang[,complete.cases(t(dat_Tang))]
 dat_Tang$condition = as.factor(ifelse(dat_Tang$sample %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
-
-auc_Tang <- calc_auc(dat_Tang,'marker',ScoreList)
+auc_Tang <- calc_auc(dat_Tang,'method',ScoreList)
 
 ############################### application on melanoma ########################
 ### load melanoma data
