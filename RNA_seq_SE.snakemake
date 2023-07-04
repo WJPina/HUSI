@@ -1,0 +1,109 @@
+WORKING_FOLDER=config["WORKING_FOLDER"]
+DATA_FOLDER=config["DATA_FOLDER"]
+STAR_REF=config["STAR_REF"]
+GTF=config["GTF"]
+DATASET=config["DATASET"]
+
+rule all:
+    input:
+        expand("{work_folder}/{dataset}/processed_FASTQ/{sample}.fastq.gz",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/processed_TrimGalore/{sample}_trimmed.fq.gz",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/processed_STAR/{sample}",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/processed_BAM/{sample}.sorted.bam",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/processed_BAM/{sample}.sorted.bai",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/gene_expr/{sample}.geneExpr.stringtie.tab",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"]),
+        expand("{work_folder}/{dataset}/gene_expr/{sample}.stringtie.gff",work_folder=WORKING_FOLDER,dataset=DATASET,sample=config["SAMPLES"])
+
+rule folder_and_rename_softlink:
+    input:
+        lambda wildcards: config["SAMPLES"][wildcards.sample]
+    output:
+        "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}.fastq.gz"
+    shell: """
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_FASTQ
+        mkdir -p {WORKING_FOLDER}/{DATASET}/FastQC
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_TrimGalore
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_STAR
+        mkdir -p {WORKING_FOLDER}/{DATASET}/processed_BAM
+        ln -s {input} {output}
+        touch -h {output}
+        """
+        
+rule trim_galore:
+    input:
+        "{WORKING_FOLDER}/{DATASET}/processed_FASTQ/{sample}.fastq.gz"
+    output:
+        "{WORKING_FOLDER}/{DATASET}/processed_TrimGalore/{sample}_trimmed.fq.gz"
+    params: 
+        fastqc_args = "'-q -o {WORKING_FOLDER}/{DATASET}/FastQC'"
+    threads: 3
+    shell: """
+        /home/tools/TrimGalore-0.6.6/trim_galore -q 20 --fastqc_args {params.fastqc_args} -o {WORKING_FOLDER}/{DATASET}/processed_TrimGalore {input}
+           """
+
+rule star_mapping:
+    input:
+        "{WORKING_FOLDER}/{DATASET}/processed_TrimGalore/{sample}_trimmed.fq.gz"
+    output:
+        directory("{WORKING_FOLDER}/{DATASET}/processed_STAR/{sample}")
+    threads: 12
+    shell: """
+        mkdir -p {output}
+        /home/tools/STAR \
+        --genomeDir {STAR_REF} \
+        --readFilesIn {input} \
+        --runThreadN {threads} \
+        --outFilterMultimapScoreRange 1 \
+        --outFilterMultimapNmax 20 \
+        --outFilterMismatchNmax 10 \
+        --alignIntronMax 500000 \
+        --alignMatesGapMax 1000000 \
+        --sjdbScore 2 \
+        --alignSJDBoverhangMin 1 \
+        --genomeLoad NoSharedMemory \
+        --outFilterMatchNminOverLread 0.33 \
+        --outFilterScoreMinOverLread 0.33 \
+        --sjdbOverhang 150 \
+        --outSAMstrandField intronMotif \
+        --outFileNamePrefix {output}/ \
+        --outSAMunmapped None \
+        --outSAMtype BAM Unsorted \
+        --outStd BAM_Unsorted \
+        --readFilesCommand zcat > {output}/Unsorted.bam
+           """
+
+rule sort_BAM:
+    input:
+        "{WORKING_FOLDER}/{DATASET}/processed_STAR/{sample}"
+    output:
+        "{WORKING_FOLDER}/{DATASET}/processed_BAM/{sample}.sorted.bam"
+    threads: 4
+    shell: """
+        samtools sort -@ {threads} {input}/Unsorted.bam -o {output}
+        """
+
+rule index_BAM:
+    input:
+        "{WORKING_FOLDER}/{DATASET}/processed_BAM/{sample}.sorted.bam"
+    output:
+        "{WORKING_FOLDER}/{DATASET}/processed_BAM/{sample}.sorted.bai"
+    threads: 4
+    shell: """
+        samtools index -@ {threads} {input} {output}
+        """
+
+rule stringtie_expr:
+    input:
+        bam = "{WORKING_FOLDER}/{DATASET}/processed_BAM/{sample}.sorted.bam",
+        bai = "{WORKING_FOLDER}/{DATASET}/processed_BAM/{sample}.sorted.bai"
+    output:
+        gff = "{WORKING_FOLDER}/{DATASET}/gene_expr/{sample}.stringtie.gff",
+        tab = "{WORKING_FOLDER}/{DATASET}/gene_expr/{sample}.geneExpr.stringtie.tab"
+    threads: 6
+    shell:
+        "stringtie {input.bam} -p {threads} -G {GTF} -e -o {output.gff} -A {output.tab}"
+
+
+
+
+
