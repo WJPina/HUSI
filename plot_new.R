@@ -115,7 +115,7 @@ dev.off()
 
 
 ### comparision auc
-auc = auc_Tang
+png('/home/wangjing/codebase/HUSI/Figures/compare_Tang2019_ssgsea.png',width = 1800,height = 1000,res = 200)
 auc %>%
     melt(value.name = "Accuracy") %>%
     mutate(feature=as.character(Var1)) %>% 
@@ -126,17 +126,10 @@ auc %>%
     labs(x=NULL, y="AUC") +
     theme(legend.position = "none")+
     theme_classic()
+dev.off()
 
-auc %>%
-    melt(value.name = "Accuracy") %>%
-    mutate( feature=forcats::fct_reorder(Var1, Accuracy, mean, .desc = T) ) %>%
-    Rmisc::summarySE(measurevar = "Accuracy", groupvars = "feature") %>%
-    {
-        ggplot(data = ., aes(feature, Accuracy, fill=feature)) +
-        geom_bar(stat = "identity", position = position_dodge(), width = 0.4) +
-        geom_errorbar(aes(ymin = Accuracy - sd, ymax = {Accuracy + sd} %>% ifelse(. >1, 1, .)),
-        width = 0.2, position = position_dodge(0.9)) +
-        labs(x=NULL, y="AUC") +
-        theme(legend.position = "none")+
-        theme_classic()
-    }
+
+
+
+
+
