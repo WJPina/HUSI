@@ -128,8 +128,46 @@ auc %>%
     theme_classic()
 dev.off()
 
+##### menanome
+bar = c("#5cb85c","#428bca","#d9534f")
+names(bar) = c("Cycling","Moderate senescent","Senescent")
+### Phate trajectory
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_phate.png',width = 1800,height = 800,res = 200)
+DimPlot(EpiExp.m, reduction = 'phate', group.by = 'age_state',label=F,pt.size=2,cols = bar)+ggtitle("Melanoma tumor cells")
+dev.off()
 
+### aging markers
+p1 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
+p2 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_markers.png',width = 1800,height = 800,res = 200)
+ggarrange(p1,p2,ncol = 2,nrow = 1,legend = "none") 
+dev.off()
 
+### microarray heatmap
+library(ComplexHeatmap)
+library(circlize)
+top_anno <- HeatmapAnnotation(df = data.frame(Condition = meta$condition),
+                              col = list(Condition = c('young'='#007E99','senescent' = '#FF745A')),
+                              show_legend = F)
+left_anno = rowAnnotation(df = data.frame('State'= rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length))),
+                          show_legend = T,
+                          col = list(State = bar))
+col <- colorRamp2(c(-2,0,2), c("blue","white", "red"), space = "LAB")
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_microarray.png',width = 1000,height = 800,res= 200)
+Heatmap(mat,
+        show_column_names = F,
+        show_row_names = F,
+        row_title = NULL,
+        col = col,
+        cluster_rows = T,
+        cluster_row_slices = FALSE,
+        cluster_columns = F,
+        top_annotation = top_anno,
+        left_annotation = left_anno,
+        row_names_gp = gpar(fontsize = 12),
+        column_split = c(rep('young',4),rep('senescent',4)),
+        row_split = rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length)))
+dev.off()
 
 
 
