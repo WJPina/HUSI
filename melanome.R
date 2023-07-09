@@ -1,3 +1,4 @@
+mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/BulkData/Bulk_TrainModel/mm_l2.rds")
 ############################### application on melanoma ########################
 ### load melanoma data
 setwd('/home/wangjing/wangj/AgingScore/Data1/scRNA_melanome')

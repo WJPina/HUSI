@@ -1,4 +1,4 @@
-mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/BulkData/Bulk_TrainModel/mm_l2.rds")
+mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 ############################## Comparision ######################################
 setwd("/home/wangjing/wangj/AgingScore/Comparison")
 
@@ -102,7 +102,7 @@ dat_Teo = dat_Teo[,complete.cases(t(dat_Teo))]
 # auc <- calc_auc(dat_Teo,'marker',SenMarkers)
 auc <- calc_auc(dat_Teo,'ssgsea',EnrichSet)
 
-###Tang2019
+### Tang2019
 Tang2019List = list.files("Tang2019", full.names = T) %>% 
     lapply(function(x) {
         scdat = fread(x) %>% 

@@ -1,4 +1,4 @@
-mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/BulkData/Bulk_TrainModel/mm_l2.rds")
+mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 ################### Valid model in  RNA-seq and microarray #######################
 library(annaffy)
 library(magrittr)
@@ -34,7 +34,7 @@ s_RS = list.files("GSE130306/", "GSM", full.names = T) %>%
 
 
 ### Microarray
-setwd("~/wangj/AgingScore/BulkData/Bulk_Microarray/")
+setwd("~/wangj/AgingScore/Data/Bulk_Microarray/")
 # load raw data
 fs = paste(c('GSE19864','GSE16058','GSE83922','GSE11954','GSE100014','GSE77239'),"eSet.Rdata",sep = "_")
 ArrayList <- sapply(fs, function(x) mget(load(x)), simplify = TRUE) 
