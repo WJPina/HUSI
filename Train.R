@@ -1,5 +1,5 @@
 library(Seurat)
-setwd("~/wangj/AgingScore/BulkData/")
+setwd("~/wangj/AgingScore/Data/")
 library(dplyr)
 library(tibble)
 library(data.table)
