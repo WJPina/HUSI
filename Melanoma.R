@@ -94,12 +94,23 @@ plot(Epi.phate, col = branch,pch=16)
 
 EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
 
-EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Moderate senescent","Senescent")),levels = c("Cycling","Moderate senescent","Senescent"))
+EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Moderate_senescent","Senescent")),levels = c("Cycling","Moderate_senescent","Senescent"))
 
 ### aging marker genes
 SenMarkers = c("CDKN1A", "SERPINE1")
 
-### valida in microarray
+##### validate in microarray
+### age state degs
+marker_set = list()
+for(i in unique(EpiExp.m$age_state)){
+  marker_set[[i]] <- FindMarkers(EpiExp.m,ident.1 = i,group.by="age_state",only.pos = TRUE,assay = "RNA")
+  marker_set[[i]] <- filter(marker_set[[i]],p_val_adj<0.05)
+}
+lapply(marker_set,dim)
+
+gene_set <- lapply(marker_set,function(x){x <- rownames(x)[rownames(x)%in%rownames(exp)]})
+
+### bulk degs
 load('/home/wangjing/wangj/AgingScore/Data/Bulk_Microarray/Valid.RData')
 
 GPL = c("GPL570" = "hgu133plus2.db","GPL3921" = "hthgu133a.db","GPL11532" = "hugene11sttranscriptcluster.db")
@@ -113,20 +124,71 @@ meta <- ArrayList [["GSE83922"]][[1]] %>%
         mutate(condition= `cell phenotype:ch1`) %>% 
         .[which(.$condition %in% c("young","senescent")),] %>% 
         mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
+meta[,'cell phenotype:ch1']
 
-marker_set = list()
-for(i in unique(EpiExp.m$age_state)){
-  marker_set[[i]] <- FindMarkers(EpiExp.m,ident.1 = i,group.by="age_state",only.pos = TRUE,assay = "RNA")
-  marker_set[[i]] <- filter(marker_set[[i]],p_val_adj<0.05)
+geneID <- intersect(rownames(exp),rownames(EpiExp.m))
+exp_bulk <- exp[geneID,rownames(meta)]
+
+deg.tab <- NULL
+pheno <- c(rep(0,4),rep(1,4))
+for(i in 1:nrow(exp_bulk)){
+  lm.model <- lm(exp_bulk[i,]~pheno)
+  line <- c(summary(lm.model)$coefficients[2,4],summary(lm.model)$coefficients[2,1])
+  deg.tab <- rbind(deg.tab,line)
 }
-lapply(marker_set,dim)
+rownames(deg.tab) <- rownames(exp_bulk)
+colnames(deg.tab) <- c("pval","coefficients")
+deg.tab <- as.data.frame(deg.tab)
+deg.tab$p.adjust <- p.adjust(deg.tab$pval,method="BH")
+deg.tab <- deg.tab[deg.tab[,3]<0.05,]
 
-gene_set <- lapply(marker_set,function(x){x <- rownames(x)[rownames(x)%in%rownames(exp)]})
+### enrich single cell state marker in bulk degs
+enrich_geneList=list()
+enrich_reList=list()
+N = nrow(exp_bulk)
+for(de in c("up","down")){
+    if(de == "up"){
+      bk = rownames(filter(deg.tab,coefficients>0)) 
+    }
+    else {
+      bk = rownames(filter(deg.tab,coefficients<0))
+    }
+    M = length(bk)
+    for (state in levels(EpiExp.m$age_state)) {
+      genes = rownames(marker_set[[state]])
+      n = length(genes)
+      k = length(intersect(bk,genes))
+      enrich_reList[[paste(state,de,sep = '_')]] = phyper(k-1,M, N-M, n, lower.tail=FALSE)
+      enrich_geneList[[paste(state,de,sep = '_')]][['bulk']] = bk
+      enrich_geneList[[paste(state,de,sep = '_')]][['single-cell']] = genes
+  }
+}
 
-mat <- exp[unlist(gene_set),rownames(meta)]
-mat=mat[!apply(mat, 1, sd)==0,]
-mat=Matrix::t(scale(Matrix::t(mat),center=TRUE))
-mat=mat[is.na(row.names(mat)) == FALSE,]
-mat[is.nan(mat)] = 0
-mat[mat>2] = 2
-mat[mat< -2] = -2
+###### survival analysis in TCGA SKCM patients
+clinicalMatrix <- read.csv("SKCM_clinicalMatrix.csv",header=TRUE,stringsAsFactors = FALSE,row.names=1)
+tcga_melanoma <- read.table("melanoma_tcga",header=TRUE,row.names=1,stringsAsFactors=FALSE)
+
+sample_tcga <- rownames(clinicalMatrix)
+sample_tcga <- gsub("-",".",sample_tcga)
+rownames(clinicalMatrix) <- sample_tcga
+sample_tcga <- intersect(sample_tcga,colnames(tcga_melanoma))
+clinicalMatrix <- clinicalMatrix[sample_tcga,]
+
+### filter samples by tumor index
+tumor_index <- unlist(lapply(strsplit(rownames(clinicalMatrix),split="\\."),'[',4)) %>% as.numeric
+clinicalMatrix <- clinicalMatrix[tumor_index<11,]
+tcga_melanoma <- tcga_melanoma[,rownames(clinicalMatrix)]
+
+markerID <- sapply(marker_set,function(x){rownames(x)}) %>% unlist %>% as.character %>% unique
+tcga_melanoma <- tcga_melanoma[intersect(rownames(tcga_melanoma),markerID),]
+tcga_melanoma <- tcga_melanoma[rowSums(tcga_melanoma)>0,]
+# tcga_melanoma_scale <- apply(tcga_melanoma,1,scale)
+
+### deconvolute TCGA SKCM sample by ENIGMA
+source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
+source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA_revise.R")
+profile = AverageExpression(EpiExp.m, features = markerID , slot = 'data',assays = 'RNA',group.by = 'age_state')$RNA %>% data.frame
+Frac <- get_proportion(Bulk, profile)
+Frac <- Frac$theta
+
+

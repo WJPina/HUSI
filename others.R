@@ -33,3 +33,38 @@ auc %>%
         theme(legend.position = "none")+
         theme_classic()
     }
+
+### melanoma heatmap
+mat <- exp[unlist(gene_set),rownames(meta)]
+mat=mat[!apply(mat, 1, sd)==0,]
+mat=Matrix::t(scale(Matrix::t(mat),center=TRUE))
+mat=mat[is.na(row.names(mat)) == FALSE,]
+mat[is.nan(mat)] = 0
+mat[mat>2] = 2
+mat[mat< -2] = -2
+
+
+library(ComplexHeatmap)
+library(circlize)
+top_anno <- HeatmapAnnotation(df = data.frame(Condition = meta$condition),
+                              col = list(Condition = c('young'='#007E99','senescent' = '#FF745A')),
+                              show_legend = F)
+left_anno = rowAnnotation(df = data.frame('State'= rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length))),
+                          show_legend = T,
+                          col = list(State = bar))
+col <- colorRamp2(c(-2,0,2), c("blue","white", "red"), space = "LAB")
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_microarray.png',width = 1000,height = 800,res= 200)
+Heatmap(mat,
+        show_column_names = F,
+        show_row_names = F,
+        row_title = NULL,
+        col = col,
+        cluster_rows = T,
+        cluster_row_slices = FALSE,
+        cluster_columns = F,
+        top_annotation = top_anno,
+        left_annotation = left_anno,
+        row_names_gp = gpar(fontsize = 12),
+        column_split = c(rep('young',4),rep('senescent',4)),
+        row_split = rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length)))
+dev.off()

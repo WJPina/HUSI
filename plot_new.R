@@ -130,44 +130,50 @@ dev.off()
 
 ##### menanome
 bar = c("#5cb85c","#428bca","#d9534f")
-names(bar) = c("Cycling","Moderate senescent","Senescent")
+names(bar) = c("Cycling","Moderate_senescent","Senescent")
 ### Phate trajectory
 png('/home/wangjing/codebase/HUSI/Figures/Melanoma_phate.png',width = 1800,height = 800,res = 200)
 DimPlot(EpiExp.m, reduction = 'phate', group.by = 'age_state',label=F,pt.size=2,cols = bar)+ggtitle("Melanoma tumor cells")
 dev.off()
 
 ### aging markers
-p1 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
-p2 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_markers.png',width = 1800,height = 800,res = 200)
-ggarrange(p1,p2,ncol = 2,nrow = 1,legend = "none") 
+p1 = FeaturePlot(EpiExp.m,features=SenMarkers[1],reduction='phate',order=T,pt.size = 2) + xlim(-0.04,0.05) + ylim(-0.03,0.04)
+p2 = FeaturePlot(EpiExp.m,features=SenMarkers[2],reduction='phate',order=T,pt.size = 2) + xlim(-0.04,0.05) + ylim(-0.03,0.04)
+p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
+p4 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_markers.png',width = 1800,height = 1200,res = 200)
+ggarrange(p1,p3,p2,p4,ncol = 2,nrow = 2,legend = "none") 
 dev.off()
 
-### microarray heatmap
-library(ComplexHeatmap)
-library(circlize)
-top_anno <- HeatmapAnnotation(df = data.frame(Condition = meta$condition),
-                              col = list(Condition = c('young'='#007E99','senescent' = '#FF745A')),
-                              show_legend = F)
-left_anno = rowAnnotation(df = data.frame('State'= rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length))),
-                          show_legend = T,
-                          col = list(State = bar))
-col <- colorRamp2(c(-2,0,2), c("blue","white", "red"), space = "LAB")
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_microarray.png',width = 1000,height = 800,res= 200)
-Heatmap(mat,
-        show_column_names = F,
-        show_row_names = F,
-        row_title = NULL,
-        col = col,
-        cluster_rows = T,
-        cluster_row_slices = FALSE,
-        cluster_columns = F,
-        top_annotation = top_anno,
-        left_annotation = left_anno,
-        row_names_gp = gpar(fontsize = 12),
-        column_split = c(rep('young',4),rep('senescent',4)),
-        row_split = rep(c("Cycling","Moderate senescent","Senescent"),times=lapply(gene_set,length)))
+### microarray gene overlap
+colorList = list()
+colorList[['Cycling_up']] <- c("#FF745A","#5cb85c")
+colorList[['Cycling_down']] <- c("#007E99","#5cb85c")
+colorList[['Moderate_senescent_up']] <- c("#FF745A","#428bca")
+colorList[['Moderate_senescent_down']] <- c("#007E99","#428bca")
+colorList[['Senescent_up']] <- c("#FF745A","#d9534f")
+colorList[['Senescent_down']] <- c("#007E99","#d9534f")
+
+pList=list()
+library(ggvenn)
+for(set in names(enrich_reList)){
+    pList[[set]] <- enrich_geneList[[set]] %>% 
+                    ggvenn(show_percentage = T,
+                            show_elements = F,
+                            label_sep = ",",
+                            digits = 1,
+                            set_name_size = 0,
+                            stroke_color = "white",
+                            fill_color = colorList[[set]],
+                            text_size = 4)+
+                    labs(title = paste("Padj value:",as.character(signif(enrich_reList[[set]],2))))+
+                    theme(plot.title = element_text(hjust = 0.5,vjust = 0,size = 12))+
+                    scale_y_continuous(limits = c(-1, 1))
+    
+}
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_enrich.png',width = 1500,height = 1500,res = 200)
+ggarrange(pList$Cycling_up,pList$Cycling_down,
+            pList[['Moderate_senescent_up']],pList[['Moderate_senescent_down']],
+            pList$Senescent_up,pList$Senescent_down,
+            ncol = 2,nrow = 3,legend = "none")
 dev.off()
-
-
-
