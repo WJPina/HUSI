@@ -7,6 +7,8 @@ library(ICAnet)
 library(phateR)
 library(reticulate)
 library(Seurat)
+use_python("/home/tools/anaconda3/envs/scpy-env/bin/python3", required = T)
+
 
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 setwd('/home/wangjing/wangj/AgingScore/Data/scRNA_melanome')
@@ -49,7 +51,7 @@ melanoma_obj <- ScaleData(melanoma_obj,features=rownames(melanoma_obj))
 melanoma_obj <- RunPCA(melanoma_obj,npcs = 30,verbose = F,features=rownames(melanoma_obj)) 
 # ElbowPlot(melanoma_obj,ndims=30,reduction="pca")
 # melanoma_obj <- RunTSNE(melanoma_obj, reduction = "pca", dims = 1:20) 
-DimPlot(melanoma_obj, reduction = 'tsne', group.by = 'celltype',label=1)
+DimPlot(melanoma_obj, reduction = 'pca', group.by = 'celltype',label=1)
 
 ### extract tumor cells
 EpiExp.m <- melanoma_obj[,melanoma_obj$celltype=="Tumor"]
@@ -64,7 +66,7 @@ features
 ### divided tumor cells by gaussion 
 gaussian = EpiExp.m@meta.data$hSI %>% {log2((1+ .)/(1- .))} %>% Mclust(G = 3)
 EpiExp.m$age_class <- gaussian$classification
-DimPlot(EpiExp.m, reduction = 'tsne', group.by = 'age_class',label=1)
+DimPlot(EpiExp.m, reduction = 'pca', group.by = 'age_class',label=1)
 
 ###Running the ICAnet
 source('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/getPPI_String.R')
@@ -76,15 +78,12 @@ DefaultAssay(EpiExp.m) <- "AgingExp"
 EpiExp.m$batch <- rep("batch",ncol(EpiExp.m))
 Ica.epi <- ICAcomputing(EpiExp.m,ICA.type="JADE",RMT=TRUE,two.stage=FALSE)
 Ica.filter <- CrossBatchGrouping(Ica.epi$ica.pooling)
+dev.off()
 # PPI <- readRDS("PPI_feature.rds")
 PPI <- getPPI_String(EpiExp.m,species=9606)
-
 EpiExp.m <- RunICAnet(EpiExp.m,Ica.epi$ica.pooling,PPI.net = PPI,scale=FALSE,ModuleSignificance = FALSE,cores = 1,aucMaxRank=900)
-dev.off()
 
 ### Using PHATE to predict the transition process of tumor aging
-# use_python("/home/tools/anaconda3/envs/scpy-env/bin/python3", required = T)
-
 Epi.data <- t((GetAssayData(EpiExp.m)))
 Epi.data <- as.data.frame(Epi.data)
 Epi.phate <- phate(Epi.data)
@@ -93,10 +92,10 @@ palette(rainbow(3))
 plot(Epi.phate, col = branch,pch=16)
 
 EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
-
 EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Moderate_senescent","Senescent")),levels = c("Cycling","Moderate_senescent","Senescent"))
-
+save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
 ### aging marker genes
+DefaultAssay(EpiExp.m)='RNA'
 SenMarkers = c("CDKN1A", "SERPINE1")
 
 ##### validate in microarray
@@ -107,9 +106,6 @@ for(i in unique(EpiExp.m$age_state)){
   marker_set[[i]] <- filter(marker_set[[i]],p_val_adj<0.05)
 }
 lapply(marker_set,dim)
-
-gene_set <- lapply(marker_set,function(x){x <- rownames(x)[rownames(x)%in%rownames(exp)]})
-
 ### bulk degs
 load('/home/wangjing/wangj/AgingScore/Data/Bulk_Microarray/Valid.RData')
 
@@ -164,7 +160,7 @@ for(de in c("up","down")){
   }
 }
 
-###### survival analysis in TCGA SKCM patients
+###### load TCGA SKCM bulk data
 clinicalMatrix <- read.csv("SKCM_clinicalMatrix.csv",header=TRUE,stringsAsFactors = FALSE,row.names=1)
 tcga_melanoma <- read.table("melanoma_tcga",header=TRUE,row.names=1,stringsAsFactors=FALSE)
 
@@ -179,16 +175,19 @@ tumor_index <- unlist(lapply(strsplit(rownames(clinicalMatrix),split="\\."),'[',
 clinicalMatrix <- clinicalMatrix[tumor_index<11,]
 tcga_melanoma <- tcga_melanoma[,rownames(clinicalMatrix)]
 
-markerID <- sapply(marker_set,function(x){rownames(x)}) %>% unlist %>% as.character %>% unique
+# markerID <- sapply(marker_set,function(x){rownames(x)}) %>% unlist %>% as.character %>% unique
+markerID = unlist(lapply(marker_set, function(x) {rownames(x[order(x$avg_log2FC,decreasing = T),][1:200,])})) %>% unique
 tcga_melanoma <- tcga_melanoma[intersect(rownames(tcga_melanoma),markerID),]
 tcga_melanoma <- tcga_melanoma[rowSums(tcga_melanoma)>0,]
-# tcga_melanoma_scale <- apply(tcga_melanoma,1,scale)
+
+
 
 ### deconvolute TCGA SKCM sample by ENIGMA
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA_revise.R")
+Bulk = tcga_melanoma
 profile = AverageExpression(EpiExp.m, features = markerID , slot = 'data',assays = 'RNA',group.by = 'age_state')$RNA %>% data.frame
 Frac <- get_proportion(Bulk, profile)
 Frac <- Frac$theta
-
+colMeans(Frac)
 

@@ -167,13 +167,46 @@ for(set in names(enrich_reList)){
                             fill_color = colorList[[set]],
                             text_size = 4)+
                     labs(title = paste("Padj value:",as.character(signif(enrich_reList[[set]],2))))+
-                    theme(plot.title = element_text(hjust = 0.5,vjust = 0,size = 12))+
+                    theme(plot.title = element_text(hjust = 0.5,vjust = 0,size = 15))+
                     scale_y_continuous(limits = c(-1, 1))
     
 }
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_enrich.png',width = 1500,height = 1500,res = 200)
-ggarrange(pList$Cycling_up,pList$Cycling_down,
-            pList[['Moderate_senescent_up']],pList[['Moderate_senescent_down']],
-            pList$Senescent_up,pList$Senescent_down,
-            ncol = 2,nrow = 3,legend = "none")
+png('/home/wangjing/codebase/HUSI/Figures/Melanoma_enrich.png',width = 1500,height = 800,res = 160)
+ggarrange(pList$Cycling_up,
+            pList$Moderate_senescent_up,
+            pList$Senescent_up,
+            pList$Cycling_down,
+            pList$Moderate_senescent_down,
+            pList$Senescent_down,
+            ncol = 3,nrow = 2,legend = "none")
+dev.off()
+
+### age state fraction in TCGA SKCM patients
+library(ComplexHeatmap)
+library(circlize)
+mat <- as.matrix(tcga_melanoma)
+mat <- apply(mat,1,scale)
+mat <- t(mat)
+rownames(mat) <- rownames(tcga_melanoma)
+colnames(mat) <- colnames(tcga_melanoma)
+
+
+top_anno <- HeatmapAnnotation(df = data.frame(Frac)[colnames(mat),],
+                              col = list(Cycling = colorRamp2(c(0, 1), c("white", "#5cb85c")),
+                                         Moderate_senescent = colorRamp2(c(0, 1), c( "white", "#428bca")),
+                                         Senescent= colorRamp2(c(0, 1), c("white", "#d9534f"))),
+                              show_legend = F)
+# col <- colorRamp2(c(-1.5,0,1.5), c("blue","white", "red"), space = "LAB")
+png('/home/wangjing/codebase/HUSI/Figures/TCGA_SKCM_heatmap.png',width = 1000,height = 800,res= 200)
+Heatmap(mat,
+        show_column_names = F,
+        show_row_names = F,
+        row_title = NULL,
+        # col = col,
+        cluster_rows = T,
+        cluster_row_slices = FALSE,
+        cluster_columns = T,
+        column_km=3,
+        row_km = 3,
+        top_annotation = top_anno)
 dev.off()
