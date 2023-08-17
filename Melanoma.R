@@ -7,10 +7,11 @@ library(ICAnet)
 library(phateR)
 library(reticulate)
 library(Seurat)
+library(tibble)
+
 use_python("/home/tools/anaconda3/envs/scpy-env/bin/python3", required = T)
-
-
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+
 setwd('/home/wangjing/wangj/AgingScore/Data/scRNA_melanome')
 ############################### application on melanoma ########################
 ### load melanoma data
@@ -92,7 +93,7 @@ palette(rainbow(3))
 plot(Epi.phate, col = branch,pch=16)
 
 EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
-EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Moderate_senescent","Senescent")),levels = c("Cycling","Moderate_senescent","Senescent"))
+EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transition","Senescent")),levels = c("Cycling","Transition","Senescent"))
 save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
 ### aging marker genes
 DefaultAssay(EpiExp.m)='RNA'
@@ -122,7 +123,7 @@ meta <- ArrayList [["GSE83922"]][[1]] %>%
         mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
 meta[,'cell phenotype:ch1']
 
-geneID <- intersect(rownames(exp),rownames(EpiExp.m))
+geneID <- intersect(rownames(exp),rownames(EpiExp.m@assays$RNA))
 exp_bulk <- exp[geneID,rownames(meta)]
 
 deg.tab <- NULL
@@ -160,7 +161,8 @@ for(de in c("up","down")){
   }
 }
 
-###### load TCGA SKCM bulk data
+##### survival analysis on TCGA SKCM
+### load TCGA SKCM bulk data
 clinicalMatrix <- read.csv("SKCM_clinicalMatrix.csv",header=TRUE,stringsAsFactors = FALSE,row.names=1)
 tcga_melanoma <- read.table("melanoma_tcga",header=TRUE,row.names=1,stringsAsFactors=FALSE)
 
@@ -175,19 +177,40 @@ tumor_index <- unlist(lapply(strsplit(rownames(clinicalMatrix),split="\\."),'[',
 clinicalMatrix <- clinicalMatrix[tumor_index<11,]
 tcga_melanoma <- tcga_melanoma[,rownames(clinicalMatrix)]
 
-# markerID <- sapply(marker_set,function(x){rownames(x)}) %>% unlist %>% as.character %>% unique
-markerID = unlist(lapply(marker_set, function(x) {rownames(x[order(x$avg_log2FC,decreasing = T),][1:200,])})) %>% unique
-tcga_melanoma <- tcga_melanoma[intersect(rownames(tcga_melanoma),markerID),]
-tcga_melanoma <- tcga_melanoma[rowSums(tcga_melanoma)>0,]
-
-
+### only keep the top 200 degs of each single cell state
+markerID = unlist(lapply(marker_set, function(x) {rownames(x[order(x$avg_log2FC,decreasing = T),])})) %>% unique
+Bulk <- tcga_melanoma[intersect(rownames(tcga_melanoma),markerID),]
+Bulk <- Bulk[rowSums(Bulk)>0,]
 
 ### deconvolute TCGA SKCM sample by ENIGMA
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA_revise.R")
-Bulk = tcga_melanoma
 profile = AverageExpression(EpiExp.m, features = markerID , slot = 'data',assays = 'RNA',group.by = 'age_state')$RNA %>% data.frame
 Frac <- get_proportion(Bulk, profile)
 Frac <- Frac$theta
 colMeans(Frac)
+
+### survival analysis
+library(survival)
+library(survminer)
+
+survival_data <- clinicalMatrix[, c("days_to_last_followup", "vital_status")]
+### remove samples with NA in survival data
+survival_data <- survival_data[!survival_data$days_to_last_followup%in%c("","[Discrepancy]"),]
+### relpace LIVING with 0 and DECEASED with 1
+survival_data$vital_status <- as.numeric(survival_data$vital_status == "DECEASED")
+survival_data$days_to_last_followup <- as.numeric(survival_data$days_to_last_followup)
+
+data = data.frame(Frac[rownames(survival_data),],OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)
+
+### using CIBERSORT to deconvolute TCGA SKCM sample
+source("/home/wangjing/wangj/codebase/HUSI/CIBERSORT.R")
+# out=tcga_melanoma %>% rownames_to_column('ID')
+# out[1:5,1:5]
+# write.table(tcga_melanoma,file="tcga_melanoma.txt",sep="\t",quote=F,col.names=F)  
+
+results=CIBERSORT("LM22.txt", "tcga_melanoma.txt", perm=100, QN=TRUE)
+
+write.csv(results,"tcga_melanoma_CIBERSORT.csv")
+
 

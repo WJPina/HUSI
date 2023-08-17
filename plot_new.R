@@ -19,7 +19,7 @@ mytheme <- function () {
 ### model leave-one-out auc
 load("/home/wangjing/wangj/AgingScore/BulkData/Bulk_TrainModel/model_auc.RData")
 
-png('/home/wangjing/codebase/HUSI/Figures/auc.png',width = 1000,height = 800,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/auc.png',width = 1000,height = 800,res = 200)
 ggplot(aes(x = auc),data=data.frame(auc=auc))+
     geom_density()+
     theme_classic()+
@@ -69,14 +69,14 @@ p1.2 <- ArrayList [["GSE16058"]][[1]] %>%
     xlab("RS of HMEC")
 
 fig1 <- ggarrange(p1.1,p1.2,ncol = 2,nrow = 1,common.legend = F)
-png('/home/wangjing/codebase/HUSI/Figures/valid_new.png',width = 2000,height = 800,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/valid_new.png',width = 2000,height = 800,res = 200)
 fig1
 dev.off()
 
 ### bacth effect
 load('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/ModelValidData_Batch.RData')
 
-png('/home/wangjing/codebase/HUSI/Figures/valid_BE.png',width = 1500,height = 1200,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/valid_BE.png',width = 1500,height = 1200,res = 300)
 read.table("/home/wangjing/wangj/AgingScore/BulkData/Bulk_BatchEffect/batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
     dplyr::select(c("title","study_accession","condition")) %>%
     mutate(sene_score = s_batch[title]) %>%
@@ -101,7 +101,7 @@ library(gggsea)
 load('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/Model_GSEA.RData')
 cols = c("#B71C1C", "#C62828", "#D32F2F", "#E53935", "#F44336", "#EF5350", "#E57373","#0D47A1", "#1565C0", "#1976D2", "#1E88E5")
 names(cols) = df$ID
-png('/home/wangjing/codebase/HUSI/Figures/valid_GSEA_DOWN.png',width = 2500,height = 1500,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/valid_GSEA_DOWN.png',width = 2500,height = 1500,res = 200)
 gseaplot2(fgsea,geneSetID = df$ID[8:11],
           title = "Negative enriched hallmarker gene sets",
           color= cols[8:11],
@@ -115,7 +115,7 @@ dev.off()
 
 
 ### comparision auc
-png('/home/wangjing/codebase/HUSI/Figures/compare_Tang2019_ssgsea.png',width = 1800,height = 1000,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/compare_Tang2019_ssgsea.png',width = 1800,height = 1000,res = 200)
 auc %>%
     melt(value.name = "Accuracy") %>%
     mutate(feature=as.character(Var1)) %>% 
@@ -130,9 +130,9 @@ dev.off()
 
 ##### menanome
 bar = c("#5cb85c","#428bca","#d9534f")
-names(bar) = c("Cycling","Moderate_senescent","Senescent")
+names(bar) = c("Cycling","Transition","Senescent")
 ### Phate trajectory
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_phate.png',width = 1800,height = 800,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/Melanoma_phate.png',width = 1800,height = 800,res = 200)
 DimPlot(EpiExp.m, reduction = 'phate', group.by = 'age_state',label=F,pt.size=2,cols = bar)+ggtitle("Melanoma tumor cells")
 dev.off()
 
@@ -141,7 +141,7 @@ p1 = FeaturePlot(EpiExp.m,features=SenMarkers[1],reduction='phate',order=T,pt.si
 p2 = FeaturePlot(EpiExp.m,features=SenMarkers[2],reduction='phate',order=T,pt.size = 2) + xlim(-0.04,0.05) + ylim(-0.03,0.04)
 p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
 p4 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_markers.png',width = 1800,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/Melanoma_markers.png',width = 1800,height = 1200,res = 200)
 ggarrange(p1,p3,p2,p4,ncol = 2,nrow = 2,legend = "none") 
 dev.off()
 
@@ -149,8 +149,8 @@ dev.off()
 colorList = list()
 colorList[['Cycling_up']] <- c("#FF745A","#5cb85c")
 colorList[['Cycling_down']] <- c("#007E99","#5cb85c")
-colorList[['Moderate_senescent_up']] <- c("#FF745A","#428bca")
-colorList[['Moderate_senescent_down']] <- c("#007E99","#428bca")
+colorList[['Transition_up']] <- c("#FF745A","#428bca")
+colorList[['Transition_down']] <- c("#007E99","#428bca")
 colorList[['Senescent_up']] <- c("#FF745A","#d9534f")
 colorList[['Senescent_down']] <- c("#007E99","#d9534f")
 
@@ -171,12 +171,12 @@ for(set in names(enrich_reList)){
                     scale_y_continuous(limits = c(-1, 1))
     
 }
-png('/home/wangjing/codebase/HUSI/Figures/Melanoma_enrich.png',width = 1500,height = 800,res = 160)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/Melanoma_enrich.png',width = 1500,height = 600,res = 160)
 ggarrange(pList$Cycling_up,
-            pList$Moderate_senescent_up,
+            pList$Transition_up,
             pList$Senescent_up,
             pList$Cycling_down,
-            pList$Moderate_senescent_down,
+            pList$Transition_down,
             pList$Senescent_down,
             ncol = 3,nrow = 2,legend = "none")
 dev.off()
@@ -184,29 +184,76 @@ dev.off()
 ### age state fraction in TCGA SKCM patients
 library(ComplexHeatmap)
 library(circlize)
-mat <- as.matrix(tcga_melanoma)
+marker_plot = unlist(lapply(marker_set, function(x) {rownames(x[order(x$avg_log2FC,decreasing = T),][0:200,])})) %>% unique
+genes = intersect(rownames(Bulk),marker_plot)
+mat <- as.matrix(Bulk[genes,])
 mat <- apply(mat,1,scale)
 mat <- t(mat)
-rownames(mat) <- rownames(tcga_melanoma)
-colnames(mat) <- colnames(tcga_melanoma)
+rownames(mat) <- genes
+colnames(mat) <- colnames(Bulk)
 
+Frac_scale = data.frame(Frac)[colnames(mat),]
+### scale Frac into 0-1 by column
+Frac_scale <- apply(Frac_scale,2,function(x) {(x-min(x)) / (max(x)-min(x))})
 
-top_anno <- HeatmapAnnotation(df = data.frame(Frac)[colnames(mat),],
+top_anno <- HeatmapAnnotation(df = Frac_scale,
                               col = list(Cycling = colorRamp2(c(0, 1), c("white", "#5cb85c")),
-                                         Moderate_senescent = colorRamp2(c(0, 1), c( "white", "#428bca")),
+                                         Transition = colorRamp2(c(0, 1), c( "white", "#428bca")),
                                          Senescent= colorRamp2(c(0, 1), c("white", "#d9534f"))),
                               show_legend = F)
-# col <- colorRamp2(c(-1.5,0,1.5), c("blue","white", "red"), space = "LAB")
-png('/home/wangjing/codebase/HUSI/Figures/TCGA_SKCM_heatmap.png',width = 1000,height = 800,res= 200)
+col <- colorRamp2(c(-2,0,2), c("blue","white", "red"), space = "LAB")
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_heatmap.png',width = 1500,height = 1000,res= 200)
 Heatmap(mat,
         show_column_names = F,
         show_row_names = F,
         row_title = NULL,
-        # col = col,
+        col = col,
         cluster_rows = T,
         cluster_row_slices = FALSE,
         cluster_columns = T,
         column_km=3,
         row_km = 3,
-        top_annotation = top_anno)
+        top_annotation = top_anno,
+        heatmap_legend_param = list(title = "Expression",
+                                         at = c(-2,-1,0,1,2),
+                                         labels = c("-2", "-1", "0","1", "2"),
+                                         labels_gp = gpar(fontsize = 12),
+                                         title_gp = gpar(fontsize = 12, fontface = "bold"),
+                                         legend_width = unit(30, "mm")))
+dev.off()
+
+### survival plot
+plotsurv <- function(myfit){
+    p <- ggsurvplot(
+    myfit,
+    risk.table = TRUE,
+    pval = TRUE,
+    conf.int = FALSE,
+    xlim = c(0,4000),
+    break.time.by = 1000,
+    risk.table.y.text.col = T,
+    risk.table.y.text = FALSE)
+    return(p)
+}
+
+cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Cycling')
+dat <- surv_categorize(cut)
+fit <- survfit(Surv(OS.time, OS) ~ Cycling,data = dat)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Cycling.png',width = 1000,height = 1200,res = 200)
+plotsurv(fit)
+dev.off()
+
+cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Transition')
+dat <- surv_categorize(cut)
+fit <- survfit(Surv(OS.time, OS) ~ Transition,data = dat)
+p2 <- plotsurv(fit)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Transition.png',width = 1000,height = 1200,res = 200)
+plotsurv(fit)
+dev.off()
+
+cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Senescent')
+dat <- surv_categorize(cut)
+fit <- survfit(Surv(OS.time, OS) ~ Senescent,data = dat)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Senescent.png',width = 1000,height = 1200,res = 200)
+plotsurv(fit)
 dev.off()
