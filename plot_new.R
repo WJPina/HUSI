@@ -17,6 +17,7 @@ mytheme <- function () {
             axis.text.x = element_blank())
     }
 
+
 ### model leave-one-out auc
 load("/home/wangjing/wangj/AgingScore/BulkData/Bulk_TrainModel/model_auc.RData")
 
@@ -138,6 +139,8 @@ DimPlot(EpiExp.m, reduction = 'phate', group.by = 'age_state',label=F,pt.size=2,
 dev.off()
 
 ### aging markers
+DefaultAssay(EpiExp.m)='RNA'
+SenMarkers = c("CDKN1A", "SERPINE1")
 p1 = FeaturePlot(EpiExp.m,features=SenMarkers[1],reduction='phate',order=T,pt.size = 2) + xlim(-0.04,0.05) + ylim(-0.03,0.04)
 p2 = FeaturePlot(EpiExp.m,features=SenMarkers[2],reduction='phate',order=T,pt.size = 2) + xlim(-0.04,0.05) + ylim(-0.03,0.04)
 p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
@@ -271,10 +274,6 @@ plotsurv(fit)
 dev.off()
 
 ### all melanome cell plot
-mypalette <- read.csv("~/scripts/colors.csv",header = T)
-bar <- mypalette$palette1[1:length(unique(melanoma_obj$subtype))]
-names(bar) <-  unique(melanoma_obj$subtype)
-
 png('/home/wangjing/wangj/codebase/HUSI/Figures/Melanoma_all_cell.png',width = 1500,height = 1200,res = 200)
 DimPlot(melanoma_obj, group.by = 'subtype',reduction = "tsne",label = T,cols = bar,repel = TRUE,label.box = T,label.color = "white",pt.size = 1.5,label.size = 6)+
   theme(axis.text=element_blank(),axis.ticks=element_blank(),axis.line = element_blank(),legend.position = "none")+ggtitle("Melanoma cell types")

@@ -92,9 +92,6 @@ plot(Epi.phate, col = branch,pch=16)
 EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
 EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transition","Senescent")),levels = c("Cycling","Transition","Senescent"))
 save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
-### aging marker genes
-DefaultAssay(EpiExp.m)='RNA'
-SenMarkers = c("CDKN1A", "SERPINE1")
 
 ### age state degs
 marker_set = list()
