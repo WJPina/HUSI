@@ -114,6 +114,9 @@ bg=bitr(rownames(EpiExp.m@assays$RNA),'SYMBOL','ENTREZID','org.Hs.eg.db')
 # GO
 go <- compareCluster(gcSample, fun= "enrichGO",ont = "BP",OrgDb= "org.Hs.eg.db", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
 
+# KEGG
+kegg <- compareCluster(gcSample, fun= "enrichKEGG",organism="hsa", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
+
 ##### validate in microarray
 ### bulk degs
 load('/home/wangjing/wangj/AgingScore/Data/Bulk_Microarray/Valid.RData')

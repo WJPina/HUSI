@@ -231,17 +231,18 @@ Heatmap(mat,
                                          title_gp = gpar(fontsize = 12, fontface = "bold"),
                                          legend_width = unit(30, "mm")))
 dev.off()
+
 ### draw heatmap of SKCM CIBERSORT
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_state_immue_cor.png',width = 1500,height = 700,res= 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_state_immue_cor.png',width = 2000,height = 1000,res= 250)
 bk <- c(seq(-0.2,0.2,by=0.01))
-pheatmap::pheatmap(cor_mat,show_colnames = T,show_rownames = T,cluster_rows = F,cluster_cols = T,fontsize = 8,border_color = "white",color = colorRampPalette(c("blue", "#f5f4f4", "red"))(length(bk)),legend_breaks=seq(-0.2,0.2,by=0.1),breaks=bk)
+pheatmap::pheatmap(cor_mat,show_colnames = T,show_rownames = T,cluster_rows = F,cluster_cols = T,fontsize = 12,border_color = "white",color = colorRampPalette(c("blue", "#f5f4f4", "red"))(length(bk)),legend_breaks=seq(-0.2,0.2,by=0.1),breaks=bk)
 dev.off()
 
 ### survival plot
 plotsurv <- function(myfit){
     p <- ggsurvplot(
     myfit,
-    risk.table = TRUE,
+    risk.table = F,
     pval = TRUE,
     conf.int = FALSE,
     xlim = c(0,4000),
@@ -254,7 +255,7 @@ plotsurv <- function(myfit){
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Cycling')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Cycling,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Cycling.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Cycling.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
 
@@ -262,18 +263,22 @@ cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Transition'
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Transition,data = dat)
 p2 <- plotsurv(fit)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Transition.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Transition.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Senescent')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Senescent,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Senescent.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_Senescent.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
 
 ### all melanome cell plot
+mypalette <- read.csv("~/scripts/colors.csv",header = T)
+bar = mypalette$palette1[1:length(unique(melanoma_obj$subtype))]
+names(bar) <- unique(melanoma_obj$subtype)
+
 png('/home/wangjing/wangj/codebase/HUSI/Figures/Melanoma_all_cell.png',width = 1500,height = 1200,res = 200)
 DimPlot(melanoma_obj, group.by = 'subtype',reduction = "tsne",label = T,cols = bar,repel = TRUE,label.box = T,label.color = "white",pt.size = 1.5,label.size = 6)+
   theme(axis.text=element_blank(),axis.ticks=element_blank(),axis.line = element_blank(),legend.position = "none")+ggtitle("Melanoma cell types")
@@ -301,19 +306,19 @@ for (i in c(3,9,7)) {
 dev.off()
 
 source('/home/wangjing/wangj/codebase/HUSI/netVisual_bubble_my.R')
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 250)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 300)
 netVisual_bubble_my(cellchat,signaling = pathways,targets.use = c('Cycling','Transition','Senescent'), remove.isolate = F,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),thresh=0.01)
 dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_chord_BMP.png',width = 1000,height = 1000,res = 250)
-netVisual_aggregate(cellchat, signaling = 'BMP',layout = "chord",remove.isolate = F,color.use = bar,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),targets.use = c('Cycling','Transition','Senescent'))
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_chord.png',width = 2000,height = 1000,res = 300)
+par(mfrow = c(1,2), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
+for(p in c('BMP','TGFb')){
+    netVisual_aggregate(cellchat, signaling = p,layout = "chord",remove.isolate = F,color.use = bar,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),targets.use = c('Cycling','Transition','Senescent'))
+}
 dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_chord_TGFb.png',width = 1000,height = 1000,res = 250)
-netVisual_aggregate(cellchat, signaling = 'TGFb',layout = "chord",remove.isolate = F,color.use = bar,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),targets.use = c('Cycling','Transition','Senescent'))
-dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_expression.png',width = 700,height = 1000,res = 250)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome_cellchat_expression.png',width = 900,height = 1000,res = 300)
 plotGeneExpression(cellchat, features=c('BMPR1B','BMPR2','TGFBR1','TGFBR2'),idents = c('Cycling','Transition','Senescent'),color.use = bar)
 dev.off()
 
@@ -321,20 +326,20 @@ dev.off()
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'BMPR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ BMPR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_BMPR2.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_BMPR2.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR1')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR1,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR1.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR1.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR2.png',width = 1000,height = 1200,res = 200)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1200,res = 300)
 plotsurv(fit)
 dev.off()
