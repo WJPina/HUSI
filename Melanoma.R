@@ -138,7 +138,8 @@ geneID <- intersect(rownames(exp),rownames(EpiExp.m@assays$RNA))
 exp_bulk <- exp[geneID,rownames(meta)]
 
 deg.tab <- NULL
-pheno <- c(rep(0,4),rep(1,4))
+# pheno <- c(rep(0,4),rep(1,4))
+pheno <- ifelse(meta[,'condition'] == 'young',0,1)
 for(i in 1:nrow(exp_bulk)){
   lm.model <- lm(exp_bulk[i,]~pheno)
   line <- c(summary(lm.model)$coefficients[2,4],summary(lm.model)$coefficients[2,1])
@@ -242,7 +243,7 @@ survival_data$days_to_last_followup <- as.numeric(survival_data$days_to_last_fol
 
 data = data.frame(Frac[rownames(survival_data),],OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)
 
-###### cell cat analysis
+###### cell chat analysis
 library(CellChat)
 library(ggalluvial)
 
