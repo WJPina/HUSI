@@ -190,12 +190,11 @@ clinicalMatrix <- clinicalMatrix[tumor_index<11,]
 tcga_melanoma <- tcga_melanoma[,rownames(clinicalMatrix)]
 
 ### only keep the degs of each single cell state
-# features = unlist(lapply(marker_set, function(x) {rownames(x[order(x$avg_log2FC,decreasing = T),])})) %>% unique %>% intersect(rownames(tcga_melanoma),.)
 features = intersect(rownames(tcga_melanoma),rownames(EpiExp.m@assays$RNA))
 Bulk <- tcga_melanoma[features,]
 Bulk <- Bulk[rowSums(Bulk)>0,]
 dim(Bulk)
-profile = AverageExpression(EpiExp.m, features = rownames(Bulk), slot = 'count',assays = 'RNA',group.by = 'age_state')$RNA %>% as.matrix()
+profile = AverageExpression(EpiExp.m, features = rownames(Bulk), slot = 'counts',assays = 'RNA',group.by = 'age_state')$RNA %>% as.matrix()
 head(profile)
 ### deconvolute TCGA SKCM sample by ENIGMA
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
@@ -288,7 +287,7 @@ pathways = c("CSPG4","CD6","BMP","CCL","TGFb" )
 cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transition","Senescent"))
 
 
-
+### find patterns
 netVisual_bubble(cellchat, sources.use = 'Senescent', targets.use = 'T cell', remove.isolate = FALSE)
 
 nPatterns = 6

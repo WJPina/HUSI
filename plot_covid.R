@@ -98,3 +98,29 @@ png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19/Endo_state_celltype_per
 col <- colorRamp2(c(-2,0,2), c("blue","white", "red"), space = "LAB")
 ComplexHeatmap::Heatmap(mat,col = col,cluster_rows = F,cluster_columns = T,show_row_names = T,show_column_names = T,heatmap_legend_param = list(title = "Scaled percent"))
 dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

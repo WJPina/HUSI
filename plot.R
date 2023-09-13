@@ -117,18 +117,49 @@ dev.off()
 
 
 ### comparision auc
-png('/home/wangjing/wangj/codebase/HUSI/Figures/compare_Tang2019_ssgsea.png',width = 1800,height = 1000,res = 200)
-auc %>%
-    melt(value.name = "Accuracy") %>%
-    mutate(feature=as.character(Var1)) %>% 
-    mutate(feature=forcats::fct_reorder(feature, Accuracy, mean, .desc = T) ) %>% 
-    ggplot(aes(feature, Accuracy)) + 
-    geom_boxplot(aes(color=feature), outlier.shape = NA, width=0.5) + 
-    geom_jitter(aes(color=feature), width = 0.2) + 
+### laf
+df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['laf']]))}))
+df_plot$dataset = lapply(strsplit(rownames(df_plot),'\\.'),'[',1) %>% unlist
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_laf.png',width = 1500,height = 1000,res = 250)
+df_plot %>%
+    reshape2::melt(value.name = "Accuracy",ids = 'dataset') %>%
+    group_by(dataset) %>%
+    mutate(method=forcats::fct_reorder(variable, Accuracy, mean, .desc = T) ) %>% 
+    ggplot(aes(method, Accuracy)) + 
+    geom_boxplot(aes(color=method), outlier.shape = NA, width=0.5) + 
+    geom_jitter(aes(color=method), width = 0.2,size = 0.1) + 
     labs(x=NULL, y="AUC") +
     theme(legend.position = "none")+
-    theme_classic()
+    theme_classic()+
+    facet_wrap(~dataset,ncol = 2,scales = "free")
 dev.off()
+
+
+df_plot = lapply(AUClist, function(x) {lapply(x, function(y) {rank(-rowMeans(y))})[['marker']]}) 
+df_plot = do.call(cbind, lapply(lapply(df_plot, unlist), `length<-`, max(lengths(df_plot)))) %>% data.frame
+df_plot[is.na(df_plot)] = 0
+df_plot = reshape2::melt(as.matrix(df_plot),value.name = "AUC_rank")
+colnames(df_plot) = c('method','dataset','AUC_rank')
+aov.mean<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=mean)
+aov.sd<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=sd)
+aov<-data.frame(aov.mean,sd=aov.sd$x)
+aov$Group.1<- gsub("SASP_Pathway", "SASP", aov$Group.1)
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_marker.png',width = 1800,height = 1500,res = 250)
+ggplot(data=aov,aes(x=reorder(Group.1,x), y=x,fill = reorder(Group.1,x)))+
+    geom_bar(stat="identity",position="dodge")+
+    geom_errorbar(aes(ymax=x+sd,ymin=ifelse(x-sd <0,0,x-sd)),position=position_dodge(0.9),width=0.15)+
+    theme_classic()+
+    xlab('Marker')+
+    # xlab('Gene Set')+
+    ylab('AUC rank')+
+    scale_fill_manual(values = colorRampPalette(c("#F44336","#0D47A1"))(nrow(aov)))+
+    theme(legend.position = 'none',axis.text.x = element_text(angle = -60,vjust = 0.5, hjust=0),text=element_text(size=16))
+dev.off()
+
+
+
 
 ##### menanome
 bar = c("#5cb85c","#428bca","#d9534f")

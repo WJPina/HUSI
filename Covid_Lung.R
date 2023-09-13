@@ -5,6 +5,7 @@ library(Seurat)
 library(mclust)
 
 setwd("/mnt/data1/wangj/AgingScore/GSE163530_COVID-19/GSE171668_scnRNA/")
+
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 sc <- import("scanpy")
 ###### preprocess data
@@ -13,32 +14,37 @@ anndata = sc$read_h5ad("lung.h5ad")
 ### subset data
 anndata_use = anndata[(anndata$obs$method  == 'nuclei') & 
                         (anndata$obs$doublet == F) & 
-                        (anndata$obs$Cluster %in% c("Endothelial","B+Plasma","T+NK","Fibroblasts"," Epithelial"))]
+                        (anndata$obs$Cluster %in% c("Endothelial","B+Plasma","T+NK","Fibroblasts","Epithelial"))]
 anndata_use
 Counts <- anndata_use$raw$to_adata()$copy()$T$to_df()
 Meta <- anndata_use$obs
 
-sce <- CreateSeuratObject(counts=Counts ,meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease')])
-sce <- NormalizeData(sce)
-sce <- FindVariableFeatures(object = sce, selection.method = 'vst')
-sce <- ScaleData(sce,features=rownames(sce))
-sce <- RunPCA(sce,npcs = 20,verbose = F,features=rownames(sce)) 
-ElbowPlot(sce,ndims=20,reduction="pca")
+lung.obj <- CreateSeuratObject(counts=Counts ,meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease')])
+lung.obj <- NormalizeData(lung.obj)
+lung.obj <- FindVariableFeatures(object = lung.obj, selection.method = 'vst')
+lung.obj <- ScaleData(lung.obj,features=rownames(lung.obj))
+lung.obj <- RunPCA(lung.obj,npcs = 20,verbose = F,features=rownames(lung.obj)) 
+ElbowPlot(lung.obj,ndims=20,reduction="pca")
 
-sce <- RunTSNE(sce, reduction = "pca", dims = 1:20)
-DimPlot(sce, reduction = 'tsne', group.by = 'SubCluster',label=1)
+lung.obj <- RunTSNE(lung.obj, reduction = "pca", dims = 1:20)
+DimPlot(lung.obj, reduction = 'tsne', group.by = 'SubCluster',label=1)
+
 ### rename cell type
-celltype = as.character(sce$SubCluster)
-celltype[celltype %in% c("Plasma cells PRDM1/BLIMP hi","Plasma cells PRDM1/BLIMP int","Plasmablasts")] = "Plasma"
-celltype[celltype %in% c("CD8+ T cells","CD4+ T cells metabolically active","CD4+ Treg")] = "T cells"
-celltype[celltype %in% c("NK cells","NK/NKT")] = "T cells"
-### filter doublet or mixture
-sce$celltype = factor(celltype)
-sce = subset(sce,celltype %in% c("Artery EC","B cells","Capillary 1","Capillary 2","Capillary Aerocytes","Lymphatic EC"," Plasma","T cells","Vein EC"))
-DimPlot(sce, reduction = 'tsne', group.by = 'celltype',label=1)
+celltype = lung.obj$SubCluster
+celltype = celltype[!grepl("mix|doublet",tolower(celltype))] %>% droplevels()
+levels(celltype)[which(levels(celltype)%in% c("AT1","AT2","KRT8+ PATS/ADI/DATPs","Secretory"))] <- 'Epithelial'
+levels(celltype)[which(levels(celltype)%in% c("Proliferative fibroblast","Fibroblast","Myofibroblast"))] <- 'Fibroblasts'
+levels(celltype)[which(levels(celltype)%in% c("NK cells","NK/NKT"))] <- 'NK cells'
+levels(celltype)[which(levels(celltype)%in% c("B cells","Plasma cells PRDM1/BLIMP hi","Plasma cells PRDM1/BLIMP int","Plasmablasts"))] <- 'B cells'
+levels(celltype)[which(levels(celltype)%in% c("CD8+ T cells","CD4+ T cells metabolically active","CD4+ Treg"))] <- 'T cells'
+table(celltype)
 
+lung.obj <- lung.obj[,names(celltype)]
+lung.obj$celltype <- celltype
+DimPlot(lung.obj,group.by = 'Cluster')
+save(lung.obj,file = 'mianCells_9.11.RData')
 ### explore endothelial cells age state
-Endo.m = subset(sce,Cluster == 'Endothelial')
+Endo.m = subset(lung.obj,Cluster == 'Endothelial')
 AgeScore  = Endo.m@assays$RNA@data[] %>% {apply( ., 2, function(z) {cor(z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )})}
 Endo.m$hSI <- AgeScore[colnames(Endo.m)]
 gaussian = Endo.m@meta.data$hSI %>% {log2((1+ .)/(1- .))} %>% Mclust(G=3)
@@ -113,7 +119,7 @@ head(exp)
 meta <- ArrayList [["GSE77239"]][[1]] %>% 
         pData %>% 
         mutate(condition= `cells:ch1`) %>% 
-        mutate(condition = factor( ifelse(grepl('young',condition),'young','senescent'),levels = c("young","senescent"),ordered = T)) 
+        mutate(condition = factor( ifelse(grepl('young',condition),'young','Senescent'),levels = c("young","Senescent"),ordered = T)) 
 meta[,'condition']
 
 geneID <- intersect(rownames(exp),rownames(Endo.m@assays$RNA))
@@ -154,9 +160,9 @@ for(de in c("up","down")){
   }
 }
 
-### correlation between senscenct percentage and DTD/age
+### correlation between senlung.objnct percentage and DTD/age
 ClinicMeta = read.csv('/home/wangjing/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/ClinicMeta.csv',row.names = 1)
-### calculate senescent percentage of each donor
+### calculate Senescent percentage of each donor
 result <- Endo.m@meta.data %>%
             mutate(Donor = gsub('_[123]','',donor))
 df = aggregate(result$age_state, by = list(result$Donor), FUN = table)
@@ -181,22 +187,70 @@ df_plot
 Endo.m$celltype_state <- paste(as.character(Endo.m$age_state),as.character(Endo.m$celltype),sep = ":")
 Endo.m$group <- df[gsub('_[123]','',Endo.m$donor),]$group
 
-### decovolution in Covid-19 bulk data
-sce$
+
+###### deconvolution on spatial
+### calculate major cell type profile
+lung.obj$subtype <- as.character(lung.obj$Cluster)
+lung.obj$subtype[names(Endo.m$age_state)] <- as.character(Endo.m$age_state)
+table(lung.obj$subtype)
+profile = AverageExpression(lung.obj,assays = 'RNA',group.by = 'subtype',slot = 'data',)$RNA %>% as.matrix()
+head(profile)
+
+### load spatial ROI data
+setwd("/mnt/data1/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/")
+############################## Load WTA data ###################################
+wta.counts <- read.csv("Broad-COVID_WTA_Q3Norm_TargetCountMatrix.txt", row.names=1,header = T,sep = '\t')
+df_segments <- read.csv("Broad-COVID_WTA_SegmentProperties.txt", row.names=1,header = T,sep = '\t')
+rownames(df_segments) <- str_replace_all(rownames(df_segments), '-', '.')
+ 
+df_tissue <- read.table("annotation_file_wta.txt", sep = "\t",row.names=1,header = T)
+rownames(df_tissue) <- str_replace_all(rownames(df_tissue), '-', '.')
+
+meta <- cbind(df_segments,df_tissue) %>% rename("tissue" = "Primary_Morph")
+meta$donor <- as.character(unlist(lapply(strsplit(meta$scan.name,"-"),"[",1)))
+
+### Split into Patient (S) and Control (C) groups
+meta$group <- substr(meta$donor,1,1)
+meta$donor <- stri_replace_all_regex(meta$donor,c("C01","C2","C3","S01","S02","S03","S09","S10","S11","S16","S18","S28"),
+                                     c("D22","D23","D24","D18","D19","D20","D21","D8","D9","D10","D11","D12"),vectorize = F)
+### SARS-Cov-2 signature score
+Vss <- read.csv('SARS-CoV-2 signature score.csv',header = T)
+Vss$barcodekey <- gsub('-','\\.',Vss$barcodekey)
+wta <- wta.counts[,Vss$barcodekey]
+meta <- meta[Vss$barcodekey,]
+meta$Virus_score <- Vss$Virus
+### deconvolution
+wta <- wta[rowSums(wta)>0,]
+
+features = intersect(rownames(wta),rownames(profile))
+Bulk <- log2(wta[features,]+1)
+profile <- profile[features,]
+
+library(TED)
+ted <- run.Ted(ref.dat= t(profile),
+                X=t(Bulk),
+                cell.type.labels= colnames(profile),
+                input.type="GEP",
+                n.cores=10)
+Frac <- ted$res$final.gibbs.theta
+colMeans(Frac)
+
+Hmisc::rcorr(Frac,type='spearman')
 
 
 
+###### decovolution in Covid-19 bulk data
+### load bulk data
+Bulk <- read.table("/mnt/data1/wangj/AgingScore/GSE150316_COVID-19_bulk/GSE150316_RawCounts_Final.txt")
+Bulk <- Bulk[,grepl('lung',colnames(Bulk))]
 
+clinicalMatrix <- read.csv("/mnt/data1/wangj/AgingScore/GSE150316_COVID-19_bulk/clinical.csv",header=TRUE,stringsAsFactors = FALSE,row.names = 1)
+clinicalMatrix <- clinicalMatrix[complete.cases(clinicalMatrix[, 'DTD']), ] 
+rownames(clinicalMatrix) <- gsub('Case ','case',rownames(clinicalMatrix))
+cases = unlist(lapply(strsplit(colnames(Bulk),'\\.'),'[',1))
 
-
-
-
-
-
-
-
-
-
+Bulk <- Bulk[,cases %in% rownames(clinicalMatrix)]
+dim(Bulk)
 
 
 
@@ -214,19 +268,19 @@ sce$
 library(CellChat)
 library(ggalluvial)
 
-sce$subtype = sce$celltype
-sce$subtype[colnames(EpiExp.m)] = as.character(EpiExp.m$age_state)
-sce$subtype = gsub('\\.','',sce$subtype) %>% factor
-table(sce$subtype)
+lung.obj$subtype = lung.obj$celltype
+lung.obj$subtype[colnames(EpiExp.m)] = as.character(EpiExp.m$age_state)
+lung.obj$subtype = gsub('\\.','',lung.obj$subtype) %>% factor
+table(lung.obj$subtype)
 
-cellchat <- createCellChat(object = sce,group.by = 'subtype')
+cellchat <- createCellChat(object = lung.obj,group.by = 'subtype')
 cellchat@DB <- CellChatDB.human 
 table(cellchat@idents)
 
 future::plan("multicore", workers = 10) 
 options(future.globals.maxSize = 8000 * 1024^2)
 
-cellchat <- subsetData(cellchat,rownames(sce))
+cellchat <- subsetData(cellchat,rownames(lung.obj))
 cellchat <- identifyOverExpressedGenes(cellchat) 
 
 cellchat <- identifyOverExpressedInteractions(cellchat)
