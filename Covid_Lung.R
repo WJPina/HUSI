@@ -3,130 +3,147 @@ library(dplyr)
 library(magrittr)
 library(Seurat)
 library(mclust)
+library(tibble)
 
 setwd("/mnt/data1/wangj/AgingScore/GSE163530_COVID-19/GSE171668_scnRNA/")
+set.seed(233)
 
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 sc <- import("scanpy")
 ###### preprocess data
 ### raw data
-anndata = sc$read_h5ad("lung.h5ad")
-### subset data
-anndata_use = anndata[(anndata$obs$method  == 'nuclei') & 
-                        (anndata$obs$doublet == F) & 
-                        (anndata$obs$Cluster %in% c("Endothelial","B+Plasma","T+NK","Fibroblasts","Epithelial"))]
-anndata_use
+anndata = sc$read_h5ad("Covid_Lung_Endo.h5ad")
+table(anndata$obs$Cluster)
+
+anndata_use = anndata
 Counts <- anndata_use$raw$to_adata()$copy()$T$to_df()
 Meta <- anndata_use$obs
 
-lung.obj <- CreateSeuratObject(counts=Counts ,meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease')])
-lung.obj <- NormalizeData(lung.obj)
-lung.obj <- FindVariableFeatures(object = lung.obj, selection.method = 'vst')
-lung.obj <- ScaleData(lung.obj,features=rownames(lung.obj))
-lung.obj <- RunPCA(lung.obj,npcs = 20,verbose = F,features=rownames(lung.obj)) 
-ElbowPlot(lung.obj,ndims=20,reduction="pca")
+Endo.m <- CreateSeuratObject(counts=Counts,
+                             meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease','hUSI')],
+                             min.cells = 0,min.features = 0)
+Endo.m <- NormalizeData(Endo.m)
+hist(colSums(Endo.m@assays$RNA@data))
 
-lung.obj <- RunTSNE(lung.obj, reduction = "pca", dims = 1:20)
-DimPlot(lung.obj, reduction = 'tsne', group.by = 'SubCluster',label=1)
+table(Endo.m$SubCluster)
 
-### rename cell type
-celltype = lung.obj$SubCluster
-celltype = celltype[!grepl("mix|doublet",tolower(celltype))] %>% droplevels()
-levels(celltype)[which(levels(celltype)%in% c("AT1","AT2","KRT8+ PATS/ADI/DATPs","Secretory"))] <- 'Epithelial'
-levels(celltype)[which(levels(celltype)%in% c("Proliferative fibroblast","Fibroblast","Myofibroblast"))] <- 'Fibroblasts'
-levels(celltype)[which(levels(celltype)%in% c("NK cells","NK/NKT"))] <- 'NK cells'
-levels(celltype)[which(levels(celltype)%in% c("B cells","Plasma cells PRDM1/BLIMP hi","Plasma cells PRDM1/BLIMP int","Plasmablasts"))] <- 'B cells'
-levels(celltype)[which(levels(celltype)%in% c("CD8+ T cells","CD4+ T cells metabolically active","CD4+ Treg"))] <- 'T cells'
+### load clinical data
+ClinicMeta = read.csv('/home/wangjing/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/ClinicMeta.csv',row.names = 1)
+ClinicMeta <- ClinicMeta[complete.cases(ClinicMeta$Days_to_death),]
+median(ClinicMeta$Days_to_death)
+ClinicMeta$Progress = ifelse(ClinicMeta$Days_to_death < 15,'severe','moderate')
+table(ClinicMeta$Progress)
+
+Endo.m$Donor = factor(gsub('_[12345]','',Endo.m$donor))
+Endo.m$Age = factor(ClinicMeta[Endo.m$Donor,'Age'],levels = c("30-35","40-45","50-55","55-60","60-65","65-70","75-80","80-85",">89"),ordered = T)
+Endo.m$Progress = factor(ClinicMeta[Endo.m$Donor,'Progress'],levels = c('moderate','severe'),ordered = T)
+Endo.m$IMV = ClinicMeta[Endo.m$Donor,'IMV_days']
+
+celltype = Endo.m$SubCluster
+celltype = celltype[!grepl("doublet|mix",tolower(celltype))] %>% droplevels()
 table(celltype)
 
-lung.obj <- lung.obj[,names(celltype)]
-lung.obj$celltype <- celltype
-DimPlot(lung.obj,group.by = 'Cluster')
-save(lung.obj,file = 'mianCells_9.11.RData')
-### explore endothelial cells age state
-Endo.m = subset(lung.obj,Cluster == 'Endothelial')
-AgeScore  = Endo.m@assays$RNA@data[] %>% {apply( ., 2, function(z) {cor(z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )})}
-Endo.m$hSI <- AgeScore[colnames(Endo.m)]
-gaussian = Endo.m@meta.data$hSI %>% {log2((1+ .)/(1- .))} %>% Mclust(G=3)
-Endo.m$age_class <- gaussian$classification
-DimPlot(Endo.m, reduction = 'tsne', group.by = 'age_class',label=1)
+Endo.m <- Endo.m[,names(celltype)]
+Endo.m$celltype <- celltype
 
-corAging <- function(x,agingScore){cor <- cor(x,agingScore);cor}
-cor.genes <- apply(GetAssayData(Endo.m),1,corAging,agingScore=Endo.m$hSI)
-cor.genes[is.na(cor.genes)] <- 0
-features <- rownames(Endo.m)[order(abs(cor.genes),decreasing=TRUE)[1:1500]]
-features
+Endo.m = ScaleData(Endo.m) %>% FindVariableFeatures() %>% RunPCA()
+ElbowPlot(Endo.m)
 
-Endo.matrix <- as.matrix(GetAssayData(Endo.m))[features,]
-Endo.m[['AgingExp']] <- CreateAssayObject(Endo.matrix)
-DefaultAssay(Endo.m) <- "AgingExp"
+Endo.m = RunUMAP(Endo.m,dims = 1:20)
+DimPlot(Endo.m,group.by = 'celltype')
 
-Endo.m <- ScaleData(Endo.m,features=rownames(Endo.m))
-Endo.m <- RunPCA(Endo.m,npcs = 50,verbose = F,features=rownames(Endo.m)) 
-ElbowPlot(Endo.m,ndims=50,reduction="pca")
+FeaturePlot(Endo.m,features = c('hUSI','nCount_RNA'))
 
-Endo.m$age_state = factor(ifelse(Endo.m$age_class == 1,"Normal",ifelse(Endo.m$age_class == 2,"Transition","Senescent")),levels = c("Normal","Transition","Senescent"))
-DimPlot(Endo.m, reduction = 'pca', group.by = 'age_state',label=F,pt.size = 1.5)
+cor(Endo.m$hUSI,colSums(Endo.m@assays$RNA@data))
 
-### expression of SASP
-DefaultAssay(Endo.m) <- 'RNA'
-Endo.m <- ScaleData(Endo.m,features = rownames(Endo.m))
-sasp = read.csv("/mnt/data1/wangj/AgingScore/AgingScorePro/SASP.csv")[[1]]
-sasp = sasp[sasp %in% rownames(Endo.m)]
 
-markers = FindMarkers(Endo.m,
-                      ident.1 = 'Senescent',
-                      ident.2 = 'Normal',
-                        assay = 'RNA',
-                        features = rownames(Endo.m),
-                        only.pos = T,
-                        group.by = 'age_state',
-                        logfc.threshold = 0.1,
-                        min.diff.pct = 0)
-sasp_plot = rownames(markers)[rownames(markers) %in% sasp]
-
-### age state marker enrichment
+### Capillary Aerocytes
+library(monocle)
 library(clusterProfiler)
-library(org.Hs.eg.db)
-### remove ribosomal protein
-ribosomal = read.table("/mnt/data1/wangj/MouseBrain/Ribosome.txt",stringsAsFactors=FALSE)
-res = markers[!rownames(markers) %in% ribosomal$V1,]
-# GO
-pathways = read.gmt("/mnt/data1/wangj/GeneSets/c5.go.v2023.1.Hs.symbols.gmt")
-go <- enricher(gene = rownames(res), universe = rownames(Endo.m@assays$RNA),TERM2GENE = pathways,pvalueCutoff=0.05)
+VlnPlot(Endo.m,features = c("APLN","EDNRB", "TBX2" ,"FOXP2"),group.by = 'celltype')
 
-# KEGG
+subEndo = subset(Endo.m,celltype == 'Capillary Aerocytes')
+subEndo = FindVariableFeatures(subEndo) 
+
+expr_matrix <- Counts[,colnames(subEndo)] %>% as.matrix() %>% as('sparseMatrix')
+p_data <- subEndo@meta.data
+f_data <- data.frame(gene_short_name = rownames(expr_matrix),row.names = rownames(expr_matrix))
+pd <- new('AnnotatedDataFrame', data = p_data)
+fd <- new('AnnotatedDataFrame', data = f_data)
+cds <- newCellDataSet(expr_matrix,
+                      phenoData = pd,
+                      featureData = fd,
+                      lowerDetectionLimit = 0.5,
+                      expressionFamily = negbinomial.size())
+cds <- estimateSizeFactors(cds) %>% estimateDispersions()
+
+ordergene <- VariableFeatures(subEndo)
+cds <- setOrderingFilter(cds, ordergene)
+plot_ordering_genes(cds)
+cds <- reduceDimension(cds, max_components = 2,method = 'DDRTree',norm_method = 'log')
+cds <- orderCells(cds)
+
+plot_cell_trajectory(cds,color_by="State", size=2,show_backbone=TRUE) 
+
+### branch degs
+BEAM_res <- BEAM(cds, branch_point = 1, cores = 10)
+BEAM_res <- BEAM_res[order(BEAM_res$qval),]
+BEAM_res <- BEAM_res[,c("gene_short_name", "pval", "qval")]
+
+genes = BEAM_res[BEAM_res$qval<1e-10,'gene_short_name']
+
+heatmap = plot_genes_branched_heatmap(cds[genes,],
+                                      branch_point = 1,
+                                      num_clusters = 2,
+                                      cores = 1,
+                                      use_gene_short_name = T,
+                                      show_rownames = F,
+                                      return_heatmap = T)
+genes_cluster = split(heatmap[["ph"]][["tree_row"]][["labels"]],heatmap[["annotation_row"]][["Cluster"]])
+names(genes_cluster) = paste('Cluster',names(genes_cluster),sep='_')
+
+### enrich branch degs go pathway 
 pathways = read.gmt("/mnt/data1/wangj/GeneSets/KEGG.gmt")
-kegg <- enricher(gene = rownames(res), universe = rownames(Endo.m@assays$RNA),TERM2GENE = pathways)
+# pathways = pathways[grep('GOBP',pathways$term),]
+cluster_enrich = enricher(gene = genes_cluster$Cluster_2, 
+                          universe = rownames(cds),
+                          TERM2GENE = pathways,
+                          pvalueCutoff=0.05)
 
-##### validate in microarray
-marker_set = list()
-for(i in unique(Endo.m$age_state)){
-  marker_set[[i]] <- FindMarkers(Endo.m,ident.1 = i,group.by="age_state",only.pos = TRUE,assay = "RNA",logfc.threshold = 0.1,min.diff.pct = 0)
-  marker_set[[i]] <- filter(marker_set[[i]],p_val_adj<0.05)
-}
-lapply(marker_set,dim)
+cluster_enrich@result = filter(cluster_enrich@result,qvalue < 0.05)
+
+df_plot = cluster_enrich@result
+df_plot$class = substr(df_plot$ID,1,4)
+df_plot = filter(df_plot,qvalue < 0.05)
+df_plot = df_plot[order(df_plot$Count,decreasing = T),]
+
+df_plot$label = tolower(df_plot$ID) %>% gsub('^go[bp|cc|mf]*_','',.) %>% gsub('^kegg_','',.) %>% gsub("_",' ',.)
+df_plot$label
+
+####### validate state marker
+marker_set = genes_cluster
+names(marker_set) = c('Senescent','Stem-like')
+lapply(marker_set,length)
+
 ### bulk degs
-library(annaffy)
-load('/home/wangjing/wangj/AgingScore/Data/Bulk_Microarray/Valid.RData')
+bulk = read.csv('/mnt/data1/wangj/AgingScore/GSE206677_humanECs/GSE206677_fpkm.txt',sep = '\t',header = T)
+bulk = bulk[bulk$gene_symbol != '',]
+bulk = bulk[-1]
+exp_bulk = bulk %>%
+              mutate(sum = rowSums(.[-1])) %>%
+              filter(sum != 0) %>%
+              group_by(gene_symbol) %>% 
+              mutate(max = max(sum)) %>% 
+              filter(sum == max) %>% 
+              dplyr::select(-c(sum,max)) %>%
+              column_to_rownames("gene_symbol") %>%
+              data.matrix
 
-GPL = c("GPL570" = "hgu133plus2.db","GPL3921" = "hthgu133a.db","GPL11532" = "hugene11sttranscriptcluster.db")
-gene_id = aafSymbol( rownames(ArrayList$GSE77239[[1]]), GPL[ArrayList$GSE77239[[1]]@annotation]) %>% as.character
-exp = ArrayList$GSE77239[[1]] %>% exprs %>% set_rownames( gene_id )
-exp = exp[rownames(exp)!="character(0)",]
-head(exp)
-
-meta <- ArrayList [["GSE77239"]][[1]] %>% 
-        pData %>% 
-        mutate(condition= `cells:ch1`) %>% 
-        mutate(condition = factor( ifelse(grepl('young',condition),'young','Senescent'),levels = c("young","Senescent"),ordered = T)) 
-meta[,'condition']
-
-geneID <- intersect(rownames(exp),rownames(Endo.m@assays$RNA))
-exp_bulk <- exp[geneID,rownames(meta)]
+geneID <- intersect(rownames(exp_bulk),rownames(subEndo@assays$RNA))
+exp_bulk <- exp_bulk[geneID,c(7:12)]
 
 deg.tab <- NULL
-pheno <- ifelse(meta[,'condition'] == 'young',0,1)
+pheno <- rep(c(0,1),each = 3)
 for(i in 1:nrow(exp_bulk)){
   lm.model <- lm(exp_bulk[i,]~pheno)
   line <- c(summary(lm.model)$coefficients[2,4],summary(lm.model)$coefficients[2,1])
@@ -143,152 +160,113 @@ enrich_geneList=list()
 enrich_reList=list()
 N = nrow(exp_bulk)
 for(de in c("up","down")){
-    if(de == "up"){
-      bk = rownames(filter(deg.tab,coefficients>0)) 
-    }
-    else {
-      bk = rownames(filter(deg.tab,coefficients<0))
-    }
-    M = length(bk)
-    for (state in levels(Endo.m$age_state)) {
-      genes = rownames(marker_set[[state]])
-      n = length(genes)
-      k = length(intersect(bk,genes))
-      enrich_reList[[paste(state,de,sep = '_')]] = phyper(k-1,M, N-M, n, lower.tail=FALSE)
-      enrich_geneList[[paste(state,de,sep = '_')]][['bulk']] = bk
-      enrich_geneList[[paste(state,de,sep = '_')]][['single-cell']] = genes
+  if(de == "up"){
+    bk = rownames(filter(deg.tab,coefficients>0)) 
+  }
+  else {
+    bk = rownames(filter(deg.tab,coefficients<0))
+  }
+  M = length(bk)
+  for (state in names(marker_set)) {
+    genes = marker_set[[state]]
+    n = length(genes)
+    k = length(intersect(bk,genes))
+    enrich_reList[[paste(state,de,sep = '_')]] = phyper(k-1,M, N-M, n, lower.tail=FALSE)
+    enrich_geneList[[paste(state,de,sep = '_')]][['bulk']] = bk
+    enrich_geneList[[paste(state,de,sep = '_')]][['single-cell']] = genes
   }
 }
-
-### correlation between senlung.objnct percentage and DTD/age
-ClinicMeta = read.csv('/home/wangjing/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/ClinicMeta.csv',row.names = 1)
-### calculate Senescent percentage of each donor
-result <- Endo.m@meta.data %>%
-            mutate(Donor = gsub('_[123]','',donor))
-df = aggregate(result$age_state, by = list(result$Donor), FUN = table)
-df = cbind(df['Group.1'],df['x']/rowSums(df['x']))
-colnames(df) = c('Donor','Normal','Transition','Senescent')
-df = column_to_rownames(df,'Donor')
-df$DTD = ClinicMeta[rownames(df),]$Days_to_death
-df$Age = ClinicMeta[rownames(df),]$Age
-df$Age = gsub('>89','90-100',df$Age)
-df$Age_min = strsplit(df$Age,'-') %>% sapply(function(x) {as.numeric(x[1])})
-df$Age_max = strsplit(df$Age,'-') %>% sapply(function(x) {as.numeric(x[2])})
-df$Age_mean = (df$Age_min+df$Age_max)/2
-df$group = ifelse(df$DTD>16.5,ifelse(df$Age_mean < 70,'middle_moderate','old_moderate'),ifelse(df$Age_mean < 70,'middle_severe','old_severe'))
-table(df$group)
-
-df_plot = cbind(reshape2::melt(df[,c("Normal","Transition","Senescent")]),Group = rep(df$group,3))
-df_plot = aggregate(df_plot$value, by = list(df_plot$Group,df_plot$variable), FUN = median)
-colnames(df_plot) = c('Group','age_state','value')
-df_plot$Group = factor(df_plot$Group,levels = c('middle_moderate','middle_severe','old_moderate','old_severe'))
-df_plot
-
-Endo.m$celltype_state <- paste(as.character(Endo.m$age_state),as.character(Endo.m$celltype),sep = ":")
-Endo.m$group <- df[gsub('_[123]','',Endo.m$donor),]$group
+enrich_reList
 
 
-###### deconvolution on spatial
-### calculate major cell type profile
-lung.obj$subtype <- as.character(lung.obj$Cluster)
-lung.obj$subtype[names(Endo.m$age_state)] <- as.character(Endo.m$age_state)
-table(lung.obj$subtype)
-profile = AverageExpression(lung.obj,assays = 'RNA',group.by = 'subtype',slot = 'data',)$RNA %>% as.matrix()
-head(profile)
+### enrichment of branch start cell group
+Pseudotime = cds$Pseudotime
+names(Pseudotime) <- colnames(cds)
+branches = split(Pseudotime,cds$State)
+State_1_cells = names(sort(branches[[1]],decreasing = F))[1:100]
+State_2_cells = names(sort(branches[[2]],decreasing = T))[1:100]
+State_3_cells = names(sort(branches[[3]],decreasing = T))[1:100]
 
-### load spatial ROI data
+cell_use = c(State_1_cells,State_2_cells,State_3_cells)
+label = rep(c('Normal','Stem-like','Senescent'),each = 100)
+obj = subEndo[,cell_use]
+obj$State = factor(label)
+Idents(obj) <- 'State'
+State_markers = FindAllMarkers(obj,assay = 'RNA',logfc.threshold = 1,only.pos = T) 
+State_markers = filter(State_markers,p_val_adj < 0.05)
+State_markers = State_markers[order(State_markers$cluster,State_markers$avg_log2FC,decreasing = T),]
+State_markers_list = split(State_markers$gene,State_markers$cluster)
+lapply(State_markers_list, length)
+
+### load WTA ROI
+library(stringr)
+library(stringi)
 setwd("/mnt/data1/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/")
-############################## Load WTA data ###################################
 wta.counts <- read.csv("Broad-COVID_WTA_Q3Norm_TargetCountMatrix.txt", row.names=1,header = T,sep = '\t')
+wta.assay <- CreateAssayObject(wta.counts) %>% NormalizeData()
+
 df_segments <- read.csv("Broad-COVID_WTA_SegmentProperties.txt", row.names=1,header = T,sep = '\t')
 rownames(df_segments) <- str_replace_all(rownames(df_segments), '-', '.')
- 
+
 df_tissue <- read.table("annotation_file_wta.txt", sep = "\t",row.names=1,header = T)
 rownames(df_tissue) <- str_replace_all(rownames(df_tissue), '-', '.')
 
-meta <- cbind(df_segments,df_tissue) %>% rename("tissue" = "Primary_Morph")
+meta <- cbind(df_segments,df_tissue)
 meta$donor <- as.character(unlist(lapply(strsplit(meta$scan.name,"-"),"[",1)))
 
-### Split into Patient (S) and Control (C) groups
-meta$group <- substr(meta$donor,1,1)
+meta$condition <- substr(meta$donor,1,1)
 meta$donor <- stri_replace_all_regex(meta$donor,c("C01","C2","C3","S01","S02","S03","S09","S10","S11","S16","S18","S28"),
                                      c("D22","D23","D24","D18","D19","D20","D21","D8","D9","D10","D11","D12"),vectorize = F)
-### SARS-Cov-2 signature score
-Vss <- read.csv('SARS-CoV-2 signature score.csv',header = T)
-Vss$barcodekey <- gsub('-','\\.',Vss$barcodekey)
-wta <- wta.counts[,Vss$barcodekey]
-meta <- meta[Vss$barcodekey,]
-meta$Virus_score <- Vss$Virus
-### deconvolution
-wta <- wta[rowSums(wta)>0,]
 
-features = intersect(rownames(wta),rownames(profile))
-Bulk <- log2(wta[features,]+1)
-profile <- profile[features,]
+meta$Progress = factor(ClinicMeta[meta$donor,'Progress'],levels = c('moderate','severe'))
+meta = meta[complete.cases(meta$donor),]
 
-library(TED)
-ted <- run.Ted(ref.dat= t(profile),
-                X=t(Bulk),
-                cell.type.labels= colnames(profile),
-                input.type="GEP",
-                n.cores=10)
-Frac <- ted$res$final.gibbs.theta
-colMeans(Frac)
+Bulk <- as.matrix(wta.assay@data[,rownames(meta)])
+results = corto::ssgsea(Bulk, State_markers_list)
+colnames(results) = colnames(Bulk)
 
-Hmisc::rcorr(Frac,type='spearman')
+### marker expression
+subEndo$age_state = factor(ifelse(cds[,colnames(subEndo)]$State == 1,'Normal',
+                                  ifelse(cds[,colnames(subEndo)]$State == 2,'Stem-like','Senescent')),
+                           levels = c('Normal','Stem-like','Senescent'))
+
+markers = c('NANOG','CD44','CD9','CDK6','CDKN1A','CDKN2A','CDKN2B')
+df_plot = AverageExpression(subEndo,features = markers,group.by = 'age_state',slot = 'data',assays = 'RNA')$RNA %>% 
+          as.matrix()
+df_plot = df_plot[rowSums(df_plot)!=0,]
+pheatmap::pheatmap(df_plot,scale = 'row',cluster_cols = F)
 
 
+### validat in mouse stem Cap data
+setwd('/home/wangjing/wangj/AgingScore/GSE211335_mouseCap')
+files = list.files('.')
+files = files[grep('h5',files)]
+sceList <-lapply(files,function(file){CreateSeuratObject(counts = Read10X_h5(file),
+                                                         project = substr(file,12,17),
+                                                         min.cells = 0,min.features = 0)})
+meta = read.csv('GSE211335_Endothelial_seurat_metadata.csv',row.names = 1)
+rownames(meta) = paste(rownames(meta),'-1',sep = '')
+sce <- merge(x = sceList[[1]],y = sceList[c(2,3)],add.cell.ids = c('PoolA','PoolB','PoolC'))
+sce_endo = sce[,rownames(meta)]
+sce_endo$cluster = factor(paste('Cluster',meta$seurat_clusters,sep = ''))
+Idents(sce_endo) <- 'cluster'
+sce_endo = NormalizeData(sce_endo)
+stem_markers = FindMarkers(sce_endo,ident.1 = 'Cluster7',assay = 'RNA',only.pos = T)
 
-###### decovolution in Covid-19 bulk data
-### load bulk data
-Bulk <- read.table("/mnt/data1/wangj/AgingScore/GSE150316_COVID-19_bulk/GSE150316_RawCounts_Final.txt")
-Bulk <- Bulk[,grepl('lung',colnames(Bulk))]
+stem_markers = filter(stem_markers,p_val_adj<0.05)
+stem_markers = stem_markers[order(stem_markers$avg_log2FC,decreasing = T),]
 
-clinicalMatrix <- read.csv("/mnt/data1/wangj/AgingScore/GSE150316_COVID-19_bulk/clinical.csv",header=TRUE,stringsAsFactors = FALSE,row.names = 1)
-clinicalMatrix <- clinicalMatrix[complete.cases(clinicalMatrix[, 'DTD']), ] 
-rownames(clinicalMatrix) <- gsub('Case ','case',rownames(clinicalMatrix))
-cases = unlist(lapply(strsplit(colnames(Bulk),'\\.'),'[',1))
-
-Bulk <- Bulk[,cases %in% rownames(clinicalMatrix)]
-dim(Bulk)
-
-
-
-
-
-
-
-
-
-
+library(biomaRt)
+mouse <- useMart('ensembl',dataset = "mmusculus_gene_ensembl")
+human <- useMart('ensembl',dataset = "hsapiens_gene_ensembl")
+m2h.g <- getLDS(attributes = c("mgi_symbol"),filters = "mgi_symbol",
+                values = rownames(stem_markers)[1:50],mart = mouse,
+                attributesL = c("hgnc_symbol"),
+                martL = human,uniqueRows = T)
 
 
 
-###### cell chat analysis
-library(CellChat)
-library(ggalluvial)
 
-lung.obj$subtype = lung.obj$celltype
-lung.obj$subtype[colnames(EpiExp.m)] = as.character(EpiExp.m$age_state)
-lung.obj$subtype = gsub('\\.','',lung.obj$subtype) %>% factor
-table(lung.obj$subtype)
 
-cellchat <- createCellChat(object = lung.obj,group.by = 'subtype')
-cellchat@DB <- CellChatDB.human 
-table(cellchat@idents)
 
-future::plan("multicore", workers = 10) 
-options(future.globals.maxSize = 8000 * 1024^2)
-
-cellchat <- subsetData(cellchat,rownames(lung.obj))
-cellchat <- identifyOverExpressedGenes(cellchat) 
-
-cellchat <- identifyOverExpressedInteractions(cellchat)
-cellchat <- projectData(cellchat, PPI.human)
-cellchat <- computeCommunProb(cellchat, raw.use = T, population.size=TRUE)
-cellchat <- filterCommunication(cellchat, min.cells = 10)
-cellchat <- computeCommunProbPathway(cellchat)
-cellchat <- aggregateNet(cellchat)
-groupSize <- as.numeric(table(cellchat@idents))
-cellchat <- netAnalysis_computeCentrality(cellchat, slot.name = "netP")
 

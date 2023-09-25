@@ -1,5 +1,5 @@
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
-############################## Comparision ######################################
+######################## Comparision in 4 single-cell dataset  ###################################
 setwd("/home/wangjing/wangj/AgingScore/Comparison")
 
 library(Seurat)
@@ -96,7 +96,7 @@ rep_sene_genes = readxl::read_excel("SigRS.xls", sheet = 5, skip = 2)$Gene_names
 EnrichSet$Sig.RS = rep_sene_genes
 
 Results = list()
-### Teo2019  GSE115301 Smart-seq2 OIS
+### Teo2019  GSE115301 Smart-seq2 OIS 
 Teo2019 = CreateSeuratObject(
     fread("Teo2019/GSE115301_Growing_Sen_10x_count.txt.gz") %>% column_to_rownames("V1") %>% data.matrix, 
     meta.data = fread("Teo2019/GSE115301_Growing_Sen_10x_metadata.txt.gz", header = T) %>% column_to_rownames("V1")
@@ -230,8 +230,6 @@ for(dataset in names(Results)){
         AUClist[[dataset]][[type]] = auc
     }
 }
-
-
 
 
 

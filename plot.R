@@ -160,7 +160,6 @@ dev.off()
 
 
 
-
 ##### menanome
 bar = c("#5cb85c","#428bca","#d9534f")
 names(bar) = c("Cycling","Transition","Senescent")

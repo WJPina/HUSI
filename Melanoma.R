@@ -196,7 +196,7 @@ Bulk <- Bulk[rowSums(Bulk)>0,]
 dim(Bulk)
 profile = AverageExpression(EpiExp.m, features = rownames(Bulk), slot = 'counts',assays = 'RNA',group.by = 'age_state')$RNA %>% as.matrix()
 head(profile)
-### deconvolute TCGA SKCM sample by ENIGMA
+## deconvolute TCGA SKCM sample 
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
 source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA_revise.R")
 Frac <- get_proportion(Bulk, profile)
