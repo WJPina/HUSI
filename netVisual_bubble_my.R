@@ -239,7 +239,7 @@ netVisual_bubble_my<-function (object, sources.use = NULL, targets.use = NULL, s
     df$source.target = droplevels(df$source.target, exclude = setdiff(levels(df$source.target), 
         unique(df$source.target)))
     g <- ggplot(df, aes(x = source.target, y = interaction_name_2, 
-        color = prob, size = pval)) + geom_point(pch = 16) + 
+        color = prob, size = pval)) + geom_point(pch = 19) + 
         theme_linedraw() + theme(panel.grid.major = element_blank()) + 
         theme(axis.text.x = element_text(angle = angle.x, hjust = hjust.x, 
             vjust = vjust.x), axis.title.x = element_blank(), 

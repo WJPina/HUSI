@@ -4,7 +4,7 @@ library(dplyr)
 library(tibble)
 library(data.table)
 ################################ Pre-preocess raw trian data ###############################
-setwd("~/wangj/AgingScore/Data1/Bulk_TrainModel")
+setwd("~/wangj/AgingScore/Data/Bulk_TrainModel")
 raw_TPM = cbind(
     fread("dermal_for_training_TPM.csv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
     fread("senescence_raw_TPM_for_training.tsv") %>% column_to_rownames("Gene Name") %>% as.matrix
@@ -85,7 +85,7 @@ metadata
 save(X,metadata,file = 'ModelTrainData.RData')
 ############################# Train model ######################################
 load("ModelTrainData.RData")
-# mean center and split to train and background dataset
+### mean center and split to train and background dataset
 X_centre = X - (apply(X, 1, mean))
 idx_senescent = colnames(X_centre) %in% filter(metadata, condition %in% "senescent")$sample_title
 X_tr = X_centre[,idx_senescent]
@@ -95,6 +95,7 @@ mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
 mm_l1 = gelnet( t(X_tr), NULL, 0.1, 0 )
 saveRDS(mm_l2,file="mm_l2.rds")
 saveRDS(mm_l1,file="mm_l1.rds")
+
 ### Leave-one-out cross validation
 auc <- c()
 for(i in 1:ncol(X_tr)){
@@ -105,7 +106,11 @@ for(i in 1:ncol(X_tr)){
   s_bk <- apply( X_bk, 2, function(z) {cor( m1$w, z, method="sp" )} )
   s1 <- cor( m1$w, X_tr[,i], method="sp" )
   ## AUC = P( left-out sample is scored above the background )
-  auc[i] <- sum( s1 > s_bk ) / length(s_bk)
+  auc[i] <- sum( s1 > s_bk ) / length(s_bk)  
   cat( "Current AUC: ", auc[i], "\n" )
   cat( "Average AUC: ", mean(auc), "\n" )
 }
+
+
+
+

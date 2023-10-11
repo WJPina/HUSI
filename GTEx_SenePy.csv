@@ -12,7 +12,6 @@ Adipocyte,Heart,adipocyte,heart
 Endothelial cell (vascular);Endothelial cell (lymphatic),Heart,endothelial cell,heart
 Fibroblast,Heart,fibroblast,heart
 Immune (T cell);Immune (B cell) ;Immune (NK cell),Heart,lymphoid cell,heart
-Pericyte/SMC,Heart,pericyte;smooth muscle cell,heart
 Fibroblast,Skin,fibroblast,skin
 Epithelial cell (basal keratinocyte),Skin,basal cell,skin
 Endothelial cell (vascular);Endothelial cell (lymphatic),Skin,endothelial cell,skin

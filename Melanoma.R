@@ -12,7 +12,7 @@ library(data.table)
 
 setwd('/home/wangjing/wangj/AgingScore/Data/scRNA_melanome')
 
-use_python("/home/tools/anaconda3/envs/scpy-env/bin/python3", required = T)
+use_python("/home/tools/anaconda3/envs/sc/bin/python3", required = T)
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 ############################### application on melanoma ########################
 ### load melanoma data
@@ -45,7 +45,7 @@ melanoma_obj$celltype <- celltype
 
 ### calculate aging score
 AgeScore  = melanoma_obj@assays$RNA@data[] %>% {apply( ., 2, function(z) {cor(z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )})}
-melanoma_obj$hSI <- AgeScore[colnames(melanoma_obj)]
+melanoma_obj$hUSI <- AgeScore[colnames(melanoma_obj)]
 
 melanoma_obj <- FindVariableFeatures(object = melanoma_obj, selection.method = 'vst', nfeatures =1500)
 melanoma_obj <- ScaleData(melanoma_obj,features=rownames(melanoma_obj))
@@ -57,18 +57,18 @@ DimPlot(melanoma_obj, reduction = 'pca', group.by = 'celltype',label=1)
 ### extract tumor cells
 EpiExp.m <- melanoma_obj[,melanoma_obj$celltype=="Tumor"]
 ### divided tumor cells by gaussion 
-gaussian = EpiExp.m@meta.data$hSI %>% {log2((1+ .)/(1- .))} %>% Mclust()
+set.seed(233)
+gaussian = EpiExp.m@meta.data$hUSI %>% {log2((1+ .)/(1- .))} %>% Mclust()
 EpiExp.m$age_class <- gaussian$classification
 DimPlot(EpiExp.m, reduction = 'pca', group.by = 'age_class',label=1)
 ### ranking the genes based on each gene expression correlation with the aging score
 corAging <- function(x,agingScore){cor <- cor(x,agingScore);cor}
-cor.genes <- apply(GetAssayData(EpiExp.m),1,corAging,agingScore=EpiExp.m$hSI)
+cor.genes <- apply(GetAssayData(EpiExp.m),1,corAging,agingScore=EpiExp.m$hUSI)
 cor.genes[is.na(cor.genes)] <- 0
 features <- rownames(EpiExp.m)[order(abs(cor.genes),decreasing=TRUE)[1:1500]]
 features 
 ### Running the ICAnet
 source('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/getPPI_String.R')
-
 EpiExp.matrix <- as.matrix(GetAssayData(EpiExp.m))[features,]
 EpiExp.m[['AgingExp']] <- CreateAssayObject(EpiExp.matrix)
 DefaultAssay(EpiExp.m) <- "AgingExp"
@@ -79,43 +79,47 @@ Ica.filter <- CrossBatchGrouping(Ica.epi$ica.pooling)
 dev.off()
 PPI <- readRDS("PPI_melanoma.RDS")
 # PPI <- getPPI_String(EpiExp.m,species=9606)
-EpiExp.m <- RunICAnet(EpiExp.m,Ica.epi$ica.pooling,PPI.net = PPI,scale=FALSE,ModuleSignificance = FALSE,cores = 1,aucMaxRank=900)
+EpiExp.m <- RunICAnet(EpiExp.m,Ica.epi$ica.pooling,PPI.net = PPI,scale=FALSE,ModuleSignificance = FALSE,cores = 1,aucMaxRank=500)
 
-### Using PHATE to predict the transition process of tumor aging
-Epi.data <- t((GetAssayData(EpiExp.m)))
-Epi.data <- as.data.frame(Epi.data)
-Epi.phate <- phate(Epi.data)
-branch <- EpiExp.m$age_class
-palette(rainbow(3))
-plot(Epi.phate, col = branch,pch=16)
+EpiExp.m$State = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transitional","Senescent")),levels = c("Cycling","Transitional","Senescent"))
 
-EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
-EpiExp.m$age_state = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transition","Senescent")),levels = c("Cycling","Transition","Senescent"))
+### diffusion map
+library(destiny)
+exp = EpiExp.m@assays$IcaNet@data %>% data.frame()
+pd <- new('AnnotatedDataFrame', data = as.data.frame(EpiExp.m@meta.data))
+fData <- data.frame(gene_short_name = row.names(exp), row.names = row.names(exp))
+fd <- new('AnnotatedDataFrame', data = fData)
+myExpressionSet <- ExpressionSet(assayData=as.matrix(exp),
+                                 phenoData=pd,
+                                 annotation="tumor")
+
+dm <- DiffusionMap(myExpressionSet,n_pcs = 5)
+plot(eigenvalues(dm), ylim = 0:1, pch = 20,xlab = 'Diffusion component (DC)', ylab = 'Eigenvalue')
+dpt <- DPT(dm)
+dev.new()
+plot(dpt)
+
+
+# ### Using PHATE to predict the Transitional process of tumor aging
+# Epi.data <- t((GetAssayData(EpiExp.m)))
+# Epi.data <- as.data.frame(Epi.data)
+# Epi.phate <- phate(Epi.data)
+# branch <- EpiExp.m$age_class
+# 
+# EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
+# DimPlot(EpiExp.m, reduction = 'phate', group.by = 'State',label=F,pt.size=2)
+
+
 save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
 
 ### age state degs
 marker_set = list()
-for(i in unique(EpiExp.m$age_state)){
-  marker_set[[i]] <- FindMarkers(EpiExp.m,ident.1 = i,group.by="age_state",only.pos = TRUE,assay = "RNA")
+for(i in unique(EpiExp.m$State)){
+  marker_set[[i]] <- FindMarkers(EpiExp.m,ident.1 = i,group.by="State",only.pos = TRUE,assay = "RNA")
   marker_set[[i]] <- filter(marker_set[[i]],p_val_adj<0.05)
 }
 lapply(marker_set,dim)
-###### enrichment of each state marker 
-library(clusterProfiler)
-library(org.Hs.eg.db)
-### remove ribosomal protein
-ribosomal = read.table("/mnt/data1/wangj/MouseBrain/Ribosome.txt",stringsAsFactors=FALSE)
-marker_set_mr = lapply(marker_set,function(x) {x <- x[!rownames(x) %in% ribosomal$V1,] %>% rownames_to_column('gene')})
-res = rbindlist(marker_set_mr,idcol = 'state')
-ids=bitr(res$gene,'SYMBOL','ENTREZID','org.Hs.eg.db')
-sce.markers=merge(res,ids,by.x='gene',by.y='SYMBOL')
-gcSample=split(sce.markers$ENTREZID, sce.markers$state)
-bg=bitr(rownames(EpiExp.m@assays$RNA),'SYMBOL','ENTREZID','org.Hs.eg.db')
-# GO
-go <- compareCluster(gcSample, fun= "enrichGO",ont = "BP",OrgDb= "org.Hs.eg.db", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
 
-# KEGG
-kegg <- compareCluster(gcSample, fun= "enrichKEGG",organism="hsa", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
 
 ##### validate in microarray
 ### bulk degs
@@ -128,10 +132,10 @@ exp = exp[rownames(exp)!="character(0)",]
 head(exp)
 
 meta <- ArrayList [["GSE83922"]][[1]] %>% 
-        pData %>% 
-        mutate(condition= `cell phenotype:ch1`) %>% 
-        .[which(.$condition %in% c("young","senescent")),] %>% 
-        mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
+  pData %>% 
+  mutate(condition= `cell phenotype:ch1`) %>% 
+  .[which(.$condition %in% c("young","senescent")),] %>% 
+  mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
 meta[,'cell phenotype:ch1']
 
 geneID <- intersect(rownames(exp),rownames(EpiExp.m@assays$RNA))
@@ -156,25 +160,43 @@ enrich_geneList=list()
 enrich_reList=list()
 N = nrow(exp_bulk)
 for(de in c("up","down")){
-    if(de == "up"){
-      bk = rownames(filter(deg.tab,coefficients>0)) 
-    }
-    else {
-      bk = rownames(filter(deg.tab,coefficients<0))
-    }
-    M = length(bk)
-    for (state in levels(EpiExp.m$age_state)) {
-      genes = rownames(marker_set[[state]])
-      n = length(genes)
-      k = length(intersect(bk,genes))
-      enrich_reList[[paste(state,de,sep = '_')]] = phyper(k-1,M, N-M, n, lower.tail=FALSE)
-      enrich_geneList[[paste(state,de,sep = '_')]][['bulk']] = bk
-      enrich_geneList[[paste(state,de,sep = '_')]][['single-cell']] = genes
+  if(de == "up"){
+    bk = rownames(filter(deg.tab,coefficients>0)) 
+  }
+  else {
+    bk = rownames(filter(deg.tab,coefficients<0))
+  }
+  M = length(bk)
+  for (state in levels(EpiExp.m$State)) {
+    genes = rownames(marker_set[[state]])
+    n = length(genes)
+    k = length(intersect(bk,genes))
+    enrich_reList[[paste(state,de,sep = '_')]] = phyper(k-1,M, N-M, n, lower.tail=FALSE)
+    enrich_geneList[[paste(state,de,sep = '_')]][['bulk']] = bk
+    enrich_geneList[[paste(state,de,sep = '_')]][['single-cell']] = genes
   }
 }
 
+###### enrichment of each state marker 
+library(clusterProfiler)
+library(org.Hs.eg.db)
+### remove ribosomal protein
+ribosomal = read.table("/mnt/data1/wangj/MouseBrain/Ribosome.txt",stringsAsFactors=FALSE)
+marker_set_mr = lapply(marker_set,function(x) {x <- x[!rownames(x) %in% ribosomal$V1,] %>% rownames_to_column('gene')})
+res = rbindlist(marker_set_mr,idcol = 'state')
+ids=bitr(res$gene,'SYMBOL','ENTREZID','org.Hs.eg.db')
+sce.markers=merge(res,ids,by.x='gene',by.y='SYMBOL')
+gcSample=split(sce.markers$ENTREZID, sce.markers$state)
+bg=bitr(rownames(EpiExp.m@assays$RNA),'SYMBOL','ENTREZID','org.Hs.eg.db')
+# GO
+go <- compareCluster(gcSample, fun= "enrichGO",ont = "BP",OrgDb= "org.Hs.eg.db", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
+
+# # KEGG
+# kegg <- compareCluster(gcSample, fun= "enrichKEGG",organism="hsa", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
+
+
 ##### analysis on TCGA SKCM
-### load TCGA SKCM bulk data
+### load TCGA SKCM bulk data RPKM
 clinicalMatrix <- read.csv("SKCM_clinicalMatrix.csv",header=TRUE,stringsAsFactors = FALSE,row.names=1)
 tcga_melanoma <- read.table("melanoma_tcga",header=TRUE,row.names=1,stringsAsFactors=FALSE)
 
@@ -194,13 +216,13 @@ features = intersect(rownames(tcga_melanoma),rownames(EpiExp.m@assays$RNA))
 Bulk <- tcga_melanoma[features,]
 Bulk <- Bulk[rowSums(Bulk)>0,]
 dim(Bulk)
-profile = AverageExpression(EpiExp.m, features = rownames(Bulk), slot = 'counts',assays = 'RNA',group.by = 'age_state')$RNA %>% as.matrix()
+
+profile = AverageExpression(EpiExp.m, features = rownames(Bulk), slot = 'counts',assays = 'RNA',group.by = 'State')$RNA %>% as.matrix()
 head(profile)
-## deconvolute TCGA SKCM sample 
-source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA.R")
-source("/home/wangjing/wangj/ENIGMA/ENIGMASpatialPro/scripts/ENIGMA_revise.R")
-Frac <- get_proportion(Bulk, profile)
-Frac <- Frac$theta
+
+### deconvolute TCGA SKCM sample 
+Frac_epi <- epidish(beta.m = Bulk, ref.m = profile, method = "RPC") 
+Frac <- Frac_epi$estF
 colMeans(Frac)
 
 ### using CIBERSORT to deconvolute TCGA SKCM sample
@@ -247,7 +269,7 @@ library(CellChat)
 library(ggalluvial)
 
 melanoma_obj$subtype = melanoma_obj$celltype
-melanoma_obj$subtype[colnames(EpiExp.m)] = as.character(EpiExp.m$age_state)
+melanoma_obj$subtype[colnames(EpiExp.m)] = as.character(EpiExp.m$State)
 melanoma_obj$subtype = gsub('\\.','',melanoma_obj$subtype) %>% factor
 table(melanoma_obj$subtype)
 
@@ -270,7 +292,13 @@ cellchat <- aggregateNet(cellchat)
 groupSize <- as.numeric(table(cellchat@idents))
 cellchat <- netAnalysis_computeCentrality(cellchat, slot.name = "netP")
 
-### pathway compare
+### find patterns
+nPatterns = 6
+cellchat <- identifyCommunicationPatterns(cellchat, pattern = "outgoing", k = nPatterns)
+pattern <- cellchat@netP$pattern$outgoing$pattern$signaling[cellchat@netP$pattern$outgoing$pattern$signaling$Contribution>0.5,]
+pattern_use = pattern[pattern$Pattern %in% c("Pattern 1","Pattern 6"),]
+
+### unique pathway in senescent
 sig = cellchat@LR$LRsig
 pathways = names(cellchat@netP$centr)
 df = data.frame(
@@ -283,19 +311,9 @@ df = data.frame(
 
 df = filter(df,rowSums(df[,-1])!=0)
 pathways = df[df$sene_income!=0&df$cycle_income == 0,]$pathway
-pathways = c("CSPG4","CD6","BMP","CCL","TGFb" )
-cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transition","Senescent"))
 
-
-### find patterns
-netVisual_bubble(cellchat, sources.use = 'Senescent', targets.use = 'T cell', remove.isolate = FALSE)
-
-nPatterns = 6
-cellchat <- identifyCommunicationPatterns(cellchat, pattern = "outgoing", k = nPatterns)
-pattern <- cellchat@netP$pattern$outgoing$pattern$signaling
-[cellchat@netP$pattern$outgoing$pattern$signaling$Contribution>0.5,]
-pattern_use = pattern[pattern$Pattern %in% c("Pattern 1","Pattern 6"),]
-netAnalysis_river(cellchat, pattern = "outgoing",cutoff = 0.5,sources.use = c('Cycling','Transition','Senescent'),signaling = as.character(pattern_use$Signaling))
+# pathways = c("CSPG4","CD6","BMP","CCL","TGFb" )
+cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transitional","Senescent"))
 
 ### survival analysis of receptor-ligand pairs
 data = data.frame(t(tcga_melanoma[c('BMPR1B','BMPR2','TGFBR1','TGFBR2'),rownames(survival_data)]),OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)

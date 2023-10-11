@@ -10,7 +10,7 @@ cols = mypalette$palette7
 names(cols) = levels(Endo.m$celltype)
 
 ### Endo umap
-png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/Endo.png",width = 1800,height = 1500,res = 300)
+png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//Endo.png",width = 1800,height = 1500,res = 300)
 DimPlot(Endo.m, reduction = "umap",label = T,pt.size = 0.2,repel = F,label.box = T,group.by = 'celltype')+
   scale_color_manual(values = cols)+
   scale_fill_manual(values = cols)+
@@ -25,7 +25,7 @@ dev.off()
 
 
 ### Progress group
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/HUSI_progress.png',width = 1500,height = 1500,res = 250)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//HUSI_progress.png',width = 1500,height = 1500,res = 300)
 ggviolin(Endo.m@meta.data,
          x="Progress", y="hUSI", fill = "Progress", 
          palette = c('#457b9d',"#bc4749"),
@@ -50,7 +50,6 @@ plot_cell_trajectory(cds,color_by="State", cell_size=0.5,show_backbone=TRUE) +
 dev.off()
 
 
-
 ### branch gene heatmap
 png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_fate_genes.png',width = 1300,height = 1500,res = 300)
 plot_genes_branched_heatmap(cds[genes,],
@@ -61,7 +60,7 @@ plot_genes_branched_heatmap(cds[genes,],
                             show_rownames = F,
                             hmcols = colorRampPalette(rev(brewer.pal(9, "Spectral")))(62),
                             branch_colors = c("#2a9d8f","#e9c46a",'#264653'),
-                            branch_labels = c("Cell fate 1", "Cell fate 2"))
+                            branch_labels = c('Anti-senescence','Senescence'))
 dev.off()
 
 bar = c("#2a9d8f","#e9c46a",'#264653')
@@ -87,7 +86,7 @@ dev.off()
 ### hUSI fate
 # cds$Fate = ifelse(cds$State == '1','Root',ifelse(cds$State == '2','Cell fate 1','Cell fate 2'))
 png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/HUSI_fate.png',width = 1000,height = 1200,res = 300)
-ggviolin(obj@meta.data,
+ggviolin(subEndo@meta.data,
          x="State", y="hUSI", fill = "State", 
          palette =  c("#2a9d8f",'#264653',"#e9c46a"),
          add = "boxplot", 
@@ -95,25 +94,75 @@ ggviolin(obj@meta.data,
 )+
   theme(axis.title = element_text(face = 'bold'),
         legend.position = 'none')+
-  stat_compare_means(comparisons = list(c('Senescent','Stem-like'),c('Stem-like','Normal'),c('Senescent','Normal')),
+  stat_compare_means(comparisons = list(c('Normal','Root'),c('Senescent','Noraml'),c('Senescent','Root')),
                      method = 't.test',
                      method.args = list(alternative = "greater"))
 dev.off()
 
 
-enrichplot::cnetplot(cluster_enrich,circular=F,
-                     colorEdge = TRUE,showCategory = 20,
-                     cex_gene = 0.5,cex_category = 0.8,
-                     cex_label_gene = 0.6,node_label = 'gene') + 
+### pathway network
+library(enrichplot)
+cols = mypalette$palette3[1:length(ids)]
+# id_1 = df_plot$ID
+# id_2 = df_plot$ID
+# ids = unique(c(id_1,id_2))
+names(cols) = ids
+cols
+
+foldChange = BEAM_res[genes,]$qval
+names(foldChange) = genes
+p = cnetplot(cluster_enrich,
+         circular=F,
+         colorEdge = F,
+         showCategory = 20,
+         cex_gene = 0.8,
+         cex_category = 0.8,
+         foldChange = -log10(foldChange),
+         cex_label_gene = 0.6,
+         node_label = 'gene') + 
   theme(legend.position = 'none')
+
+p[["layers"]][[2]][["mapping"]][["colour_new"]][[2]][[2]] <- cols[cluster_enrich@result$ID]
+p[["data"]][["color"]][which(!(p[["data"]][["name"]] %in% names(foldChange)) == T)] <- cols[cluster_enrich@result$ID]
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/Ant-senescence.png',width = 1000,height = 1000,res = 300)
+print(p)
+dev.off()
+
+### plot legend
+# labels_1 = df_plot$label
+# labels_2 = df_plot$label
+# labels = unique(c(labels_1,labels_2))
+# names(cols) = labels
+
+comm = c("focal adhesion","ecm-receptor interaction",
+         "human papillomavirus infection","vascular smooth muscle contraction")
+sene = c("regulation of actin cytoskeleton","glycosaminoglycan binding proteins",
+         "arrhythmogenic right ventricular cardiomyopathy","hypertrophic cardiomyopathy",
+         "dilated cardiomyopathy","platelet activation","apelin signaling pathway")
+anti = c("pi3k-akt signaling pathway","cd molecules",
+         "rap1 signaling pathway","cell adhesion molecules",
+         "amoebiasis","tgf-beta signaling pathway","hippo signaling pathway",
+         "axon guidance","african trypanosomiasis" ,"adherens junction",
+         "small cell lung cancer", "malaria")
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/legend.png',width = 2000,height = 2000,res = 300)
+bar = c(cols[anti],cols[sene],cols[comm])
+palette(bar)
+plot(y = 1:length(bar),x=rep(0.2,length(bar)), col = 1:length(bar), pch = 19,xlim = c(0,2),cex = 2) 
+labels <- names(bar)
+text(y = 1:length(bar),x=rep(0.2,length(bar)), labels = labels, pos = 4)
+dev.off()
+
+palette("default")
 
 
 
 
 ### gene overlap
 colorList = list()
-colorList[['Stem-like_up']] <- c("#FF745A","#e9c46a")
-colorList[['Stem-like_down']] <- c("#007E99","#e9c46a")
+colorList[['Anti_senescence_up']] <- c("#FF745A","#e9c46a")
+colorList[['Anti_senescence_down']] <- c("#007E99","#e9c46a")
 colorList[['Senescent_up']] <- c("#FF745A",'#264653')
 colorList[['Senescent_down']] <- c("#007E99",'#264653')
 
@@ -136,9 +185,9 @@ for(set in names(enrich_reList)){
   
 }
 png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_gene_enrich.png',width = 1200,height = 800,res = 200)
-ggarrange(pList[['Stem-like_up']],
+ggarrange(pList[['Anti_senescence_up']],
           pList$Senescent_up,
-          pList[['Stem-like_down']],
+          pList[['Anti_senescence_down']],
           pList$Senescent_down,
           ncol = 2,nrow = 2,legend = "none")
 dev.off()
@@ -146,17 +195,17 @@ dev.off()
 
 ### ROI bulk ssGSEA
 library(rstatix)
-names(bar) = c('Normal','Stem-like','Senescent')
+names(bar) = c('Normal','Anti_senescence','Senescent')
 
 cbind(meta,t(results[,rownames(meta)]))%>%
-  dplyr::select(c('Normal','Senescent','Stem-like','Primary_Morph','Progress')) %>%
+  dplyr::select(c('Normal','Senescent','Anti_senescence','Primary_Morph','Progress')) %>%
   reshape2::melt(variable.name = 'State',value.name = 'ssGSEA') %>%
   ggboxplot(x = 'Progress',y = 'ssGSEA',fill = 'State')+
   scale_fill_manual(values = bar)+
   theme_classic()
 
 
-### stem-like or senescence marker
+### Anti_senescence or senescence marker
 ### stem
 VlnPlot(subEndo,features = c('CD9','CD44','CDKN1A','CDKN2A'),group.by = 'age_state',pt.size = 1.5,col = bar)
 

@@ -10,6 +10,7 @@ library(org.Hs.eg.db)
 library(dplyr)
 library(caret)
 library(magrittr)
+library(reshape2)
 
 set.seed(233)
 
@@ -30,18 +31,18 @@ calc_scores <- function(scorelist=NULL,object=NULL,type=''){
     data = object@meta.data
     if(type == 'laf'){
         for(sl in names(scorelist)){
-                score = calc_laf(GetAssayData(object) %>% expm1 %>% as.matrix, scorelist[[sl]])
+                score = calc_laf(GetAssayData(object) %>% as.matrix, scorelist[[sl]])
                 data[[sl]] = score
         }
     }
     if(type == 'ssgsea'){
         for(sl in names(scorelist)){
-            score = GSVA::gsva(GetAssayData(object) %>% expm1 %>% as.matrix, list(signature=scorelist[[sl]]), method="ssgsea", ssgsea.norm = TRUE, verbose = TRUE)[1,]
+            score = GSVA::gsva(GetAssayData(object) %>% as.matrix, list(signature=scorelist[[sl]]), method="ssgsea", ssgsea.norm = TRUE, verbose = TRUE)[1,]
             data[[sl]] = score
         }
     }
     if(type == 'marker'){
-        score = object[scorelist,] %>% GetAssayData %>% expm1 %>% as.matrix %>% t %>% data.frame 
+        score = object[scorelist,] %>% GetAssayData %>% as.matrix %>% t %>% data.frame 
         rownames(score) = colnames(object)
         data = cbind(data,score)
     }
@@ -53,15 +54,15 @@ calc_auc <- function(data=data.frame(),type = '',scorelist=NULL){
     auc = sapply(fold, function(sampling) {
         df = data[sampling,]
         if(type=="laf"){
-            c("DAS","mSS",'DAS_mSS','hSI') %>% 
+            c("DAS","mSS",'DAS_mSS','hUSI') %>% 
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
         }
         else if (type=='marker'){
-            c('hSI',scorelist[scorelist %in% colnames(data)]) %>% 
+            c('hUSI',scorelist[scorelist %in% colnames(data)]) %>% 
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
         }
         else{
-            c('hSI',names(scorelist)) %>% 
+            c('hUSI',names(scorelist)) %>% 
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
         }
     })
@@ -91,19 +92,26 @@ lafSet <<- list(DAS = laf_DAS,mSS=laf_mSS,DAS_mSS=rbind(laf_DAS, laf_mSS))
 SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4", "MKI67", "CDKN2B")
 
 EnrichSet<<-cogena::gmt2list("/mnt/data2/zhouxl/Pan_Cancer/Data/Signatures/gene_50signatures_merge.gmt")
-EnrichSet=EnrichSet[43:50]
+EnrichSet=EnrichSet[43:49]
+names(EnrichSet)
 rep_sene_genes = readxl::read_excel("SigRS.xls", sheet = 5, skip = 2)$Gene_names
 EnrichSet$Sig.RS = rep_sene_genes
+names(EnrichSet) 
+names(EnrichSet) <- c("SenMayo","CellAge", "GenAge", "ASIG", "SASP","AgingAtlas", "SenUp","SigRS")
 
 Results = list()
-### Teo2019  GSE115301 Smart-seq2 OIS 
+
+### Teo2019  GSE115301 IMR90 Smart-seq2 OIS 
 Teo2019 = CreateSeuratObject(
     fread("Teo2019/GSE115301_Growing_Sen_10x_count.txt.gz") %>% column_to_rownames("V1") %>% data.matrix, 
     meta.data = fread("Teo2019/GSE115301_Growing_Sen_10x_metadata.txt.gz", header = T) %>% column_to_rownames("V1")
 )
-Teo2019 = NormalizeData(Teo2019, scale.factor = 1e4)
+### log
+Teo2019 = NormalizeData(Teo2019)
+### CPM
+# Teo2019 = NormalizeData(Teo2019,normalization.method = 'RC',scale.factor = 1e6)
 
-hSI = GetAssayData(Teo2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+hUSI = GetAssayData(Teo2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 dat_laf = calc_scores(lafSet,Teo2019,'laf')
 dat_marker = calc_scores(SenMarkers,Teo2019,'marker')
 dat_ssgsea = calc_scores(EnrichSet,Teo2019,'ssgsea')
@@ -111,7 +119,7 @@ dat_ssgsea = calc_scores(EnrichSet,Teo2019,'ssgsea')
 Teo2019List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
 
 Results$Teo2019 = Teo2019List
-Results$Teo2019$hSI = hSI
+Results$Teo2019$hUSI = hUSI
 
 ### Tang2019 GSE119807 HCA2 fibroblast cell RS,IRIS
 Tang2019List = list.files("Tang2019", full.names = T) %>% 
@@ -120,12 +128,13 @@ Tang2019List = list.files("Tang2019", full.names = T) %>%
             column_to_rownames("GENE") %>% 
             data.matrix %>% 
             CreateSeuratObject() %>% 
-            NormalizeData(scale.factor=1e4)
+            # NormalizeData(normalization.method = 'RC',scale.factor = 1e6)
+            NormalizeData()
 
-        hSI = GetAssayData(scdat) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
-        data <- list(laf=data.frame(calc_scores(lafSet,scdat,'laf'),'hSI'=hSI),
-                        marker=data.frame(calc_scores(SenMarkers,scdat,'marker'),'hSI'=hSI),
-                        ssgsea=data.frame(calc_scores(EnrichSet,scdat,'ssgsea'),'hSI'=hSI))
+        hUSI = GetAssayData(scdat) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+        data <- list(laf=data.frame(calc_scores(lafSet,scdat,'laf'),'hUSI'=hUSI),
+                        marker=data.frame(calc_scores(SenMarkers,scdat,'marker'),'hUSI'=hUSI),
+                        ssgsea=data.frame(calc_scores(EnrichSet,scdat,'ssgsea'),'hUSI'=hUSI))
         return(data)
     }) %>% 
     set_names( list.files("Tang2019") %>% gsub(".*_", "", .) %>% gsub("\\..*", "", .) )
@@ -144,21 +153,18 @@ for(file in Aarts2017List){
     scdat = right_join(scdat,scol,by = 'gene')           
 }
 ids=bitr(scdat$gene,'ENSEMBL','SYMBOL','org.Hs.eg.db')
-scdat=merge(scdat,ids,by.x='gene',by.y='ENSEMBL')
-scdat = scdat[-1]
-scdat = scdat %>% 
-            mutate(sum = rowSums(.[-ncol(scdat)])) %>%
-            filter(sum != 0) %>%
-            group_by(SYMBOL) %>% 
-            mutate(max = max(sum)) %>% 
-            filter(sum == max) %>% 
-            select(-c(sum,max)) %>%
-            column_to_rownames("SYMBOL") %>%
-            data.matrix
-dim(scdat)
-Aarts2017 = CreateSeuratObject(scdat) %>% NormalizeData(scale.factor = 1e4)
+exp=merge(scdat,ids,by.x='gene',by.y='ENSEMBL')
+exp = exp[-1]
+exp = exp[!duplicated(exp$SYMBOL),]
+rownames(exp) <- exp$SYMBOL
+exp = exp[-ncol(exp)]
+dim(exp)
+
+Aarts2017 = CreateSeuratObject(exp) %>% 
+                # NormalizeData(normalization.method = 'RC',scale.factor = 1e6)
+                NormalizeData()
 Aarts2017$Condition = ifelse(grepl('OSKM',colnames(Aarts2017)), 'Senescence', 'Growing')
-hSI = GetAssayData(Aarts2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+hUSI = GetAssayData(Aarts2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 
 dat_laf = calc_scores(lafSet,Aarts2017,'laf')
 dat_marker = calc_scores(SenMarkers,Aarts2017,'marker')
@@ -167,7 +173,7 @@ dat_ssgsea = calc_scores(EnrichSet,Aarts2017,'ssgsea')
 Aarts2017List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
 
 Results$Aarts2017 = Aarts2017List
-Results$Aarts2017$hSI = hSI
+Results$Aarts2017$hUSI = hUSI
 
 ### Enge2017 GSE81547 human pancreas organisms age
 Enge2017List = list.files("Enge2017", pattern = "*.gz",full.names = T)
@@ -186,9 +192,11 @@ for(file in files){
 }
 scdat = column_to_rownames(scdat,"gene") %>% data.matrix
 dim(scdat)
-Enge2017 = CreateSeuratObject(scdat) %>% NormalizeData(scale.factor = 1e4)
+Enge2017 = CreateSeuratObject(scdat) %>% 
+                # NormalizeData(normalization.method = 'RC',scale.factor = 1e6)
+                NormalizeData()
 Enge2017$Condition = ifelse(meta$DONOR_AGE %in% c(54), 'Senescence', 'Growing')
-hSI = GetAssayData(Enge2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+hUSI = GetAssayData(Enge2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 
 dat_laf = calc_scores(lafSet,Enge2017,'laf')
 dat_marker = calc_scores(SenMarkers,Enge2017,'marker')
@@ -197,7 +205,7 @@ dat_ssgsea = calc_scores(EnrichSet,Enge2017,'ssgsea')
 Enge2017List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
 
 Results$Enge2017 = Enge2017List
-Results$Enge2017$hSI = hSI
+Results$Enge2017$hUSI = hUSI
 
 
 AUClist = list()
@@ -207,7 +215,7 @@ for(dataset in names(Results)){
         if(dataset == 'Teo2019'){
             dat = Results[[dataset]][[type]] %>% 
                     mutate(condition=gsub("[0-9]$", "", Condition1) ) %>% 
-                    mutate(hSI=Results[[dataset]][['hSI']])
+                    mutate(hUSI=Results[[dataset]][['hUSI']])
             dat = dat[,complete.cases(t(dat))]
 
             auc <- calc_auc(dat,type,scorelist)
@@ -222,7 +230,7 @@ for(dataset in names(Results)){
         else if (dataset %in% c('Aarts2017','Enge2017')) {
             dat = Results[[dataset]][[type]] %>% 
                     mutate(condition=Condition) %>% 
-                    mutate(hSI=Results[[dataset]][['hSI']])
+                    mutate(hUSI=Results[[dataset]][['hUSI']])
             dat = dat[,complete.cases(t(dat))]
 
             auc <- calc_auc(dat,type,scorelist)

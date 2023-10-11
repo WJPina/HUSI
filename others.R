@@ -263,3 +263,96 @@ pwc
 # features = names(features)[features > quantile(features,0.75)]
 # AgeScore  = Endo.m@assays$RNA@data[features,] %>% {apply( ., 2, function(z) {cor(z, mm_l2$w[ features ], method="sp", use="complete.obs" )})}
 # Endo.m$hUSI <- AgeScore[colnames(Endo.m)]
+
+
+
+### validat in mouse stem Cap data
+setwd('/home/wangjing/wangj/AgingScore/GSE211335_mouseCap')
+files = list.files('.')
+files = files[grep('h5',files)]
+sceList <-lapply(files,function(file){CreateSeuratObject(counts = Read10X_h5(file),
+                                                         project = substr(file,12,17),
+                                                         min.cells = 0,min.features = 0)})
+meta = read.csv('GSE211335_Endothelial_seurat_metadata.csv',row.names = 1)
+rownames(meta) = paste(rownames(meta),'-1',sep = '')
+sce <- merge(x = sceList[[1]],y = sceList[c(2,3)],add.cell.ids = c('PoolA','PoolB','PoolC'))
+
+sce_endo = sce[,rownames(meta)]
+sce_endo$cluster = factor(paste('Cluster',meta$seurat_clusters,sep = ''))
+sce_endo$condition = factor(meta$Sample)
+sce_endo = subset(sce_endo,cluster == 'Cluster2')
+
+Idents(sce_endo) <- 'condition'
+sce_endo = NormalizeData(sce_endo)
+stem_markers = FindAllMarkers(sce_endo,
+                              assay = 'RNA',
+                              only.pos = T,logfc.threshold = 0.5)
+
+stem_markers = filter(stem_markers,p_val_adj<0.05)
+stem_markers = stem_markers[order(stem_markers$cluster,stem_markers$avg_log2FC,decreasing = T),]
+
+# mouse_human_genes = read.csv("http://www.informatics.jax.org/downloads/reports/HOM_MouseHumanSequence.rpt",sep="\t")
+convert_mouse_to_human <- function(gene_list){
+  output = c()
+  for(gene in gene_list){
+    class_key = (mouse_human_genes %>% filter(Symbol == gene & Common.Organism.Name=="mouse, laboratory"))[['DB.Class.Key']]
+    if(!identical(class_key, integer(0)) ){
+      human_genes = (mouse_human_genes %>% filter(DB.Class.Key == class_key & Common.Organism.Name=="human"))[,"Symbol"]
+      for(human_gene in human_genes){
+        output = append(output,human_gene)
+      }
+    }
+  }
+  
+  return (output)
+}
+markers = convert_mouse_to_human("DPT")
+
+df_plot = AverageExpression(subEndo,features = markers,group.by = 'age_state',slot = 'data',assays = 'RNA')$RNA %>% as.matrix()
+df_plot = df_plot[rowSums(df_plot)!=0,]
+pheatmap::pheatmap(df_plot,scale = 'row',cluster_cols = F)
+
+VlnPlot(subEndo,features = markers,group.by = 'age_state')
+
+
+# Pseudotime = cds$Pseudotime
+# names(Pseudotime) <- colnames(cds)
+# branches = split(Pseudotime,cds$State)
+# State_1_cells = names(sort(branches[[1]],decreasing = F))[1:100]
+# State_2_cells = names(sort(branches[[2]],decreasing = T))[1:100]
+# State_3_cells = names(sort(branches[[3]],decreasing = T))[1:100]
+# 
+# cell_use = c(State_1_cells,State_2_cells,State_3_cells)
+# label = rep(c('Normal','Anti_senescence','Senescent'),each = 100)
+# obj = subEndo[,cell_use]
+# obj$State = factor(label)
+# Idents(obj) <- 'State'
+# State_markers = FindAllMarkers(obj,assay = 'RNA',logfc.threshold = 1,only.pos = T) 
+# State_markers = filter(State_markers,p_val_adj < 0.05)
+# State_markers = State_markers[order(State_markers$cluster,State_markers$avg_log2FC,decreasing = T),]
+# State_markers_list = split(State_markers$gene,State_markers$cluster)
+# lapply(State_markers_list, length)
+
+
+
+
+
+### new platform
+p1.2 <- ArrayList [["GSE16058"]][[1]] %>% 
+  pData %>% 
+  mutate(condition=gsub("growth status: ", "", characteristics_ch1.3) ) %>% 
+  mutate(passage = `passage:ch1`) %>%
+  inner_join(
+    data.frame(sene_score=ScoreList[["s_16058"]]) %>% rownames_to_column("geo_accession"), 
+    by="geo_accession"
+  ) %>% 
+  .[which(.$condition %in% c("Growing","Senescent")),] %>% 
+  mutate(condition = factor(condition,levels = c("Growing","Senescent"),ordered = T)) %>% 
+  ggplot(aes(condition, sene_score)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = condition,shape =passage),width = 0.1) +
+  geom_signif(comparisons = list(c("Growing", "Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
+  mytheme()+
+  guides(color = 'none')+
+  ylab('hUSI')+
+  xlab("RS of HMEC")

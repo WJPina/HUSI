@@ -12,7 +12,7 @@ mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds"
 sc <- import("scanpy")
 ###### preprocess data
 ### raw data
-anndata = sc$read_h5ad("Covid_Lung_Endo.h5ad")
+anndata = sc$read_h5ad("Covid_Lung_Endo_1010.h5ad")
 table(anndata$obs$Cluster)
 
 anndata_use = anndata
@@ -60,7 +60,8 @@ cor(Endo.m$hUSI,colSums(Endo.m@assays$RNA@data))
 ### Capillary Aerocytes
 library(monocle)
 library(clusterProfiler)
-VlnPlot(Endo.m,features = c("APLN","EDNRB", "TBX2" ,"FOXP2"),group.by = 'celltype')
+VlnPlot(Endo.m,features = c("CA4","EDNRB","FIBIN","TBX2","CDKN2B","RPRML","CHST1","APLN"),group.by = 'celltype')
+
 
 subEndo = subset(Endo.m,celltype == 'Capillary Aerocytes')
 subEndo = FindVariableFeatures(subEndo) 
@@ -83,14 +84,25 @@ plot_ordering_genes(cds)
 cds <- reduceDimension(cds, max_components = 2,method = 'DDRTree',norm_method = 'log')
 cds <- orderCells(cds)
 
-plot_cell_trajectory(cds,color_by="State", size=2,show_backbone=TRUE) 
+plot_cell_trajectory(cds,color_by="Pseudotime", size=2,show_backbone=TRUE) 
+
+### marker expression
+subEndo$State = factor(ifelse(cds[,colnames(subEndo)]$State == 1,'Root',
+                                  ifelse(cds[,colnames(subEndo)]$State == 2,'Normal','Senescent')),
+                           levels = c('Root','Normal','Senescent'))
+
+markers = c('VWF','NANOG','CD44','CD9','CDK6','CDKN1A','CDKN2A','CDKN2B')
+# my_genes <- cds[row.names(subset(fData(cds), gene_short_name %in% markers)),]
+# plot_genes_violin(my_genes,ncol=2, min_expr=0.1)
+mat = AverageExpression(subEndo,features = markers,group.by = 'age_state',assays = 'RNA',slot = 'data')$RNA
+pheatmap::pheatmap(mat,scale = 'row',cluster_cols = F)
 
 ### branch degs
-BEAM_res <- BEAM(cds, branch_point = 1, cores = 10)
+BEAM_res <- BEAM(cds, branch_point = 1, cores = 2)
 BEAM_res <- BEAM_res[order(BEAM_res$qval),]
 BEAM_res <- BEAM_res[,c("gene_short_name", "pval", "qval")]
 
-genes = BEAM_res[BEAM_res$qval<1e-10,'gene_short_name']
+genes = BEAM_res[BEAM_res$qval<1e-20,'gene_short_name']
 
 heatmap = plot_genes_branched_heatmap(cds[genes,],
                                       branch_point = 1,
@@ -98,31 +110,14 @@ heatmap = plot_genes_branched_heatmap(cds[genes,],
                                       cores = 1,
                                       use_gene_short_name = T,
                                       show_rownames = F,
-                                      return_heatmap = T)
+                                      return_heatmap = T,
+                                      branch_labels = c('Normal','Senescence'))
 genes_cluster = split(heatmap[["ph"]][["tree_row"]][["labels"]],heatmap[["annotation_row"]][["Cluster"]])
 names(genes_cluster) = paste('Cluster',names(genes_cluster),sep='_')
 
-### enrich branch degs go pathway 
-pathways = read.gmt("/mnt/data1/wangj/GeneSets/KEGG.gmt")
-# pathways = pathways[grep('GOBP',pathways$term),]
-cluster_enrich = enricher(gene = genes_cluster$Cluster_2, 
-                          universe = rownames(cds),
-                          TERM2GENE = pathways,
-                          pvalueCutoff=0.05)
-
-cluster_enrich@result = filter(cluster_enrich@result,qvalue < 0.05)
-
-df_plot = cluster_enrich@result
-df_plot$class = substr(df_plot$ID,1,4)
-df_plot = filter(df_plot,qvalue < 0.05)
-df_plot = df_plot[order(df_plot$Count,decreasing = T),]
-
-df_plot$label = tolower(df_plot$ID) %>% gsub('^go[bp|cc|mf]*_','',.) %>% gsub('^kegg_','',.) %>% gsub("_",' ',.)
-df_plot$label
-
 ####### validate state marker
 marker_set = genes_cluster
-names(marker_set) = c('Senescent','Stem-like')
+names(marker_set) = c('Normal','Senescent')
 lapply(marker_set,length)
 
 ### bulk degs
@@ -179,24 +174,32 @@ for(de in c("up","down")){
 enrich_reList
 
 
-### enrichment of branch start cell group
-Pseudotime = cds$Pseudotime
-names(Pseudotime) <- colnames(cds)
-branches = split(Pseudotime,cds$State)
-State_1_cells = names(sort(branches[[1]],decreasing = F))[1:100]
-State_2_cells = names(sort(branches[[2]],decreasing = T))[1:100]
-State_3_cells = names(sort(branches[[3]],decreasing = T))[1:100]
-
-cell_use = c(State_1_cells,State_2_cells,State_3_cells)
-label = rep(c('Normal','Stem-like','Senescent'),each = 100)
-obj = subEndo[,cell_use]
-obj$State = factor(label)
-Idents(obj) <- 'State'
-State_markers = FindAllMarkers(obj,assay = 'RNA',logfc.threshold = 1,only.pos = T) 
+### enrichment of state marker
+subEndo <- ScaleData(subEndo)
+Idents(subEndo) <- 'age_state'
+State_markers_list <- FindAllMarkers(subEndo,only.pos = T,assay = 'RNA')
 State_markers = filter(State_markers,p_val_adj < 0.05)
 State_markers = State_markers[order(State_markers$cluster,State_markers$avg_log2FC,decreasing = T),]
 State_markers_list = split(State_markers$gene,State_markers$cluster)
 lapply(State_markers_list, length)
+
+### enrich branch degs go pathway 
+pathways = read.gmt("/mnt/data1/wangj/GeneSets/c5.go.v2023.1.Hs.symbols.gmt")
+pathways = pathways[grep('GOBP',pathways$term),]
+genes =  genes_cluster$Cluster_1
+cluster_enrich = enricher(gene = genes, 
+                          universe = rownames(cds),
+                          TERM2GENE = pathways,
+                          pvalueCutoff=0.05)
+cluster_enrich@result = filter(cluster_enrich@result,qvalue < 0.05)
+
+df_plot = cluster_enrich@result
+df_plot$class = substr(df_plot$ID,1,4)
+df_plot = filter(df_plot,qvalue < 0.05)
+df_plot = df_plot[order(df_plot$Count,decreasing = T),]
+df_plot$label = tolower(df_plot$ID) %>% gsub('^go[bp|cc|mf]*_','',.) %>% gsub('^kegg_','',.) %>% gsub("_",' ',.)
+df_plot$label
+
 
 ### load WTA ROI
 library(stringr)
@@ -224,48 +227,6 @@ meta = meta[complete.cases(meta$donor),]
 Bulk <- as.matrix(wta.assay@data[,rownames(meta)])
 results = corto::ssgsea(Bulk, State_markers_list)
 colnames(results) = colnames(Bulk)
-
-### marker expression
-subEndo$age_state = factor(ifelse(cds[,colnames(subEndo)]$State == 1,'Normal',
-                                  ifelse(cds[,colnames(subEndo)]$State == 2,'Stem-like','Senescent')),
-                           levels = c('Normal','Stem-like','Senescent'))
-
-markers = c('NANOG','CD44','CD9','CDK6','CDKN1A','CDKN2A','CDKN2B')
-df_plot = AverageExpression(subEndo,features = markers,group.by = 'age_state',slot = 'data',assays = 'RNA')$RNA %>% 
-          as.matrix()
-df_plot = df_plot[rowSums(df_plot)!=0,]
-pheatmap::pheatmap(df_plot,scale = 'row',cluster_cols = F)
-
-
-### validat in mouse stem Cap data
-setwd('/home/wangjing/wangj/AgingScore/GSE211335_mouseCap')
-files = list.files('.')
-files = files[grep('h5',files)]
-sceList <-lapply(files,function(file){CreateSeuratObject(counts = Read10X_h5(file),
-                                                         project = substr(file,12,17),
-                                                         min.cells = 0,min.features = 0)})
-meta = read.csv('GSE211335_Endothelial_seurat_metadata.csv',row.names = 1)
-rownames(meta) = paste(rownames(meta),'-1',sep = '')
-sce <- merge(x = sceList[[1]],y = sceList[c(2,3)],add.cell.ids = c('PoolA','PoolB','PoolC'))
-sce_endo = sce[,rownames(meta)]
-sce_endo$cluster = factor(paste('Cluster',meta$seurat_clusters,sep = ''))
-Idents(sce_endo) <- 'cluster'
-sce_endo = NormalizeData(sce_endo)
-stem_markers = FindMarkers(sce_endo,ident.1 = 'Cluster7',assay = 'RNA',only.pos = T)
-
-stem_markers = filter(stem_markers,p_val_adj<0.05)
-stem_markers = stem_markers[order(stem_markers$avg_log2FC,decreasing = T),]
-
-library(biomaRt)
-mouse <- useMart('ensembl',dataset = "mmusculus_gene_ensembl")
-human <- useMart('ensembl',dataset = "hsapiens_gene_ensembl")
-m2h.g <- getLDS(attributes = c("mgi_symbol"),filters = "mgi_symbol",
-                values = rownames(stem_markers)[1:50],mart = mouse,
-                attributesL = c("hgnc_symbol"),
-                martL = human,uniqueRows = T)
-
-
-
 
 
 
