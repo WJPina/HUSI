@@ -12,20 +12,18 @@ mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds"
 sc <- import("scanpy")
 ###### preprocess data
 ### raw data
-anndata = sc$read_h5ad("Covid_Lung_Endo_1010.h5ad")
+anndata = sc$read_h5ad("Covid_Lung.h5ad")
 table(anndata$obs$Cluster)
 
-anndata_use = anndata
-Counts <- anndata_use$raw$to_adata()$copy()$T$to_df()
-Meta <- anndata_use$obs
+Counts <- anndata$raw$to_adata()$copy()$T$to_df()
+Meta <- anndata$obs
 
-Endo.m <- CreateSeuratObject(counts=Counts,
-                             meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease','hUSI')],
-                             min.cells = 0,min.features = 0)
-Endo.m <- NormalizeData(Endo.m)
-hist(colSums(Endo.m@assays$RNA@data))
+covid.m <- CreateSeuratObject(counts=Counts,
+                             meta.data=Meta[,c('Cluster','SubCluster','Viral+','donor','disease','hUSI')])
+covid.m <- NormalizeData(covid.m)
+hist(colSums(covid.m@assays$RNA@data))
 
-table(Endo.m$SubCluster)
+table(covid.m$SubCluster)
 
 ### load clinical data
 ClinicMeta = read.csv('/home/wangjing/wangj/AgingScore/GSE163530_COVID-19/GSE162911_GeoMx/ClinicMeta.csv',row.names = 1)
@@ -34,36 +32,76 @@ median(ClinicMeta$Days_to_death)
 ClinicMeta$Progress = ifelse(ClinicMeta$Days_to_death < 15,'severe','moderate')
 table(ClinicMeta$Progress)
 
-Endo.m$Donor = factor(gsub('_[12345]','',Endo.m$donor))
-Endo.m$Age = factor(ClinicMeta[Endo.m$Donor,'Age'],levels = c("30-35","40-45","50-55","55-60","60-65","65-70","75-80","80-85",">89"),ordered = T)
-Endo.m$Progress = factor(ClinicMeta[Endo.m$Donor,'Progress'],levels = c('moderate','severe'),ordered = T)
-Endo.m$IMV = ClinicMeta[Endo.m$Donor,'IMV_days']
+covid.m$Donor = factor(gsub('_[12345]','',covid.m$donor))
+covid.m$Age = factor(ClinicMeta[covid.m$Donor,'Age'],levels = c("30-35","40-45","50-55","55-60","60-65","65-70","75-80","80-85",">89"),ordered = T)
+covid.m$Progress = factor(ClinicMeta[covid.m$Donor,'Progress'],levels = c('moderate','severe'),ordered = T)
+covid.m$DTD = ClinicMeta[covid.m$Donor,'Days_to_death']
 
-celltype = Endo.m$SubCluster
+celltype = covid.m$SubCluster
 celltype = celltype[!grepl("doublet|mix",tolower(celltype))] %>% droplevels()
 table(celltype)
 
-Endo.m <- Endo.m[,names(celltype)]
-Endo.m$celltype <- celltype
+covid.m <- covid.m[,names(celltype)]
+covid.m$celltype <- celltype
 
-Endo.m = ScaleData(Endo.m) %>% FindVariableFeatures() %>% RunPCA()
-ElbowPlot(Endo.m)
+geneMeans = rowMeans(covid.m@assays$RNA@counts) 
+quantile(geneMeans)
+gene_used = names(geneMeans)[geneMeans > quantile(geneMeans,0.75)]
 
-Endo.m = RunUMAP(Endo.m,dims = 1:20)
-DimPlot(Endo.m,group.by = 'celltype')
+AgeScore  = covid.m@assays$RNA@data[gene_used,] %>% {apply( ., 2, function(z) {cor(z, mm_l2$w[ gene_used ], method="sp", use="complete.obs" )})}
+covid.m$hUSI <- AgeScore[colnames(covid.m)]
 
-FeaturePlot(Endo.m,features = c('hUSI','nCount_RNA'))
+cor(covid.m$hUSI,colSums(covid.m@assays$RNA@counts))
+FeaturePlot(covid.m,features = c('hUSI','nCount_RNA'))
 
-cor(Endo.m$hUSI,colSums(Endo.m@assays$RNA@data))
+
+covid.m = ScaleData(covid.m) %>% FindVariableFeatures() %>% RunPCA()
+ElbowPlot(covid.m)
+
+covid.m = RunUMAP(covid.m,dims = 1:20)
+DimPlot(covid.m,group.by = 'Cluster')
+
+### classify states
+set.seed(233)
+library(plyr)
+covid.m@meta.data$cellname = rownames(covid.m@meta.data)
+gaussian = covid.m@meta.data %>% 
+            dlply(.variables = "Cluster", .fun = function(x){ x$hUSI %>% 
+                {log2((1+ .)/(1- .))} %>% Mclust() %>% list(Mclust = .,cellname = x$cellname)})
+State = lapply(gaussian, function(x){x$Mclust$classification}) %>% unlist()
+names(State) = lapply(gaussian, function(x){x$cellname}) %>% unlist()
+
+covid.m$State = factor(State)
+
+table(covid.m$Cluster,covid.m$State)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Capillary Aerocytes
 library(monocle)
 library(clusterProfiler)
-VlnPlot(Endo.m,features = c("CA4","EDNRB","FIBIN","TBX2","CDKN2B","RPRML","CHST1","APLN"),group.by = 'celltype')
+VlnPlot(covid.m,features = c("CA4","EDNRB","FIBIN","TBX2","CDKN2B","RPRML","CHST1","APLN"),group.by = 'celltype')
 
 
-subEndo = subset(Endo.m,celltype == 'Capillary Aerocytes')
+subEndo = subset(covid.m,celltype == 'Capillary Aerocytes')
 subEndo = FindVariableFeatures(subEndo) 
 
 expr_matrix <- Counts[,colnames(subEndo)] %>% as.matrix() %>% as('sparseMatrix')

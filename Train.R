@@ -1,5 +1,4 @@
 library(Seurat)
-setwd("~/wangj/AgingScore/Data/")
 library(dplyr)
 library(tibble)
 library(data.table)
@@ -92,9 +91,9 @@ X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
 # training model
 mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
-mm_l1 = gelnet( t(X_tr), NULL, 0.1, 0 )
+# mm_l1 = gelnet( t(X_tr), NULL, 0.1, 0 )
 saveRDS(mm_l2,file="mm_l2.rds")
-saveRDS(mm_l1,file="mm_l1.rds")
+# saveRDS(mm_l1,file="mm_l1.rds")
 
 ### Leave-one-out cross validation
 auc <- c()

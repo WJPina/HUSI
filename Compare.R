@@ -55,7 +55,7 @@ calc_auc <- function(data=data.frame(),type = '',scorelist=NULL){
         df = data[sampling,]
         if(type=="laf"){
             c("DAS","mSS",'DAS_mSS','hUSI') %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
+            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
         }
         else if (type=='marker'){
             c('hUSI',scorelist[scorelist %in% colnames(data)]) %>% 
@@ -63,7 +63,7 @@ calc_auc <- function(data=data.frame(),type = '',scorelist=NULL){
         }
         else{
             c('hUSI',names(scorelist)) %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
+            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
         }
     })
     return(auc)
@@ -175,41 +175,31 @@ Aarts2017List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
 Results$Aarts2017 = Aarts2017List
 Results$Aarts2017$hUSI = hUSI
 
-### Enge2017 GSE81547 human pancreas organisms age
-Enge2017List = list.files("Enge2017", pattern = "*.gz",full.names = T)
-meta = read.csv("Enge2017/metadata.txt",row.names = 1)
-table(meta$DONOR_AGE)
-meta = filter(meta, DONOR_AGE %in% c(1,54))
+### Georgilis2018 GSE101766 IMR90 OIS
+Georgilis2018 = CreateSeuratObject(
+    fread("Georgilis2018/valid_TPM_dataset.tsv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
+    meta.data = fread("Georgilis2018/filereport_read_run_PRJNA395386_tsv.txt", header = T) %>% column_to_rownames("sample_title"))
+Georgilis2018 = subset(Georgilis2018,read_count>1e6)
+Georgilis2018 = NormalizeData(Georgilis2018)
+Georgilis2018$Condition = case_when(grepl("Allstars|Water|Hs|Extras[5-8]", colnames(Georgilis2018)) ~ "Senescence", 
+                                    grepl("Noninduced|Extras[1-4]", colnames(Georgilis2018)) ~ "Growing", TRUE ~ "other")
+Georgilis2018 = subset(Georgilis2018,Condition!='other')
+Georgilis2018$Condition = factor(Georgilis2018$Condition)
 
-samples = lapply(strsplit(basename(Enge2017List),"_"),'[',1) %>% unlist 
-files = Enge2017List[samples %in% meta$Sample.Name]
+hUSI = GetAssayData(Georgilis2018) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 
-scdat = data.frame(gene = '')
-for(file in files){
-    scol = fread(file) 
-    colnames(scol) = c('gene',strsplit(basename(file),"_")[[1]][1])
-    scdat = right_join(scdat,scol,by = 'gene')           
-}
-scdat = column_to_rownames(scdat,"gene") %>% data.matrix
-dim(scdat)
-Enge2017 = CreateSeuratObject(scdat) %>% 
-                # NormalizeData(normalization.method = 'RC',scale.factor = 1e6)
-                NormalizeData()
-Enge2017$Condition = ifelse(meta$DONOR_AGE %in% c(54), 'Senescence', 'Growing')
-hUSI = GetAssayData(Enge2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+dat_laf = calc_scores(lafSet,Georgilis2018,'laf')
+dat_marker = calc_scores(SenMarkers,Georgilis2018,'marker')
+dat_ssgsea = calc_scores(EnrichSet,Georgilis2018,'ssgsea')
 
-dat_laf = calc_scores(lafSet,Enge2017,'laf')
-dat_marker = calc_scores(SenMarkers,Enge2017,'marker')
-dat_ssgsea = calc_scores(EnrichSet,Enge2017,'ssgsea')
+Georgilis2018List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
 
-Enge2017List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
+Results$Georgilis2018 = Georgilis2018List
+Results$Georgilis2018$hUSI = hUSI
 
-Results$Enge2017 = Enge2017List
-Results$Enge2017$hUSI = hUSI
-
-
+### AUC
 AUClist = list()
-for(dataset in names(Results)){
+for(dataset in c("Teo2019","Tang2019","Aarts2017","Georgilis2018")){
     for(type in c('laf','marker','ssgsea')){
         scorelist = getGenes(type)
         if(dataset == 'Teo2019'){
@@ -227,7 +217,7 @@ for(dataset in names(Results)){
 
             auc <- calc_auc(dat,type,scorelist)
         }
-        else if (dataset %in% c('Aarts2017','Enge2017')) {
+        else if (dataset %in% c('Aarts2017','Georgilis2018')) {
             dat = Results[[dataset]][[type]] %>% 
                     mutate(condition=Condition) %>% 
                     mutate(hUSI=Results[[dataset]][['hUSI']])

@@ -7,11 +7,11 @@ library(RColorBrewer)
 
 mypalette <- read.csv("~/scripts/colors.csv",header = T)
 cols = mypalette$palette7
-names(cols) = levels(Endo.m$celltype)
+names(cols) = levels(covid.m$celltype)
 
 ### Endo umap
 png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//Endo.png",width = 1800,height = 1500,res = 300)
-DimPlot(Endo.m, reduction = "umap",label = T,pt.size = 0.2,repel = F,label.box = T,group.by = 'celltype')+
+DimPlot(covid.m, reduction = "umap",label = T,pt.size = 0.2,repel = F,label.box = T,group.by = 'celltype')+
   scale_color_manual(values = cols)+
   scale_fill_manual(values = cols)+
   theme(axis.text=element_blank(),
@@ -26,7 +26,7 @@ dev.off()
 
 ### Progress group
 png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//HUSI_progress.png',width = 1500,height = 1500,res = 300)
-ggviolin(Endo.m@meta.data,
+ggviolin(covid.m@meta.data,
          x="Progress", y="hUSI", fill = "Progress", 
          palette = c('#457b9d',"#bc4749"),
          add = "boxplot", 
@@ -37,7 +37,7 @@ ggviolin(Endo.m@meta.data,
   stat_compare_means(comparisons = list(c('severe','moderate')),
                      method = 't.test',
                      method.args = list(alternative = "greater"))+
-  facet_wrap(~celltype)
+  facet_wrap(~Cluster)
 dev.off()
 
 ### trajectory plot

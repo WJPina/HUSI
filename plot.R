@@ -95,89 +95,8 @@ read.table("/home/wangjing/wangj/AgingScore/Data/Bulk_BatchEffect/batch_IMR90_4O
   theme_classic() %+replace% theme(text = element_text(size = 16),axis.text.x = element_text(size=16))
 dev.off()
 
-### GSEA
-library(enrichplot)
-library(gggsea)
-
-# load('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/Model_GSEA.RData')
-
-cols = c(rev(colorRampPalette(c("transparent", 'red'))(10))[1:7],colorRampPalette(c("transparent", 'blue'))(10)[4:10])
-names(cols) = df$ID
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1500,height = 1500,res = 300)
-source('~/wangj/codebase/HUSI/mygseaplot2.R')
-mygseaplot2(fgsea,
-          geneSetID = df$ID[8:14],
-          # geneSetID = df$ID[1:7],
-          title = "Negatively enriched hallmarker gene sets",
-          # title = "Positively enriched hallmark gene sets",
-          color= cols[8:14],
-          # color = cols[1:7],
-          base_size = 12,
-          rel_heights = c(1, 0.2, 0.4),
-          subplots = 1:3,
-          pvalue_table = FALSE,
-          ES_geom = "line"
-)
-dev.off()
-
-
-### valid data in RNA-seq
-load("/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/ModelValidData.RData")
-
-p1.1 <- data.frame(hUSI = s_IS) %>% 
-  mutate(condition= gsub("_.*", "", names(s_IS))) %>%
-  .[which(.$condition %in% c("Immortal","Adria","H2O2","5-aza")),] %>%
-  mutate(condition = factor(condition,levels = c("Immortal","Adria","H2O2","5-aza"),ordered = T)) %>% 
-  ggplot(aes(condition, hUSI)) + 
-  geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = condition),width = 0.1)+
-  geom_signif(comparisons = list(c("Immortal","Adria"),c("Immortal","H2O2"),c("Immortal","5-aza")),
-              test = "t.test",
-              step_increase=0.1,
-              map_signif_level = T,
-              test.args = c("less")) + 
-  mytheme()+
-  ylab('hUSI')+
-  ggtitle("DIS in MDAH041")
-
-p1.2<- data.frame(hUSI = s_RS[grepl('OISD[0|2|4|6|10]',names(s_RS))]) %>% 
-  mutate(condition= gsub("_.*", "", rownames(.))) %>%
-  mutate(condition = factor(condition,levels = c("OISD0","OISD2","OISD4","OISD6",'OISD10'),ordered = T)) %>% 
-  ggplot(aes(condition, hUSI)) + 
-  geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = condition),width = 0.1)+
-  geom_signif(comparisons = list(c("OISD0","OISD2"),c("OISD2","OISD4"),c("OISD4","OISD6")),
-              test = "t.test",
-              step_increase=0.1,
-              map_signif_level = T,
-              test.args = c("less")) + 
-  mytheme()+
-  ylab('hUSI')+
-  ggtitle("OIS in WI-38")
-
-p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>% 
-  mutate(condition= gsub('_.*','',gsub("RS_", "", rownames(.)))) %>%
-  mutate(condition = factor(condition,levels = c("Proliferative","Senescent"),ordered = T)) %>% 
-  ggplot(aes(condition, hUSI)) + 
-  geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = condition),width = 0.1)+
-  geom_signif(comparisons = list(c("Proliferative","Senescent")),
-              test = "t.test",
-              step_increase=0.1,
-              map_signif_level = T,
-              test.args = c("less")) + 
-  mytheme()+
-  ylab('hUSI')+
-  ggtitle("RS in WI-38")
-
-fig <- ggarrange(p1.1,p1.2,p1.3,ncol = 3,nrow = 1,common.legend = F)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.png',width = 4500,height = 1200,res = 300)
-fig
-dev.off()
-
 ### valid data in micro-array
 names(ArrayList)
-
 p2.1 <- ArrayList [["GSE19864"]][[1]] %>% 
   pData %>% 
   dplyr::select(title, geo_accession) %>% 
@@ -254,7 +173,7 @@ p2.4 <- ArrayList [["GSE11954"]][[1]] %>%
   geom_signif(comparisons = list(c("Growing","Senescent")),test = "t.test", map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
-  ggtitle('DIS in HSC')
+  ggtitle('CIS in HSC')
 
 p2.5 <- ArrayList [["GSE100014"]][[1]] %>% 
   pData %>% 
@@ -273,7 +192,7 @@ p2.5 <- ArrayList [["GSE100014"]][[1]] %>%
   geom_signif(comparisons = list(c("Proliferating","Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
-  ggtitle('DIS in HBEC')
+  ggtitle('CIS in HBEC')
 
 p2.6 <- ArrayList [["GSE77239"]][[1]] %>% 
   pData %>% 
@@ -301,6 +220,83 @@ png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.png',width = 4
 fig
 dev.off()
 
+### valid data in RNA-seq
+load("/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/ModelValidData.RData")
+
+p1.1 <- data.frame(hUSI = s_IS) %>% 
+  mutate(condition= gsub("_.*", "", names(s_IS))) %>%
+  .[which(.$condition %in% c("Immortal","Adria","H2O2","5-aza")),] %>%
+  mutate(condition = factor(condition,levels = c("Immortal","Adria","H2O2","5-aza"),ordered = T)) %>% 
+  ggplot(aes(condition, hUSI)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = condition),width = 0.1)+
+  geom_signif(comparisons = list(c("Immortal","Adria"),c("Immortal","H2O2"),c("Immortal","5-aza")),
+              test = "t.test",
+              step_increase=0.1,
+              map_signif_level = T,
+              test.args = c("less")) + 
+  mytheme()+
+  ylab('hUSI')+
+  ggtitle("CIS in MDAH041")
+
+p1.2<- data.frame(hUSI = s_RS[grepl('OISD[0|2|4|6|10]',names(s_RS))]) %>% 
+  mutate(condition= gsub("_.*", "", rownames(.))) %>%
+  mutate(condition = factor(condition,levels = c("OISD0","OISD2","OISD4","OISD6",'OISD10'),ordered = T)) %>% 
+  ggplot(aes(condition, hUSI)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = condition),width = 0.1)+
+  geom_signif(comparisons = list(c("OISD0","OISD2"),c("OISD2","OISD4"),c("OISD4","OISD6")),
+              test = "t.test",
+              step_increase=0.1,
+              map_signif_level = T,
+              test.args = c("less")) + 
+  mytheme()+
+  ylab('hUSI')+
+  ggtitle("OIS in WI-38")
+
+p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>% 
+  mutate(condition= gsub('_.*','',gsub("RS_", "", rownames(.)))) %>%
+  mutate(condition = factor(condition,levels = c("Proliferative","Senescent"),ordered = T)) %>% 
+  ggplot(aes(condition, hUSI)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(aes(color = condition),width = 0.1)+
+  geom_signif(comparisons = list(c("Proliferative","Senescent")),
+              test = "t.test",
+              step_increase=0.1,
+              map_signif_level = T,
+              test.args = c("less")) + 
+  mytheme()+
+  ylab('hUSI')+
+  ggtitle("RS in WI-38")
+
+fig <- ggarrange(p1.1,p1.2,p1.3,ncol = 3,nrow = 1,common.legend = F)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.png',width = 4500,height = 1200,res = 300)
+fig
+dev.off()
+
+### GSEA
+library(enrichplot)
+library(gggsea)
+
+# load('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/Model_GSEA.RData')
+cols = c(rev(colorRampPalette(c("transparent", 'red'))(10))[1:7],colorRampPalette(c("transparent", 'blue'))(10)[4:10])
+names(cols) = df$ID
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1500,height = 1500,res = 300)
+source('~/wangj/codebase/HUSI/mygseaplot2.R')
+mygseaplot2(fgsea,
+          geneSetID = df$ID[8:14],
+          # geneSetID = df$ID[1:7],
+          title = "Negatively enriched hallmarker gene sets",
+          # title = "Positively enriched hallmark gene sets",
+          color= cols[8:14],
+          # color = cols[1:7],
+          base_size = 12,
+          rel_heights = c(1, 0.2, 0.4),
+          subplots = 1:3,
+          pvalue_table = FALSE,
+          ES_geom = "line"
+)
+dev.off()
 
 ### validate in GTEx
 png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GTEx_TCSER.png',width = 1200,height = 900,res = 300)
@@ -470,7 +466,6 @@ dev.off()
 
 
 ###### comparision auc
-load('compare_Normalized.RData')
 ### laf
 df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['laf']]))}))
 
@@ -499,7 +494,7 @@ dev.off()
 
 df_plot_list = lapply(AUClist, function(x) {lapply(x, function(y) {rank(-rowMeans(y))})}) 
 
-df_plot = lapply(df_plot_list, function(x) {x[['ssgsea']]})
+df_plot = lapply(df_plot_list, function(x) {x[['marker']]})
 df_plot = do.call(cbind, lapply(lapply(df_plot, unlist), `length<-`, max(lengths(df_plot)))) %>% data.frame
 df_plot[is.na(df_plot)] = 0
 df_plot = reshape2::melt(as.matrix(df_plot),value.name = "AUC_rank")
@@ -508,13 +503,13 @@ aov.mean<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=mean)
 aov.sd<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=sd)
 aov<-data.frame(aov.mean,sd=aov.sd$x)
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_ssgsea_rank.png',width = 1500,height = 1500,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_marker_rank.png',width = 1500,height = 1500,res = 300)
 ggplot(data=aov,aes(x=reorder(Group.1,x), y=x,fill = reorder(Group.1,x)))+
     geom_bar(stat="identity",position="dodge")+
     geom_errorbar(aes(ymax=x+sd,ymin=ifelse(x-sd <0,0,x-sd)),position=position_dodge(0.9),width=0.15)+
     theme_classic()+
-    # xlab('Marker')+
-    xlab('Gene Set')+
+    xlab('Marker')+
+    # xlab('Gene Set')+
     ylab('AUC rank in 4 single-cell datasets')+
     scale_fill_manual(values = colorRampPalette(c("#F44336","#0D47A1"))(nrow(aov)))+
     theme(legend.position = 'none',axis.text.x = element_text(angle = 45,vjust = 1, hjust=1),text=element_text(size=16))

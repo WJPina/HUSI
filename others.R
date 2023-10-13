@@ -1,38 +1,48 @@
-### Georgilis2018
-Georgilis2018 = CreateSeuratObject(
-    fread("Georgilis2018/valid_TPM_dataset.tsv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
-    meta.data = fread("Georgilis2018/filereport_read_run_PRJNA395386_tsv.txt", header = T) %>% column_to_rownames("sample_title")
-)
-Georgilis2018 = subset(Georgilis2018,read_count>1e6)
-Georgilis2018 = NormalizeData(Georgilis2018, scale.factor = 1e4)
-hSI = GetAssayData(Georgilis2018) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+library(msigdbr)
+set.seed(233)
+msigdb_all = msigdbr()
+pathways_sene = msigdb_all %>% 
+                  filter( (gs_cat %in% "H" ) ) %>% 
+                  mutate( gs_name=gsub("HALLMARK_", "", gs_name) ) %>% 
+                  plyr::dlply(.variables = "gs_name", .fun = function(x) x$gene_symbol )
+res_fgsea_sene = fgseaMultilevel(pathways = pathways_sene, stats = sort(mm_l2$w,decreasing=T), nPermSimple = 10000)
 
-dat = calc_scores(ScoreList,Georgilis2018)
-dat_Geo = dat %>% 
-        rownames_to_column('sample') %>%
-        mutate(condition=case_when(
-        grepl("Allstars|Water|Hs|Extras[5-8]", sample) ~ "Senescence", 
-        grepl("Noninduced|Extras[1-4]", sample) ~ "Growing", 
-        TRUE ~ "other")) %>% 
-        mutate(hSI=hSI) %>%
-        filter( !condition %in% "other" ) %>% 
-        mutate( condition=as.factor(condition))
-dat_Geo = dat_Geo[,complete.cases(t(dat_Geo))]
-auc_Geo <- calc_auc(dat_Geo,'marker',ScoreList)
+df = filter(res_fgsea_sene,pval < 0.05) %>% 
+  .[order(.$NES,decreasing=T),]
+df[,c('pathway','NES')]
 
-auc %>%
-    melt(value.name = "Accuracy") %>%
-    mutate( feature=forcats::fct_reorder(Var1, Accuracy, mean, .desc = T) ) %>%
-    Rmisc::summarySE(measurevar = "Accuracy", groupvars = "feature") %>%
-    {
-        ggplot(data = ., aes(feature, Accuracy, fill=feature)) +
-        geom_bar(stat = "identity", position = position_dodge(), width = 0.4) +
-        geom_errorbar(aes(ymin = Accuracy - sd, ymax = {Accuracy + sd} %>% ifelse(. >1, 1, .)),
-        width = 0.2, position = position_dodge(0.9)) +
-        labs(x=NULL, y="AUC") +
-        theme(legend.position = "none")+
-        theme_classic()
-    }
+
+# ### Enge2017 GSE81547 human pancreas organisms age
+# Enge2017List = list.files("Enge2017", pattern = "*.gz",full.names = T)
+# meta = read.csv("Enge2017/metadata.txt",row.names = 1)
+# table(meta$DONOR_AGE)
+# meta = filter(meta, DONOR_AGE %in% c(1,54))
+
+# samples = lapply(strsplit(basename(Enge2017List),"_"),'[',1) %>% unlist 
+# files = Enge2017List[samples %in% meta$Sample.Name]
+
+# scdat = data.frame(gene = '')
+# for(file in files){
+#     scol = fread(file) 
+#     colnames(scol) = c('gene',strsplit(basename(file),"_")[[1]][1])
+#     scdat = right_join(scdat,scol,by = 'gene')           
+# }
+# scdat = column_to_rownames(scdat,"gene") %>% data.matrix
+# dim(scdat)
+# Enge2017 = CreateSeuratObject(scdat) %>% 
+#                 # NormalizeData(normalization.method = 'RC',scale.factor = 1e6)
+#                 NormalizeData()
+# Enge2017$Condition = ifelse(meta$DONOR_AGE %in% c(54), 'Senescence', 'Growing')
+# hUSI = GetAssayData(Enge2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+
+# dat_laf = calc_scores(lafSet,Enge2017,'laf')
+# dat_marker = calc_scores(SenMarkers,Enge2017,'marker')
+# dat_ssgsea = calc_scores(EnrichSet,Enge2017,'ssgsea')
+
+# Enge2017List = list(laf=dat_laf,marker=dat_marker,ssgsea=dat_ssgsea)
+
+# Results$Enge2017 = Enge2017List
+# Results$Enge2017$hUSI = hUSI
 
 ### melanoma heatmap
 mat <- exp[unlist(gene_set),rownames(meta)]
