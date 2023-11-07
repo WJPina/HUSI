@@ -23,9 +23,9 @@ mygseaplot2 <- function (x, geneSetID, title = "", color = "green", base_size = 
     es_layer <- geom_point(aes_(y = ~runningScore, color = ~Description), 
                            size = 1, data = subset(gsdata, position == 1))
   }
-  p.res <- p + es_layer + theme(legend.position = c(0.32, 0.4), 
+  p.res <- p + es_layer + theme(legend.position = c(0.3, 0.4),
                                 legend.title = element_blank(), legend.background = element_rect(fill = alpha('white', 0.8)),
-                                title = element_text(size = 14))
+                                title = element_text(size = 16),legend.text = element_text(size = 16))
   p.res <- p.res + ylab("Running Enrichment Score") + theme(axis.text.x = element_blank(), 
                                                             axis.ticks.x = element_blank(), axis.line.x = element_blank(), 
                                                             plot.margin = margin(t = 0.2, r = 0.2, b = 0, l = 0.2, 

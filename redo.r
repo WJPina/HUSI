@@ -185,6 +185,8 @@ pathways_sene = msigdb_all %>%
                   mutate( gs_name=gsub("HALLMARK_", "", gs_name) ) %>% 
                   plyr::dlply(.variables = "gs_name", .fun = function(x) x$gene_symbol )
 res_fgsea_sene = fgseaMultilevel(pathways = pathways_sene, stats = sort(mm_l2$w,decreasing=T), nPermSimple = 10000)
+res_fgsea_sene = filter(res_fgsea_sene, padj < 0.05)
+res_fgsea_sene[order(res_fgsea_sene$NES,decreasing=T),c('pathway','NES')]
 
 hallmarker = read.gmt("/mnt/data3/wangj2/GeneSets/h.all.v2023.1.Hs.symbols.gmt")
 fgsea <- GSEA(sort(mm_l2$w,decreasing=T), 

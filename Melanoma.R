@@ -9,10 +9,10 @@ library(reticulate)
 library(Seurat)
 library(tibble)
 library(data.table)
+library(destiny)
 
 setwd('/home/wangjing/wangj/AgingScore/Data/scRNA_melanome')
 
-use_python("/home/tools/anaconda3/envs/sc/bin/python3", required = T)
 mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
 ############################### application on melanoma ########################
 ### load melanoma data
@@ -65,10 +65,10 @@ DimPlot(EpiExp.m, reduction = 'pca', group.by = 'age_class',label=1)
 corAging <- function(x,agingScore){cor <- cor(x,agingScore);cor}
 cor.genes <- apply(GetAssayData(EpiExp.m),1,corAging,agingScore=EpiExp.m$hUSI)
 cor.genes[is.na(cor.genes)] <- 0
-features <- rownames(EpiExp.m)[order(abs(cor.genes),decreasing=TRUE)[1:1500]]
+features <- names(cor.genes)[order(abs(cor.genes),decreasing=TRUE)][1:1500]
 features 
 ### Running the ICAnet
-source('/home/wangjing/wangj/AgingScore/AgingScorePro/Data1_Scripts/getPPI_String.R')
+source('~/wangj/codebase/HUSI/getPPI_String.R')
 EpiExp.matrix <- as.matrix(GetAssayData(EpiExp.m))[features,]
 EpiExp.m[['AgingExp']] <- CreateAssayObject(EpiExp.matrix)
 DefaultAssay(EpiExp.m) <- "AgingExp"
@@ -84,8 +84,7 @@ EpiExp.m <- RunICAnet(EpiExp.m,Ica.epi$ica.pooling,PPI.net = PPI,scale=FALSE,Mod
 EpiExp.m$State = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transitional","Senescent")),levels = c("Cycling","Transitional","Senescent"))
 
 ### diffusion map
-library(destiny)
-exp = EpiExp.m@assays$IcaNet@data %>% data.frame()
+exp = EpiExp.m@assays$IcaNet@data %>% as.matrix()
 pd <- new('AnnotatedDataFrame', data = as.data.frame(EpiExp.m@meta.data))
 fData <- data.frame(gene_short_name = row.names(exp), row.names = row.names(exp))
 fd <- new('AnnotatedDataFrame', data = fData)
@@ -98,16 +97,6 @@ plot(eigenvalues(dm), ylim = 0:1, pch = 20,xlab = 'Diffusion component (DC)', yl
 dpt <- DPT(dm)
 dev.new()
 plot(dpt)
-
-
-# ### Using PHATE to predict the Transitional process of tumor aging
-# Epi.data <- t((GetAssayData(EpiExp.m)))
-# Epi.data <- as.data.frame(Epi.data)
-# Epi.phate <- phate(Epi.data)
-# branch <- EpiExp.m$age_class
-# 
-# EpiExp.m[['phate']] <- CreateDimReducObject(Epi.phate$embedding,key="phate_")
-# DimPlot(EpiExp.m, reduction = 'phate', group.by = 'State',label=F,pt.size=2)
 
 
 save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
@@ -132,10 +121,10 @@ exp = exp[rownames(exp)!="character(0)",]
 head(exp)
 
 meta <- ArrayList [["GSE83922"]][[1]] %>% 
-  pData %>% 
-  mutate(condition= `cell phenotype:ch1`) %>% 
-  .[which(.$condition %in% c("young","senescent")),] %>% 
-  mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
+        pData %>% 
+        mutate(condition= `cell phenotype:ch1`) %>% 
+        .[which(.$condition %in% c("young","senescent")),] %>% 
+        mutate(condition = factor(condition,levels = c("young","senescent"),ordered = T)) 
 meta[,'cell phenotype:ch1']
 
 geneID <- intersect(rownames(exp),rownames(EpiExp.m@assays$RNA))
@@ -237,6 +226,7 @@ colMeans(Frac)
 
 SKCM_CIBER = read.csv('tcga_melanoma_CIBERSORT.csv',row.names = 1)
 head(SKCM_CIBER)
+
 ### calculate the correlation between each single cell state and each immune cell type
 corList = list()
 for(i in 1:ncol(Frac)){

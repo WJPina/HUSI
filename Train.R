@@ -79,21 +79,19 @@ meta_GB_2018$study_name <- rownames(meta_GB_2018)
 meta_GB_2018
 # aggregate all
 metadata <- rbind(metadata_P,meta_GB_2018)
-metadata$study_name <- rownames(metadata)
 metadata
 save(X,metadata,file = 'ModelTrainData.RData')
 ############################# Train model ######################################
 load("ModelTrainData.RData")
+library(gelnet)
 ### mean center and split to train and background dataset
 X_centre = X - (apply(X, 1, mean))
 idx_senescent = colnames(X_centre) %in% filter(metadata, condition %in% "senescent")$sample_title
 X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
-# training model
+### training model
 mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
-# mm_l1 = gelnet( t(X_tr), NULL, 0.1, 0 )
-saveRDS(mm_l2,file="mm_l2.rds")
-# saveRDS(mm_l1,file="mm_l1.rds")
+saveRDS(mm_l2,file="mm_l2_new.rds")
 
 ### Leave-one-out cross validation
 auc <- c()
@@ -109,6 +107,15 @@ for(i in 1:ncol(X_tr)){
   cat( "Current AUC: ", auc[i], "\n" )
   cat( "Average AUC: ", mean(auc), "\n" )
 }
+
+
+
+
+
+
+
+
+
 
 
 

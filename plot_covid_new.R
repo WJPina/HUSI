@@ -4,28 +4,51 @@ library(circlize)
 library(tibble)
 library(ggpubr)
 library(RColorBrewer)
+library(ggrepel)
 
 mypalette <- read.csv("~/scripts/colors.csv",header = T)
 cols = mypalette$palette7
-names(cols) = levels(covid.m$celltype)
+names(cols) = levels(covid.m$SubCluster)
 
 ### Endo umap
-png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//Endo.png",width = 1800,height = 1500,res = 300)
-DimPlot(covid.m, reduction = "umap",label = T,pt.size = 0.2,repel = F,label.box = T,group.by = 'celltype')+
+png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/Endo.png",width = 1800,height = 1500,res = 300)
+DimPlot(covid.m, reduction = "umap",label = T,pt.size = 0.2,repel = F,label.box = T,group.by = 'SubCluster')+
   scale_color_manual(values = cols)+
   scale_fill_manual(values = cols)+
   theme(axis.text=element_blank(),
         axis.ticks=element_blank(),
         axis.line = element_blank(),
         text = element_text(size = 20),
-        legend.position = "none",
-        panel.border = element_rect(fill=NA,color="#afadad"))+
+        legend.position = "none")+
   ggtitle('Endothelial cell types')
 dev.off()
 
+### patient data 
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/donor.png',width = 1800,height = 1500,res = 400)
+covid.m@meta.data[,c('Donor','DTD')] %>%
+  distinct() %>%
+  mutate(counts = as.numeric(table(covid.m$Donor))) %>%
+  mutate(Progress = ifelse(DTD<15,'severe','moderate')) %>%
+  ggplot()+
+  geom_point(aes(x = reorder(Donor,-DTD,),y = DTD,size = counts,color=Progress))+
+  theme_bw()+
+  theme(text = element_text(size = 16),axis.text.x = element_text(angle = -90,vjust = 0.5,hjust = 0))+
+  scale_color_manual(values = c('#457b9d',"#bc4749"))+
+  xlab('Days to Death')
+dev.off()
 
 ### Progress group
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//HUSI_progress.png',width = 1500,height = 1500,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/progress.png',width = 1800,height = 1500,res = 300)
+ggplot(covid.m@meta.data)+
+  geom_bar(aes(x=SubCluster, fill = Progress),position = 'fill')+
+    theme_bw()+
+    theme(legend.position = 'top',text = element_text(size = 16),axis.text.x = element_text(angle = 30,hjust = 1,vjust = 1))+
+    scale_fill_manual(values = c('#457b9d',"#bc4749"))+
+  ylab('Percent')
+dev.off()
+
+### Progress hUSI
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010//HUSI_progress.png',width = 1600,height = 1500,res = 300)
 ggviolin(covid.m@meta.data,
          x="Progress", y="hUSI", fill = "Progress", 
          palette = c('#457b9d',"#bc4749"),
@@ -37,177 +60,100 @@ ggviolin(covid.m@meta.data,
   stat_compare_means(comparisons = list(c('severe','moderate')),
                      method = 't.test',
                      method.args = list(alternative = "greater"))+
-  facet_wrap(~Cluster)
+  facet_wrap(~SubCluster)
 dev.off()
 
-### trajectory plot
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_fate.png',width =800,height = 600,res = 300)
-plot_cell_trajectory(cds,color_by="State", cell_size=0.5,show_backbone=TRUE) + 
-  scale_color_manual(values = c("#2a9d8f","#e9c46a",'#264653'))+
-  theme(legend.position = 'none')
-# plot_cell_trajectory(cds,color_by="hUSI", cell_size=0.5,show_backbone=TRUE)+
-#   scale_colour_gradientn(colors = colorRampPalette(c( 'blue',"white",'red'))(62))
-dev.off()
-
-
-### branch gene heatmap
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_fate_genes.png',width = 1300,height = 1500,res = 300)
-plot_genes_branched_heatmap(cds[genes,],
-                            branch_point = 1,
-                            num_clusters = 2,
-                            cores = 1,
-                            use_gene_short_name = T,
-                            show_rownames = F,
-                            hmcols = colorRampPalette(rev(brewer.pal(9, "Spectral")))(62),
-                            branch_colors = c("#2a9d8f","#e9c46a",'#264653'),
-                            branch_labels = c('Anti-senescence','Senescence'))
-dev.off()
-
-bar = c("#2a9d8f","#e9c46a",'#264653')
-names(bar) = c('Root','Cell fate 1','Cell fate 2')
-
-### middle group state percentage
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_percent.png',width = 800,height = 1000,res = 300)
-cds@phenoData@data %>% 
-  mutate(Fate = ifelse(State == '1','Root',ifelse(State == '2','Cell fate 1','Cell fate 2'))) %>%
-  ggplot()+
-  geom_bar(aes(x = Progress,fill = Fate),stat = 'count',position = 'fill')+
+### hUSI hist
+png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/hist.png",width = 1000,height = 1200,res = 300)
+ggplot(subEndo@meta.data)+
+  geom_histogram(aes(x=hUSI,y = ..density..),bins = 50,fill = 'white',color = '#adb5bd',linewidth = 0.4)+
+  stat_function(fun = function(x) dnorm(x, mean = mean(subEndo$hUSI), 
+                                           sd = sd(subEndo$hUSI)),color ='#d62828', linewidth = 1) +
   theme_classic()+
-  theme(axis.title = element_text(face = 'bold'),
-        text = element_text(size = 16),
-        legend.position = 'none')+
-  # theme(text = element_text(size = 16),
-  #       axis.title = element_blank(),
-  #       legend.position = c(0.15,1.25),legend.direction = 'horizontal',
-  #       plot.margin=unit(c(2,1,1,1),'lines'))+
-  scale_fill_manual(values = bar)
+  theme(text = element_text(size = 14),legend.position = c(0.25,0.7),plot.margin = margin(10,10,10,10))+
+  ylab('Count')
 dev.off()
 
-### hUSI fate
-# cds$Fate = ifelse(cds$State == '1','Root',ifelse(cds$State == '2','Cell fate 1','Cell fate 2'))
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/HUSI_fate.png',width = 1000,height = 1200,res = 300)
-ggviolin(subEndo@meta.data,
-         x="State", y="hUSI", fill = "State", 
-         palette =  c("#2a9d8f",'#264653',"#e9c46a"),
-         add = "boxplot", 
-         add.params = list(fill="white"),
-)+
-  theme(axis.title = element_text(face = 'bold'),
-        legend.position = 'none')+
-  stat_compare_means(comparisons = list(c('Normal','Root'),c('Senescent','Noraml'),c('Senescent','Root')),
-                     method = 't.test',
-                     method.args = list(alternative = "greater"))
+### cor gene volcano
+res <- data.frame(expression = rowMeans(subEndo@assays$RNA@data[names(cor.genes),]),correlation = cor.genes,row.names = names(cor.genes))
+res$threshold = ifelse(rownames(res) %in% features, ifelse(res$correlation > 0,"Positive","Negative"),"Background")
+label_data <- subset(res, abs(res$correlation) > 0.1 & res$expression  > 1)
+png("/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/corgenes.png",width = 1000,height = 1200,res = 300)
+ggplot(data = res, aes(y=expression,x=correlation,color=threshold)) +
+  geom_point(alpha=0.5, size=2)+
+  geom_text_repel(data = label_data,label = rownames(label_data),color = 'black',max.overlaps = 10,size = 3,show.legend = F)+
+  scale_color_manual(values = c("Positive" = "#FF745A","Negative"="#007E99","Background" = "#ABABAB"))+
+  ylab('Mean normalized expression')+
+  xlab('Pearson cofficient ')+
+  theme_classic()+
+  theme(text = element_text(size = 16),legend.position = 'none')
 dev.off()
 
-
-### pathway network
-library(enrichplot)
-cols = mypalette$palette3[1:length(ids)]
-# id_1 = df_plot$ID
-# id_2 = df_plot$ID
-# ids = unique(c(id_1,id_2))
-names(cols) = ids
-cols
-
-foldChange = BEAM_res[genes,]$qval
-names(foldChange) = genes
-p = cnetplot(cluster_enrich,
-         circular=F,
-         colorEdge = F,
-         showCategory = 20,
-         cex_gene = 0.8,
-         cex_category = 0.8,
-         foldChange = -log10(foldChange),
-         cex_label_gene = 0.6,
-         node_label = 'gene') + 
-  theme(legend.position = 'none')
-
-p[["layers"]][[2]][["mapping"]][["colour_new"]][[2]][[2]] <- cols[cluster_enrich@result$ID]
-p[["data"]][["color"]][which(!(p[["data"]][["name"]] %in% names(foldChange)) == T)] <- cols[cluster_enrich@result$ID]
-
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/Ant-senescence.png',width = 1000,height = 1000,res = 300)
-print(p)
+### diffusion map
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/DPT_diffusion.png',width = 1500,height = 1200,res = 300)
+FeaturePlot(subEndo,features = 'DPT',reduction = 'diffusion',order = T,pt.size = 1.5) + 
+  xlim(-0.04,0.05) + ylim(-0.07,0.05)+
+  scale_color_gradient(low = 'white',high = 'red')+
+  ggtitle('Artery EC')+
+  theme(legend.position = 'bottom')
 dev.off()
 
-### plot legend
-# labels_1 = df_plot$label
-# labels_2 = df_plot$label
-# labels = unique(c(labels_1,labels_2))
-# names(cols) = labels
-
-comm = c("focal adhesion","ecm-receptor interaction",
-         "human papillomavirus infection","vascular smooth muscle contraction")
-sene = c("regulation of actin cytoskeleton","glycosaminoglycan binding proteins",
-         "arrhythmogenic right ventricular cardiomyopathy","hypertrophic cardiomyopathy",
-         "dilated cardiomyopathy","platelet activation","apelin signaling pathway")
-anti = c("pi3k-akt signaling pathway","cd molecules",
-         "rap1 signaling pathway","cell adhesion molecules",
-         "amoebiasis","tgf-beta signaling pathway","hippo signaling pathway",
-         "axon guidance","african trypanosomiasis" ,"adherens junction",
-         "small cell lung cancer", "malaria")
-
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/legend.png',width = 2000,height = 2000,res = 300)
-bar = c(cols[anti],cols[sene],cols[comm])
-palette(bar)
-plot(y = 1:length(bar),x=rep(0.2,length(bar)), col = 1:length(bar), pch = 19,xlim = c(0,2),cex = 2) 
-labels <- names(bar)
-text(y = 1:length(bar),x=rep(0.2,length(bar)), labels = labels, pos = 4)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/Marker_diffusion.png',width = 2000,height = 2400,res = 300)
+DefaultAssay(subEndo) <- 'RNA'
+(FeaturePlot(subEndo,features = 'IL6',reduction = 'diffusion',order = T,pt.size = 1.5) + 
+  xlim(-0.04,0.05) + ylim(-0.07,0.05)+
+  scale_color_gradient(low = 'white',high = 'red'))/
+(FeaturePlot(subEndo,features = 'TPM4',reduction = 'diffusion',order = T,pt.size = 1.5) + 
+  xlim(-0.04,0.05) + ylim(-0.07,0.05)+
+  scale_color_gradient(low = 'white',high = 'red'))
 dev.off()
 
-palette("default")
+### cor DPT hUSI
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/hUSI_DPT.png',width = 1100,height = 1200,res = 300)
+subEndo@meta.data %>%
+  ggscatter(x = "hUSI", y = "DPT",
+                color = '#8d99ae',
+                add = "reg.line", 
+                conf.int = TRUE,
+                size = 1,
+                add.params = list(color = "#1d3557"),
+                 ggtheme = theme_classic())+ 
+  stat_cor(method = "spearman",label.x = 0.01, label.y = 1,color='black')+
+  theme_classic()+
+  theme(text = element_text(size = 12),plot.margin = margin(10,10,10,10))
+dev.off()
 
+### ICAnet heatmap
+DefaultAssay(subEndo) <- 'IcaNet'
+subEndo <- ScaleData(subEndo)
 
-
-
-### gene overlap
-colorList = list()
-colorList[['Anti_senescence_up']] <- c("#FF745A","#e9c46a")
-colorList[['Anti_senescence_down']] <- c("#007E99","#e9c46a")
-colorList[['Senescent_up']] <- c("#FF745A",'#264653')
-colorList[['Senescent_down']] <- c("#007E99",'#264653')
-
-pList=list()
-library(ggvenn)
-for(set in names(enrich_reList)){
-  pList[[set]] <- enrich_geneList[[set]] %>% 
-    ggvenn(show_percentage = T,
-           show_elements = F,
-           label_sep = ",",
-           digits = 1,
-           set_name_size = 0,
-           stroke_color = "white",
-           fill_color = colorList[[set]],
-           text_size = 4,
-           fill_alpha = 0.8)+
-    labs(title = paste("Padj value:",as.character(signif(enrich_reList[[set]],2))))+
-    theme(plot.title = element_text(hjust = 0.5,vjust = 0,size = 15))+
-    scale_y_continuous(limits = c(-1, 1))
-  
-}
-png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_new/CA_gene_enrich.png',width = 1200,height = 800,res = 200)
-ggarrange(pList[['Anti_senescence_up']],
-          pList$Senescent_up,
-          pList[['Anti_senescence_down']],
-          pList$Senescent_down,
-          ncol = 2,nrow = 2,legend = "none")
+genes = rownames(assoRes)
+mat = subEndo@assays$IcaNet@scale.data[genes,names(sort(subEndo$DPT,decreasing = F))] %>% as.matrix()
+top_anno <- HeatmapAnnotation(df = data.frame(DPT = subEndo$DPT[colnames(mat)]),show_legend = T,
+                              col = list(DPT = colorRamp2(c(0,2,4), c("#f2cc8f", "#f4f1de",'#81b29a'))))
+left_anno = rowAnnotation(df = data.frame(waldStat = assoRes[rownames(mat),'waldStat']),show_legend = T,
+                          col = list(waldStat = colorRamp2(c(30,90,130), c("#f0f3bd","#00a896",'#05668d'))),
+                          gp = gpar(fontsize = 12))
+col <- colorRamp2(c(-1,0,1), c("#023e8a","white", "#e63946"), space = "LAB")
+png('/home/wangjing/wangj/codebase/HUSI/Figures/covid-19_1010/ICAnet_heatmap.png',width = 2000,height = 1500,res = 300)
+Heatmap(mat,
+        show_column_names = F,
+        show_row_names = T,
+        col = col,
+        top_annotation = top_anno,
+        left_annotation = left_anno,
+        row_title = NULL,
+        cluster_rows = T,
+        cluster_columns = F,
+        heatmap_legend_param = list(title = "Scaled\nexpression"))
 dev.off()
 
 
-### ROI bulk ssGSEA
-library(rstatix)
-names(bar) = c('Normal','Anti_senescence','Senescent')
-
-cbind(meta,t(results[,rownames(meta)]))%>%
-  dplyr::select(c('Normal','Senescent','Anti_senescence','Primary_Morph','Progress')) %>%
-  reshape2::melt(variable.name = 'State',value.name = 'ssGSEA') %>%
-  ggboxplot(x = 'Progress',y = 'ssGSEA',fill = 'State')+
-  scale_fill_manual(values = bar)+
-  theme_classic()
 
 
-### Anti_senescence or senescence marker
-### stem
-VlnPlot(subEndo,features = c('CD9','CD44','CDKN1A','CDKN2A'),group.by = 'age_state',pt.size = 1.5,col = bar)
+
+
+
 
 
 
