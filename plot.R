@@ -10,6 +10,7 @@ library(ggsci)
 library(ggrepel)
 library(reshape2)
 library(rstatix)
+library(ComplexHeatmap)
 
 ##################### senescent marker expression in train set
 genes = c('CDKN1A','CDKN2B')
@@ -477,7 +478,7 @@ png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.png',width = 45
 fig
 dev.off()
 
-############################################# comparison auc
+########################### hSUI validate ######################################
 load('/home/wangjing/wangj/AgingScore/Comparison/compare.RData')
 ### value
 df_plot_list = lapply(Results[c("Aarts2017","Georgilis2018")], function(x){data.frame(hUSI = x$hUSI,Condition = x$method$Condition)})
@@ -502,9 +503,65 @@ df_plot %>%
     theme(legend.position = 'top',text = element_text(size = 16),axis.text.x = element_text(angle = 45,vjust = 1, hjust=1))
 dev.off()
 
+######################## comparison score ########################################
+names = c(SenMarkers,"DAS","mSS","DAS_mSS","lassoCS","CSS",names(EnrichSet),'hUSI')
+class = c("method","marker","ssgsea")
+df_list = list()
+### Teo2019
+df_plot = do.call(cbind,lapply(Results$Teo2019[class],function(x)
+{x[names(x)[names(x) %in% names]]})) %>% data.frame()
+df_plot$hUSI = Results$Teo2019$hUSI
+df_plot$Condition = factor(gsub("[0-9]$", "", Results$Teo2019$method$Condition1),levels = c('Growing','Senescence'),ordered = T)
+df_list[['Teo2019']] = df_plot
+### Tang2019
+df_plot = lapply(Results$Tang2019,function(x){do.call(cbind,lapply(x,function(y){y[names(y)[names(y) %in% names]]}))})
+df_plot$LowPDCtrl$marker.IL1A <- 0
+df_plot = do.call(rbind,df_plot)
+df_plot$Condition = as.factor(ifelse(sapply(strsplit(rownames(df_plot),split = '\\.'),'[',1) %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
+df_list[['Tang2019']] = df_plot
+### Aarts2017
+df_plot = do.call(cbind,lapply(Results$Aarts2017[class],function(x)
+{x[names(x)[names(x) %in% names]]})) %>% data.frame()
+df_plot$hUSI = Results$Aarts2017$hUSI
+df_plot$Condition = Results$Aarts2017$method$Condition
+df_list[['Aarts2017']] = df_plot
+### Georgilis2018
+df_plot = do.call(cbind,lapply(Results$Georgilis2018[class],function(x)
+{x[names(x)[names(x) %in% names]]})) %>% data.frame()
+df_plot$hUSI = Results$Georgilis2018$hUSI
+df_plot$Condition = Results$Georgilis2018$method$Condition
+df_list[['Georgilis2018']] = df_plot
+
+plot_list = list()
+for(i in 1:length(df_list)){
+  df_plot = df_list[[i]]
+  p <-
+  melt(df_plot) %>%
+    mutate(Type =  sapply(strsplit(as.character(variable),split = '\\.'),'[',1)) %>%
+    mutate(Method =  sapply(strsplit(as.character(variable),split = '\\.'),'[',2)) %>%
+    filter(Method != 'hUSI') %>%
+    mutate(Type = ifelse(Type == 'method','Senecence Score',ifelse(Type =='ssgsea','ssGSEA Score','Expression Level'))) %>%
+    rename('Score'='value' ) %>%
+    ggplot(aes(x = Method,y=Score,color = Condition)) +
+    geom_boxplot(outlier.shape = NA) + 
+    geom_point(aes(color = Condition),position = position_jitterdodge(jitter.width = 0.3),size = 0.5) +
+    scale_color_manual(values = c('#023e8a','#e63946'))+
+    theme_classic()+
+    theme(legend.position = 'top',text = element_text(size = 16),
+          axis.title.x = element_blank(),
+          axis.text.x = element_text(angle = 90,vjust = 1, hjust=1))+
+    facet_wrap(~Type,scales = 'free')+
+    ggtitle(names(df_list)[i])
+  plot_list[[i]] <- p
+}
+
+fig <- ggarrange(plotlist = plot_list,ncol = 2,nrow = 2,common.legend = T,legend = 'bottom')
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
+fig
+dev.off()
 
 
-### rank 
+############################### rank ###########################################
 df_plot_list = lapply(AUClist, function(x) {lapply(x, function(y) {rank(rowMeans(y))})}) 
 
 data = data.frame()
@@ -547,14 +604,14 @@ ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
           text=element_text(size=16))
 dev.off()
 
-################################# overlap gene set plot
+################################# overlap gene set plot ########################
 genes = intersect(names(mm_l2$w),unique(unlist(EnrichSet)))
 mat = sapply(EnrichSet, function(set){ifelse(genes %in% set,1,0)})
 mat = cbind(hUSI=mm_l2$w[genes],mat)
 
 library(ComplexHeatmap)
 library(circlize)
-color <- colorRamp2(c(-0.03,-0.02,-0.01,0,0.01,0.02,0.03), c('#012a4a','#014f86','#468faf','#e8e8e4','#e9c46a','#e76f51','#e63946'))
+color <- colorRamp2(c(-0.03,-0.02,-0.01,0,0.01,0.02,0.03), c('#012a4a','#014f86','#468faf','white','#e9c46a','#e76f51','#e63946'))
 png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.png',width = 3000,height = 3000,res = 300)
 circos.clear()
 circos.par(gap.after = c(40))
@@ -570,21 +627,27 @@ grid.draw(Legend(title = "hUSI",title_gp = gpar(fontsize = 16, fontface = "bold"
                  legend_height = unit(4, "cm"),grid_width = unit(5, "mm")))
 dev.off()
 
-#################################### GTEx/TCGA
+#################################### GTEx/TCGA #################################
+load('/home/wangjing/wangj/AgingScore/Comparison/scoreList_GTExTCGA.RData')
+
 ### gtex
+TCSER = read.csv('Senescence_quantification_GTEX.csv')
+TCSER = TCSER[!duplicated(TCSER$Sample),]
+rownames(TCSER) = TCSER$Sample
+df_plot <- scoreList_GTEx[c('TCSER','hUSI')] %>% data.frame() 
+df_plot$Group <- TCSER[names(scoreList_GTEx$hUSI),'primary_site']
 
 ### tcga
 TCSER = read.csv('Senescence_quantification_TCGA.csv')
-TCSER <- column_to_rownames(TCSER_tcga,'sample')
+TCSER <- column_to_rownames(TCSER,'sample')
 rownames(TCSER) <- gsub('-','.',rownames(TCSER))
-df_plot <- scoreList_TCGA[c('TCSER','hUSI')] %>% data.frame() %>% 
-            mutate(CancerType = TCSER[names(scoreList_TCGA$hUSI),'cancertype'])
+df_plot <- scoreList_TCGA[c('TCSER','hUSI')] %>% data.frame() 
+df_plot$Group <- TCSER[names(scoreList_TCGA$hUSI),'cancertype']
 
-
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_TCSER.png',width = 1000,height = 900,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.png',width = 1000,height = 900,res = 300)
   df_plot %>%
   ggscatter(x = "hUSI", y = "TCSER",
-            color = 'CancerType',
+            color = '#2ec4b6',
             # color = '#f07167',
             add = "reg.line", 
             conf.int = TRUE,
@@ -594,16 +657,32 @@ png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_TCSER.png',width = 10
   # stat_cor(method = "spearman",label.x = -.08, label.y = 1,color='black')+
   stat_cor(method = "spearman",label.x = -.09, label.y = 1.15,color='black')+
   ggtitle('7123 samples in GTEx')+
-  ggtitle("10495 samples in TCGA")+
+  # ggtitle("10495 samples in TCGA")+
   theme_classic()+
   theme(text = element_text(size = 12))
 dev.off()
 
+### split cancer type or tissue
+coeffient = unlist(lapply(split(df_plot[,c('TCSER','hUSI')],df_plot$Group),FUN = function(x) cor(x[,1],x[,2],method = 'sp'))) %>% sort()
+hUSI_mat =  unlist(lapply(split(df_plot[,'hUSI'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
+TCSER_mat =  unlist(lapply(split(df_plot[,'TCSER'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
 
-############################### menanome #######################################
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_Tissue.png',width = 3800,height = 1000,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.png',width = 3900,height = 800,res = 300)
+Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
+        cell_fun = function(j, i, x, y, w, h, col) {grid.text(round(t(coeffient),2)[i, j], x, y) },
+        show_heatmap_legend = F,
+        border = T,
+        rect_gp = gpar(col = "black", lwd = 1),
+        row_title = 'Spearman\nCoeffient',
+        row_title_rot = 0,
+        top_annotation = HeatmapAnnotation(hUSI = anno_boxplot(split(df_plot[,'hUSI'],df_plot$Group), width = unit(5, "cm"),outline = F, gp = gpar(fill = "#d62828")),
+        TCSER = anno_boxplot(split(df_plot[,'TCSER'],df_plot$Group), width = unit(5, "cm"),outline = F, gp = gpar(fill = "#1d3557"))))
+dev.off()
+
+################################# melanoma #####################################
 bar = c("#2a9d8f","#e9c46a","#e76f51")
 names(bar) = c("Cycling","Transitional","Senescent")
-
 ### histogram
 png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
 ggplot(EpiExp.m@meta.data)+
@@ -676,7 +755,7 @@ Heatmap(mat,
 dev.off()
 
 ### melanome trajectory
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_diffusion.png',width = 1200,height = 1000)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_diffusion.png',width = 1400,height = 1000,res = 300)
 ggplot(data = data.frame(DC1 = dm$DC1,DC2 = dm$DC2, State = dm$State)) +
   geom_point(aes(DC1, DC2,colour = State),size = 2)+
   scale_color_manual(values = bar)+

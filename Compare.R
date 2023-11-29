@@ -218,32 +218,6 @@ Georgilis2018List = list(method=dat_method,marker=dat_marker,ssgsea=dat_ssgsea)
 Results$Georgilis2018 = Georgilis2018List
 Results$Georgilis2018$hUSI = hUSI
 
-##### write score results
-names = c(SenMarkers,"DAS","mSS","DAS_mSS","lassoCS","CSS",names(EnrichSet),'hUSI')
-class = c("method","marker","ssgsea")
-### Teo2019
-df_plot = do.call(cbind,lapply(Results$Teo2019[class],function(x)
-            {x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Teo2019$hUSI
-df_plot$Condition = factor(gsub("[0-9]$", "", Results$Teo2019$method$Condition1),levels = c('Growing','Senescence'),ordered = T)
-
-### Tang2019
-df_plot = lapply(Results$Tang2019,function(x){do.call(cbind,lapply(x,function(y)
-            {y[names(y)[names(y) %in% names]]}))})
-                 
-### Aarts2017
-df_plot = do.call(cbind,lapply(Results$Aarts2017[class],function(x)
-            {x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Aarts2017$hUSI
-df_plot$Condition = Results$Aarts2017$method$Condition
-
-### Georgilis2018
-df_plot = do.call(cbind,lapply(Results$Georgilis2018[class],function(x)
-            {x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Georgilis2018$hUSI
-df_plot$Condition = Results$Georgilis2018$method$Condition
-
-
 
 ### AUC
 AUClist = list()
