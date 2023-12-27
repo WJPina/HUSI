@@ -78,7 +78,7 @@ calc_auc <- function(data=data.frame(),type = '',scorelist=NULL){
     auc = sapply(fold, function(sampling) {
         df = data[sampling,]
         if(type == c("method")){
-            c("DAS","mSS",'DAS_mSS','lassoCS','CSS','hUSI') %>% 
+            c("DAS","mSS",'DAS+mSS','lassoCS','CSS','hUSI') %>% 
             sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
         }
         else if (type=='marker'){
@@ -109,19 +109,19 @@ getGenes <- function(type) {
     return(scorelist)
 }
 ### score list
-SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4", "MKI67", "CDKN2B")
+SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4","CDK6", "MKI67", "CDKN2B")
 
 EnrichSet<<-cogena::gmt2list("/mnt/data2/zhouxl/Pan_Cancer/Data/Signatures/gene_50signatures_merge.gmt")
 EnrichSet=EnrichSet[43:49]
 names(EnrichSet)
 rep_sene_genes = readxl::read_excel("SigRS.xls", sheet = 5, skip = 2)$Gene_names
-EnrichSet$Sig.RS = rep_sene_genes
+EnrichSet$SigRS = rep_sene_genes
 names(EnrichSet) 
 names(EnrichSet) <- c("SenMayo","CellAge", "GenAge", "ASIG", "SASP","AgingAtlas", "SenUp","SigRS")
 
 laf_DAS = fread("LaffertyWhyte2010_DAS.csv")
 laf_mSS = fread("LaffertyWhyte2010_mSS.csv")
-lafSet = list(DAS =laf_DAS,mSS=laf_mSS,DAS_mSS=rbind(laf_DAS, laf_mSS))
+lafSet = list(DAS =laf_DAS,mSS=laf_mSS,`DAS+mSS`=rbind(laf_DAS, laf_mSS))
 lassoCS = c(-0.158,-0.153,0.17,0.347,-0.215,0.288,-0.196,-0.245,-0.103,0.127)
 names(lassoCS) = c("ITGA8","SEMA3G","DPYSL3","IFITM1","ZNF521", "SOCS3","PCSK6", "DUSP1", "SLC44A4","IL20RB")
 CSS =  c(0.2921,0.1810,0.0524,0.1285)
@@ -221,7 +221,7 @@ Results$Georgilis2018$hUSI = hUSI
 
 ### AUC
 AUClist = list()
-for(dataset in c("Teo2019","Tang2019","Aarts2017","Georgilis2018")){
+for(dataset in c('Teo2019',"Tang2019",'Aarts2017','Georgilis2018')){
     for(type in c('method','marker','ssgsea')){
         scorelist = getGenes(type)
         if(dataset == 'Teo2019'){
@@ -235,6 +235,7 @@ for(dataset in c("Teo2019","Tang2019","Aarts2017","Georgilis2018")){
         else if (dataset == 'Tang2019') {
             dat = data.table::rbindlist(lapply(Results[[dataset]],function(x){x[[type]]}),use.names=TRUE, fill=TRUE, idcol="sample") %>% data.frame
             dat = dat[,complete.cases(t(dat))]
+            colnames(dat) = gsub("DAS.mSS", "DAS+mSS", colnames(dat))
             dat$condition = as.factor(ifelse(dat$sample %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
 
             auc <- calc_auc(dat,type,scorelist)
@@ -255,7 +256,7 @@ for(dataset in c("Teo2019","Tang2019","Aarts2017","Georgilis2018")){
 ### method
 df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['method']]))}))
 ### marker
-comm_markers = c("hUSI","GLB1","TP53","CDKN1A","CDKN2A","LMNB1","RB1","CDK1","CDK4","MKI67","CDKN2B")
+comm_markers = c("hUSI","GLB1","TP53","CDKN1A","CDKN2A","LMNB1","RB1","CDK1","CDK4","CDK6","MKI67","CDKN2B")
 df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['marker']][comm_markers,]))}))
 ### ssGSEA
 df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['ssgsea']]))}))

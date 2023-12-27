@@ -91,7 +91,7 @@ X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
 ### training model
 mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
-saveRDS(mm_l2,file="mm_l2_new.rds")
+saveRDS(mm_l2,file="mm_l2.rds")
 
 ### Leave-one-out cross validation
 auc <- c()
@@ -107,6 +107,7 @@ for(i in 1:ncol(X_tr)){
   cat( "Current AUC: ", auc[i], "\n" )
   cat( "Average AUC: ", mean(auc), "\n" )
 }
+
 
 
 

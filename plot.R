@@ -12,6 +12,19 @@ library(reshape2)
 library(rstatix)
 library(ComplexHeatmap)
 
+
+##################### train set counts
+### histogram
+png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
+data.frame(Counts = colSums(exprData[,metadata$sample_title]),Dataset = metadata$study_accession) %>%
+ggplot()+
+  geom_histogram(aes(x=Counts),bins = 50,color = '#adb5bd',linewidth = 0.4)+
+  # scale_fill_manual()+
+  theme_classic()+
+  theme(text = element_text(size = 14),legend.position = c(0.25,0.7))+
+  ylab('Count')
+dev.off()
+
 ##################### senescent marker expression in train set
 genes = c('CDKN1A','CDKN2B')
 df_plot = data.frame(t(cbind(X_bk[genes,],X_tr[genes,])),Condition = c(rep('other',122),rep('senescent',126))) %>%
@@ -20,7 +33,8 @@ pwc <- df_plot %>% group_by(marker) %>%
         rstatix::pairwise_t_test(expression ~ Condition, paired = F,p.adjust.method = "bonferroni")
 pwc
 pwc <- pwc %>% rstatix::add_xy_position(x = "marker")
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_markers.png',width = 1200,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_markers.png',width = 1200,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_markers.pdf',width = 4,height = 5)
 df_plot %>%
   ggplot(aes(x = marker, y = expression)) + 
   geom_boxplot(aes(color = Condition),outlier.shape = NA) + 
@@ -32,20 +46,38 @@ df_plot %>%
   ylab('Normalized Expression')
 dev.off()
 
+##################### gene expression and weights
+res <- data.frame(expression = rowMeans(X_tr[names(mm_l2$w),]),weight = mm_l2$w,gene = names(mm_l2$w),row.names = names(mm_l2$w))
+res$threshold = ifelse(res$weight > 0,"Positive","Negative")
+label_data <- subset(res, abs(res$weight) > 0.02)
+pdf("/home/wangjing/wangj/codebase/HUSI/Figures/model/model_genes.pdf",width = 8,height = 6)
+ggplot(data = res, aes(y=expression,x=weight,color=threshold)) +
+  geom_point(alpha=0.5, size=2)+
+  geom_text_repel(data = label_data,label = rownames(label_data),color = 'black',max.overlaps = 10,size = 3,show.legend = F)+
+  scale_color_manual(values = c("Positive" = "#FF745A","Negative"="#007E99"))+
+  ylab('Mean normalized expression')+
+  xlab('Weight in model')+
+  theme_classic()+
+  theme(text = element_text(size = 16),legend.position = 'none')
+dev.off()
+
+
 ############################ GSEA
+load('GSEA.RData')
 library(enrichplot)
 library(gggsea)
 source('~/wangj/codebase/HUSI/mygseaplot2.R')
 cols = c(rev(colorRampPalette(c("transparent", 'red'))(6))[1:5],colorRampPalette(c("transparent", 'blue'))(5)[c(2:5)])
 names(cols) = df$ID
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1600,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1600,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_UP.pdf',width = 6,height = 5)
 mygseaplot2(fgsea,
-            geneSetID = df$ID[6:9],
-            # geneSetID = df$ID[1:5],
-            title = "Negatively enriched gene sets",
-            # title = "Positively enriched gene sets",
-            color= cols[6:9],
-            # color = cols[1:5],
+            # geneSetID = df$ID[6:9],
+            geneSetID = df$ID[1:5],
+            # title = "Negatively enriched gene sets",
+            title = "Positively enriched gene sets",
+            # color= cols[6:9],
+            color = cols[1:5],
             base_size = 12,
             rel_heights = c(1, 0.2, 0.4),
             subplots = 1:3,
@@ -54,66 +86,23 @@ mygseaplot2(fgsea,
 )
 dev.off()
 
-############################### plot train Rep.CS heatmap
-load('ModelTrainData.RData')
-meta = read.csv('metadata_train.csv') 
-meta = tibble::column_to_rownames(meta,'sample_title')
-table(colnames(X) %in% rownames(meta))
-
-genes = read.csv('Kasit_2019_31560156_AgingGenes.csv')
-genes = genes[genes$Gene.symbol %in% rownames(X),]
-table(genes$signature)
-
-groups = meta$treatment
-names(groups) = rownames(meta)
-my_order <- sort(table(groups),decreasing = F)
-groups <- groups[order(factor(groups,levels = names(my_order)))]
-groups <- factor(groups,levels = names(my_order))
-
-library(ComplexHeatmap)
-library(circlize)
-mypalette = read.csv('~/scripts/colors.csv')
-bar = c('#ffd7ba',"#ffcdb2", "#ffb4a2", "#e5989b", "#b5838d", "#6d6875")
-names(bar) = levels(groups)
-top_anno <- HeatmapAnnotation(df = data.frame(Condition = groups),show_legend = T,col = list(Condition = bar),
-                              show_annotation_name = F)
-left_anno = rowAnnotation(df = data.frame(Signature= rep(c("up","down"),times=c(519,729))),show_legend = T,
-                          col = list(Signature = c('up' = '#e63946','down' = '#023e8a')),show_annotation_name = F)
-col <- colorRamp2(c(-1.5,0,1.5), c("#023e8a","white", "#e63946"), space = "LAB")
-
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_CS_sinature.png',width = 2200,height = 1500,res= 300)
-mat = log2(exprData[genes$Gene.symbol,names(groups)] + .00001) %>% scale()
-Heatmap(mat,
-        show_column_names = F,
-        show_row_names = F,
-        row_title = NULL,
-        col = col,
-        cluster_rows = T,
-        cluster_row_slices = FALSE,
-        cluster_columns = F,
-        top_annotation = top_anno,
-        left_annotation = left_anno,
-        row_names_gp = gpar(fontsize = 12),
-        heatmap_legend_param = list(title = "Scaled\nexpression"),
-        row_split = factor(rep(c("up","down"),times=c(519,729)),levels = c('up','down'),ordered = T),
-        column_split = factor(rep(c('Senescent','other'),times = c(126,122)),levels=c('Senescent','other'),ordered = T))
-dev.off()
-
 ########################### model leave-one-out auc
 load("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/model_auc.RData")
 auc = sort(auc)
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
 ggplot(aes(x = 1:length(auc),y = auc),data=data.frame(auc=auc))+
     geom_line()+
     theme_classic()+
-    theme(text=element_text(size=12),axis.title.x = element_blank())+
+    theme(text=element_text(size=16),axis.title.x = element_blank())+
     ggtitle('Leave-one-out cross-validation')+
-    ylab("Correctly Ranks Rate")
+    ylab("Correctly Ranking Rate")
 dev.off()
 
 ################################## bacth effect
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_BE.png',width = 1500,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_BE.png',width = 1500,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_BE.pdf',width = 5,height = 5)
 read.table("/home/wangjing/wangj/AgingScore/Data/Bulk_BatchEffect/batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
   dplyr::select(c("title","study_accession","condition")) %>%
   mutate(hUSI = s_batch[title]) %>%
@@ -143,7 +132,7 @@ p1.1 <- data.frame(hUSI = s_IS) %>%
   mutate(Treatment = factor(condition,levels = c("Immortal","Adria","H2O2","5-aza"),ordered = T)) %>% 
   ggplot(aes(Treatment, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Treatment),width = 0.1)+
+  geom_jitter(aes(color = Treatment),width = 0.1,size=4)+
   geom_signif(comparisons = list(c("Immortal","H2O2"),c("Immortal","5-aza")),
               test = "t.test",
               step_increase=0.1,
@@ -158,7 +147,7 @@ p1.2<- data.frame(hUSI = s_RS[grepl('OISD[0|2|4|6|10]',names(s_RS))]) %>%
   mutate(Treatment = factor(condition,levels = c("OISD0","OISD2","OISD4","OISD6",'OISD10'),ordered = T)) %>% 
   ggplot(aes(Treatment, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Treatment),width = 0.1)+
+  geom_jitter(aes(color = Treatment),width = 0.1,size=4)+
   geom_signif(comparisons = list(c("OISD0","OISD2"),c("OISD2","OISD4"),c("OISD4","OISD6")),
               test = "t.test",
               step_increase=0.1,
@@ -173,7 +162,7 @@ p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>%
   mutate(Condition = factor(condition,levels = c("Proliferative","Senescent"),ordered = T)) %>% 
   ggplot(aes(Condition, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1)+
+  geom_jitter(aes(color = Condition),width = 0.1,size=4)+
   geom_signif(comparisons = list(c("Proliferative","Senescent")),
               test = "t.test",
               step_increase=0.1,
@@ -184,7 +173,8 @@ p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>%
   ggtitle("RS in WI-38")
 
 fig <- ggarrange(p1.1,p1.2,p1.3,ncol = 3,nrow = 1,common.legend = F,widths = c(4,4,3))
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.png',width = 3000,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.png',width = 3000,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.pdf',width = 10,height = 5)
 fig
 dev.off()
 ############################# valid data in micro-array
@@ -215,7 +205,7 @@ p2.1 <- ArrayList [["GSE19864"]][[1]] %>%
   ) %>% 
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1)+
+  geom_jitter(aes(color = Condition),width = 0.1,size=4)+
   geom_signif(comparisons = list(c("Growing", "Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
@@ -235,7 +225,7 @@ p2.2 <- ArrayList [["GSE16058"]][[1]] %>%
   mutate(Passage = passage) %>% 
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition,shape = Passage),width = 0.1) +
+  geom_jitter(aes(color = Condition,shape = Passage),width = 0.1,size=4) +
   geom_signif(comparisons = list(c("Growing", "Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
   guides(color = 'none')+
@@ -254,7 +244,7 @@ p2.3 <- ArrayList [["GSE83922"]][[1]] %>%
   mutate(Condition = factor(ifelse(condition == 'young','Young','Senescent'),levels = c("Young","Senescent"),ordered = T)) %>%
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1) +
+  geom_jitter(aes(color = Condition),width = 0.1,size=4) +
   geom_signif(comparisons = list(c("Young", "Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
@@ -274,7 +264,7 @@ p2.4 <- ArrayList [["GSE11954"]][[1]] %>%
   mutate(Condition = factor(condition,levels = c("Growing","Senescent"),ordered = T)) %>% 
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1) +
+  geom_jitter(aes(color = Condition),width = 0.1,size=4) +
   geom_signif(comparisons = list(c("Growing","Senescent")),test = "t.test", map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
@@ -294,7 +284,7 @@ p2.5 <- ArrayList [["GSE100014"]][[1]] %>%
   mutate(Condition = factor(condition,levels = c("Proliferating","Senescent"),ordered = T)) %>% 
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1) +
+  geom_jitter(aes(color = Condition),width = 0.1,size=4) +
   geom_signif(comparisons = list(c("Proliferating","Senescent")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
   ylab('hUSI')+
@@ -314,7 +304,7 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
   ) %>% 
   ggplot(aes(Condition, sene_score)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition,shape = Treatment),width = 0.1) +
+  geom_jitter(aes(color = Condition,shape = Treatment),width = 0.1,size=4) +
   geom_line(aes(group = Treatment), linetype="dashed", col="skyblue") + 
   geom_signif(comparisons = list(c("young","old")),test = "t.test",test.args = c("less"), map_signif_level = T) + 
   mytheme()+
@@ -325,7 +315,8 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
 
 fig <- ggarrange(p2.1,p2.2,p2.3,p2.4,p2.5,p2.6,ncol = 3,nrow = 2,common.legend = F)+ 
         theme(plot.margin = unit(c(0,0,0,0), "cm"))
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.png',width = 4500,height = 2400,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.png',width = 4500,height = 2400,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.pdf',width = 15,height = 8)
 fig
 dev.off()
 
@@ -360,8 +351,8 @@ p2.1 <- ArrayList [["GSE19864"]][[1]] %>%
   mytheme()+
   ggtitle("OIS in IMR90")+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
-  
+  xlab('Zeroing-out Rate')
+
 
 p2.2 <- ArrayList [["GSE16058"]][[1]] %>% 
   pData %>% 
@@ -382,7 +373,7 @@ p2.2 <- ArrayList [["GSE16058"]][[1]] %>%
   mytheme()+
   ggtitle('RS in HMEC')+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
+  xlab('Zeroing-out Rate')
 
 p2.3 <- ArrayList [["GSE83922"]][[1]] %>% 
   pData %>% 
@@ -402,7 +393,7 @@ p2.3 <- ArrayList [["GSE83922"]][[1]] %>%
   mytheme()+
   ggtitle('RS in Melanocyte')+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
+  xlab('Zeroing-out Rate')
 
 
 p2.4 <- ArrayList [["GSE11954"]][[1]] %>% 
@@ -425,7 +416,7 @@ p2.4 <- ArrayList [["GSE11954"]][[1]] %>%
   mytheme()+
   ggtitle('CIS in HSC')+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
+  xlab('Zeroing-out Rate')
 
 
 p2.5 <- ArrayList [["GSE100014"]][[1]] %>% 
@@ -448,7 +439,7 @@ p2.5 <- ArrayList [["GSE100014"]][[1]] %>%
   mytheme()+
   ggtitle('CIS in HBEC')+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
+  xlab('Zeroing-out Rate')
 
 
 p2.6 <- ArrayList [["GSE77239"]][[1]] %>% 
@@ -471,10 +462,11 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
   mytheme()+
   ggtitle('RS in HCAEC')+
   scale_colour_manual(values = c('#023e8a','#e63946'))+
-  xlab('lost rate')
+  xlab('Zeroing-out Rate')
 
 fig <- ggarrange(p2.1,p2.2,p2.3,p2.4,p2.5,p2.6,ncol = 3,nrow = 2,common.legend = T,legend = 'bottom')
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.png',width = 4500,height = 2400,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.png',width = 4500,height = 2400,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.pdf',width = 15,height = 8)
 fig
 dev.off()
 
@@ -491,7 +483,8 @@ pwc <- df_plot %>% group_by(Dataset) %>%
 pwc
 pwc <- pwc %>% rstatix::add_xy_position(x = "Dataset")
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_hUSI.png',width = 1400,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_hUSI.png',width = 1400,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_hUSI.pdf',width = 7,height = 7)
 df_plot %>%
   mutate(Condition = factor(Condition,levels = c('Growing','Senescence'),ordered = T)) %>%
   ggplot(aes(x = Dataset,y=hUSI,color = Condition)) +
@@ -500,11 +493,11 @@ df_plot %>%
     scale_color_manual(values = c('#023e8a','#e63946'))+
     stat_pvalue_manual(pwc)+
     theme_classic()+
-    theme(legend.position = 'top',text = element_text(size = 16),axis.text.x = element_text(angle = 45,vjust = 1, hjust=1))
+    theme(legend.position = 'top',text = element_text(size = 16),axis.text.x = element_text(angle = 30,vjust = 1, hjust=1))
 dev.off()
 
 ######################## comparison score ########################################
-names = c(SenMarkers,"DAS","mSS","DAS_mSS","lassoCS","CSS",names(EnrichSet),'hUSI')
+names = c(SenMarkers,"DAS","mSS","DAS+mSS","lassoCS","CSS",names(EnrichSet),'hUSI')
 class = c("method","marker","ssgsea")
 df_list = list()
 ### Teo2019
@@ -538,6 +531,7 @@ for(i in 1:length(df_list)){
   p <-
   melt(df_plot) %>%
     mutate(Type =  sapply(strsplit(as.character(variable),split = '\\.'),'[',1)) %>%
+    mutate(variable =  gsub('method.DAS.mSS','method.DAS+mSS',variable)) %>%
     mutate(Method =  sapply(strsplit(as.character(variable),split = '\\.'),'[',2)) %>%
     filter(Method != 'hUSI') %>%
     mutate(Type = ifelse(Type == 'method','Senecence Score',ifelse(Type =='ssgsea','ssGSEA Score','Expression Level'))) %>%
@@ -549,17 +543,17 @@ for(i in 1:length(df_list)){
     theme_classic()+
     theme(legend.position = 'top',text = element_text(size = 16),
           axis.title.x = element_blank(),
-          axis.text.x = element_text(angle = 90,vjust = 1, hjust=1))+
+          axis.text.x = element_text(angle = 90,vjust = 0.5, hjust=1))+
     facet_wrap(~Type,scales = 'free')+
     ggtitle(names(df_list)[i])
   plot_list[[i]] <- p
 }
 
 fig <- ggarrange(plotlist = plot_list,ncol = 2,nrow = 2,common.legend = T,legend = 'bottom')
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
 fig
 dev.off()
-
 
 ############################### rank ###########################################
 df_plot_list = lapply(AUClist, function(x) {lapply(x, function(y) {rank(rowMeans(y))})}) 
@@ -590,14 +584,15 @@ scale_x_reordered <- function(..., sep = "___") {
 data$group <- ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score'))
 data$color <- ifelse(data$Group.1 == 'hUSI','hUSI',ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score')))
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_rank.png',width = 3500,height = 1500,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_rank.png',width = 3500,height = 1500,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_rank.pdf',width = 16.5,height = 7)
 ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
     scale_x_reordered()+
     geom_bar(stat="identity",position="dodge")+
     geom_errorbar(aes(ymax=x+sd,ymin=ifelse(x-sd <0,0,x-sd)),position=position_dodge(0.9),width=0.15)+
     theme_classic()+
     ylab('AUC rank')+
-    xlab('Benchmark')+
+    xlab('Quantification method')+
     scale_fill_manual(values = c('#94d2bd','#e63946','#fed9b7','#00afb9'))+
     ggforce::facet_row(vars(group), scales = 'free', space = 'free')+
     theme(legend.position = 'none',axis.text.x = element_text(angle = 45,vjust = 1, hjust=1),
@@ -612,7 +607,8 @@ mat = cbind(hUSI=mm_l2$w[genes],mat)
 library(ComplexHeatmap)
 library(circlize)
 color <- colorRamp2(c(-0.03,-0.02,-0.01,0,0.01,0.02,0.03), c('#012a4a','#014f86','#468faf','white','#e9c46a','#e76f51','#e63946'))
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.png',width = 3000,height = 3000,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.png',width = 3000,height = 3000,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.pdf',width = 10,height = 10)
 circos.clear()
 circos.par(gap.after = c(40))
 circos.heatmap(mat, 
@@ -631,20 +627,21 @@ dev.off()
 load('/home/wangjing/wangj/AgingScore/Comparison/scoreList_GTExTCGA.RData')
 
 ### gtex
-TCSER = read.csv('Senescence_quantification_GTEX.csv')
+TCSER = read.csv('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/Senescence_quantification_GTEX.csv')
 TCSER = TCSER[!duplicated(TCSER$Sample),]
 rownames(TCSER) = TCSER$Sample
 df_plot <- scoreList_GTEx[c('TCSER','hUSI')] %>% data.frame() 
 df_plot$Group <- TCSER[names(scoreList_GTEx$hUSI),'primary_site']
 
 ### tcga
-TCSER = read.csv('Senescence_quantification_TCGA.csv')
+TCSER = read.csv('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/Senescence_quantification_TCGA.csv')
 TCSER <- column_to_rownames(TCSER,'sample')
 rownames(TCSER) <- gsub('-','.',rownames(TCSER))
 df_plot <- scoreList_TCGA[c('TCSER','hUSI')] %>% data.frame() 
 df_plot$Group <- TCSER[names(scoreList_TCGA$hUSI),'cancertype']
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.png',width = 1000,height = 900,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.png',width = 1000,height = 900,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.pdf',width = 4.5,height = 4)
   df_plot %>%
   ggscatter(x = "hUSI", y = "TCSER",
             color = '#2ec4b6',
@@ -667,8 +664,10 @@ coeffient = unlist(lapply(split(df_plot[,c('TCSER','hUSI')],df_plot$Group),FUN =
 hUSI_mat =  unlist(lapply(split(df_plot[,'hUSI'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
 TCSER_mat =  unlist(lapply(split(df_plot[,'TCSER'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_Tissue.png',width = 3800,height = 1000,res = 300)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.png',width = 3900,height = 800,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Tissue.png',width = 3800,height = 1000,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.png',width = 3900,height = 800,res = 300)
+# pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Tissue.pdf',width = 15,height = 3.5)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.pdf',width = 15,height = 2.8)
 Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
         cell_fun = function(j, i, x, y, w, h, col) {grid.text(round(t(coeffient),2)[i, j], x, y) },
         show_heatmap_legend = F,
@@ -680,7 +679,10 @@ Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
         TCSER = anno_boxplot(split(df_plot[,'TCSER'],df_plot$Group), width = unit(5, "cm"),outline = F, gp = gpar(fill = "#1d3557"))))
 dev.off()
 
+################################################################################
 ################################# melanoma #####################################
+################################################################################
+
 bar = c("#2a9d8f","#e9c46a","#e76f51")
 names(bar) = c("Cycling","Transitional","Senescent")
 ### histogram
