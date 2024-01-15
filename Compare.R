@@ -288,6 +288,56 @@ scoreList_GTEx = list()
 scoreList_GTEx[['TCSER']] = TCSER_gtex[colnames(Counts_gtex),]$CS.score
 scoreList_GTEx[['hUSI']] = hUSI_gtex
 
+### gene sets
+for(sl in names(EnrichSet)){
+  score = GSVA::gsva(Counts_gtex, list(signature=EnrichSet[[sl]]), method="ssgsea", ssgsea.norm = TRUE, verbose = TRUE)[1,]
+  scoreList_GTEx[[sl]] = score
+}
+
+### marker genes
+for(sl in SenMarkers){
+  if(sl %in% rownames(Counts_gtex)){
+    score = Counts_gtex[sl,] 
+    names(score) = colnames(Counts_gtex)
+    scoreList_GTEx[[sl]] = score
+  }
+}
+
+### Methods
+for(sl in names(Methods)){
+    if(sl == 'laf'){
+        for (s in names(Methods[[sl]])) {
+            score = calc_laf(Counts_gtex %>% as.matrix, Methods[[sl]][[s]])
+            names(score) = colnames(Counts_gtex)
+            scoreList_GTEx[[s]] = score
+            }
+        }
+        if(sl == 'lassoCS'){
+            genes = intersect(rownames(Counts_gtex),names(lassoCS))
+            mat = Counts_gtex[genes,] 
+            mat = apply(mat,2,function(x) {x * lassoCS[rownames(mat)]})
+            tryCatch({score = colSums(mat) %>% data.frame 
+            rownames(score) = colnames(Counts_gtex)}, 
+            error = function(e) {
+            score = mat %>% data.frame})
+            rownames(score) = colnames(Counts_gtex)
+            scoreList_GTEx[[sl]] = score   
+        }
+        if(sl == 'CSS'){
+            genes = intersect(rownames(Counts_gtex),names(CSS))
+            mat = Counts_gtex[genes,] 
+            mat = apply(mat,2,function(x) {x * CSS[rownames(mat)]}) 
+            tryCatch({score = colSums(mat) %>% data.frame 
+            rownames(score) = colnames(Counts_gtex)}, 
+            error = function(e) {
+            score = mat %>% data.frame})
+            rownames(score) = colnames(Counts_gtex)
+            scoreList_GTEx[[sl]] = score
+    }
+
+}
+
+cormat_gtex <- do.call(data.frame, scoreList_GTEx) %>% cor(method = 'spearman')
 ###### TCGA bulk data
 ### load cs score
 TCSER_tcga = read.csv('Senescence_quantification_TCGA.csv')
@@ -308,9 +358,26 @@ dim(Counts_tcga)
 Counts_tcga[1:5,1:5]
 
 hUSI_tcga <- Counts_tcga %>% apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )
-### gene sets
-scoreList_TCGA = list()
-scoreList_TCGA[['TCSER']] = TCSER_tcga[colnames(Counts_tcga),]$score
-scoreList_TCGA[['hUSI']] = hUSI_tcga
 
+for(sl in names(EnrichSet)){
+  score = GSVA::gsva(Counts_tcga, list(signature=EnrichSet[[sl]]), method="ssgsea", ssgsea.norm = TRUE, verbose = TRUE)[1,]
+  scoreList_TCGA[[sl]] = score
+}
 
+cormat_tcga <- do.call(data.frame, scoreList_TCGA) %>% cor(method = 'spearman')
+
+### validate hUSI in GTEx and TCGA by meta data
+### Age
+GTEx_sample <- read.csv("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt",sep = "\t",row.names = 1,header = T)
+GTEx_sample<- GTEx_sample[,c("SMTS","SMTSD")]
+GTEx_sample$Sample <- rownames(GTEx_sample)
+GTEx_sample$Patient <- lapply(strsplit(rownames(GTEx_sample),'-'),function(x) {paste(x[1],x[2],sep = '-')}) %>% unlist
+length(unique(GTEx_sample$Patient))
+
+GTEx_Pheno <- read.table("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SubjectPhenotypesDS.txt",sep = "\t",header = T)
+length(unique(GTEx_Pheno$SUBJID))
+GTEx_meta <- merge(GTEx_Pheno,GTEx_sample,by.x = "SUBJID",by.y = "Patient")
+length(unique(GTEx_meta$SUBJID))
+
+table(names(scoreList_GTEx$hUSI) %in% GTEx_meta$Sample)
+rownames(GTEx_meta) = GTEx_meta$Sample

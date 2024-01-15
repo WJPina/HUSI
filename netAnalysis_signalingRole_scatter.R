@@ -3,7 +3,7 @@ netAnalysis_signalingRole_scatter_log <- function (object, signaling = NULL, col
   point.shape = c(21, 22, 24, 23, 25, 8, 3), label.size = 3, 
   dot.alpha = 0.6, xlabel = "log10(Outgoing interaction strength)", 
   ylabel = "log10(Incoming interaction strength)", title = NULL, 
-  font.size = 10, font.size.title = 10, do.label = T, show.legend = T, 
+  font.size = 14, font.size.title = 16, do.label = T, show.legend = T, 
   show.axes = T) 
 {
   if (length(slot(object, slot.name)$centr) == 0) {

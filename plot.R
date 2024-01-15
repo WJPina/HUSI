@@ -11,6 +11,7 @@ library(ggrepel)
 library(reshape2)
 library(rstatix)
 library(ComplexHeatmap)
+library(circlize)
 
 
 ##################### train set counts
@@ -599,30 +600,6 @@ ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
           text=element_text(size=16))
 dev.off()
 
-################################# overlap gene set plot ########################
-genes = intersect(names(mm_l2$w),unique(unlist(EnrichSet)))
-mat = sapply(EnrichSet, function(set){ifelse(genes %in% set,1,0)})
-mat = cbind(hUSI=mm_l2$w[genes],mat)
-
-library(ComplexHeatmap)
-library(circlize)
-color <- colorRamp2(c(-0.03,-0.02,-0.01,0,0.01,0.02,0.03), c('#012a4a','#014f86','#468faf','white','#e9c46a','#e76f51','#e63946'))
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.png',width = 3000,height = 3000,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_geneSet_overlap.pdf',width = 10,height = 10)
-circos.clear()
-circos.par(gap.after = c(40))
-circos.heatmap(mat, 
-               col = color,
-               dend.side = "inside",
-               rownames.side = "none",
-               track.height = 0.6,
-               cell.border = 'white',
-               cell.lwd = 0.1)
-grid.draw(Legend(title = "hUSI",title_gp = gpar(fontsize = 16, fontface = "bold"),
-                 title_position = "topcenter", col_fun = color,
-                 legend_height = unit(4, "cm"),grid_width = unit(5, "mm")))
-dev.off()
-
 #################################### GTEx/TCGA #################################
 load('/home/wangjing/wangj/AgingScore/Comparison/scoreList_GTExTCGA.RData')
 
@@ -679,6 +656,20 @@ Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
         TCSER = anno_boxplot(split(df_plot[,'TCSER'],df_plot$Group), width = unit(5, "cm"),outline = F, gp = gpar(fill = "#1d3557"))))
 dev.off()
 
+### GTEx by Age
+df = data.frame(hUSI = scoreList_GTEx$hUSI,Age = GTEx_meta[names(scoreList_GTEx$hUSI),'AGE'],Tissue = GTEx_meta[names(scoreList_GTEx$hUSI),'SMTSD'])
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Age.pdf',width = 4.5,height = 4)
+ggplot(df,aes(x = Age,y = hUSI,fill = Age)) + 
+  geom_boxplot() + 
+  scale_fill_brewer(palette = "Reds")+
+  geom_signif(comparisons = list(c("20-29","30-39"),c("30-39","40-49"),c("40-49","50-59"),c("50-59","60-69"),c("60-69","70-79")),
+            test = "t.test",
+            step_increase=0.1,
+            map_signif_level = T,
+            test.args = c("less"))+
+  theme_classic()+
+  theme(text = element_text(size = 16),legend.position = "none")
+dev.off()
 ################################################################################
 ################################# melanoma #####################################
 ################################################################################
@@ -774,11 +765,11 @@ DefaultAssay(EpiExp.m) <- 'RNA'
 
 p1 = FeaturePlot(EpiExp.m,features=SenMarkers[1],reduction='diffusion',order=T,pt.size = 2) + xlim(-0.05,0.05) + ylim(-0.03,0.15)
 p2 = FeaturePlot(EpiExp.m,features=SenMarkers[2],reduction='diffusion',order=T,pt.size = 2) + xlim(-0.05,0.05) + ylim(-0.03,0.15)
-p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
-p4 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='age_state',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())
+p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='State',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank()) + NoLegend()
+p4 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='State',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())+ NoLegend()
 
 png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_markers.png',width = 2500,height = 2000,res = 300)
-ggarrange(p1,p3,p2,p4,ncol = 2,nrow = 2,legend = "none") 
+ggarrange(p1,p3,p2,p4,ncol = 2,nrow = 2) 
 dev.off()
 
 ### microarray gene overlap
@@ -826,6 +817,7 @@ dev.off()
 ### draw heatmap of SKCM CIBERSORT
 png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_state_immue_cor.png',width = 1800,height = 1200,res= 300)
 bk <- c(seq(-0.3,0.3,by=0.01))
+cor_mat <- cormat_gtex
 pheatmap::pheatmap(cor_mat,show_colnames = T,show_rownames = T,
                    cluster_rows = F,cluster_cols = T,fontsize = 12,
                    border_color = "white",color = colorRampPalette(c("blue", "#f5f4f4", "red"))(length(bk)),
@@ -907,7 +899,8 @@ netAnalysis_river(cellchat, pattern = "outgoing",cutoff = 0.5,
 dev.off()
 
 ### pathway strength bubble
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 300)
+# png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 300)
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pathway.pdf',width = 6,height = 5)
 source('/home/wangjing/wangj/codebase/HUSI/netVisual_bubble_my.R')
 netVisual_bubble_my(cellchat,signaling = pathways,targets.use = c('Cycling','Transitional','Senescent'), remove.isolate = F,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),thresh=0.01)
 dev.off()
@@ -967,4 +960,41 @@ dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR2,data = dat)
 png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
+dev.off()
+
+
+
+
+
+################################################################################
+################################# hca #########################################
+################################################################################
+library(reticulate)
+use_python('/home/tools/anaconda3/envs/velocyto-env/bin/python')
+sc <- import("scanpy")
+### load data
+hca <- sc$read_h5ad('/home/wangjing/wangj/codebase/HUSI/hca_end.h5ad')
+meta <- hca$obs
+### fraction plot
+p1 <- data.frame(hUSI = meta$hUSI,class = meta$age_class) %>%
+      ggplot(aes(x = class,y = hUSI,fill = class))+
+        geom_boxplot()+
+        geom_signif(comparisons = list(c("C1","C2"),c("C2","C3")),test = "t.test",test.args = c("less"),map_signif_level = T,step_increase=0.1) + 
+        # scale_fill_brewer(palette = "Reds")+
+        scale_fill_manual(values = c('#013a63','#d3d3d3','#ba181b'))+
+        theme_classic()+
+        theme(text = element_text(size = 16),legend.position = 'none',axis.title.x = element_blank(),axis.ticks.x = element_blank(),axis.text.x = element_blank())
+
+p2 <- data.frame(class = meta$age_class,age = factor(meta$Age)) %>%
+      mutate(group = factor(ifelse(meta$Age <= 41,'Young',ifelse(meta$Age <=59,'Middle','Old')),levels=c('Young','Middle','Old'),order=T)) %>%
+      ggplot(aes(x = age,fill = class))+
+        geom_bar(stat = 'count',position='fill')+
+        scale_fill_manual(values = c('#013a63','#d3d3d3','#ba181b'))+
+        theme_classic()+
+        theme(text = element_text(size = 16),legend.position ='bottom',axis.text.x = element_text(angle=90,hjust=-1,vjust=1))+
+        xlab('Age')+
+        ylab('Fraction')+
+        facet_grid(. ~ group, scales = "free", space='free')
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/new/hca_fraction.pdf',width = 5,height = 6)
+ggarrange(p1,p2,ncol = 1,nrow = 2,common.legend = F,widths = c(1, 1), heights = c(1, 1.5))
 dev.off()

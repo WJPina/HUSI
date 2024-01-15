@@ -18,7 +18,7 @@ mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds"
 ### load melanoma data
 melanoma <- read.table("GSE72056_melanoma_single_cell_revised_v2.txt",sep="\t",header=TRUE)
 ### load meta data
-sample <- read.csv("sample.csv",row.names=1,stringsAsFactors=FALSE)
+# sample <- read.csv("sample.csv",row.names=1,stringsAsFactors=FALSE)
 metadata <- t(melanoma[c(2,3),-1])
 metadata <- metadata[metadata[,1]!=0,]
 metadata.sub <- metadata[metadata[,2]==0,]
@@ -98,9 +98,6 @@ dpt <- DPT(dm)
 dev.new()
 plot(dpt)
 
-
-save(EpiExp.m,file = paste("tumor_",Sys.Date(),'.RData', sep = ""))
-
 ### age state degs
 marker_set = list()
 for(i in unique(EpiExp.m$State)){
@@ -173,16 +170,13 @@ library(org.Hs.eg.db)
 ribosomal = read.table("/mnt/data1/wangj/MouseBrain/Ribosome.txt",stringsAsFactors=FALSE)
 marker_set_mr = lapply(marker_set,function(x) {x <- x[!rownames(x) %in% ribosomal$V1,] %>% rownames_to_column('gene')})
 res = rbindlist(marker_set_mr,idcol = 'state')
+res$state = factor(res$state,levels = c("Cycling","Transitional","Senescent"),ordered = T)
 ids=bitr(res$gene,'SYMBOL','ENTREZID','org.Hs.eg.db')
 sce.markers=merge(res,ids,by.x='gene',by.y='SYMBOL')
 gcSample=split(sce.markers$ENTREZID, sce.markers$state)
 bg=bitr(rownames(EpiExp.m@assays$RNA),'SYMBOL','ENTREZID','org.Hs.eg.db')
-# GO
+### GO
 go <- compareCluster(gcSample, fun= "enrichGO",ont = "BP",OrgDb= "org.Hs.eg.db", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
-
-# # KEGG
-# kegg <- compareCluster(gcSample, fun= "enrichKEGG",organism="hsa", pvalueCutoff=0.05,pAdjustMethod = "fdr",universe = bg$ENTREZID)
-
 
 ##### analysis on TCGA SKCM
 ### load TCGA SKCM bulk data RPKM
@@ -301,7 +295,7 @@ df = data.frame(
 
 df = filter(df,rowSums(df[,-1])!=0)
 pathways = df[df$sene_income!=0&df$cycle_income == 0,]$pathway
-
+pathways
 # pathways = c("CSPG4","CD6","BMP","CCL","TGFb" )
 cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transitional","Senescent"))
 

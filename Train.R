@@ -12,7 +12,11 @@ gtf = rtracklayer::import("gencode.v31.annotation.gtf")
 # Remove non protein coding genes
 idx = rownames(raw_TPM) %in% as.data.table(gtf)[type %in% "gene" & gene_type %in% "protein_coding"]$gene_name
 exprData = raw_TPM[idx,]
-sprintf('RNA-Seq was filtered from %d features to %d protein coding genes', nrow(raw_TPM), nrow(exprData))
+# remove ribosomal and mitchodrial genes
+mtGenes = grep("^MT-", rownames(exprData))
+riboGenes = grep("^RP[SL]", rownames(exprData))
+exprData = exprData[-c(mtGenes, riboGenes),]
+sprintf('RNA-Seq was filtered from %d features to %d genes', nrow(raw_TPM), nrow(exprData))
 # Filter out genes with close to zero expression
 idx = apply(exprData, 1, function(v) sum(v<=3) )/ncol(exprData) > 0.99
 sprintf('There were %d genes with 99%% of samples having TPM < 3', sum(idx))
@@ -80,9 +84,9 @@ meta_GB_2018
 # aggregate all
 metadata <- rbind(metadata_P,meta_GB_2018)
 metadata
-save(X,metadata,file = 'ModelTrainData.RData')
+save(X,metadata,file = 'ModelTrainData_new.RData')
 ############################# Train model ######################################
-load("ModelTrainData.RData")
+load("ModelTrainData_new.RData")
 library(gelnet)
 ### mean center and split to train and background dataset
 X_centre = X - (apply(X, 1, mean))
@@ -91,7 +95,7 @@ X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
 ### training model
 mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
-saveRDS(mm_l2,file="mm_l2.rds")
+saveRDS(mm_l2,file="mm_l2_new.rds")
 
 ### Leave-one-out cross validation
 auc <- c()
@@ -107,7 +111,7 @@ for(i in 1:ncol(X_tr)){
   cat( "Current AUC: ", auc[i], "\n" )
   cat( "Average AUC: ", mean(auc), "\n" )
 }
-
+saveRDS(auc ,file="auc_new.rds")
 
 
 
