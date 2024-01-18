@@ -88,12 +88,12 @@ mygseaplot2(fgsea,
 )
 dev.off()
 
-########################### model leave-one-out auc
-auc = sort(auc)
+########################### model leave-one-out CRP
+CRP = sort(CRP)
 
 # png('HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
 pdf('HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
-ggplot(aes(x = 1:length(auc),y = auc),data=data.frame(auc=auc))+
+ggplot(aes(x = 1:length(CRP),y = CRP),data=data.frame(CRP=CRP))+
     geom_line()+
     theme_classic()+
     theme(text=element_text(size=16),axis.title.x = element_blank())+

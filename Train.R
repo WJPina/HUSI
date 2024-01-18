@@ -96,7 +96,7 @@ saveRDS(mm_l2,file="mm_l2_new.rds")
 write.csv(mm_l2, file = "mm_l2.csv")
 
 ### Leave-one-out cross validation
-auc <- c()
+CRP <- c()
 for(i in 1:ncol(X_tr)){
   ## Train a model on non-left-out data
   X1 <- X_tr[,-i]
@@ -104,10 +104,10 @@ for(i in 1:ncol(X_tr)){
   ## Score the left-out sample against the background
   s_bk <- apply( X_bk, 2, function(z) {cor( m1$w, z, method="sp" )} )
   s1 <- cor( m1$w, X_tr[,i], method="sp" )
-  ## AUC = P( left-out sample is scored above the background )
-  auc[i] <- sum( s1 > s_bk ) / length(s_bk)  
-  cat( "Current AUC: ", auc[i], "\n" )
-  cat( "Average AUC: ", mean(auc), "\n" )
+  ## CRP = P( left-out sample is scored above the background )
+  CRP[i] <- sum( s1 > s_bk ) / length(s_bk)  
+  cat( "Current CRP: ", CRP[i], "\n" )
+  cat( "Average CRP: ", mean(CRP), "\n" )
 }
 
 
