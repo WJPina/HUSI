@@ -11,9 +11,8 @@ library(tibble)
 library(data.table)
 library(destiny)
 
-setwd('/home/wangjing/wangj/AgingScore/Data/scRNA_melanome')
 
-mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+mm_l2 = readRDS("mm_l2.rds")
 ############################### application on melanoma ########################
 ### load melanoma data
 melanoma <- read.table("GSE72056_melanoma_single_cell_revised_v2.txt",sep="\t",header=TRUE)
@@ -68,7 +67,7 @@ cor.genes[is.na(cor.genes)] <- 0
 features <- names(cor.genes)[order(abs(cor.genes),decreasing=TRUE)][1:1500]
 features 
 ### Running the ICAnet
-source('~/wangj/codebase/HUSI/getPPI_String.R')
+source('./functions.R')
 EpiExp.matrix <- as.matrix(GetAssayData(EpiExp.m))[features,]
 EpiExp.m[['AgingExp']] <- CreateAssayObject(EpiExp.matrix)
 DefaultAssay(EpiExp.m) <- "AgingExp"
@@ -77,8 +76,8 @@ EpiExp.m$batch <- rep("batch",ncol(EpiExp.m))
 Ica.epi <- ICAcomputing(EpiExp.m,ICA.type="JADE",RMT=TRUE,two.stage=FALSE)
 Ica.filter <- CrossBatchGrouping(Ica.epi$ica.pooling)
 dev.off()
-PPI <- readRDS("PPI_melanoma.RDS")
-# PPI <- getPPI_String(EpiExp.m,species=9606)
+
+PPI <- getPPI_String(EpiExp.m,species=9606)
 EpiExp.m <- RunICAnet(EpiExp.m,Ica.epi$ica.pooling,PPI.net = PPI,scale=FALSE,ModuleSignificance = FALSE,cores = 1,aucMaxRank=500)
 
 EpiExp.m$State = factor(ifelse(EpiExp.m$age_class == 1,"Cycling",ifelse(EpiExp.m$age_class == 2,"Transitional","Senescent")),levels = c("Cycling","Transitional","Senescent"))
@@ -109,7 +108,6 @@ lapply(marker_set,dim)
 
 ##### validate in microarray
 ### bulk degs
-load('/home/wangjing/wangj/AgingScore/Data/Bulk_Microarray/Valid.RData')
 
 GPL = c("GPL570" = "hgu133plus2.db","GPL3921" = "hthgu133a.db","GPL11532" = "hugene11sttranscriptcluster.db")
 gene_id = aafSymbol( rownames(ArrayList$GSE83922[[1]]), GPL[ArrayList$GSE83922[[1]]@annotation]) %>% as.character
@@ -167,7 +165,7 @@ for(de in c("up","down")){
 library(clusterProfiler)
 library(org.Hs.eg.db)
 ### remove ribosomal protein
-ribosomal = read.table("/mnt/data1/wangj/MouseBrain/Ribosome.txt",stringsAsFactors=FALSE)
+ribosomal = read.table("Ribosome.txt",stringsAsFactors=FALSE)
 marker_set_mr = lapply(marker_set,function(x) {x <- x[!rownames(x) %in% ribosomal$V1,] %>% rownames_to_column('gene')})
 res = rbindlist(marker_set_mr,idcol = 'state')
 res$state = factor(res$state,levels = c("Cycling","Transitional","Senescent"),ordered = T)
@@ -209,14 +207,14 @@ Frac <- Frac_epi$estF
 colMeans(Frac)
 
 ### using CIBERSORT to deconvolute TCGA SKCM sample
-# source("/home/wangjing/wangj/codebase/HUSI/CIBERSORT.R")
-# out = tcga_melanoma
-# out = rbind(ID = colnames(out),out)
-# out[1:5,1:5]
-# write.table(out,file="tcga_melanoma.txt",sep="\t",quote=F,col.names=F)  
+source("./CIBERSORT.R")
+out = tcga_melanoma
+out = rbind(ID = colnames(out),out)
+out[1:5,1:5]
+write.table(out,file="tcga_melanoma.txt",sep="\t",quote=F,col.names=F)  
 
-# SKCM_CIBER = CIBERSORT("LM22.txt", "tcga_melanoma.txt", perm=100, QN=TRUE)
-# write.csv(SKCM_CIBER,"tcga_melanoma_CIBERSORT.csv")
+SKCM_CIBER = CIBERSORT("LM22.txt", "tcga_melanoma.txt", perm=100, QN=TRUE)
+write.csv(SKCM_CIBER,"tcga_melanoma_CIBERSORT.csv")
 
 SKCM_CIBER = read.csv('tcga_melanoma_CIBERSORT.csv',row.names = 1)
 head(SKCM_CIBER)

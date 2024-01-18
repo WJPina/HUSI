@@ -16,7 +16,7 @@ library(circlize)
 
 ##################### train set counts
 ### histogram
-png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
+png("HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
 data.frame(Counts = colSums(exprData[,metadata$sample_title]),Dataset = metadata$study_accession) %>%
 ggplot()+
   geom_histogram(aes(x=Counts),bins = 50,color = '#adb5bd',linewidth = 0.4)+
@@ -35,8 +35,8 @@ pwc <- df_plot %>% group_by(marker) %>%
         rstatix::pairwise_t_test(expression ~ Condition, paired = F,p.adjust.method = "bonferroni")
 pwc
 pwc <- pwc %>% rstatix::add_xy_position(x = "marker")
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_markers.png',width = 1200,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_markers.pdf',width = 4,height = 5)
+# png('HUSI/Figures/model/valid_markers.png',width = 1200,height = 1500,res = 300)
+pdf('HUSI/Figures/model/valid_markers.pdf',width = 4,height = 5)
 df_plot %>%
   ggplot(aes(x = marker, y = expression)) + 
   geom_boxplot(aes(color = Condition),outlier.shape = NA) + 
@@ -52,7 +52,7 @@ dev.off()
 res <- data.frame(expression = rowMeans(X_tr[names(mm_l2$w),]),weight = mm_l2$w,gene = names(mm_l2$w),row.names = names(mm_l2$w))
 res$threshold = ifelse(res$weight > 0,"Positive","Negative")
 label_data <- subset(res, abs(res$weight) > 0.02)
-pdf("/home/wangjing/wangj/codebase/HUSI/Figures/model/model_genes.pdf",width = 8,height = 6)
+pdf("HUSI/Figures/model/model_genes.pdf",width = 8,height = 6)
 ggplot(data = res, aes(y=expression,x=weight,color=threshold)) +
   geom_point(alpha=0.5, size=2)+
   geom_text_repel(data = label_data,label = rownames(label_data),color = 'black',max.overlaps = 10,size = 3,show.legend = F)+
@@ -68,11 +68,11 @@ dev.off()
 load('GSEA.RData')
 library(enrichplot)
 library(gggsea)
-source('~/wangj/codebase/HUSI/mygseaplot2.R')
+source('./functions.R')
 cols = c(rev(colorRampPalette(c("transparent", 'red'))(6))[1:5],colorRampPalette(c("transparent", 'blue'))(5)[c(2:5)])
 names(cols) = df$ID
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1600,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_GSEA_UP.pdf',width = 6,height = 5)
+# png('HUSI/Figures/model/valid_GSEA_DOWN.png',width = 1600,height = 1500,res = 300)
+pdf('HUSI/Figures/model/valid_GSEA_UP.pdf',width = 6,height = 5)
 mygseaplot2(fgsea,
             # geneSetID = df$ID[6:9],
             geneSetID = df$ID[1:5],
@@ -89,11 +89,10 @@ mygseaplot2(fgsea,
 dev.off()
 
 ########################### model leave-one-out auc
-load("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/model_auc.RData")
 auc = sort(auc)
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
+# png('HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
+pdf('HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
 ggplot(aes(x = 1:length(auc),y = auc),data=data.frame(auc=auc))+
     geom_line()+
     theme_classic()+
@@ -103,9 +102,9 @@ ggplot(aes(x = 1:length(auc),y = auc),data=data.frame(auc=auc))+
 dev.off()
 
 ################################## bacth effect
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_BE.png',width = 1500,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_BE.pdf',width = 5,height = 5)
-read.table("/home/wangjing/wangj/AgingScore/Data/Bulk_BatchEffect/batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
+# png('HUSI/Figures/model/valid_BE.png',width = 1500,height = 1500,res = 300)
+pdf('HUSI/Figures/model/valid_BE.pdf',width = 5,height = 5)
+read.table("batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
   dplyr::select(c("title","study_accession","condition")) %>%
   mutate(hUSI = s_batch[title]) %>%
   column_to_rownames("title") %>%
@@ -175,8 +174,8 @@ p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>%
   ggtitle("RS in WI-38")
 
 fig <- ggarrange(p1.1,p1.2,p1.3,ncol = 3,nrow = 1,common.legend = F,widths = c(4,4,3))
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.png',width = 3000,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_RNA-seq.pdf',width = 10,height = 5)
+# png('HUSI/Figures/model/valid_RNA-seq.png',width = 3000,height = 1500,res = 300)
+pdf('HUSI/Figures/model/valid_RNA-seq.pdf',width = 10,height = 5)
 fig
 dev.off()
 ############################# valid data in micro-array
@@ -317,13 +316,12 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
 
 fig <- ggarrange(p2.1,p2.2,p2.3,p2.4,p2.5,p2.6,ncol = 3,nrow = 2,common.legend = F)+ 
         theme(plot.margin = unit(c(0,0,0,0), "cm"))
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.png',width = 4500,height = 2400,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_array.pdf',width = 15,height = 8)
+# png('HUSI/Figures/model/valid_array.png',width = 4500,height = 2400,res = 300)
+pdf('HUSI/Figures/model/valid_array.pdf',width = 15,height = 8)
 fig
 dev.off()
 
 ################################# plot lost rate stability
-load('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/Valid_lost_1013.RData')
 mytheme <- function () { 
   theme_classic() %+replace% 
     theme(text = element_text(size = 16))
@@ -467,13 +465,12 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
   xlab('Zeroing-out Rate')
 
 fig <- ggarrange(p2.1,p2.2,p2.3,p2.4,p2.5,p2.6,ncol = 3,nrow = 2,common.legend = T,legend = 'bottom')
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.png',width = 4500,height = 2400,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/valid_lost.pdf',width = 15,height = 8)
+# png('HUSI/Figures/model/valid_lost.png',width = 4500,height = 2400,res = 300)
+pdf('HUSI/Figures/model/valid_lost.pdf',width = 15,height = 8)
 fig
 dev.off()
 
 ########################### hSUI validate ######################################
-load('/home/wangjing/wangj/AgingScore/Comparison/compare.RData')
 ### value
 df_plot_list = lapply(Results[c("Aarts2017","Georgilis2018")], function(x){data.frame(hUSI = x$hUSI,Condition = x$method$Condition)})
 df_plot_list[['Teo2019']] = data.frame(hUSI = Results$Teo2019$hUSI,Condition = gsub("[0-9]$", "", Results$Teo2019$method$Condition1))
@@ -485,8 +482,8 @@ pwc <- df_plot %>% group_by(Dataset) %>%
 pwc
 pwc <- pwc %>% rstatix::add_xy_position(x = "Dataset")
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_hUSI.png',width = 1400,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_hUSI.pdf',width = 7,height = 7)
+# png('HUSI/Figures/model/compare_hUSI.png',width = 1400,height = 1500,res = 300)
+pdf('HUSI/Figures/model/compare_hUSI.pdf',width = 7,height = 7)
 df_plot %>%
   mutate(Condition = factor(Condition,levels = c('Growing','Senescence'),ordered = T)) %>%
   ggplot(aes(x = Dataset,y=hUSI,color = Condition)) +
@@ -552,8 +549,8 @@ for(i in 1:length(df_list)){
 }
 
 fig <- ggarrange(plotlist = plot_list,ncol = 2,nrow = 2,common.legend = T,legend = 'bottom')
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
+# png('HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
+pdf('HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
 fig
 dev.off()
 
@@ -586,8 +583,8 @@ scale_x_reordered <- function(..., sep = "___") {
 data$group <- ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score'))
 data$color <- ifelse(data$Group.1 == 'hUSI','hUSI',ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score')))
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_rank.png',width = 3500,height = 1500,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/compare_rank.pdf',width = 16.5,height = 7)
+# png('HUSI/Figures/model/compare_rank.png',width = 3500,height = 1500,res = 300)
+pdf('HUSI/Figures/model/compare_rank.pdf',width = 16.5,height = 7)
 ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
     scale_x_reordered()+
     geom_bar(stat="identity",position="dodge")+
@@ -602,24 +599,22 @@ ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
 dev.off()
 
 #################################### GTEx/TCGA #################################
-load('/home/wangjing/wangj/AgingScore/Comparison/scoreList_GTExTCGA.RData')
-
 ### gtex
-TCSER = read.csv('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/Senescence_quantification_GTEX.csv')
+TCSER = read.csv('Senescence_quantification_GTEX.csv')
 TCSER = TCSER[!duplicated(TCSER$Sample),]
 rownames(TCSER) = TCSER$Sample
 df_plot <- scoreList_GTEx[c('TCSER','hUSI')] %>% data.frame() 
 df_plot$Group <- TCSER[names(scoreList_GTEx$hUSI),'primary_site']
 
 ### tcga
-TCSER = read.csv('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/Senescence_quantification_TCGA.csv')
+TCSER = read.csv('Senescence_quantification_TCGA.csv')
 TCSER <- column_to_rownames(TCSER,'sample')
 rownames(TCSER) <- gsub('-','.',rownames(TCSER))
 df_plot <- scoreList_TCGA[c('TCSER','hUSI')] %>% data.frame() 
 df_plot$Group <- TCSER[names(scoreList_TCGA$hUSI),'cancertype']
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.png',width = 1000,height = 900,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_TCSER.pdf',width = 4.5,height = 4)
+# png('HUSI/Figures/model/GTEx_TCSER.png',width = 1000,height = 900,res = 300)
+pdf('HUSI/Figures/model/GTEx_TCSER.pdf',width = 4.5,height = 4)
   df_plot %>%
   ggscatter(x = "hUSI", y = "TCSER",
             color = '#2ec4b6',
@@ -642,10 +637,10 @@ coeffient = unlist(lapply(split(df_plot[,c('TCSER','hUSI')],df_plot$Group),FUN =
 hUSI_mat =  unlist(lapply(split(df_plot[,'hUSI'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
 TCSER_mat =  unlist(lapply(split(df_plot[,'TCSER'],df_plot$Group),FUN = function(x) mean(x)))[names(cor_mat)]
 
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Tissue.png',width = 3800,height = 1000,res = 300)
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.png',width = 3900,height = 800,res = 300)
-# pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Tissue.pdf',width = 15,height = 3.5)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/TCGA_CancerType.pdf',width = 15,height = 2.8)
+# png('HUSI/Figures/model/GTEx_Tissue.png',width = 3800,height = 1000,res = 300)
+# png('HUSI/Figures/model/TCGA_CancerType.png',width = 3900,height = 800,res = 300)
+# pdf('HUSI/Figures/model/GTEx_Tissue.pdf',width = 15,height = 3.5)
+pdf('HUSI/Figures/model/TCGA_CancerType.pdf',width = 15,height = 2.8)
 Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
         cell_fun = function(j, i, x, y, w, h, col) {grid.text(round(t(coeffient),2)[i, j], x, y) },
         show_heatmap_legend = F,
@@ -659,7 +654,7 @@ dev.off()
 
 ### GTEx by Age
 df = data.frame(hUSI = scoreList_GTEx$hUSI,Age = GTEx_meta[names(scoreList_GTEx$hUSI),'AGE'],Tissue = GTEx_meta[names(scoreList_GTEx$hUSI),'SMTSD'])
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/model/GTEx_Age.pdf',width = 4.5,height = 4)
+pdf('HUSI/Figures/model/GTEx_Age.pdf',width = 4.5,height = 4)
 ggplot(df,aes(x = Age,y = hUSI,fill = Age)) + 
   geom_boxplot() + 
   scale_fill_brewer(palette = "Reds")+
@@ -679,7 +674,7 @@ bar = c("#2a9d8f","#e9c46a","#e76f51")
 names(bar) = c("Cycling","Transitional","Senescent")
 
 ### histogram
-png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
+png("HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
 ggplot(EpiExp.m@meta.data)+
   geom_histogram(aes(x=hUSI),bins = 50,fill = 'white',color = '#adb5bd',linewidth = 0.4)+
   geom_density(aes(x=hUSI,fill = State),alpha = 0.6,color = NA)+
@@ -693,7 +688,7 @@ dev.off()
 pwc = EpiExp.m@meta.data %>% 
         rstatix::pairwise_t_test(hUSI ~ State, paired = F,p.adjust.method = "bonferroni") %>%
         rstatix::add_xy_position(x = "State")
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hUSI.png',width = 1200,height = 1200,res = 300)
+png('HUSI/Figures/melanome/Melanoma_hUSI.png',width = 1200,height = 1200,res = 300)
 EpiExp.m@meta.data %>%
   ggplot(aes(x = State,y = hUSI,color = State))+
   geom_boxplot()+
@@ -709,7 +704,7 @@ dev.off()
 res <- data.frame(expression = rowMeans(EpiExp.m@assays$RNA@data[names(cor.genes),]),correlation = cor.genes,row.names = names(cor.genes))
 res$threshold = ifelse(rownames(res) %in% features, ifelse(res$correlation > 0,"Positive","Negative"),"Background")
 label_data <- subset(res, abs(res$correlation) > 0.5 & res$expression  > 4)
-png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_corgenes.png",width = 1000,height = 1200,res = 300)
+png("HUSI/Figures/melanome/Melanoma_corgenes.png",width = 1000,height = 1200,res = 300)
 ggplot(data = res, aes(y=expression,x=correlation,color=threshold)) +
   geom_point(alpha=0.5, size=2)+
   geom_text_repel(data = label_data,label = rownames(label_data),color = 'black',max.overlaps = 10,size = 3,show.legend = F)+
@@ -735,7 +730,7 @@ EpiExp.m <- ScaleData(EpiExp.m)
 mat = EpiExp.m@assays$IcaNet@scale.data %>% as.matrix()
 mat = mat[,names(groups)]
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_icanet.png',width = 2500,height = 1800,res= 300)
+png('HUSI/Figures/melanome/Melanoma_icanet.png',width = 2500,height = 1800,res= 300)
 Heatmap(mat,
         show_column_names = F,
         show_row_names = T,
@@ -750,7 +745,7 @@ Heatmap(mat,
 dev.off()
 
 ### melanome trajectory
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_diffusion.png',width = 1400,height = 1000,res = 300)
+png('HUSI/Figures/melanome/Melanoma_diffusion.png',width = 1400,height = 1000,res = 300)
 ggplot(data = data.frame(DC1 = dm$DC1,DC2 = dm$DC2, State = dm$State)) +
   geom_point(aes(DC1, DC2,colour = State),size = 2)+
   scale_color_manual(values = bar)+
@@ -770,7 +765,7 @@ p2 = FeaturePlot(EpiExp.m,features=SenMarkers[2],reduction='diffusion',order=T,p
 p3 = VlnPlot(EpiExp.m,features=SenMarkers[1],group.by='State',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank()) + NoLegend()
 p4 = VlnPlot(EpiExp.m,features=SenMarkers[2],group.by='State',assay = 'RNA',cols = bar,pt.size = 0) + theme(axis.title.x = element_blank())+ NoLegend()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_markers.png',width = 2500,height = 2000,res = 300)
+png('HUSI/Figures/melanome/Melanoma_markers.png',width = 2500,height = 2000,res = 300)
 ggarrange(p1,p3,p2,p4,ncol = 2,nrow = 2) 
 dev.off()
 
@@ -800,7 +795,7 @@ for(set in names(enrich_reList)){
                     scale_y_continuous(limits = c(-1, 1))
     
 }
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_enrich.png',width = 1500,height = 600,res = 160)
+png('HUSI/Figures/melanome/Melanoma_enrich.png',width = 1500,height = 600,res = 160)
 ggarrange(pList$Cycling_up,
             pList$Transitional_up,
             pList$Senescent_up,
@@ -811,13 +806,13 @@ ggarrange(pList$Cycling_up,
 dev.off()
 
 ### marker enrichment plot
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_state_enrich.png',width = 2000,height = 1500,res = 300)
+png('HUSI/Figures/melanome/Melanoma_state_enrich.png',width = 2000,height = 1500,res = 300)
 dotplot(go,showCategory = 5) + theme(axis.text.x = element_text(angle = 45,vjust = 0.5, hjust=0.5))+
   ggtitle("GO:BP Enrichment of State Marker Genes")+theme(plot.title = element_text(hjust = 1))
 dev.off()
 
 ### draw heatmap of SKCM CIBERSORT
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_state_immue_cor.png',width = 1800,height = 1200,res= 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_state_immue_cor.png',width = 1800,height = 1200,res= 300)
 bk <- c(seq(-0.3,0.3,by=0.01))
 cor_mat <- cormat_gtex
 pheatmap::pheatmap(cor_mat,show_colnames = T,show_rownames = T,
@@ -843,21 +838,21 @@ plotsurv <- function(myfit){
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Cycling')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Cycling,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_Cycling.png',width = 1200,height = 1600,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_Cycling.png',width = 1200,height = 1600,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Transitional')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Transitional,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_Transitional.png',width = 1400,height = 1600,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_Transitional.png',width = 1400,height = 1600,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'Senescent')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ Senescent,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_Senescent.png',width = 1200,height = 1600,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_Senescent.png',width = 1200,height = 1600,res = 300)
 plotsurv(fit)
 dev.off()
 
@@ -865,20 +860,20 @@ dev.off()
 bar = c("#2a9d8f","#e9c46a","#e76f51","#AAC5E2","#FFC592","#A4D99D","#F4A39E","#CCB7DC","#CBAEA8")
 names(bar) <- c("Cycling","Transitional","Senescent","B cell","CAF cell","Endo cell","Macro cell","NK cell","T cell")
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_all_cell.png',width = 2000,height = 1500,res = 300)
+png('HUSI/Figures/melanome/Melanoma_all_cell.png',width = 2000,height = 1500,res = 300)
 DimPlot(melanoma_obj, group.by = 'subtype',reduction = "tsne",label = T,
         cols = bar,repel = TRUE,label.box = T,label.color = "white",pt.size = 1.5,label.size = 6)+
   ggtitle("Melanoma cell types")
 dev.off()
 
 ### cell chat strength count
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_scatter.png',width = 1200,height = 1000,res = 300)
-source('/home/wangjing/wangj/codebase/HUSI/netAnalysis_signalingRole_scatter.R')
+png('HUSI/Figures/melanome/melanome_cellchat_scatter.png',width = 1200,height = 1000,res = 300)
+source('./functions.R')
 netAnalysis_signalingRole_scatter_log(cellchat,color.use = bar,dot.alpha = 0)
 dev.off()
 
 ### cell chat strength cord
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_network.png',width = 1600,height = 1200,res = 300)
+png('HUSI/Figures/melanome/melanome_cellchat_network.png',width = 1600,height = 1200,res = 300)
 mat <- log10(cellchat@net$weight)
 par(mfrow = c(2,3), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
 for (i in c('Cycling','Transitional','Senescent')) {
@@ -894,21 +889,21 @@ for (i in c('Cycling','Transitional','Senescent')) {
 dev.off()
 
 ### different pattern
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pattern.png',width = 1900,height = 1500,res = 300)
+png('HUSI/Figures/melanome/melanome_cellchat_pattern.png',width = 1900,height = 1500,res = 300)
 netAnalysis_river(cellchat, pattern = "outgoing",cutoff = 0.5,
                   sources.use = c('Cycling','Transitional','Senescent'),
                   signaling = as.character(pattern_use$Signaling))
 dev.off()
 
 ### pathway strength bubble
-# png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 300)
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_pathway.pdf',width = 6,height = 5)
-source('/home/wangjing/wangj/codebase/HUSI/netVisual_bubble_my.R')
+# png('HUSI/Figures/melanome/melanome_cellchat_pathway.png',width = 1500,height = 1200,res = 300)
+pdf('HUSI/Figures/melanome/melanome_cellchat_pathway.pdf',width = 6,height = 5)
+source('./functions.R')
 netVisual_bubble_my(cellchat,signaling = pathways,targets.use = c('Cycling','Transitional','Senescent'), remove.isolate = F,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),thresh=0.01)
 dev.off()
 
 ### pathway strength cord
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_chord.png',width = 2000,height = 1000,res = 300)
+png('HUSI/Figures/melanome/melanome_cellchat_chord.png',width = 2000,height = 1000,res = 300)
 par(mfrow = c(1,2), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
 for(p in c('BMP','TGFb')){
     netVisual_aggregate(cellchat, signaling = p,layout = "chord",remove.isolate = F,
@@ -917,7 +912,7 @@ for(p in c('BMP','TGFb')){
 }
 dev.off()
 
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_chord_2.pdf',width = 6,height = 6)
+pdf('HUSI/Figures/melanome/melanome_cellchat_chord_2.pdf',width = 6,height = 6)
 par(mfrow = c(2,2), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
 for(p in c("CCL","CSPG4","LEP","CD6")){
     netVisual_aggregate(cellchat, signaling = p,layout = "chord",remove.isolate = F,
@@ -928,19 +923,19 @@ dev.off()
 
 
 ### pathway gene expression
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression.png',width = 900,height = 1000,res = 300)
+png('HUSI/Figures/melanome/melanome_cellchat_expression.png',width = 900,height = 1000,res = 300)
 plotGeneExpression(cellchat, features=c('BMPR1B','BMPR2','TGFBR1','TGFBR2'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
 dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_2.png',width = 1000,height = 1000,res = 400)
+png('HUSI/Figures/melanome/melanome_cellchat_expression_2.png',width = 1000,height = 1000,res = 400)
 plotGeneExpression(cellchat, features=c('LEPR','ITGA2','ITGB1'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
 dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_CD6.png',width = 1000,height = 1000,res = 400)
+png('HUSI/Figures/melanome/melanome_cellchat_expression_CD6.png',width = 1000,height = 1000,res = 400)
 plotGeneExpression(cellchat, features=c('ALCAM'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
 dev.off()
 
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_CCL.png',width = 1000,height = 1000,res = 400)
+png('HUSI/Figures/melanome/melanome_cellchat_expression_CCL.png',width = 1000,height = 1000,res = 400)
 plotGeneExpression(cellchat, features=c('CCR10'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
 dev.off()
 
@@ -962,42 +957,42 @@ plotsurv <- function(myfit){
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'BMPR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ BMPR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR2.png',width = 1200,height = 1000,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR2.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'BMPR1B')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ BMPR1B,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR1B.png',width = 1200,height = 1000,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR1B.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR1')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR1,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR1.png',width = 1200,height = 1000,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR1.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1000,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'CCR10')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ CCR10,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_CCR10.png',width = 1400,height = 1500,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_CCR10.png',width = 1400,height = 1500,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'ALCAM')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ ALCAM,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_ALCAM.png',width = 1400,height = 1500,res = 300)
+png('HUSI/Figures/melanome/TCGA_SKCM_survival_ALCAM.png',width = 1400,height = 1500,res = 300)
 plotsurv(fit)
 dev.off()
 

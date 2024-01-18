@@ -3,7 +3,6 @@ library(dplyr)
 library(tibble)
 library(data.table)
 ################################ Pre-preocess raw trian data ###############################
-setwd("~/wangj/AgingScore/Data/Bulk_TrainModel")
 raw_TPM = cbind(
     fread("dermal_for_training_TPM.csv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
     fread("senescence_raw_TPM_for_training.tsv") %>% column_to_rownames("Gene Name") %>% as.matrix
@@ -84,9 +83,7 @@ meta_GB_2018
 # aggregate all
 metadata <- rbind(metadata_P,meta_GB_2018)
 metadata
-save(X,metadata,file = 'ModelTrainData_new.RData')
 ############################# Train model ######################################
-load("ModelTrainData_new.RData")
 library(gelnet)
 ### mean center and split to train and background dataset
 X_centre = X - (apply(X, 1, mean))
@@ -96,6 +93,7 @@ X_bk = X_centre[,!idx_senescent]
 ### training model
 mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
 saveRDS(mm_l2,file="mm_l2_new.rds")
+write.csv(mm_l2, file = "mm_l2.csv")
 
 ### Leave-one-out cross validation
 auc <- c()
@@ -111,7 +109,6 @@ for(i in 1:ncol(X_tr)){
   cat( "Current AUC: ", auc[i], "\n" )
   cat( "Average AUC: ", mean(auc), "\n" )
 }
-saveRDS(auc ,file="auc_new.rds")
 
 
 

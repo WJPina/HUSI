@@ -1,4 +1,4 @@
-mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+mm_l2 = readRDS("mm_l2.rds")
 ################## Valid model in  RNA-seq and microarray #######################
 library(annaffy)
 library(magrittr)
@@ -13,7 +13,7 @@ library(dplyr)
 library(fgsea)
 library(clusterProfiler)
 
-hallmarker = read.gmt("/mnt/data3/wangj2/GeneSets/h.all.v2023.1.Hs.symbols.gmt")
+hallmarker = read.gmt("h.all.v2023.1.Hs.symbols.gmt")
 fgsea <- GSEA(sort(mm_l2$w,decreasing=T), 
               exponent = 1, 
               minGSSize = 10,
@@ -33,13 +33,11 @@ df = fgsea@result
 df = df[order(df$NES,decreasing=T),]
 df[,c('ID','NES')]
 
-save(fgsea,file = '../Bulk_TrainModel/GSEA.RData')
 ################################# Batch Effect #################################
-data.matrix <- read.table("/home/wangjing/wangj/AgingScore/Data/Bulk_BatchEffect/batch_IMR90_4OHT.tsv",sep = "\t",header = T,row.names = 1)
+data.matrix <- read.table("batch_IMR90_4OHT.tsv",sep = "\t",header = T,row.names = 1)
 s_batch <- data.matrix %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
 ################################# Validation #################################
 ###### Microarray
-setwd("~/wangj/AgingScore/Data/Bulk_Microarray/")
 fs = paste(c('GSE19864','GSE16058','GSE83922','GSE11954','GSE100014','GSE77239'),"eSet.Rdata",sep = "_")
 ArrayList <- sapply(fs, function(x) mget(load(x)), simplify = TRUE) 
 names(ArrayList) <- unlist(lapply(strsplit(names(ArrayList),"_"),"[",1))
@@ -63,7 +61,6 @@ names(ScoreList) <- paste("s",gsub("GSE","",names(ArrayList)),sep = "_")
 sapply(ScoreList,length)
 
 ###### RNA-seq
-setwd("~/wangj/AgingScore/Data/Bulk_RNA-seq/")
 ### GSE60340
 s_IS = fread("GSE60340_induced_sene_TPM.csv") %>% 
   column_to_rownames("Gene Name") %>% 
@@ -84,10 +81,7 @@ s_RS = list.files("GSE130306/", "GSM", full.names = T) %>%
       }
   }) %>% 
   set_names( list.files("GSE130306/", "GSM", full.names = T) %>% gsub(".*RNAseq_", "", .) %>% gsub(".txt.gz", "", .) )
-
-save(ArrayList,ScoreList,s_IS,s_RS,file = '../Bulk_TrainModel/Valid_ArrayRNA.RData')
 ################################# Stability #################################
-setwd('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel')
 lost_rate = seq(0,0.9,0.1)
 set.seed(233)
 Lost_ScoreList = list()
@@ -118,4 +112,3 @@ for(i in 1:length(ArrayList)){
   }
   Lost_ScoreList[[names(ArrayList)[i]]] = rates
 }
-save(Lost_ScoreList,file= 'Valid_lost.RData')

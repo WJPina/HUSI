@@ -1,7 +1,5 @@
-mm_l2 = readRDS("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+mm_l2 = readRDS("mm_l2.rds")
 ######################## Comparision in 4 single-cell dataset  ###################################
-setwd("/home/wangjing/wangj/AgingScore/Comparison")
-
 library(Seurat)
 library(data.table)
 library(tibble)
@@ -111,7 +109,7 @@ getGenes <- function(type) {
 ### score list
 SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4","CDK6", "MKI67", "CDKN2B")
 
-EnrichSet<<-cogena::gmt2list("/mnt/data2/zhouxl/Pan_Cancer/Data/Signatures/gene_50signatures_merge.gmt")
+EnrichSet<<-cogena::gmt2list("gene_50signatures_merge.gmt")
 EnrichSet=EnrichSet[43:49]
 names(EnrichSet)
 rep_sene_genes = readxl::read_excel("SigRS.xls", sheet = 5, skip = 2)$Gene_names
@@ -262,8 +260,7 @@ df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['marker']][c
 df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['ssgsea']]))}))
 
 #################################### comparision in GTEx and TCGA #############################
-setwd('/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/')
-source("/mnt/data1/wangj/codebase/HUSI/transID.R")
+source("./functions.R")
 ##### GTEx bulk data
 ### load cs score
 TCSER_gtex = read.csv('Senescence_quantification_GTEX.csv')
@@ -271,7 +268,7 @@ dim(TCSER_gtex)
 TCSER_gtex = TCSER_gtex[!duplicated(TCSER_gtex$Sample),]
 rownames(TCSER_gtex) = TCSER_gtex$Sample
 library(CePa)
-GTEx_exp <- read.gct("/home/wangjing/wangj/AgingScore/Data/Bulk_TrainModel/CS_score_of_single_cell_datasets/bulk-gex_v8_rna-seq_GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm.gct.gz")
+GTEx_exp <- read.gct("bulk-gex_v8_rna-seq_GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm.gct.gz")
 dim(GTEx_exp)
 GTEx_exp[1:5,1:5]
 table(rownames(TCSER_gtex) %in% gsub('\\.','-',colnames(GTEx_exp)))
@@ -294,50 +291,6 @@ for(sl in names(EnrichSet)){
   scoreList_GTEx[[sl]] = score
 }
 
-### marker genes
-for(sl in SenMarkers){
-  if(sl %in% rownames(Counts_gtex)){
-    score = Counts_gtex[sl,] 
-    names(score) = colnames(Counts_gtex)
-    scoreList_GTEx[[sl]] = score
-  }
-}
-
-### Methods
-for(sl in names(Methods)){
-    if(sl == 'laf'){
-        for (s in names(Methods[[sl]])) {
-            score = calc_laf(Counts_gtex %>% as.matrix, Methods[[sl]][[s]])
-            names(score) = colnames(Counts_gtex)
-            scoreList_GTEx[[s]] = score
-            }
-        }
-        if(sl == 'lassoCS'){
-            genes = intersect(rownames(Counts_gtex),names(lassoCS))
-            mat = Counts_gtex[genes,] 
-            mat = apply(mat,2,function(x) {x * lassoCS[rownames(mat)]})
-            tryCatch({score = colSums(mat) %>% data.frame 
-            rownames(score) = colnames(Counts_gtex)}, 
-            error = function(e) {
-            score = mat %>% data.frame})
-            rownames(score) = colnames(Counts_gtex)
-            scoreList_GTEx[[sl]] = score   
-        }
-        if(sl == 'CSS'){
-            genes = intersect(rownames(Counts_gtex),names(CSS))
-            mat = Counts_gtex[genes,] 
-            mat = apply(mat,2,function(x) {x * CSS[rownames(mat)]}) 
-            tryCatch({score = colSums(mat) %>% data.frame 
-            rownames(score) = colnames(Counts_gtex)}, 
-            error = function(e) {
-            score = mat %>% data.frame})
-            rownames(score) = colnames(Counts_gtex)
-            scoreList_GTEx[[sl]] = score
-    }
-
-}
-
-cormat_gtex <- do.call(data.frame, scoreList_GTEx) %>% cor(method = 'spearman')
 ###### TCGA bulk data
 ### load cs score
 TCSER_tcga = read.csv('Senescence_quantification_TCGA.csv')
@@ -345,7 +298,7 @@ dim(TCSER_tcga)
 TCSER_tcga = TCSER_tcga[!duplicated(TCSER_tcga$sample),]
 rownames(TCSER_tcga) = TCSER_tcga$sample
 
-TCGA_exp = fread('/mnt/data1/wangj/MyProject/Data/TCGA_pan_tpm/tcga_RSEM_gene_tpm.gz') 
+TCGA_exp = fread('tcga_RSEM_gene_tpm.gz') 
 TCGA_exp = data.frame(TCGA_exp)
 TCGA_exp = column_to_rownames(TCGA_exp,'sample')
 dim(TCGA_exp)
@@ -368,13 +321,13 @@ cormat_tcga <- do.call(data.frame, scoreList_TCGA) %>% cor(method = 'spearman')
 
 ### validate hUSI in GTEx and TCGA by meta data
 ### Age
-GTEx_sample <- read.csv("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt",sep = "\t",row.names = 1,header = T)
+GTEx_sample <- read.csv("GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt",sep = "\t",row.names = 1,header = T)
 GTEx_sample<- GTEx_sample[,c("SMTS","SMTSD")]
 GTEx_sample$Sample <- rownames(GTEx_sample)
 GTEx_sample$Patient <- lapply(strsplit(rownames(GTEx_sample),'-'),function(x) {paste(x[1],x[2],sep = '-')}) %>% unlist
 length(unique(GTEx_sample$Patient))
 
-GTEx_Pheno <- read.table("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SubjectPhenotypesDS.txt",sep = "\t",header = T)
+GTEx_Pheno <- read.table("GTEx_Analysis_v8_Annotations_SubjectPhenotypesDS.txt",sep = "\t",header = T)
 length(unique(GTEx_Pheno$SUBJID))
 GTEx_meta <- merge(GTEx_Pheno,GTEx_sample,by.x = "SUBJID",by.y = "Patient")
 length(unique(GTEx_meta$SUBJID))
