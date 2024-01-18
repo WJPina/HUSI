@@ -260,6 +260,7 @@ table(melanoma_obj$subtype)
 cellchat <- createCellChat(object = melanoma_obj,group.by = 'subtype')
 cellchat@DB <- CellChatDB.human 
 table(cellchat@idents)
+cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transitional","Senescent"))
 
 future::plan("multicore", workers = 10) 
 options(future.globals.maxSize = 8000 * 1024^2)
@@ -276,13 +277,13 @@ cellchat <- aggregateNet(cellchat)
 groupSize <- as.numeric(table(cellchat@idents))
 cellchat <- netAnalysis_computeCentrality(cellchat, slot.name = "netP")
 
-### find patterns
+### find output patterns
 nPatterns = 6
 cellchat <- identifyCommunicationPatterns(cellchat, pattern = "outgoing", k = nPatterns)
 pattern <- cellchat@netP$pattern$outgoing$pattern$signaling[cellchat@netP$pattern$outgoing$pattern$signaling$Contribution>0.5,]
 pattern_use = pattern[pattern$Pattern %in% c("Pattern 1","Pattern 6"),]
 
-### unique pathway in senescent
+### unique receive pathway in senescent
 sig = cellchat@LR$LRsig
 pathways = names(cellchat@netP$centr)
 df = data.frame(
@@ -296,9 +297,9 @@ df = data.frame(
 df = filter(df,rowSums(df[,-1])!=0)
 pathways = df[df$sene_income!=0&df$cycle_income == 0,]$pathway
 pathways
-# pathways = c("CSPG4","CD6","BMP","CCL","TGFb" )
-cellchat@idents <- factor(cellchat@idents,levels = c('Endo cell','B cell','T cell','NK cell','Macro cell','CAF cell',"Cycling","Transitional","Senescent"))
 
 ### survival analysis of receptor-ligand pairs
 data = data.frame(t(tcga_melanoma[c('BMPR1B','BMPR2','TGFBR1','TGFBR2'),rownames(survival_data)]),OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)
 
+
+data = data.frame(t(tcga_melanoma[c('CCR10','ALCAM'),rownames(survival_data)]),OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)

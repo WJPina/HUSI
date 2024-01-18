@@ -27,7 +27,8 @@ ggplot()+
 dev.off()
 
 ##################### senescent marker expression in train set
-genes = c('CDKN1A','CDKN2B')
+# genes = c('CDKN1A','CDKN2B')
+genes = c('CDKN1A','CDKN2B','SERPINE1' )
 df_plot = data.frame(t(cbind(X_bk[genes,],X_tr[genes,])),Condition = c(rep('other',122),rep('senescent',126))) %>%
             melt(value.name = 'expression',variable.name = 'marker',id.var = 'Condition') 
 pwc <- df_plot %>% group_by(marker) %>% 
@@ -676,6 +677,7 @@ dev.off()
 
 bar = c("#2a9d8f","#e9c46a","#e76f51")
 names(bar) = c("Cycling","Transitional","Senescent")
+
 ### histogram
 png("/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
 ggplot(EpiExp.m@meta.data)+
@@ -879,15 +881,15 @@ dev.off()
 png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_network.png',width = 1600,height = 1200,res = 300)
 mat <- log10(cellchat@net$weight)
 par(mfrow = c(2,3), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
-for (i in c(3,9,7)) {
+for (i in c('Cycling','Transitional','Senescent')) {
   mat_plot <- matrix(0, nrow = nrow(mat), ncol = ncol(mat), dimnames = dimnames(mat))
   mat_plot[i, ] <- mat[i, ]
-  netVisual_circle(mat_plot, vertex.weight = groupSize, weight.scale = T,arrow.size = 1,color.use = bar,edge.width.max = 5,title.name = rownames(mat)[i])
+  netVisual_circle(mat_plot, vertex.weight = groupSize, weight.scale = T,arrow.size = 1,color.use = bar[rownames(mat_plot)],edge.width.max = 5,title.name = rownames(mat)[i])
 }
-for (i in c(3,9,7)) {
+for (i in c('Cycling','Transitional','Senescent')) {
   mat_plot <- matrix(0, nrow = nrow(mat), ncol = ncol(mat), dimnames = dimnames(mat))
   mat_plot[, i] <- mat[, i]
-  netVisual_circle(mat_plot, vertex.weight = groupSize, weight.scale = T,arrow.size = 1,color.use = bar,edge.width.max = 5,title.name = rownames(mat)[i])
+  netVisual_circle(mat_plot, vertex.weight = groupSize, weight.scale = T,arrow.size = 1,color.use = bar[colnames(mat_plot)],edge.width.max = 5,title.name = rownames(mat)[i])
 }
 dev.off()
 
@@ -915,16 +917,39 @@ for(p in c('BMP','TGFb')){
 }
 dev.off()
 
+pdf('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_chord_2.pdf',width = 6,height = 6)
+par(mfrow = c(2,2), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
+for(p in c("CCL","CSPG4","LEP","CD6")){
+    netVisual_aggregate(cellchat, signaling = p,layout = "chord",remove.isolate = F,
+                        color.use = bar,sources.use = c('T cell','NK cell','Macro cell','CAF cell'),
+                        targets.use = c('Cycling','Transitional','Senescent'))
+}
+dev.off()
+
+
 ### pathway gene expression
 png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression.png',width = 900,height = 1000,res = 300)
 plotGeneExpression(cellchat, features=c('BMPR1B','BMPR2','TGFBR1','TGFBR2'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
 dev.off()
 
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_2.png',width = 1000,height = 1000,res = 400)
+plotGeneExpression(cellchat, features=c('LEPR','ITGA2','ITGB1'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
+dev.off()
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_CD6.png',width = 1000,height = 1000,res = 400)
+plotGeneExpression(cellchat, features=c('ALCAM'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
+dev.off()
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/melanome_cellchat_expression_CCL.png',width = 1000,height = 1000,res = 400)
+plotGeneExpression(cellchat, features=c('CCR10'),idents = c('Cycling','Transitional','Senescent'),color.use = bar)
+dev.off()
+
+
 ### receptor survival plot
 plotsurv <- function(myfit){
   p <- ggsurvplot(
     myfit,
-    risk.table = F,
+    risk.table = T,
     pval = TRUE,
     conf.int = TRUE,
     xlim = c(0,4000),
@@ -937,64 +962,44 @@ plotsurv <- function(myfit){
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'BMPR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ BMPR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_BMPR2.png',width = 1200,height = 1000,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR2.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'BMPR1B')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ BMPR1B,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_BMPR1B.png',width = 1200,height = 1000,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_BMPR1B.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR1')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR1,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR1.png',width = 1200,height = 1000,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR1.png',width = 1200,height = 1000,res = 300)
 plotsurv(fit)
 dev.off()
 
 cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'TGFBR2')
 dat <- surv_categorize(cut)
 fit <- survfit(Surv(OS.time, OS) ~ TGFBR2,data = dat)
-png('/home/wangjing/wangj/codebase/HUSI/Figures/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1000,res = 300)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_TGFBR2.png',width = 1200,height = 1000,res = 300)
+plotsurv(fit)
+dev.off()
+
+cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'CCR10')
+dat <- surv_categorize(cut)
+fit <- survfit(Surv(OS.time, OS) ~ CCR10,data = dat)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_CCR10.png',width = 1400,height = 1500,res = 300)
+plotsurv(fit)
+dev.off()
+
+cut <- surv_cutpoint(data,time = "OS.time",event = "OS",variables = 'ALCAM')
+dat <- surv_categorize(cut)
+fit <- survfit(Surv(OS.time, OS) ~ ALCAM,data = dat)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/TCGA_SKCM_survival_ALCAM.png',width = 1400,height = 1500,res = 300)
 plotsurv(fit)
 dev.off()
 
 
 
-
-
-################################################################################
-################################# hca #########################################
-################################################################################
-library(reticulate)
-use_python('/home/tools/anaconda3/envs/velocyto-env/bin/python')
-sc <- import("scanpy")
-### load data
-hca <- sc$read_h5ad('/home/wangjing/wangj/codebase/HUSI/hca_end.h5ad')
-meta <- hca$obs
-### fraction plot
-p1 <- data.frame(hUSI = meta$hUSI,class = meta$age_class) %>%
-      ggplot(aes(x = class,y = hUSI,fill = class))+
-        geom_boxplot()+
-        geom_signif(comparisons = list(c("C1","C2"),c("C2","C3")),test = "t.test",test.args = c("less"),map_signif_level = T,step_increase=0.1) + 
-        # scale_fill_brewer(palette = "Reds")+
-        scale_fill_manual(values = c('#013a63','#d3d3d3','#ba181b'))+
-        theme_classic()+
-        theme(text = element_text(size = 16),legend.position = 'none',axis.title.x = element_blank(),axis.ticks.x = element_blank(),axis.text.x = element_blank())
-
-p2 <- data.frame(class = meta$age_class,age = factor(meta$Age)) %>%
-      mutate(group = factor(ifelse(meta$Age <= 41,'Young',ifelse(meta$Age <=59,'Middle','Old')),levels=c('Young','Middle','Old'),order=T)) %>%
-      ggplot(aes(x = age,fill = class))+
-        geom_bar(stat = 'count',position='fill')+
-        scale_fill_manual(values = c('#013a63','#d3d3d3','#ba181b'))+
-        theme_classic()+
-        theme(text = element_text(size = 16),legend.position ='bottom',axis.text.x = element_text(angle=90,hjust=-1,vjust=1))+
-        xlab('Age')+
-        ylab('Fraction')+
-        facet_grid(. ~ group, scales = "free", space='free')
-pdf('/home/wangjing/wangj/codebase/HUSI/Figures/new/hca_fraction.pdf',width = 5,height = 6)
-ggarrange(p1,p2,ncol = 1,nrow = 2,common.legend = F,widths = c(1, 1), heights = c(1, 1.5))
-dev.off()
