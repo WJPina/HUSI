@@ -8,6 +8,7 @@
 #### `Compare.R` : Comparing performance of hUSI wit other three types of senescence quantification methods.
 #### `Melanoma.R` : Processing and analyzing melanoma scRNA-seq dataset.
 #### `COVID-19.ipynb` : Processing and analyzing COVID-19 snRNA-seq dataset.
+#### All raw data used for model trianning and validation can be found in `HUSI/data` folder.
 # Usage
 #### Make sure you aready downloaded function scripts and model in `HUSI/sc` folder.
 #### R
