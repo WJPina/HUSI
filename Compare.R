@@ -9,6 +9,7 @@ library(dplyr)
 library(caret)
 library(magrittr)
 library(reshape2)
+source('~/wangj/codebase/HUSI/functions.R')
 
 set.seed(233)
 
@@ -71,23 +72,24 @@ calc_scores <- function(scorelist=NULL,object=NULL,type=''){
     return(data)
 } 
 
-calc_auc <- function(data=data.frame(),type = '',scorelist=NULL){
+calc_auc <- function(dataset_name='',data=data.frame(),type = '',scorelist=NULL){
     fold = createMultiFolds(data$condition, k = 10, times = 3)
     auc = sapply(fold, function(sampling) {
         df = data[sampling,]
         if(type == c("method")){
             c("DAS","mSS",'DAS+mSS','lassoCS','CSS','hUSI') %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
+            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<')})
         }
         else if (type=='marker'){
             c('hUSI',scorelist[scorelist %in% colnames(data)]) %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence")) %>% pROC::auc()})
+            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"))})
         }
         else{
             c('hUSI',names(scorelist)) %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
+            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<')})
         }
     })
+    
     return(auc)
 }
 
@@ -134,7 +136,8 @@ Teo2019 = CreateSeuratObject(
     meta.data = fread("Teo2019/GSE115301_Growing_Sen_10x_metadata.txt.gz", header = T) %>% column_to_rownames("V1")
 ) %>% NormalizeData()
 
-hUSI = GetAssayData(Teo2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+hUSI = GetAssayData(Teo2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )} %>% minmax
+
 dat_method = calc_scores(Methods,Teo2019,'method')
 dat_marker = calc_scores(SenMarkers,Teo2019,'marker')
 dat_ssgsea = calc_scores(EnrichSet,Teo2019,'ssgsea')
@@ -219,7 +222,7 @@ Results$Georgilis2018$hUSI = hUSI
 
 ### AUC
 AUClist = list()
-for(dataset in c('Teo2019',"Tang2019",'Aarts2017','Georgilis2018')){
+for(dataset in c('Teo2019')){
     for(type in c('method','marker','ssgsea')){
         scorelist = getGenes(type)
         if(dataset == 'Teo2019'){
@@ -228,7 +231,7 @@ for(dataset in c('Teo2019',"Tang2019",'Aarts2017','Georgilis2018')){
                     mutate(hUSI=Results[[dataset]][['hUSI']])
             dat = dat[,complete.cases(t(dat))]
 
-            auc <- calc_auc(dat,type,scorelist)
+            auc <- calc_auc(dataset,dat,type,scorelist)
         }
         else if (dataset == 'Tang2019') {
             dat = data.table::rbindlist(lapply(Results[[dataset]],function(x){x[[type]]}),use.names=TRUE, fill=TRUE, idcol="sample") %>% data.frame
@@ -236,7 +239,7 @@ for(dataset in c('Teo2019',"Tang2019",'Aarts2017','Georgilis2018')){
             colnames(dat) = gsub("DAS.mSS", "DAS+mSS", colnames(dat))
             dat$condition = as.factor(ifelse(dat$sample %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
 
-            auc <- calc_auc(dat,type,scorelist)
+            auc <- calc_auc(dataset,dat,type,scorelist)
         }
         else if (dataset %in% c('Aarts2017','Georgilis2018')) {
             dat = Results[[dataset]][[type]] %>% 
@@ -244,7 +247,7 @@ for(dataset in c('Teo2019',"Tang2019",'Aarts2017','Georgilis2018')){
                     mutate(hUSI=Results[[dataset]][['hUSI']])
             dat = dat[,complete.cases(t(dat))]
 
-            auc <- calc_auc(dat,type,scorelist)
+            auc <- calc_auc(dataset,dat,type,scorelist)
         }
         AUClist[[dataset]][[type]] = auc
     }
@@ -321,13 +324,13 @@ cormat_tcga <- do.call(data.frame, scoreList_TCGA) %>% cor(method = 'spearman')
 
 ### validate hUSI in GTEx and TCGA by meta data
 ### Age
-GTEx_sample <- read.csv("GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt",sep = "\t",row.names = 1,header = T)
+GTEx_sample <- read.csv("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt",sep = "\t",row.names = 1,header = T)
 GTEx_sample<- GTEx_sample[,c("SMTS","SMTSD")]
 GTEx_sample$Sample <- rownames(GTEx_sample)
 GTEx_sample$Patient <- lapply(strsplit(rownames(GTEx_sample),'-'),function(x) {paste(x[1],x[2],sep = '-')}) %>% unlist
 length(unique(GTEx_sample$Patient))
 
-GTEx_Pheno <- read.table("GTEx_Analysis_v8_Annotations_SubjectPhenotypesDS.txt",sep = "\t",header = T)
+GTEx_Pheno <- read.table("/mnt/data1/wangj/MyProject/Data/GTEx/Bulk_SnRNA/GTEx_Analysis_v8_Annotations_SubjectPhenotypesDS.txt",sep = "\t",header = T)
 length(unique(GTEx_Pheno$SUBJID))
 GTEx_meta <- merge(GTEx_Pheno,GTEx_sample,by.x = "SUBJID",by.y = "Patient")
 length(unique(GTEx_meta$SUBJID))

@@ -12,11 +12,12 @@ library(reshape2)
 library(rstatix)
 library(ComplexHeatmap)
 library(circlize)
+library(cowplot)
 
 
 ##################### train set counts
 ### histogram
-png("HUSI/Figures/melanome/Melanoma_hist.png",width = 1200,height = 1200,res = 300)
+png("HUSI/Figures/melanome/hist.png",width = 1200,height = 1200,res = 300)
 data.frame(Counts = colSums(exprData[,metadata$sample_title]),Dataset = metadata$study_accession) %>%
 ggplot()+
   geom_histogram(aes(x=Counts),bins = 50,color = '#adb5bd',linewidth = 0.4)+
@@ -49,7 +50,7 @@ df_plot %>%
 dev.off()
 
 ##################### gene expression and weights
-res <- data.frame(expression = rowMeans(X_tr[names(mm_l2$w),]),weight = mm_l2$w,gene = names(mm_l2$w),row.names = names(mm_l2$w))
+res <- data.frame(expression = rowMeans(X[names(mm_l2$w),]),weight = mm_l2$w,gene = names(mm_l2$w),row.names = names(mm_l2$w))
 res$threshold = ifelse(res$weight > 0,"Positive","Negative")
 label_data <- subset(res, abs(res$weight) > 0.02)
 pdf("HUSI/Figures/model/model_genes.pdf",width = 8,height = 6)
@@ -88,38 +89,38 @@ mygseaplot2(fgsea,
 )
 dev.off()
 
-########################### model leave-one-out CRP
-CRP = sort(CRP)
+########################### model leave-one-out auc
+auc = sort(auc)
 
-# png('HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
-pdf('HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
-ggplot(aes(x = 1:length(CRP),y = CRP),data=data.frame(CRP=CRP))+
+png('HUSI/Figures/model/cross-validation.png',width = 1000,height = 800,res = 300)
+# pdf('HUSI/Figures/model/cross-validation.pdf',width = 5,height = 4)
+ggplot(aes(x = 1:length(auc),y = auc),data=data.frame(auc=auc))+
     geom_line()+
+    geom_hline(yintercept = mean(auc),linetype = 'dashed',color = 'red')+
+    geom_text(aes(x = 15,y = mean(auc),label = 'mean: 0.9'),vjust = -1)+
     theme_classic()+
-    theme(text=element_text(size=16),axis.title.x = element_blank())+
-    ggtitle('Leave-one-out cross-validation')+
-    ylab("Correctly Ranking Rate")
+    theme(text=element_text(size=12),axis.title.x = element_blank())+
+    ggtitle('LOOCV')+
+    ylab("AUC")
 dev.off()
 
 ################################## bacth effect
-# png('HUSI/Figures/model/valid_BE.png',width = 1500,height = 1500,res = 300)
-pdf('HUSI/Figures/model/valid_BE.pdf',width = 5,height = 5)
-read.table("batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
+# pdf('HUSI/Figures/model/valid_BE.pdf',width = 5,height = 5)
+p.be <- 
+read.table("/mnt/data1/wangj/AgingScore/Data/Bulk_BatchEffect/batch_IMR90_4OHT_add_condition_tsv.txt",sep = "\t",header = T) %>%
   dplyr::select(c("title","study_accession","condition")) %>%
   mutate(hUSI = s_batch[title]) %>%
   column_to_rownames("title") %>%
   mutate(Condition = factor(ifelse(condition == 'other','Other','Senescent'),levels = c("Other","Senescent"),ordered = T)) %>%
   ggplot(aes(Condition, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = study_accession),width = 0.1) +
+  geom_jitter(aes(color = study_accession),width = 0.2) +
   scale_colour_jama()+
   geom_line(aes(group = study_accession), linetype="dashed", col="skyblue") + 
   geom_signif(comparisons = list(c("Other","Senescent")),test = "t.test",test.args = c("less"),map_signif_level = T) + 
   ylab('hUSI')+
   ggtitle("OIS in IMR90")+
-  theme_classic() %+replace% theme(text = element_text(size = 16),axis.text.x = element_text(size=16))
-dev.off()
-
+  mytheme() +ylim(0,1.3) + theme(legend.position = 'right')
 
 ################################## valid data in RNA-seq
 mytheme <- function () { 
@@ -133,7 +134,7 @@ p1.1 <- data.frame(hUSI = s_IS) %>%
   mutate(Treatment = factor(condition,levels = c("Immortal","Adria","H2O2","5-aza"),ordered = T)) %>% 
   ggplot(aes(Treatment, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Treatment),width = 0.1,size=4)+
+  geom_jitter(aes(color = Treatment),width = 0.2,height = 0,size=2)+
   geom_signif(comparisons = list(c("Immortal","H2O2"),c("Immortal","5-aza")),
               test = "t.test",
               step_increase=0.1,
@@ -141,14 +142,14 @@ p1.1 <- data.frame(hUSI = s_IS) %>%
               test.args = c("less")) + 
   mytheme()+
   ylab('hUSI')+
-  ggtitle("CIS in MDAH041")
+  ggtitle("CIS in MDAH041")+ ylim(0,1.3)
 
-p1.2<- data.frame(hUSI = s_RS[grepl('OISD[0|2|4|6|10]',names(s_RS))]) %>% 
+p1.2 <- data.frame(hUSI = s_OIS) %>% 
   mutate(condition= gsub("_.*", "", rownames(.))) %>%
   mutate(Treatment = factor(condition,levels = c("OISD0","OISD2","OISD4","OISD6",'OISD10'),ordered = T)) %>% 
   ggplot(aes(Treatment, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Treatment),width = 0.1,size=4)+
+  geom_jitter(aes(color = Treatment),width = 0.3,height = 0,size=2)+
   geom_signif(comparisons = list(c("OISD0","OISD2"),c("OISD2","OISD4"),c("OISD4","OISD6")),
               test = "t.test",
               step_increase=0.1,
@@ -156,26 +157,26 @@ p1.2<- data.frame(hUSI = s_RS[grepl('OISD[0|2|4|6|10]',names(s_RS))]) %>%
               test.args = c("less")) + 
   mytheme()+
   ylab('hUSI')+
-  ggtitle("OIS in WI-38")
+  ggtitle("OIS in WI-38")+ ylim(0,1.3)
 
-p1.3<- data.frame(hUSI = s_RS[grepl('RS',names(s_RS))]) %>% 
+p1.3 <- data.frame(hUSI = s_RS) %>% 
   mutate(condition= gsub('_.*','',gsub("RS_", "", rownames(.)))) %>%
   mutate(Condition = factor(condition,levels = c("Proliferative","Senescent"),ordered = T)) %>% 
   ggplot(aes(Condition, hUSI)) + 
   geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(aes(color = Condition),width = 0.1,size=4)+
+  geom_jitter(aes(color = Condition),width = 0.2,height = 0,size=2)+
   geom_signif(comparisons = list(c("Proliferative","Senescent")),
               test = "t.test",
-              step_increase=0.1,
+              y_position=1.1,
               map_signif_level = T,
               test.args = c("less")) + 
   mytheme()+
   ylab('hUSI')+
-  ggtitle("RS in WI-38")
+  ggtitle("RS in WI-38")+ ylim(0,1.3)
 
-fig <- ggarrange(p1.1,p1.2,p1.3,ncol = 3,nrow = 1,common.legend = F,widths = c(4,4,3))
-# png('HUSI/Figures/model/valid_RNA-seq.png',width = 3000,height = 1500,res = 300)
-pdf('HUSI/Figures/model/valid_RNA-seq.pdf',width = 10,height = 5)
+fig <- plot_grid(p.be,p1.1,p1.2,p1.3,ncol = 4,nrow = 1, align = "h",rel_widths = c(6,4,5,3))
+png('valid_RNA-seq.png',width = 4200,height = 1800,res = 300)
+# pdf('HUSI/Figures/model/valid_RNA-seq.pdf',width = 10,height = 5)
 fig
 dev.off()
 ############################# valid data in micro-array
@@ -448,7 +449,7 @@ p2.6 <- ArrayList [["GSE77239"]][[1]] %>%
     grepl("young", `cells:ch1`, ignore.case = T) ~ "young", 
     grepl("old", `cells:ch1`, ignore.case = T) ~ "old")) %>% 
   mutate(condition = factor(ifelse(condition == 'young',"Other","Senescent"),levels = c("Other","Senescent"),ordered = T)) %>% 
-  rename("treatment"="treatment:ch1") %>% 
+  rename("treatment:ch1"="treatment") %>% 
   inner_join(
     data.frame(hUSI=Lost_ScoreList[["GSE77239"]]) %>% rownames_to_column("geo_accession"), 
     by="geo_accession"
@@ -517,12 +518,12 @@ df_plot = do.call(cbind,lapply(Results$Aarts2017[class],function(x)
 df_plot$hUSI = Results$Aarts2017$hUSI
 df_plot$Condition = Results$Aarts2017$method$Condition
 df_list[['Aarts2017']] = df_plot
-### Georgilis2018
-df_plot = do.call(cbind,lapply(Results$Georgilis2018[class],function(x)
-{x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Georgilis2018$hUSI
-df_plot$Condition = Results$Georgilis2018$method$Condition
-df_list[['Georgilis2018']] = df_plot
+# ### Georgilis2018
+# df_plot = do.call(cbind,lapply(Results$Georgilis2018[class],function(x)
+# {x[names(x)[names(x) %in% names]]})) %>% data.frame()
+# df_plot$hUSI = Results$Georgilis2018$hUSI
+# df_plot$Condition = Results$Georgilis2018$method$Condition
+# df_list[['Georgilis2018']] = df_plot
 
 plot_list = list()
 for(i in 1:length(df_list)){
@@ -543,33 +544,19 @@ for(i in 1:length(df_list)){
     theme(legend.position = 'top',text = element_text(size = 16),
           axis.title.x = element_blank(),
           axis.text.x = element_text(angle = 90,vjust = 0.5, hjust=1))+
-    facet_wrap(~Type,scales = 'free')+
-    ggtitle(names(df_list)[i])
+    ggtitle(names(df_list)[i])+
+    ggforce::facet_row(~Type, scales = 'free', space = 'free')
   plot_list[[i]] <- p
 }
 
-fig <- ggarrange(plotlist = plot_list,ncol = 2,nrow = 2,common.legend = T,legend = 'bottom')
-# png('HUSI/Figures/model/compare_scores.png',width = 4500,height = 2000,res = 300)
-pdf('HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
+fig <- ggarrange(plotlist = plot_list,ncol = 1,nrow = 3,common.legend = T,legend = 'right')
+png('compare_scores.png',width = 3500,height = 4000,res = 300)
+# pdf('HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
 fig
 dev.off()
 
-############################### rank ###########################################
-df_plot_list = lapply(AUClist, function(x) {lapply(x, function(y) {rank(rowMeans(y))})}) 
-
-data = data.frame()
-for(type in c('marker','method','ssgsea')) {
-  df_plot = lapply(df_plot_list, function(x) {x[[type]]})
-  df_plot = do.call(cbind, lapply(lapply(df_plot, unlist), `length<-`, max(lengths(df_plot)))) %>% data.frame
-  df_plot[is.na(df_plot)] = 0
-  df_plot = reshape2::melt(as.matrix(df_plot),value.name = "AUC_rank")
-  colnames(df_plot) = c('method','dataset','AUC_rank')
-  aov.mean<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=mean)
-  aov.sd<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=sd)
-  aov<-data.frame(aov.mean,sd=aov.sd$x,type = rep(type,nrow(aov.mean)))
-  data <- rbind(data,aov)
-}
-
+############################### mean auc values ################################
+### functions for plot
 reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
   new_x <- paste(x, within, sep = sep)
   stats::reorder(new_x, by, FUN = fun)
@@ -580,11 +567,67 @@ scale_x_reordered <- function(..., sep = "___") {
   ggplot2::scale_x_discrete(labels = function(x) gsub(reg, "", x), ...)
 }
 
-data$group <- ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score'))
-data$color <- ifelse(data$Group.1 == 'hUSI','hUSI',ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score')))
+### plot data
+df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {
+  lapply(x, function(y) {t(y) %>% melt %>% set_names(c('unit','method','AUC'))})}) 
 
-# png('HUSI/Figures/model/compare_rank.png',width = 3500,height = 1500,res = 300)
-pdf('HUSI/Figures/model/compare_rank.pdf',width = 16.5,height = 7)
+plot_list = list()
+for (dataset in names(df_plot_list)) {
+  df_plot = df_plot_list[[dataset]]
+  df_plot = do.call(rbind,df_plot)
+  df_plot$type = gsub('\\..*','',rownames(df_plot))
+  
+  df_plot$group <- ifelse(df_plot$type == 'marker','Expression Level',ifelse(df_plot$type == 'method','Senecence Score','ssGSEA Score'))
+  df_plot$color <- ifelse(df_plot$method == 'hUSI','hUSI',df_plot$group)
+  
+  write.csv(df_plot,file= paste(dataset,'_AUC.csv',sep=''))
+  # plot_list[[dataset]] <- 
+  # ggplot(df_plot,aes(x=reorder_within(method,AUC,group), y=AUC,color = color))+
+  #   scale_x_reordered()+
+  #   geom_jitter(size=1)+
+  #   geom_boxplot(color='black',outlier.color = NA,fill=NA)+
+  #   theme_classic()+
+  #   ylab('AUC values')+
+  #   xlab('Quantification method')+
+  #   scale_color_manual(values = c('#94d2bd','#e63946','#fed9b7','#00afb9'))+
+  #   theme(legend.position = 'none',
+  #         panel.grid.major.y = element_line(),
+  #         axis.text.x = element_text(angle = 45,vjust = 1, hjust=1),
+  #         text=element_text(size=16))+
+  #   ggtitle(dataset)+
+  #   ggforce::facet_row(vars(group), scales = 'free', space = 'free')
+}
+  
+  
+fig <- ggarrange(plotlist = plot_list,ncol = 1,nrow = 3,common.legend = F)
+
+png('compare_auc.png',width = 3000,height = 4000,res = 300)
+fig
+dev.off()
+
+############################### mean auc rank ##################################
+### only keep common genes
+SenMarkers_used <- c('GLB1','TP53','CDKN1A','CDKN2A','LMNB1','RB1','CDK1','CDK4','CDK6','MKI67','CDKN2B')
+df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {x[['marker']] = x[['marker']][c('hUSI',SenMarkers_used),];return(x)}) 
+df_plot_list = lapply(df_plot_list[c("Teo2019","Tang2019","Aarts2017")], function(x) {lapply(x, function(y) {rank(rowMeans(y))})}) 
+
+data = data.frame()
+for(type in c('marker','method','ssgsea')) {
+  df_plot = lapply(df_plot_list, function(x) {x[[type]]})
+  df_plot = do.call(cbind, df_plot)
+  df_plot = reshape2::melt(as.matrix(df_plot),value.name = "AUC_rank")
+  colnames(df_plot) = c('method','dataset','AUC_rank')
+  aov.mean<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=mean)
+  aov.sd<-aggregate(df_plot$AUC_rank,by=list(df_plot$method),FUN=sd)
+  aov<-data.frame(aov.mean,sd=aov.sd$x,type = rep(type,nrow(aov.mean)))
+  data <- rbind(data,aov)
+}
+
+data$group <- ifelse(data$type == 'marker','Expression Level',ifelse(data$type == 'method','Senecence Score','ssGSEA Score'))
+data$color <- ifelse(data$Group.1 == 'hUSI','hUSI',data$group)
+
+png('compare_rank.png',width = 3500,height = 1500,res = 300)
+# pdf('HUSI/Figures/model/compare_rank.pdf',width = 16.5,height = 7)
 ggplot(data=data,aes(x=reorder_within(Group.1,x,group), y=x,fill = color))+
     scale_x_reordered()+
     geom_bar(stat="identity",position="dodge")+
@@ -600,7 +643,7 @@ dev.off()
 
 #################################### GTEx/TCGA #################################
 ### gtex
-TCSER = read.csv('Senescence_quantification_GTEX.csv')
+TCSER = read.csv('CS_score_of_single_cell_datasets/Senescence_quantification_GTEX.csv')
 TCSER = TCSER[!duplicated(TCSER$Sample),]
 rownames(TCSER) = TCSER$Sample
 df_plot <- scoreList_GTEx[c('TCSER','hUSI')] %>% data.frame() 
@@ -653,9 +696,10 @@ Heatmap(t(coeffient),cluster_rows = F,cluster_columns = F,
 dev.off()
 
 ### GTEx by Age
-df = data.frame(hUSI = scoreList_GTEx$hUSI,Age = GTEx_meta[names(scoreList_GTEx$hUSI),'AGE'],Tissue = GTEx_meta[names(scoreList_GTEx$hUSI),'SMTSD'])
-pdf('HUSI/Figures/model/GTEx_Age.pdf',width = 4.5,height = 4)
-ggplot(df,aes(x = Age,y = hUSI,fill = Age)) + 
+df = data.frame(TCSER = scoreList_GTEx$TCSER,Age = GTEx_meta[names(scoreList_GTEx$hUSI),'AGE'],Tissue = GTEx_meta[names(scoreList_GTEx$hUSI),'SMTSD'])
+# pdf('HUSI/Figures/model/GTEx_Age.pdf',width = 4.5,height = 4)
+png('/home/wangjing/wangj/codebase/HUSI/Figures/revison/GTEx_Age_TCSER.png',width = 1200,height = 1200,res=300)
+ggplot(df,aes(x = Age,y = TCSER,fill = Age)) + 
   geom_boxplot() + 
   scale_fill_brewer(palette = "Reds")+
   geom_signif(comparisons = list(c("20-29","30-39"),c("30-39","40-49"),c("40-49","50-59"),c("50-59","60-69"),c("60-69","70-79")),
@@ -857,13 +901,19 @@ plotsurv(fit)
 dev.off()
 
 ### all melanome cell plot
-bar = c("#2a9d8f","#e9c46a","#e76f51","#AAC5E2","#FFC592","#A4D99D","#F4A39E","#CCB7DC","#CBAEA8")
-names(bar) <- c("Cycling","Transitional","Senescent","B cell","CAF cell","Endo cell","Macro cell","NK cell","T cell")
+# bar = c("#2a9d8f","#e9c46a","#e76f51","#AAC5E2","#FFC592","#A4D99D","#F4A39E","#CCB7DC","#CBAEA8")
 
-png('HUSI/Figures/melanome/Melanoma_all_cell.png',width = 2000,height = 1500,res = 300)
+melanoma_obj$subtype = factor(ifelse(as.character(melanoma_obj$subtype) %in% c("Cycling","Transitional","Senescent"),
+  'Tumor cell',as.character(melanoma_obj$subtype)),
+    levels = c('Tumor cell','B cell','CAF cell','Endo cell','Macro cell','NK cell','T cell'))
+
+bar = c("#eb0101","#AAC5E2","#FFC592","#A4D99D","#F4A39E","#CCB7DC","#CBAEA8")
+names(bar) <- c("Tumor cell","B cell","CAF cell","Endo cell","Macro cell","NK cell","T cell")
+
+png('/home/wangjing/wangj/codebase/HUSI/Figures/melanome/Melanoma_all_cell.png',width = 1800,height = 1500,res = 300)
 DimPlot(melanoma_obj, group.by = 'subtype',reduction = "tsne",label = T,
         cols = bar,repel = TRUE,label.box = T,label.color = "white",pt.size = 1.5,label.size = 6)+
-  ggtitle("Melanoma cell types")
+  ggtitle("Melanoma cell types")+NoLegend()
 dev.off()
 
 ### cell chat strength count
@@ -875,7 +925,7 @@ dev.off()
 ### cell chat strength cord
 png('HUSI/Figures/melanome/melanome_cellchat_network.png',width = 1600,height = 1200,res = 300)
 mat <- log10(cellchat@net$weight)
-par(mfrow = c(2,3), xpd=TRUE,mar = c(0.2, 0.2, 0.2,0.2))
+par(mfrow = c(2,3), xpd=TRUE,mar = c(1, 1, 0.5, 0.5))
 for (i in c('Cycling','Transitional','Senescent')) {
   mat_plot <- matrix(0, nrow = nrow(mat), ncol = ncol(mat), dimnames = dimnames(mat))
   mat_plot[i, ] <- mat[i, ]
@@ -995,6 +1045,42 @@ fit <- survfit(Surv(OS.time, OS) ~ ALCAM,data = dat)
 png('HUSI/Figures/melanome/TCGA_SKCM_survival_ALCAM.png',width = 1400,height = 1500,res = 300)
 plotsurv(fit)
 dev.off()
+
+
+
+### re-cut group
+library(cutoff)
+cut_2 <- logrank(data = data,
+                 time = "OS.time",  # 生存时间列名
+                 y = "OS",          # 生存事件列名
+                 x = "BMPR1B",  # 需要寻找阈值的变量列名
+                 cut.numb = 1,      # 截点个数
+                 n.per = 0.2,       # 分组后每组样本量占总样本量的最小比例
+                 y.per = 0.1,       # 分组后每组中较少结果的最小比例
+                 p.cut = 0.1,       # p值截断
+                 round = 5)         # 保留几位小数
+cut_2[order(cut_2$pvalue, decreasing = F), ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

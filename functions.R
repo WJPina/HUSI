@@ -1,5 +1,11 @@
 library(R.utils)
 library(data.table)
+
+minmax <- function(x){
+  x_scale = (x-min(x))/(max(x)-min(x))
+  return(x_scale)
+}
+
 esembl2symbol <- function(counts = NULL,database = 'genecode',version='70',dir = '.',GRCh ='37') {
   if(database == 'genecode'){
     refpath = paste(dir,'genecode.esembl2symbol.human.v',version,'.csv',sep = '')

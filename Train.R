@@ -2,6 +2,7 @@ library(Seurat)
 library(dplyr)
 library(tibble)
 library(data.table)
+source('~/wangj/codebase/HUSI/functions.R')
 ################################ Pre-preocess raw trian data ###############################
 raw_TPM = cbind(
     fread("dermal_for_training_TPM.csv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
@@ -22,8 +23,6 @@ sprintf('There were %d genes with 99%% of samples having TPM < 3', sum(idx))
 sprintf(' Of these, %d genes the mean expression was %0.2g and median %0.2g', sum(idx), mean(exprData[idx,]), median(exprData[idx,]))
 exprData = exprData[!idx,]
 dim(exprData)
-# Log-transform data and standardize
-X = log2(exprData + .00001) %>% scale()
 ############################## Pre-preocess raw bulk meata data ##############################
 meta_list = list()
 ## samples over 10 days are labeled senescent
@@ -39,11 +38,11 @@ meta_list$Herranz_GSE61130 = fread("PRJNA260300.txt", select = c("study_accessio
     mutate( condition = if_else( grepl("EV_-_", sample_title), "other", "senescent" ) )
 
 meta_list$Marthandan_GSE63577 = plyr::ldply(c("PRJNA259739.txt", "PRJNA268292.txt"), .fun = fread, select = c("study_accession", "sample_title") ) %>% 
-    filter(sample_title %in% colnames(X)) %>% 
+    filter(sample_title %in% colnames(exprData)) %>% 
     mutate( condition = rep( c(rep("other", 3), rep("senescent", 3)), 5) )
 
 meta_list$Marthandan_GSE64553 = fread("PRJNA271291.txt", select = c("study_accession", "sample_title")) %>% 
-    filter(sample_title %in% colnames(X)) %>% 
+    filter(sample_title %in% colnames(exprData)) %>% 
     mutate( condition = if_else( grepl("22", sample_title), "other", "senescent" ) )
 
 meta_list$Rai_GSE53356 = fread("PRJNA231833.txt", select = c("study_accession", "sample_title")) %>% 
@@ -85,18 +84,23 @@ metadata <- rbind(metadata_P,meta_GB_2018)
 metadata
 ############################# Train model ######################################
 library(gelnet)
-### mean center and split to train and background dataset
+# Log-transform data and standardize
+X = log2(exprData + .00001) %>%  scale()
+# ### mean center and split to train and background dataset
 X_centre = X - (apply(X, 1, mean))
-idx_senescent = colnames(X_centre) %in% filter(metadata, condition %in% "senescent")$sample_title
+
+idx_senescent = colnames(X) %in% filter(metadata, condition %in% "senescent")$sample_title
 X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
+
 ### training model
-mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
+mm_l2_new = gelnet( t(X_tr), NULL, 0, 1 )
+
 saveRDS(mm_l2,file="mm_l2_new.rds")
-write.csv(mm_l2, file = "mm_l2.csv")
+
 
 ### Leave-one-out cross validation
-CRP <- c()
+auc <- c()
 for(i in 1:ncol(X_tr)){
   ## Train a model on non-left-out data
   X1 <- X_tr[,-i]
@@ -105,9 +109,9 @@ for(i in 1:ncol(X_tr)){
   s_bk <- apply( X_bk, 2, function(z) {cor( m1$w, z, method="sp" )} )
   s1 <- cor( m1$w, X_tr[,i], method="sp" )
   ## CRP = P( left-out sample is scored above the background )
-  CRP[i] <- sum( s1 > s_bk ) / length(s_bk)  
-  cat( "Current CRP: ", CRP[i], "\n" )
-  cat( "Average CRP: ", mean(CRP), "\n" )
+  auc[i] <- sum( s1 > s_bk ) / length(s_bk)  
+  cat( "Current auc: ", auc[i], "\n" )
+  cat( "Average auc: ", mean(auc), "\n" )
 }
 
 
