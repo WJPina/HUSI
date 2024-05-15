@@ -1,5 +1,5 @@
-mm_l2 = readRDS("mm_l2.rds")
-######################## Comparision in 4 single-cell dataset  ###################################
+mm_l2 = readRDS("~/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+######################## Comparision in three single-cell dataset  ###################################
 library(Seurat)
 library(data.table)
 library(tibble)
@@ -72,46 +72,12 @@ calc_scores <- function(scorelist=NULL,object=NULL,type=''){
     return(data)
 } 
 
-calc_auc <- function(dataset_name='',data=data.frame(),type = '',scorelist=NULL){
-    fold = createMultiFolds(data$condition, k = 10, times = 3)
-    auc = sapply(fold, function(sampling) {
-        df = data[sampling,]
-        if(type == c("method")){
-            c("DAS","mSS",'DAS+mSS','lassoCS','CSS','hUSI') %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<')})
-        }
-        else if (type=='marker'){
-            c('hUSI',scorelist[scorelist %in% colnames(data)]) %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"))})
-        }
-        else{
-            c('hUSI',names(scorelist)) %>% 
-            sapply(function(idx) {pROC::roc(df$condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<')})
-        }
-    })
-    
-    return(auc)
-}
 
-getGenes <- function(type) {
-    if(type=='method'){
-        scorelist=Methods
-    }
-    else if(type=='ssgsea'){
-        scorelist=EnrichSet
-    }
-    else if(type=='marker'){
-        scorelist=SenMarkers
-    }
-    else{
-        scorelist=NULL
-    }
-    return(scorelist)
-}
 ### score list
-SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4","CDK6", "MKI67", "CDKN2B")
+SenMarkers <<- c("GLB1", "TP53", "CDKN1A", "CDKN2A", "LMNB1", "IL1A", "RB1", "CDK1", "CDK4","CDK6", "MKI67", "CDKN2B",'SERPINE1')
 
 EnrichSet<<-cogena::gmt2list("gene_50signatures_merge.gmt")
+
 EnrichSet=EnrichSet[43:49]
 names(EnrichSet)
 rep_sene_genes = readxl::read_excel("SigRS.xls", sheet = 5, skip = 2)$Gene_names
@@ -128,42 +94,57 @@ CSS =  c(0.2921,0.1810,0.0524,0.1285)
 names(CSS) = c('C1QTNF6','SQOR','LYPD3','FAM83B')
 Methods <<- list('laf' = lafSet,'lassoCS'=lassoCS,'CSS'=CSS)
 
-Results = list()
-
 ### Teo2019  GSE115301 IMR90 Smart-seq2 OIS,3',counts
 Teo2019 = CreateSeuratObject(
     fread("Teo2019/GSE115301_Growing_Sen_10x_count.txt.gz") %>% column_to_rownames("V1") %>% data.matrix, 
     meta.data = fread("Teo2019/GSE115301_Growing_Sen_10x_metadata.txt.gz", header = T) %>% column_to_rownames("V1")
 ) %>% NormalizeData()
 
+
+### cell states in Teo dataset
+Teo2019 <- FindVariableFeatures(Teo2019) %>% ScaleData() %>% RunPCA() %>% RunTSNE(dims=1:15)
+Teo2019 <-  FindNeighbors(Teo2019,dims = 1:15,reduction = "pca") %>% FindClusters(resolution = 0.1)
+DimPlot(Teo2019,group.by = 'Condition2')
+Teo2019$group = ifelse(as.character(Teo2019$seurat_clusters) == 0,'cluster0:Growing',
+                       ifelse(as.character(Teo2019$seurat_clusters)== 1,'cluster1:OIS','cluster2:Secondary senescence'))
+
+
+###  auc
+Teo2019$Condition = as.factor(ifelse(Teo2019$Condition2 == 'RIS','Senescence','Growing'))
+
 hUSI = GetAssayData(Teo2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )} %>% minmax
+
 
 dat_method = calc_scores(Methods,Teo2019,'method')
 dat_marker = calc_scores(SenMarkers,Teo2019,'marker')
 dat_ssgsea = calc_scores(EnrichSet,Teo2019,'ssgsea')
 
-Teo2019List = list(method=dat_method,marker=dat_marker,ssgsea=dat_ssgsea)
-Results$Teo2019 = Teo2019List
-Results$Teo2019$hUSI = hUSI
+dat_Teo2019 = cbind(dat_method,dat_marker,dat_ssgsea)
+dat_Teo2019$hUSI = hUSI
 
 ### Tang2019 GSE119807 HCA2 fibroblast cell RS,IRIS,3',counts
 Tang2019List = list.files("Tang2019", full.names = T) %>% 
-    lapply(function(x) {
-        scdat = fread(x) %>% 
-            column_to_rownames("GENE") %>% 
-            data.matrix %>% 
-            CreateSeuratObject() %>% 
-            NormalizeData()
+  lapply(function(x) {
+    scdat = fread(x) %>% 
+      column_to_rownames("GENE") %>% 
+      data.matrix }) %>% set_names( list.files("Tang2019") %>% gsub(".*_", "", .) %>% gsub("\\..*", "", .) )
 
-        hUSI = GetAssayData(scdat) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
-        data <- list(method=data.frame(calc_scores(Methods,scdat,'method'),'hUSI'=hUSI),
-                        marker=data.frame(calc_scores(SenMarkers,scdat,'marker'),'hUSI'=hUSI),
-                        ssgsea=data.frame(calc_scores(EnrichSet,scdat,'ssgsea'),'hUSI'=hUSI))
-        return(data)
-    }) %>% 
-    set_names( list.files("Tang2019") %>% gsub(".*_", "", .) %>% gsub("\\..*", "", .) )
+genes = Reduce(intersect,lapply(Tang2019List, function(x)rownames(x)))
+Tang2019 = do.call(cbind,lapply(Tang2019List,function(x) x <- x[genes,]))
+Tang2019 = CreateSeuratObject(Tang2019) %>% NormalizeData()
+Tang2019$Condition = rep(names(Tang2019List),each=400)
+Tang2019$Condition = as.factor(ifelse(Tang2019$Condition %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
 
-Results$Tang2019 = Tang2019List
+
+hUSI = GetAssayData(Tang2019) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )} %>% minmax
+
+dat_method = calc_scores(Methods,Tang2019,'method')
+dat_marker = calc_scores(SenMarkers,Tang2019,'marker')
+dat_ssgsea = calc_scores(EnrichSet,Tang2019,'ssgsea')
+
+dat_Tang2019 = cbind(dat_method,dat_marker,dat_ssgsea)
+dat_Tang2019$hUSI = hUSI
+
 
 ### Aarts2017 GSE94980 IMR90 OSKM-expressing reprogramming-induced senescence,3',counts
 library(org.Hs.eg.db)
@@ -186,84 +167,38 @@ dim(exp)
 
 Aarts2017 = CreateSeuratObject(exp) %>% NormalizeData()
 Aarts2017$Condition = ifelse(grepl('OSKM',colnames(Aarts2017)), 'Senescence', 'Growing')
-hUSI = GetAssayData(Aarts2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
+hUSI = GetAssayData(Aarts2017) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )} %>% minmax
 
 dat_method = calc_scores(Methods,Aarts2017,'method')
 dat_marker = calc_scores(SenMarkers,Aarts2017,'marker')
 dat_ssgsea = calc_scores(EnrichSet,Aarts2017,'ssgsea')
 
-Aarts2017List = list(method=dat_method,marker=dat_marker,ssgsea=dat_ssgsea)
+dat_Aarts2017 = cbind(dat_method,dat_marker,dat_ssgsea)
+dat_Aarts2017$hUSI = hUSI
 
-Results$Aarts2017 = Aarts2017List
-Results$Aarts2017$hUSI = hUSI
+### calculate auc
+dat = list(dat_Teo2019,dat_Tang2019,dat_Aarts2017)
+names(dat) = c('Teo2019','Tang2019','Aarts2017')
 
-### Georgilis2018 GSE101766 IMR90 OIS,full-length,TPM
-Georgilis2018 = CreateSeuratObject(
-    counts = fread("Georgilis2018/valid_TPM_dataset.tsv") %>% column_to_rownames("Gene Name") %>% data.matrix, 
-    meta.data = fread("Georgilis2018/filereport_read_run_PRJNA395386_tsv.txt", header = T) %>% column_to_rownames("sample_title")) %>% 
-    NormalizeData()
-Georgilis2018 = subset(Georgilis2018,read_count>1e6)
-Georgilis2018$Condition = case_when(grepl("Allstars|Water|Hs|Extras[5-8]", colnames(Georgilis2018)) ~ "Senescence", 
-                                    grepl("Noninduced|Extras[1-4]", colnames(Georgilis2018)) ~ "Growing", TRUE ~ "other")
-Georgilis2018 = subset(Georgilis2018,Condition!='other')
-Georgilis2018$Condition = factor(Georgilis2018$Condition)
+### only senescence markers
 
-hUSI = GetAssayData(Georgilis2018) %>% {apply( ., 2, function(z) {cor( z, mm_l2$w[ rownames(.) ], method="sp", use="complete.obs" )} )}
-
-dat_method = calc_scores(Methods,Georgilis2018,'method')
-dat_marker = calc_scores(SenMarkers,Georgilis2018,'marker')
-dat_ssgsea = calc_scores(EnrichSet,Georgilis2018,'ssgsea')
-
-Georgilis2018List = list(method=dat_method,marker=dat_marker,ssgsea=dat_ssgsea)
-
-Results$Georgilis2018 = Georgilis2018List
-Results$Georgilis2018$hUSI = hUSI
-
-
-### AUC
-AUClist = list()
-for(dataset in c('Teo2019')){
-    for(type in c('method','marker','ssgsea')){
-        scorelist = getGenes(type)
-        if(dataset == 'Teo2019'){
-            dat = Results[[dataset]][[type]] %>% 
-                    mutate(condition=gsub("[0-9]$", "", Condition1) ) %>% 
-                    mutate(hUSI=Results[[dataset]][['hUSI']])
-            dat = dat[,complete.cases(t(dat))]
-
-            auc <- calc_auc(dataset,dat,type,scorelist)
-        }
-        else if (dataset == 'Tang2019') {
-            dat = data.table::rbindlist(lapply(Results[[dataset]],function(x){x[[type]]}),use.names=TRUE, fill=TRUE, idcol="sample") %>% data.frame
-            dat = dat[,complete.cases(t(dat))]
-            colnames(dat) = gsub("DAS.mSS", "DAS+mSS", colnames(dat))
-            dat$condition = as.factor(ifelse(dat$sample %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
-
-            auc <- calc_auc(dataset,dat,type,scorelist)
-        }
-        else if (dataset %in% c('Aarts2017','Georgilis2018')) {
-            dat = Results[[dataset]][[type]] %>% 
-                    mutate(condition=Condition) %>% 
-                    mutate(hUSI=Results[[dataset]][['hUSI']])
-            dat = dat[,complete.cases(t(dat))]
-
-            auc <- calc_auc(dataset,dat,type,scorelist)
-        }
-        AUClist[[dataset]][[type]] = auc
-    }
+AUClist=list()
+for(dataset in names(dat)){
+  data = dat[[dataset]]
+  fold = createMultiFolds(data$Condition, k = 10, times = 3)
+  auc = sapply(fold, function(sampling){
+    df = data[sampling,]
+    auc_1 = c('hUSI',"DAS","mSS",'DAS+mSS','lassoCS','CSS',names(EnrichSet)) %>%
+      sapply(function(idx) {pROC::roc(df$Condition, df[,idx], levels=c("Growing", "Senescence"),direction = '<') %>% pROC::auc()})
+    auc_2 = c(SenMarkers[SenMarkers %in% colnames(df)]) %>% 
+      sapply(function(idx) {pROC::roc(df$Condition, df[,idx], levels=c("Growing", "Senescence"))%>% pROC::auc()})
+    auc = c(auc_1,auc_2)
+    return(auc)
+  })
+  AUClist[[dataset]] = auc
 }
 
-### write auc results
-### method
-df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['method']]))}))
-### marker
-comm_markers = c("hUSI","GLB1","TP53","CDKN1A","CDKN2A","LMNB1","RB1","CDK1","CDK4","CDK6","MKI67","CDKN2B")
-df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['marker']][comm_markers,]))}))
-### ssGSEA
-df_plot = do.call(rbind,lapply(AUClist,function(x) {data.frame(t(x[['ssgsea']]))}))
-
 #################################### comparision in GTEx and TCGA #############################
-source("./functions.R")
 ##### GTEx bulk data
 ### load cs score
 TCSER_gtex = read.csv('Senescence_quantification_GTEX.csv')

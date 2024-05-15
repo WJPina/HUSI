@@ -93,11 +93,10 @@ idx_senescent = colnames(X) %in% filter(metadata, condition %in% "senescent")$sa
 X_tr = X_centre[,idx_senescent]
 X_bk = X_centre[,!idx_senescent]
 
+
 ### training model
-mm_l2_new = gelnet( t(X_tr), NULL, 0, 1 )
-
-saveRDS(mm_l2,file="mm_l2_new.rds")
-
+mm_l2 = gelnet( t(X_tr), NULL, 0, 1 )
+saveRDS(mm_l2,file="mm_l2.rds")
 
 ### Leave-one-out cross validation
 auc <- c()

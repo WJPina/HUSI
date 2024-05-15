@@ -1,5 +1,6 @@
 library(R.utils)
 library(data.table)
+library(RColorBrewer)
 
 minmax <- function(x){
   x_scale = (x-min(x))/(max(x)-min(x))
@@ -108,7 +109,7 @@ getPPI_String <- function (object = NULL, species = 9606, score_threshold = 600,
 
 mygseaplot2 <- function (x, geneSetID, title = "", color = "green", base_size = 11, 
           rel_heights = c(1.5, 0.5, 1), subplots = 1:3, pvalue_table = FALSE, 
-          ES_geom = "line") 
+          ES_geom = "line",leg_x =  0.45,leg_y = 0.4) 
 {
   ES_geom <- match.arg(ES_geom, c("line", "dot"))
   geneList <- position <- NULL
@@ -131,8 +132,7 @@ mygseaplot2 <- function (x, geneSetID, title = "", color = "green", base_size = 
     es_layer <- geom_point(aes_(y = ~runningScore, color = ~Description), 
                            size = 1, data = subset(gsdata, position == 1))
   }
-  p.res <- p + es_layer + theme(legend.position = c(0.45, 0.4),
-                                # legend.position = c(0.3, 0.4),
+  p.res <- p + es_layer + theme(legend.position = c(leg_x, leg_y),
                                 legend.title = element_blank(), legend.background = element_rect(fill = alpha('white', 0.8)),
                                 title = element_text(size = 16),legend.text = element_text(size = 16))
   p.res <- p.res + ylab("Running Enrichment Score") + theme(axis.text.x = element_blank(), 
@@ -183,7 +183,8 @@ mygseaplot2 <- function (x, geneSetID, title = "", color = "green", base_size = 
   if (length(color) == length(geneSetID)) {
     p.res <- p.res + scale_color_manual(values = color)
     if (length(color) == 1) {
-      p.res <- p.res + theme(legend.position = "none")
+      # p.res <- p.res + theme(legend.position = "none")
+      p.res <- p.res
       p2 <- p2 + scale_color_manual(values = "black")
     }
     else {
