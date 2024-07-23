@@ -237,25 +237,14 @@ cor_mat = t(cor_mat)
 library(survival)
 library(survminer)
 
-survival_data <- clinicalMatrix[, c("days_to_last_followup", "vital_status")]
+survival_data <- clinicalMatrix[, c("days_to_last_followup", "days_to_death", "vital_status")]
 survival_data <- survival_data[!survival_data$days_to_last_followup%in%c("","[Discrepancy]"),]
 survival_data$vital_status <- as.numeric(survival_data$vital_status == "DECEASED")
-survival_data$days_to_last_followup <- as.numeric(survival_data$days_to_last_followup)
+survival_data[is.na(survival_data)] <- 0
+survival_data$os.time = as.numeric(survival_data$days_to_last_followup)
+survival_data$os.time[survival_data$vital_status==1] <- as.numeric(survival_data$days_to_death[survival_data$vital_status==1]) 
 
-
-survival_data=survival_data[,colnames(survival_data) %in% c("vital_status",
-                                 "days_to_last_follow_up",
-                                 "days_to_death",
-                                 "race",
-                                 "gender",
-                                 "age_at_index",
-                                 "tumor_stage")]
-meta$days_to_death[is.na(meta$days_to_death)] <- 0   
-meta$days_to_last_follow_up[is.na(meta$days_to_last_follow_up)] <- 0
-meta$days=as.numeric(meta[,2])+as.numeric(meta[,3])
-
-
-data = data.frame(Frac[rownames(survival_data),],OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)
+data = data.frame(Frac[rownames(survival_data),],OS = survival_data$vital_status,OS.time = survival_data$os.time)
 
 ###### cell chat analysis
 library(CellChat)
@@ -311,4 +300,4 @@ pathways = df[df$sene_income!=0&df$cycle_income == 0,]$pathway
 pathways
 
 ### survival analysis of receptor-ligand pairs
-data = data.frame(t(tcga_melanoma[c('BMPR1B','BMPR2','TGFBR1','TGFBR2','CCR10','ALCAM'),rownames(survival_data)]),OS = survival_data$vital_status,OS.time = survival_data$days_to_last_followup)
+data = data.frame(t(tcga_melanoma[c('BMPR1B','BMPR2','TGFBR1','TGFBR2','CCR10','ALCAM'),rownames(survival_data)]),OS = survival_data$vital_status,OS.time = survival_data$os.time)

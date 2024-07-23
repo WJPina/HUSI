@@ -713,62 +713,6 @@ cbind(exp,cluster=Teo2019$group[exp$cell]) %>%
   theme_classic()+
   theme(legend.position = 'top',text = element_text(size = 16),axis.text.x = element_text(angle = 30,vjust = 1, hjust=1))+
   facet_wrap(~gene,scales = 'free_y',ncol = 2)
-
-
-
-names = c(SenMarkers,"DAS","mSS","DAS+mSS","lassoCS","CSS",names(EnrichSet),'hUSI')
-class = c("method","marker","ssgsea")
-df_list = list()
-### Teo2019
-df_plot = do.call(cbind,lapply(Results$Teo2019[class],function(x)
-{x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Teo2019$hUSI
-df_plot$Condition = factor(gsub("[0-9]$", "", Results$Teo2019$method$Condition1),levels = c('Growing','Senescence'),ordered = T)
-df_list[['Teo2019']] = df_plot
-### Tang2019
-df_plot = lapply(Results$Tang2019,function(x){do.call(cbind,lapply(x,function(y){y[names(y)[names(y) %in% names]]}))})
-df_plot$LowPDCtrl$marker.IL1A <- 0
-df_plot = do.call(rbind,df_plot)
-df_plot$Condition = as.factor(ifelse(sapply(strsplit(rownames(df_plot),split = '\\.'),'[',1) %in% c("senescence","LowPD50Gy"),'Senescence','Growing'))
-df_list[['Tang2019']] = df_plot
-### Aarts2017
-df_plot = do.call(cbind,lapply(Results$Aarts2017[class],function(x)
-{x[names(x)[names(x) %in% names]]})) %>% data.frame()
-df_plot$hUSI = Results$Aarts2017$hUSI
-df_plot$Condition = Results$Aarts2017$method$Condition
-df_list[['Aarts2017']] = df_plot
-
-
-plot_list = list()
-for(i in 1:length(df_list)){
-  df_plot = df_list[[i]]
-  p <-
-  melt(df_plot) %>%
-    mutate(Type =  sapply(strsplit(as.character(variable),split = '\\.'),'[',1)) %>%
-    mutate(variable =  gsub('method.DAS.mSS','method.DAS+mSS',variable)) %>%
-    mutate(Method =  sapply(strsplit(as.character(variable),split = '\\.'),'[',2)) %>%
-    filter(Method != 'hUSI') %>%
-    mutate(Type = ifelse(Type == 'method','Senecence Score',ifelse(Type =='ssgsea','ssGSEA Score','Expression Level'))) %>%
-    rename('Score'='value' ) %>%
-    ggplot(aes(x = Method,y=Score,color = Condition)) +
-    geom_boxplot(outlier.shape = NA) + 
-    geom_point(aes(color = Condition),position = position_jitterdodge(jitter.width = 0.3),size = 0.5) +
-    scale_color_manual(values = c('#023e8a','#e63946'))+
-    theme_classic()+
-    theme(legend.position = 'top',text = element_text(size = 16),
-          axis.title.x = element_blank(),
-          axis.text.x = element_text(angle = 90,vjust = 0.5, hjust=1))+
-    ggtitle(names(df_list)[i])+
-    ggforce::facet_row(~Type, scales = 'free', space = 'free')
-  plot_list[[i]] <- p
-}
-
-fig <- ggarrange(plotlist = plot_list,ncol = 1,nrow = 3,common.legend = T,legend = 'right')
-png('compare_scores.png',width = 3500,height = 4000,res = 300)
-# pdf('HUSI/Figures/model/compare_scores.pdf',width = 15,height = 7)
-fig
-dev.off()
-
 ############################### mean auc values ################################
 ### plot data
 df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {melt(x) %>% set_names(c('method','unit','AUC'))})
@@ -785,7 +729,7 @@ for (dataset in names(df_plot_list)) {
   plot_list[[dataset]] <-
     ggplot(df_plot,aes(x=reorder(method,AUC), y=AUC,color = method_type))+
       geom_jitter(size=1)+
-      geom_boxplot(color='black',outlier.color = NA,fill=NA)+
+      geom_boxplot(color='black',outlier.color = NA,fill=NA,linewidth=0.2)+
       theme_classic()+
       ylab('AUC values')+
       xlab('Quantification method')+
@@ -799,13 +743,13 @@ for (dataset in names(df_plot_list)) {
   
 fig <- ggarrange(plotlist = plot_list,ncol = 3,nrow = 1,common.legend = T)
 
-png('~/wangj/codebase/HUSI/Figures/revison/compare_auc_sene.png',width = 3000,height = 1500,res = 300)
+png('~/wangj/codebase/HUSI/Figures/revison/compare_auc.png',width = 6000,height = 2500,res = 300)
 fig
 dev.off()
 
 ############################### mean auc rank ##################################
 ### only keep common genes
-method_used <- c('hUSI','GLB1','TP53','CDKN1A','CDKN2A','LMNB1','RB1','CDK1','CDK4','CDK6','MKI67','CDKN2B','SERPINE1',
+method_used <- c('hUSI','GLB1','TP53','CDKN1A','CDKN2A','LMNB1','RB1','CDK1','CDK4','CDK6','MKI67','CDKN2B',
                  "DAS","mSS",'DAS+mSS','lassoCS','CSS',
                  names(EnrichSet))
 df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {x = x[method_used,]}) 
@@ -825,10 +769,10 @@ df_plot_mean$method_type <- ifelse(df_plot_mean$method %in% c("DAS","mSS",'DAS+m
                             ifelse(df_plot_mean$method %in% SenMarkers,'Marker','hUSI')))
 df_plot_mean$group <- factor(df_plot_mean$method_type,levels = c('hUSI','Marker','Gene set','Senecence Score'),ordered = T)
 
-png('~/wangj/codebase/HUSI/Figures/revison/compare_rank_sene.png',width = 3000,height = 2000,res = 300)
+png('~/wangj/codebase/HUSI/Figures/revison/compare_rank.png',width = 4000,height = 2000,res = 300)
 ggplot()+
     geom_bar(data=df_plot_mean,aes(x=reorder(method,mean), y=mean,fill = group),stat="identity",position="dodge")+
-    geom_jitter(data=df_plot,aes(x = method,y=AUC_rank,color=dataset),width = 0.2,size=2) +
+    geom_jitter(data=df_plot,aes(x = method,y=AUC_rank,color=dataset),width = 0.3,size=2,height = 0) +
     geom_errorbar(data=df_plot_mean,aes(x=reorder(method,mean),y=mean,ymax=mean+sd,ymin=ifelse(mean-sd <0,0,mean-sd)),
                   position=position_dodge(0.9),width=0.4)+
     theme_classic()+

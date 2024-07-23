@@ -91,7 +91,7 @@ Aarts2017$Condition = ifelse(grepl('OSKM',colnames(Aarts2017)), 'Senescence', 'G
 
 ########################################### calculate score
 ### score list
-SenMarkers <<- c("CDKN1A", "CDKN2A", "LMNB1", "CDKN2B",'SERPINE1')
+SenMarkers <<- c("CDKN1A", "CDKN2A", "CDKN2B",'SERPINE1')
 
 objectList = list(Teo2019,Tang2019,Aarts2017)
 names(objectList) <-  c('Teo2019','Tang2019','Aarts2017')
@@ -101,9 +101,9 @@ for(dataset in names(objectList)){
   obj = objectList[[dataset]]
   hUSI = cal_hUSI(obj)
   sene_marker = cal_marker(obj,SenMarkers)
-  hUSI_mean = cal_hUSI_mean(obj)
-  hUSI_exp = cal_hUSI_exp(obj,X_tr)
-  dat[[dataset]] = c(list('hUSI'=hUSI,'hUSI_exp'=hUSI_exp),sene_marker,hUSI_mean)
+  # hUSI_mean = cal_hUSI_mean(obj)
+  # hUSI_exp = cal_hUSI_exp(obj,X_tr)
+  dat[[dataset]] = c(list('hUSI'=hUSI),sene_marker)
 }
 
 ### auc
@@ -123,20 +123,20 @@ for(dataset in names(dat)){
 
 ### plot senesence markers
 ### mean auc values
-df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {melt(x[c('hUSI','hUSI_exp'),]) %>% set_names(c('method','unit','AUC'))})
+df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {melt(x[c('hUSI',SenMarkers),]) %>% set_names(c('method','unit','AUC'))})
 
 plot_list = list()
 for (dataset in names(df_plot_list)) {
   df_plot = df_plot_list[[dataset]]
-  # df_plot$method_type <- ifelse(df_plot$method %in% SenMarkers,'Marker','hUSI')
+  df_plot$method_type <- ifelse(df_plot$method %in% SenMarkers,'Marker','hUSI')
   # df_plot$method_type <- factor(df_plot$method_type,levels = c('hUSI','Marker'),ordered = T)
-  df_plot$method_type <- factor(df_plot$method,levels = c('hUSI','hUSI_exp'),ordered = T)
+  # df_plot$method_type <- factor(df_plot$method,levels = c('hUSI','hUSI_exp'),ordered = T)
   df_plot$dataset = dataset
   
   plot_list[[dataset]] <-
     ggplot(df_plot,aes(x=reorder(method,AUC), y=AUC,color = method_type))+
-    geom_jitter(size=1)+
-    geom_boxplot(color='black',outlier.color = NA,fill=NA)+
+    geom_jitter(size=0.5)+
+    geom_boxplot(color='black',outlier.color = NA,fill=NA,linewidth=0.1)+
     theme_classic()+
     ylab('AUC values')+
     # xlab('Quantification method')+
@@ -151,13 +151,13 @@ for (dataset in names(df_plot_list)) {
 
 fig <- ggarrange(plotlist = plot_list,ncol = 3,nrow = 1,common.legend = T)
 
-png('~/wangj/codebase/HUSI/Figures/revison/compare_auc_exp.png',width = 2000,height = 1500,res = 300)
+png('~/wangj/codebase/HUSI/Figures/revison/compare_auc_exp.png',width = 2000,height = 1200,res = 300)
 fig
 dev.off()
 
 #### mean auc rank 
 ### only keep common genes
-method_used <- c('hUSI','hUSI_exp')
+method_used <- c('hUSI',SenMarkers)
 df_plot_list = lapply(AUClist[c("Teo2019","Tang2019","Aarts2017")], function(x) {x = x[method_used,]}) 
 df_plot_list = lapply(df_plot_list, function(x) {rank(rowMeans(x))})
 
@@ -172,15 +172,16 @@ colnames(df_plot_mean) <- c('method','mean','sd')
 df_plot_mean$method_type <- ifelse(df_plot_mean$method %in% SenMarkers,'Marker','hUSI')
 df_plot_mean$group <- factor(df_plot_mean$method_type,levels = c('hUSI','Marker'),ordered = T)
 
-png('~/wangj/codebase/HUSI/Figures/revison/compare_rank_sene.png',width = 3000,height = 2000,res = 300)
+png('~/wangj/codebase/HUSI/Figures/revison/compare_rank_sene.png',width = 1200,height = 1500,res = 300)
 ggplot()+
   geom_bar(data=df_plot_mean,aes(x=reorder(method,mean), y=mean,fill = group),stat="identity",position="dodge")+
-  geom_jitter(data=df_plot,aes(x = method,y=AUC_rank,color=dataset),width = 0.2,size=2) +
+  geom_jitter(data=df_plot,aes(x = method,y=AUC_rank,color=dataset),width = 0.3,size=2,height = 0) +
   geom_errorbar(data=df_plot_mean,aes(x=reorder(method,mean),y=mean,ymax=mean+sd,ymin=ifelse(mean-sd <0,0,mean-sd)),
                 position=position_dodge(0.9),width=0.4)+
   theme_classic()+
   ylab('AUC rank')+
-  xlab('Quantification method')+
+  # xlab('Quantification method')+
+  xlab('')+
   scale_fill_manual(values = c('#e63946','#94d2bd','#00afb9','#fed9b7'))+
   scale_color_manual(values = c('#277da1','#f9c74f','#7209b7'))+
   theme(axis.text.x = element_text(angle = 45,vjust = 1, hjust=1),
@@ -249,7 +250,7 @@ for (dataset in names(dat)) {
               size = 1,
               add.params = list(color = "#6c757d"),
               ggtheme = theme_classic())+
-    stat_cor(method = "spearman",color='black')
+    stat_cor(method = "spearman",color='black')+
     ggtitle(dataset)
 }
 
@@ -263,11 +264,35 @@ dev.off()
 openxlsx::write.xlsx(dat,"~/wangj/codebase/HUSI/Figures/revison/compare_quntification_1.xlsx")
 
 
+### show weights distribution
+EnrichSet<<-cogena::gmt2list("gene_50signatures_merge.gmt")
+SeneGenes <- EnrichSet$SenMayo
+
+SenMarkers <<- c("GLB1", "CDKN1A", "CDKN2A",  "IL1A", "CDKN2B",'SERPINE1')
+SeneGenes <- unique(c(SeneGenes,SenMarkers))
+
+weights = mm_l2$w[SeneGenes]
+weights = weights[!is.na(weights)]
+match(names(weights),names(mm_l2$w))
+
+df_plot = data.frame(weight = mm_l2$w,set = ifelse(names(mm_l2$w)%in%SeneGenes,'SenMayo','Other'))
+df_plot$gene <- rownames(df_plot)
+top = filter(df_plot,set=='SenMayo')
+top = top[order(top$weight,decreasing = T),]
 
 
+  
+  png('~/wangj/codebase/HUSI/Figures/revison/compare_quntification_3.png',width = 3300,height = 1000,res = 300)
+  ggplot(df_plot)+
+    geom_density(aes(x=weight),alpha=0.5)+
+    scale_fill_manual(values = c('#457b9d','#e63946'))+
+    geom_vline(xintercept =df_plot$weight[which(df_plot$gene %in%c('CDKN1A','SERPINE1','MKI67','LMNB1'))])+
+    geom_vline(xintercept=quantile(df_plot$weight,c(0.1,0.9)),color='red')+
+    theme_bw()
+  dev.off()
 
-
-
+### weights distribution
+load('../Data/Bulk_TrainModel/ModelTrainData.RData')
 
 
 

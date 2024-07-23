@@ -114,7 +114,7 @@ for(i in 1:ncol(X_tr)){
 }
 
 
-
+save(auc,file='~/wangj/AgingScore/HUSI_new/data/trianset/auc.rdata')
 
 
 

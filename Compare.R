@@ -1,4 +1,5 @@
 mm_l2 = readRDS("~/wangj/AgingScore/Data/Bulk_TrainModel/mm_l2.rds")
+setwd('/home/wangjing/wangj/AgingScore/Comparison')
 ######################## Comparision in three single-cell dataset  ###################################
 library(Seurat)
 library(data.table)
