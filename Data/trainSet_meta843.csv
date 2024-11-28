@@ -1,0 +1,844 @@
+Data_id,Study_name,Project_name,Sample_id,Sample_title,Cell_line_raw,Tissue_type,Cell_type_name,Cell_type,Cell_type_id,Stage,Treatment,Sene_type,Growth_arrest,SA-beta-gal,LMNB1,pRb/pRb,CCK-8,p16/p21/p53/p-p53,SASP,MKi67,BrdU/EdU_stain,SAHFs_stain,SASP_associated_genes
+SRR14168770,GSE171663,PRJNA720431,GSM5229916,X2_Dox21d_S5,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Sene,doxorubicin,CIS,1,1,0,0,0,1,0,0,1,0,0
+SRR14168774,GSE171663,PRJNA720431,GSM5229920,X3_Dox21d_S11,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Sene,doxorubicin,CIS,1,1,0,0,0,1,0,0,1,0,0
+SRR14168778,GSE171663,PRJNA720431,GSM5229924,X4_Dox21d_S15,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Sene,doxorubicin,CIS,1,1,0,0,0,1,0,0,1,0,0
+SRR14168782,GSE171663,PRJNA720431,GSM5229928,X5_Dox21d_S8,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Sene,doxorubicin,CIS,1,1,0,0,0,1,0,0,1,0,0
+SRR14168768,GSE171663,PRJNA720431,GSM5229914,X2_Ctr_S2,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14168772,GSE171663,PRJNA720431,GSM5229918,X3_Ctr_S7,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14168776,GSE171663,PRJNA720431,GSM5229922,X4_Ctr_S13,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14168780,GSE171663,PRJNA720431,GSM5229926,X5_Ctr_S1,NA,Normal,Vascular smooth muscle cells,VSMC,VSMC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR11214366,GSE146197,PRJNA609692,GSM4368001,U1,U87,Tumor,Cell from malignant gliomas,U87,U87,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12740614,GSE158743,PRJNA666405,GSM4809439,C_01_7 days post IR,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Sene,7 days post IR,IRIS,0,1,0,0,0,1,0,0,1,0,0
+SRR12740615,GSE158743,PRJNA666405,GSM4809440,C_02_7 days post IR,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Sene,7 days post IR,IRIS,1,1,0,0,0,1,0,0,1,0,0
+SRR12740616,GSE158743,PRJNA666405,GSM4809441,C_03_7 days post IR,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Sene,7 days post IR,IRIS,1,1,0,0,0,1,0,0,1,0,0
+SRR12740617,GSE158743,PRJNA666405,GSM4809442,C_04_7 days post IR,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Sene,7 days post IR,IRIS,1,1,0,0,0,1,0,0,1,0,0
+SRR12740618,GSE158743,PRJNA666405,GSM4809443,C_05_7 days post IR,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Sene,7 days post IR,IRIS,1,1,0,0,0,1,0,0,1,0,0
+SRR12740604,GSE158743,PRJNA666405,GSM4809429,A_01_untreated,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12740605,GSE158743,PRJNA666405,GSM4809430,A_02_untreated,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12740606,GSE158743,PRJNA666405,GSM4809431,A_03_untreated,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12740607,GSE158743,PRJNA666405,GSM4809432,A_04_untreated,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12740608,GSE158743,PRJNA666405,GSM4809433,A_05_untreated,U2OS,Tumor,Osteosarcoma cells,U2OS,U2OS,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023239,E-MTAB-9970,PRJEB42249,ERS5494287,T47D_Ali14_batch1,T47D,Tumor,Estrogen-receptor positive breast cancer,T47D,T47D,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023238,E-MTAB-9970,PRJEB42249,ERS5494286,T47D_Ali7_batch3,T47D,Tumor,Estrogen-receptor positive breast cancer,T47D,T47D,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023240,E-MTAB-9970,PRJEB42249,ERS5494288,T47D_Eto7_batch3,T47D,Tumor,Estrogen-receptor positive breast cancer,T47D,T47D,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023241,E-MTAB-9970,PRJEB42249,ERS5494289,T47D_P_batch1,T47D,Tumor,Estrogen-receptor positive breast cancer,T47D,T47D,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023242,E-MTAB-9970,PRJEB42249,ERS5494290,T47D_P_batch3,T47D,Tumor,Estrogen-receptor positive breast cancer,T47D,T47D,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13977442,GSE169009,PRJNA714897,GSM5173907,"SA?Gal high, old donor #1",NA,Normal,CD8+ T cells,T cell,T cell,Sene,60's donor,NS,0,1,0,0,0,1,0,0,0,0,0
+SRR13977443,GSE169009,PRJNA714897,GSM5173908,"SA?Gal high, old donor #2",NA,Normal,CD8+ T cells,T cell,T cell,Sene,60's donor,NS,0,1,0,0,0,1,0,0,0,0,0
+SRR13977444,GSE169009,PRJNA714897,GSM5173909,"SA?Gal high, old donor #3",NA,Normal,CD8+ T cells,T cell,T cell,Sene,60's donor,NS,0,1,0,0,0,1,0,0,0,0,0
+SRR13977433,GSE169009,PRJNA714897,GSM5173898,"SA?Gal low, young donor #1",NA,Normal,CD8+ T cells,T cell,T cell,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13977434,GSE169009,PRJNA714897,GSM5173899,"SA?Gal low, young donor #2",NA,Normal,CD8+ T cells,T cell,T cell,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13977435,GSE169009,PRJNA714897,GSM5173900,"SA?Gal low, young donor #3",NA,Normal,CD8+ T cells,T cell,T cell,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023234,E-MTAB-9970,PRJEB42249,ERS5494282,SUM159_Ali14_batch1,SUM159PT,Tumor,Triple-negative breast cancer,SUM159PT,SUM159PT,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023233,E-MTAB-9970,PRJEB42249,ERS5494281,SUM159_Ali7_batch3,SUM159PT,Tumor,Triple-negative breast cancer,SUM159PT,SUM159PT,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023235,E-MTAB-9970,PRJEB42249,ERS5494283,SUM159_Eto7_batch3,SUM159PT,Tumor,Triple-negative breast cancer,SUM159PT,SUM159PT,Sene,etoposide,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023236,E-MTAB-9970,PRJEB42249,ERS5494284,SUM159_P_batch1,SUM159PT,Tumor,Triple-negative breast cancer,SUM159PT,SUM159PT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023237,E-MTAB-9970,PRJEB42249,ERS5494285,SUM159_P_batch3,SUM159PT,Tumor,Triple-negative breast cancer,SUM159PT,SUM159PT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971066,GSE160702,PRJNA674040,GSM4877911,Senescent_ESCs_4d_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour+day of differentiation: 4,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971067,GSE160702,PRJNA674040,GSM4877912,Senescent_ESCs_4d_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour+day of differentiation: 4,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971068,GSE160702,PRJNA674040,GSM4877913,Senescent_ESCs_4d_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour+day of differentiation: 4,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971069,GSE160702,PRJNA674040,GSM4877914,Senescent_ESCs_4d_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour + day of differentiation: 4,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971070,GSE160702,PRJNA674040,GSM4877915,Senescent_ESCs_8d_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour + day of differentiation: 8,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971071,GSE160702,PRJNA674040,GSM4877916,Senescent_ESCs_8d_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour + day of differentiation: 8,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971072,GSE160702,PRJNA674040,GSM4877917,Senescent_ESCs_8d_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour + day of differentiation: 8,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971073,GSE160702,PRJNA674040,GSM4877918,Senescent_ESCs_8d_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour + day of differentiation: 8,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971062,GSE160702,PRJNA674040,GSM4877907,Senescent_ESCs_Non_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971063,GSE160702,PRJNA674040,GSM4877908,Senescent_ESCs_Non_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971064,GSE160702,PRJNA674040,GSM4877909,Senescent_ESCs_Non_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971065,GSE160702,PRJNA674040,GSM4877910,Senescent_ESCs_Non_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Sene,200 米M of H2O2 for 1 hour,OSIS,0,0,0,0,0,1,0,0,0,0,1
+SRR12971050,GSE160702,PRJNA674040,GSM4877895,Young_ESCs_Non_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971051,GSE160702,PRJNA674040,GSM4877896,Young_ESCs_Non_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971052,GSE160702,PRJNA674040,GSM4877897,Young_ESCs_Non_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971053,GSE160702,PRJNA674040,GSM4877898,Young_ESCs_Non_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971054,GSE160702,PRJNA674040,GSM4877899,Young_ESCs_4d_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971055,GSE160702,PRJNA674040,GSM4877900,Young_ESCs_4d_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971056,GSE160702,PRJNA674040,GSM4877901,Young_ESCs_4d_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971057,GSE160702,PRJNA674040,GSM4877902,Young_ESCs_4d_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971058,GSE160702,PRJNA674040,GSM4877903,Young_ESCs_8d_diff_rep1,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971059,GSE160702,PRJNA674040,GSM4877904,Young_ESCs_8d_diff_rep2,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971060,GSE160702,PRJNA674040,GSM4877905,Young_ESCs_8d_diff_rep3,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12971061,GSE160702,PRJNA674040,GSM4877906,Young_ESCs_8d_diff_rep4,NA,Normal,Endometrial stromal cells,Stromal cell,ESCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728132,GSE128282,PRJNA527008,GSM3670631,PSC27-B 01,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728133,GSE128282,PRJNA527008,GSM3670631,PSC27-B 01,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728134,GSE128282,PRJNA527008,GSM3670632,PSC27-B 02,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728135,GSE128282,PRJNA527008,GSM3670632,PSC27-B 02,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728136,GSE128282,PRJNA527008,GSM3670633,PSC27-B 03,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728137,GSE128282,PRJNA527008,GSM3670633,PSC27-B 03,NA,Normal,Normal human prostate derived primary stromal cells,Stromal cell,NhP-PSC,Sene,with 50 米g/ml bleomycin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8728126,GSE128282,PRJNA527008,GSM3670628,PSC27-C 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728127,GSE128282,PRJNA527008,GSM3670628,PSC27-C 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728128,GSE128282,PRJNA527008,GSM3670629,PSC27-C 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728129,GSE128282,PRJNA527008,GSM3670629,PSC27-C 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728130,GSE128282,PRJNA527008,GSM3670630,PSC27-C 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8728131,GSE128282,PRJNA527008,GSM3670630,PSC27-C 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12429975,GSE156038,PRJNA656524,GSM4720935,BLEO 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429976,GSE156038,PRJNA656524,GSM4720936,BLEO 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429977,GSE156038,PRJNA656524,GSM4720937,BLEO 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429978,GSE156038,PRJNA656524,GSM4720938,BLEO/NAD+ 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NAD+,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429979,GSE156038,PRJNA656524,GSM4720939,BLEO/NAD+ 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NAD+,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429980,GSE156038,PRJNA656524,GSM4720940,BLEO/NAD+ 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NAD+,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429981,GSE156038,PRJNA656524,GSM4720941,BLEO/NMN 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NMN,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429982,GSE156038,PRJNA656524,GSM4720942,BLEO/NMN 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NMN,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429983,GSE156038,PRJNA656524,GSM4720943,BLEO/NMN 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/NMN,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12429972,GSE156038,PRJNA656524,GSM4720932,CTRL 01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12429973,GSE156038,PRJNA656524,GSM4720933,CTRL 02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12429974,GSE156038,PRJNA656524,GSM4720934,CTRL 03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12447264,GSE156184,PRJNA657009,GSM4726227,BLEO/ALA_01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/alpha-lipoic acid,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447265,GSE156184,PRJNA657009,GSM4726228,BLEO/ALA_02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/alpha-lipoic acid,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447266,GSE156184,PRJNA657009,GSM4726229,BLEO/ALA_03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin/alpha-lipoic acid,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447261,GSE156184,PRJNA657009,GSM4726224,BLEO_01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447262,GSE156184,PRJNA657009,GSM4726225,BLEO_02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447263,GSE156184,PRJNA657009,GSM4726226,BLEO_03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12447258,GSE156184,PRJNA657009,GSM4726221,CTRL_01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12447259,GSE156184,PRJNA657009,GSM4726222,CTRL_02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12447260,GSE156184,PRJNA657009,GSM4726223,CTRL_03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12476545,GSE156472,PRJNA658072,GSM4732103,BLEOMYCIN_01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12476546,GSE156472,PRJNA658072,GSM4732104,BLEOMYCIN_02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12476547,GSE156472,PRJNA658072,GSM4732105,BLEOMYCIN_03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Sene,bleomycin,CIS,0,0,0,0,0,0,0,0,0,0,0
+SRR12476542,GSE156472,PRJNA658072,GSM4732100,CONTROL_01,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12476543,GSE156472,PRJNA658072,GSM4732101,CONTROL_02,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12476544,GSE156472,PRJNA658072,GSM4732102,CONTROL_03,PSC27,Normal,Normal human prostate derived primary stromal cells,Stromal cell,PSC27,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR2756742,E-MTAB-5965,PRJEB22182,ERS2678509,BK12,H9,Normal,Embryonic stem cell,Stem cell,H9,Sene,NURR1::GFP; SATB1 knockout,GMIS,0,1,1,0,0,0,1,0,0,0,0
+ERR2756743,E-MTAB-5965,PRJEB22182,ERS2678510,BK13,H9,Normal,Embryonic stem cell,Stem cell,H9,Sene,NURR1::GFP; SATB1 knockout,GMIS,0,1,1,0,0,0,1,0,0,0,0
+ERR2756744,E-MTAB-5965,PRJEB22182,ERS2678511,BK14,H9,Normal,Embryonic stem cell,Stem cell,H9,Sene,NURR1::GFP; SATB1 knockout,GMIS,0,1,1,0,0,0,1,0,0,0,0
+ERR2756739,E-MTAB-5965,PRJEB22182,ERS2678506,BK09,H9,Normal,Embryonic stem cell,Stem cell,H9,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR2756740,E-MTAB-5965,PRJEB22182,ERS2678507,BK10,H9,Normal,Embryonic stem cell,Stem cell,H9,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR2756741,E-MTAB-5965,PRJEB22182,ERS2678508,BK11,H9,Normal,Embryonic stem cell,Stem cell,H9,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203910,GSE122654,PRJNA505881,GSM3477322,RNA_seq_NSC_WT_rep1,NA,Normal,Neural stem cells,Stem cell,NSC,Pro,DNA damage,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203911,GSE122654,PRJNA505881,GSM3477323,RNA_seq_NSC_WT_rep2,NA,Normal,Neural stem cells,Stem cell,NSC,Pro,DNA damage,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203912,GSE122654,PRJNA505881,GSM3477324,RNA_seq_NSC_KO_rep1,NA,Normal,Neural stem cells,Stem cell,NSC,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203913,GSE122654,PRJNA505881,GSM3477325,RNA_seq_NSC_KO_rep2,NA,Normal,Neural stem cells,Stem cell,NSC,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12162118,GSE140768,PRJNA590880,GSM4658333,SF8628_DMSO_1,SF8628,Disease,Glioma cell from a pediatric H3.3K27m dipg patient,SF8628,SF8628,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12162119,GSE140768,PRJNA590880,GSM4658334,SF8628_DMSO_2,SF8628,Disease,Glioma cell from a pediatric H3.3K27m dipg patient,SF8628,SF8628,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12162120,GSE140768,PRJNA590880,GSM4658335,SF8628_DMSO_3,SF8628,Disease,Glioma cell from a pediatric H3.3K27m dipg patient,SF8628,SF8628,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023229,E-MTAB-9970,PRJEB42249,ERS5494277,RKO_Ali14_batch2,RKO,Tumor,Colorectal carcinoma,RKO,RKO,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023228,E-MTAB-9970,PRJEB42249,ERS5494276,RKO_Ali7_batch3,RKO,Tumor,Colorectal carcinoma,RKO,RKO,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023230,E-MTAB-9970,PRJEB42249,ERS5494278,RKO_Eto7_batch3,RKO,Tumor,Colorectal carcinoma,RKO,RKO,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023231,E-MTAB-9970,PRJEB42249,ERS5494279,RKO_P_batch2,RKO,Tumor,Colorectal carcinoma,RKO,RKO,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023232,E-MTAB-9970,PRJEB42249,ERS5494280,RKO_P_batch3,RKO,Tumor,Colorectal carcinoma,RKO,RKO,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835858,GSE129182,PRJNA530404,GSM3702047,P2T2-2-1,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835859,GSE129182,PRJNA530404,GSM3702047,P2T2-2-1,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835860,GSE129182,PRJNA530404,GSM3702047,P2T2-2-1,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835861,GSE129182,PRJNA530404,GSM3702047,P2T2-2-1,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835863,GSE129182,PRJNA530404,GSM3702048,P2T2-2-2,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835864,GSE129182,PRJNA530404,GSM3702048,P2T2-2-2,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835865,GSE129182,PRJNA530404,GSM3702048,P2T2-2-2,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+SRR8835862,GSE129182,PRJNA530404,GSM3702048,P2T2-2-2,PZT-2,Tumor,Pancreatic ductal adenocarcinoma cell (KD of three H2A.Z isoforms),PZT-2,PZT-2,Sene,KD of three H2A.Z isoforms,GMIS,1,1,0,0,0,1,1,1,1,0,0
+ERR5023224,E-MTAB-9970,PRJEB42249,ERS5494272,PC9_Ali14_batch2,PC-9,Tumor,Non-small cell lung carcinoma,PC-9,PC-9,Sene,alisertib,CIS,1,1,0,1,0,1,0,0,0,0,0
+ERR5023223,E-MTAB-9970,PRJEB42249,ERS5494271,PC9_Ali7_batch3,PC-9,Tumor,Non-small cell lung carcinoma,PC-9,PC-9,Sene,alisertib,CIS,1,1,0,1,0,1,0,0,0,0,0
+ERR5023225,E-MTAB-9970,PRJEB42249,ERS5494273,PC9_Eto7_batch3,PC-9,Tumor,Non-small cell lung carcinoma,PC-9,PC-9,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023226,E-MTAB-9970,PRJEB42249,ERS5494274,PC9_P_batch2,PC-9,Tumor,Non-small cell lung carcinoma,PC-9,PC-9,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023227,E-MTAB-9970,PRJEB42249,ERS5494275,PC9_P_batch3,PC-9,Tumor,Non-small cell lung carcinoma,PC-9,PC-9,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835850,GSE129182,PRJNA530404,GSM3702045,PWT-W1,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835851,GSE129182,PRJNA530404,GSM3702045,PWT-W1,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835852,GSE129182,PRJNA530404,GSM3702045,PWT-W1,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835853,GSE129182,PRJNA530404,GSM3702045,PWT-W1,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835854,GSE129182,PRJNA530404,GSM3702046,PWT-W2,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835855,GSE129182,PRJNA530404,GSM3702046,PWT-W2,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835856,GSE129182,PRJNA530404,GSM3702046,PWT-W2,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8835857,GSE129182,PRJNA530404,GSM3702046,PWT-W2,PANC-1,Tumor,Pancreatic cancer cell,PANC-1,PANC-1,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023220,E-MTAB-9970,PRJEB42249,ERS5494268,H358_Ali7_batch3,NCI-H358,Tumor,Non-small cell lung carcinoma,NCI-H358,NCI-H358,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023221,E-MTAB-9970,PRJEB42249,ERS5494269,H358_Eto7_batch3,NCI-H358,Tumor,Non-small cell lung carcinoma,NCI-H358,NCI-H358,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023222,E-MTAB-9970,PRJEB42249,ERS5494270,H358_P_batch3,NCI-H358,Tumor,Non-small cell lung carcinoma,NCI-H358,NCI-H358,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5683169,GSE100027,PRJNA390528,GSM2668081,dCas9 3a3l delta_1,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Sene,dCas9 3a3l delta,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR5683170,GSE100027,PRJNA390528,GSM2668082,dCas9 3a3l delta_2,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Sene,dCas9 3a3l delta,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR5683171,GSE100027,PRJNA390528,GSM2668083,dCas9 3a3l delta_3,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Sene,dCas9 3a3l delta,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR5683172,GSE100027,PRJNA390528,GSM2668084,dCas9 3a3l_1,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5683173,GSE100027,PRJNA390528,GSM2668085,dCas9 3a3l_2,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5683174,GSE100027,PRJNA390528,GSM2668086,dCas9 3a3l_3,NA,Normal,Myoepithelial,Myoepithelial,Myoepithelial,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5878077,GSE102004,PRJNA396193,GSM2720316,ATF6-/- hMSC late passage-1 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,passages: p10+CRISPR/Cas9-mediated inactivation of ATF6,RS+GM,1,1,1,0,0,1,0,1,0,0,0
+SRR5878078,GSE102004,PRJNA396193,GSM2720317,ATF6-/- hMSC late passage-2 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,passages: p10+CRISPR/Cas9-mediated inactivation of ATF6,RS+GM,1,1,1,0,0,1,0,1,0,0,0
+SRR5878079,GSE102004,PRJNA396193,GSM2720318,ATF6+/+ hMSC late passage-1 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,passages: p10,RS,1,0,1,0,0,0,0,0,0,0,0
+SRR5878080,GSE102004,PRJNA396193,GSM2720319,ATF6+/+ hMSC late passage-2 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,passages: p10,RS,1,0,1,0,0,0,0,0,0,0,0
+SRR5878103,GSE102004,PRJNA396193,GSM2720342,ATF6+/+ hMSC vehicle-1 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5878104,GSE102004,PRJNA396193,GSM2720343,ATF6+/+ hMSC vehicle-2 RNA-seq,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680318,GSE110268,PRJNA433339,GSM2983812,FOXD1_1,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,FOXD1 Knockdown,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6680319,GSE110268,PRJNA433339,GSM2983813,FOXD1_2,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,FOXD1 Knockdown,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6680320,GSE110268,PRJNA433339,GSM2983814,FOXD1_3,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,FOXD1 Knockdown,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6680312,GSE110268,PRJNA433339,GSM2983806,hMSC_YAP_1,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,YAP KO,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6680313,GSE110268,PRJNA433339,GSM2983807,hMSC_YAP_2,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,YAP KO,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6680314,GSE110268,PRJNA433339,GSM2983808,hMSC_YAP_3,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,YAP KO,GMIS,0,1,0,0,0,1,0,0,0,0,0
+SRR8360404,GSE124208,PRJNA510990,GSM3525721,ERCC6 mut MSC RS rep1,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,ERCC6 mut MSC upon replicative stress,RS,1,1,0,0,0,0,1,1,0,0,0
+SRR8360405,GSE124208,PRJNA510990,GSM3525722,ERCC6 mut MSC RS rep2,MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,ERCC6 mut MSC upon replicative stress,RS,1,1,0,0,0,0,1,1,0,0,0
+SRR5494717,GSE98440,PRJNA385098,GSM2595528,MSC_A_RNA-Seq (senescent),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,senescent (replicative),RS,0,1,1,0,0,1,1,0,0,0,0
+SRR5494718,GSE98440,PRJNA385098,GSM2595529,MSC_B_RNA-Seq (senescent),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,senescent (replicative),RS,0,1,1,0,0,1,1,0,0,0,0
+SRR5494719,GSE98440,PRJNA385098,GSM2595530,MSC_C_RNA-Seq (senescent),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,senescent (replicative),RS,0,1,1,0,0,1,1,0,0,0,0
+SRR5494720,GSE98440,PRJNA385098,GSM2595531,MSC_D_RNA-Seq (senescent),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Sene,senescent (replicative),RS,0,1,1,0,0,1,1,0,0,0,0
+SRR5494706,GSE98440,PRJNA385098,GSM2595517,MSC_A_RNA-Seq (proliferating),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494707,GSE98440,PRJNA385098,GSM2595518,MSC_B_RNA-Seq (proliferating),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494708,GSE98440,PRJNA385098,GSM2595519,MSC_C_RNA-Seq (proliferating),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494709,GSE98440,PRJNA385098,GSM2595520,MSC_D_RNA-Seq (proliferating),MSC,Normal,Mesenchymal stromal cells,Mesenchymal stromal cell,MSC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867840,GSE178514,PRJNA739464,GSM5393148,MSC_P12_REP1 [P12393],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Sene,Expansion in vitro to passage 12,RS,0,1,0,0,0,1,1,0,1,0,0
+SRR14867841,GSE178514,PRJNA739464,GSM5393149,MSC_P12_REP2 [P12411],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Sene,Expansion in vitro to passage 12,RS,0,1,0,0,0,1,1,0,1,0,0
+SRR14867842,GSE178514,PRJNA739464,GSM5393150,MSC_P12_REP3 [P12413],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Sene,Expansion in vitro to passage 12,RS,0,1,0,0,0,1,1,0,1,0,0
+SRR14867834,GSE178514,PRJNA739464,GSM5393142,MSC_P4_REP1 [P4393],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867835,GSE178514,PRJNA739464,GSM5393143,MSC_P4_REP2 [P4411],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867836,GSE178514,PRJNA739464,GSM5393144,MSC_P4_REP3 [P4413],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867837,GSE178514,PRJNA739464,GSM5393145,MSC_P6_REP1 [P6393],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867838,GSE178514,PRJNA739464,GSM5393146,MSC_P6_REP2 [P6411],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14867839,GSE178514,PRJNA739464,GSM5393147,MSC_P6_REP3 [P6413],NA,Normal,Bone marrow-derived mesenchymal stem cells,Mesenchymal stem cell,BM-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR10806365,GSE142761,PRJNA598214,GSM4239816,Ctrl-A1,NA,Normal,Human adipose-derived mesenchymal stem cells,Mesenchymal stem cell,hA-MSC,Sene,Replicative,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR10806366,GSE142761,PRJNA598214,GSM4239817,Ctrl-A2,NA,Normal,Human adipose-derived mesenchymal stem cells,Mesenchymal stem cell,hA-MSC,Sene,Replicative,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR10806367,GSE142761,PRJNA598214,GSM4239818,Ctrl-A3,NA,Normal,Human adipose-derived mesenchymal stem cells,Mesenchymal stem cell,hA-MSC,Sene,Replicative,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR10806377,GSE142761,PRJNA598214,GSM4239828,Ctrl-Y1,NA,Normal,Human adipose-derived mesenchymal stem cells,Mesenchymal stem cell,hA-MSC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR10806378,GSE142761,PRJNA598214,GSM4239829,Ctrl-Y2,NA,Normal,Human adipose-derived mesenchymal stem cells,Mesenchymal stem cell,hA-MSC,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680309,GSE110268,PRJNA433339,GSM2983803,hMSC_WT_1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680310,GSE110268,PRJNA433339,GSM2983804,hMSC_WT_2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680311,GSE110268,PRJNA433339,GSM2983805,hMSC_WT_3,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680315,GSE110268,PRJNA433339,GSM2983809,hMSC_TAZ_1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680316,GSE110268,PRJNA433339,GSM2983810,hMSC_TAZ_2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6680317,GSE110268,PRJNA433339,GSM2983811,hMSC_TAZ_3,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203902,GSE122654,PRJNA505881,GSM3477314,RNA_seq_MSC_WT_rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203903,GSE122654,PRJNA505881,GSM3477315,RNA_seq_MSC_WT_rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203904,GSE122654,PRJNA505881,GSM3477316,RNA_seq_MSC_KO_rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,DNA damage,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8203905,GSE122654,PRJNA505881,GSM3477317,RNA_seq_MSC_KO_rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,DNA damage,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8360396,GSE124208,PRJNA510990,GSM3525713,ERCC6 mut MSC Ctrl rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8360397,GSE124208,PRJNA510990,GSM3525714,ERCC6 mut MSC Ctrl rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,IR,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3942938,GSE84694,PRJNA330850,GSM2247750,R_WT_MSC_LP_rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Sene,passage: late,RS,1,1,1,0,0,0,0,0,0,0,0
+SRR3942939,GSE84694,PRJNA330850,GSM2247751,R_WT_MSC_LP_rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Sene,passage: late,RS,1,1,1,0,0,0,0,0,0,0,0
+SRR3942934,GSE84694,PRJNA330850,GSM2247746,R_WT_MSC_EP_rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3942935,GSE84694,PRJNA330850,GSM2247747,R_WT_MSC_EP_rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3942936,GSE84694,PRJNA330850,GSM2247748,R_AG_MSC_EP_rep1,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3942937,GSE84694,PRJNA330850,GSM2247749,R_AG_MSC_EP_rep2,MSCs,Normal,Mesenchymal stem cells,Mesenchymal stem cell,MSCs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR24005270,GSE228470,PRJNA950004,GSM7122460,"Human melanocyte, UV-irradiated, 1","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Sene,UV,IRIS,0,1,0,0,0,1,1,0,0,0,0
+SRR24005269,GSE228470,PRJNA950004,GSM7122461,"Human melanocyte, UV-irradiated, 2","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Sene,UV,IRIS,0,1,0,0,0,1,1,0,0,0,0
+SRR24005268,GSE228470,PRJNA950004,GSM7122462,"Human melanocyte, UV-irradiated, 3","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Sene,UV,IRIS,0,1,0,0,0,1,1,0,0,0,0
+SRR24005271,GSE228470,PRJNA950004,GSM7122459,"Human melanocyte, sham-irradiated, 3","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR24005272,GSE228470,PRJNA950004,GSM7122458,"Human melanocyte, sham-irradiated, 2","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR24005273,GSE228470,PRJNA950004,GSM7122457,"Human melanocyte, sham-irradiated, 1","Primary normal human melanocytes (HEMn-MP, Gibco, C1025C)",Normal,Melanocyte,Melanocytes,HEMn-MP,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805256,E-MTAB-5403,PRJEB19157,ERS1510195,M25,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805257,E-MTAB-5403,PRJEB19157,ERS1510196,M26,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805258,E-MTAB-5403,PRJEB19157,ERS1510197,M27,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805259,E-MTAB-5403,PRJEB19157,ERS1510198,M28,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805260,E-MTAB-5403,PRJEB19157,ERS1510199,M29,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805262,E-MTAB-5403,PRJEB19157,ERS1510201,M30,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805242,E-MTAB-5403,PRJEB19157,ERS1510181,M1,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805250,E-MTAB-5403,PRJEB19157,ERS1510189,M2,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805261,E-MTAB-5403,PRJEB19157,ERS1510200,M3,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805263,E-MTAB-5403,PRJEB19157,ERS1510202,M4,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805264,E-MTAB-5403,PRJEB19157,ERS1510203,M5,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805265,E-MTAB-5403,PRJEB19157,ERS1510204,M6,NA,Normal,Primary epidermal melanocytes,Melanocytes,PEMs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023216,E-MTAB-9970,PRJEB42249,ERS5494264,MDAMB231_Ali14_batch2,MDAMB231,Tumor,Triple-negative breast cancer,MDAMB231,MDAMB231,Sene,alisertib,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023215,E-MTAB-9970,PRJEB42249,ERS5494263,MDAMB231_Ali7_batch3,MDAMB231,Tumor,Triple-negative breast cancer,MDAMB231,MDAMB231,Sene,alisertib,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023217,E-MTAB-9970,PRJEB42249,ERS5494265,MDAMB231_Eto7_batch3,MDAMB231,Tumor,Triple-negative breast cancer,MDAMB231,MDAMB231,Sene,etoposide,CIS,1,1,1,1,0,0,0,0,0,0,0
+ERR5023218,E-MTAB-9970,PRJEB42249,ERS5494266,MDAMB231_P_batch2,MDAMB231,Tumor,Triple-negative breast cancer,MDAMB231,MDAMB231,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023219,E-MTAB-9970,PRJEB42249,ERS5494267,MDAMB231_P_batch3,MDAMB231,Tumor,Triple-negative breast cancer,MDAMB231,MDAMB231,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544495,GSE60340,PRJNA258058,GSM1473796,5-aza 1,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Sene,5-aza,CIS,1,1,0,0,0,0,1,0,1,0,0
+SRR1544496,GSE60340,PRJNA258058,GSM1473798,5-aza 2,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Sene,5-aza,CIS,1,1,0,0,0,0,1,0,1,0,0
+SRR1544497,GSE60340,PRJNA258058,GSM1473800,5-aza 3,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Sene,5-aza,CIS,1,1,0,0,0,0,1,0,1,0,0
+SRR1544483,GSE60340,PRJNA258058,GSM1473770,LLP 1,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544484,GSE60340,PRJNA258058,GSM1473772,LLP 2,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Pro,Oxidation,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544485,GSE60340,PRJNA258058,GSM1473774,LLP 3,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Pro,Oxidation,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544501,GSE60340,PRJNA258058,GSM1473810,Qui 1,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544502,GSE60340,PRJNA258058,GSM1473812,Qui 2,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1544503,GSE60340,PRJNA258058,GSM1473815,Qui 3,MDAH041,Tumor,LFS fibroblasts,MDAH041,MDAH041,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023212,E-MTAB-9970,PRJEB42249,ERS5494260,MCF7_Ali7_batch3,MCF-7,Tumor,Estrogen-receptor positive breast cancer,MCF-7,MCF-7,Sene,alisertib,CIS,1,1,1,1,0,0,0,0,0,0,0
+ERR5023213,E-MTAB-9970,PRJEB42249,ERS5494261,MCF7_Eto7_batch3,MCF-7,Tumor,Estrogen-receptor positive breast cancer,MCF-7,MCF-7,Sene,etoposide,CIS,1,1,1,1,0,0,0,0,0,0,0
+ERR5023214,E-MTAB-9970,PRJEB42249,ERS5494262,MCF7_P_batch3,MCF-7,Tumor,Estrogen-receptor positive breast cancer,MCF-7,MCF-7,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891503,GSE74620,PRJNA301012,GSM1924568,"CDK4-inhibitor-treated, rep1",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,CDK4 inhibitor PD0332991,CIS,0,1,0,0,0,0,0,0,1,1,0
+SRR2891504,GSE74620,PRJNA301012,GSM1924569,"CDK4-inhibitor-treated, rep2",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,CDK4 inhibitor PD0332991,CIS,0,1,0,0,0,0,0,0,1,1,0
+SRR2891505,GSE74620,PRJNA301012,GSM1924570,"CDK4-inhibitor-treated, rep3",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,CDK4 inhibitor PD0332991,CIS,0,1,0,0,0,0,0,0,1,1,0
+SRR2891500,GSE74620,PRJNA301012,GSM1924565,"Doxorubicin-treated, rep1",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,Doxorubicin,CIS,0,1,0,1,0,1,0,0,0,1,0
+SRR2891501,GSE74620,PRJNA301012,GSM1924566,"Doxorubicin-treated, rep2",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,Doxorubicin,CIS,0,1,0,1,0,1,0,0,0,1,0
+SRR2891502,GSE74620,PRJNA301012,GSM1924567,"Doxorubicin-treated, rep3",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Sene,Doxorubicin,CIS,0,1,0,1,0,1,0,0,0,1,0
+SRR2891494,GSE74620,PRJNA301012,GSM1924559,"0-5% serum starvation, rep1",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891495,GSE74620,PRJNA301012,GSM1924560,"0-5% serum starvation, rep2",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891496,GSE74620,PRJNA301012,GSM1924561,"0-5% serum starvation, rep3",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891497,GSE74620,PRJNA301012,GSM1924562,"Untreated, rep1",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891498,GSE74620,PRJNA301012,GSM1924563,"Untreated, rep2",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2891499,GSE74620,PRJNA301012,GSM1924564,"Untreated, rep3",LS8817,Tumor,Dedifferentiated liposarcoma cells,LS8817,LS8817,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023208,E-MTAB-9970,PRJEB42249,ERS5494256,LOVO_Ali14_batch2,LoVo,Tumor,Colorectal carcinoma,LoVo,LoVo,Sene,alisertib,CIS,1,1,0,1,0,1,0,0,0,0,0
+ERR5023207,E-MTAB-9970,PRJEB42249,ERS5494255,LOVO_Ali7_batch3,LoVo,Tumor,Colorectal carcinoma,LoVo,LoVo,Sene,alisertib,CIS,1,1,0,1,0,1,0,0,0,0,0
+ERR5023209,E-MTAB-9970,PRJEB42249,ERS5494257,LOVO_Eto7_batch3,LoVo,Tumor,Colorectal carcinoma,LoVo,LoVo,Sene,etoposide,CIS,1,1,0,1,0,1,0,0,0,0,0
+ERR5023210,E-MTAB-9970,PRJEB42249,ERS5494258,LOVO_P_batch2,LoVo,Tumor,Colorectal carcinoma,LoVo,LoVo,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023211,E-MTAB-9970,PRJEB42249,ERS5494259,LOVO_P_batch3,LoVo,Tumor,Colorectal carcinoma,LoVo,LoVo,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344582,GSE155371,PRJNA649536,GSM4700235,NOK1408p14_RES8_S14,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 14,RS,0,0,0,0,0,1,1,0,0,0,0
+SRR12344583,GSE155371,PRJNA649536,GSM4700236,NOK1408p16_RES10_S70,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 16,RS,0,0,0,0,0,1,1,0,0,0,0
+SRR12344588,GSE155371,PRJNA649536,GSM4700241,NOK1415p13_RES21_S32,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 13,RS,0,1,0,0,0,1,1,0,1,0,0
+SRR12344589,GSE155371,PRJNA649536,GSM4700242,NOK1415p13_RES22_S33,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 13,RS,0,1,0,0,0,1,1,0,1,0,0
+SRR12344594,GSE155371,PRJNA649536,GSM4700247,NOK1508p13_RES15_S8,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 13,RS,0,0,0,0,0,0,1,0,1,0,0
+SRR12344595,GSE155371,PRJNA649536,GSM4700248,NOK1508p13_RES16_S9,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Sene,passage 13,RS,0,0,0,0,0,0,1,0,1,0,0
+SRR12344584,GSE155371,PRJNA649536,GSM4700237,NOK1408p5_RES1_S44,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344585,GSE155371,PRJNA649536,GSM4700238,NOK1408p5_RES1_S7,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344590,GSE155371,PRJNA649536,GSM4700243,NOK1415p5_RES17_S28,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344591,GSE155371,PRJNA649536,GSM4700244,NOK1415p5_RES18_S29,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344596,GSE155371,PRJNA649536,GSM4700249,NOK1508p5_RES11_S4,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12344597,GSE155371,PRJNA649536,GSM4700250,NOK1508p5_RES12_S5,NA,Normal,Normal oral keratinocytes,Keratinocytes,NOKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805232,E-MTAB-5403,PRJEB19157,ERS1510171,K25,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805233,E-MTAB-5403,PRJEB19157,ERS1510172,K26,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805234,E-MTAB-5403,PRJEB19157,ERS1510173,K27,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805235,E-MTAB-5403,PRJEB19157,ERS1510174,K28,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805236,E-MTAB-5403,PRJEB19157,ERS1510175,K29,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805238,E-MTAB-5403,PRJEB19157,ERS1510177,K30,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805218,E-MTAB-5403,PRJEB19157,ERS1510157,K1,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805226,E-MTAB-5403,PRJEB19157,ERS1510165,K2,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805237,E-MTAB-5403,PRJEB19157,ERS1510176,K3,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,1,0,0
+ERR1805239,E-MTAB-5403,PRJEB19157,ERS1510178,K4,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805240,E-MTAB-5403,PRJEB19157,ERS1510179,K5,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805241,E-MTAB-5403,PRJEB19157,ERS1510180,K6,NA,Normal,Primary epidermal keratinocytes,Keratinocytes,PEKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188545,GSE180361,PRJNA747991,GSM5461467,Kera_L.Ras_1,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188546,GSE180361,PRJNA747991,GSM5461468,Kera_L.Ras_2,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188547,GSE180361,PRJNA747991,GSM5461469,Kera_L.Ras_3,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188548,GSE180361,PRJNA747991,GSM5461470,Kera_L.Ras_4,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188549,GSE180361,PRJNA747991,GSM5461471,Kera_L.Ras_5,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188550,GSE180361,PRJNA747991,GSM5461472,Kera_L.Ras_6,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Sene,pLenti HRASG12V,OIS,0,1,0,0,0,0,0,0,1,1,0
+SRR15188551,GSE180361,PRJNA747991,GSM5461473,Kera_L.v_1,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188552,GSE180361,PRJNA747991,GSM5461474,Kera_L.v_2,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188553,GSE180361,PRJNA747991,GSM5461475,Kera_L.v_3,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188554,GSE180361,PRJNA747991,GSM5461476,Kera_L.v_4,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188555,GSE180361,PRJNA747991,GSM5461477,Kera_L.v_5,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,OIS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188556,GSE180361,PRJNA747991,GSM5461478,Kera_L.v_6,NA,Normal,Primary normal human keratinocytes,Keratinocytes,PNhKs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8060848,GSE121276,PRJNA496577,GSM3430713,4172_4_Huh7-XL413_CAGATCA,Huh7,Tumor,Liver cancer cell line,Huh7,Huh7,Sene,XL413 treatment,CIS,1,1,0,0,0,0,1,0,0,0,0
+SRR8060847,GSE121276,PRJNA496577,GSM3430712,4172_3_Huh7-control_GCCAATA,Huh7,Tumor,Liver cancer cell line,Huh7,Huh7,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8060852,GSE121277,PRJNA496576,GSM3430716,4424_3_Huh7_XL413_GGCTACA,Huh7,Tumor,Liver cancer cell line,Huh7,Huh7,Sene,XL413 treatment,CIS,1,1,0,0,0,0,1,0,0,0,0
+SRR8060850,GSE121277,PRJNA496576,GSM3430714,4424_1_Huh7_control_GATCAGA,Huh7,Tumor,Liver cancer cell line,Huh7,Huh7,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023203,E-MTAB-9970,PRJEB42249,ERS5494251,HUH7_Ali14_batch1,HuH-7,Tumor,Hepatocellular carcinoma,Huh7,Huh7,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023202,E-MTAB-9970,PRJEB42249,ERS5494250,HUH7_Ali7_batch3,HuH-7,Tumor,Hepatocellular carcinoma,Huh7,Huh7,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023204,E-MTAB-9970,PRJEB42249,ERS5494252,HUH7_Eto7_batch3,HuH-7,Tumor,Hepatocellular carcinoma,Huh7,Huh7,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023205,E-MTAB-9970,PRJEB42249,ERS5494253,HUH7_P_batch1,HuH-7,Tumor,Hepatocellular carcinoma,Huh7,Huh7,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023206,E-MTAB-9970,PRJEB42249,ERS5494254,HUH7_P_batch3,HuH-7,Tumor,Hepatocellular carcinoma,Huh7,Huh7,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485873,GSE174204,PRJNA728731,GSM5289378,HT-29 cells infected with lentivirus shNCOR1_655 rep1,HT-29,Tumor,Colon cancer cell line,HT-29,HT-29,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,1,1,0,0,0,0,1,0,0,0,0
+SRR14485874,GSE174204,PRJNA728731,GSM5289379,HT-29 cells infected with lentivirus shNCOR1_655 rep2,HT-30,Tumor,Colon cancer cell line,HT-29,HT-29,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,1,1,0,0,0,0,1,0,0,0,0
+SRR14485875,GSE174204,PRJNA728731,GSM5289380,HT-29 cells infected with lentivirus shNCOR1_655 rep3,HT-31,Tumor,Colon cancer cell line,HT-29,HT-29,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,1,1,0,0,0,0,1,0,0,0,0
+SRR14485870,GSE174204,PRJNA728731,GSM5289375,HT-29 cells infected with lentivirus shNonTarget rep1,HT-29,Tumor,Colon cancer cell line,HT-29,HT-29,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485871,GSE174204,PRJNA728731,GSM5289376,HT-29 cells infected with lentivirus shNonTarget rep2,HT-29,Tumor,Colon cancer cell line,HT-29,HT-29,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485872,GSE174204,PRJNA728731,GSM5289377,HT-29 cells infected with lentivirus shNonTarget rep3,HT-29,Tumor,Colon cancer cell line,HT-29,HT-29,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023198,E-MTAB-9970,PRJEB42249,ERS5494246,HEPG2_Ali14_batch1,HepG2,Tumor,Hepatocellular carcinoma,HepG2,HepG2,Sene,alisertib,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023197,E-MTAB-9970,PRJEB42249,ERS5494245,HEPG2_Ali7_batch3,HepG2,Tumor,Hepatocellular carcinoma,HepG2,HepG2,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023199,E-MTAB-9970,PRJEB42249,ERS5494247,HEPG2_Eto7_batch3,HepG2,Tumor,Hepatocellular carcinoma,HepG2,HepG2,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023200,E-MTAB-9970,PRJEB42249,ERS5494248,HEPG2_P_batch1,HepG2,Tumor,Hepatocellular carcinoma,HepG2,HepG2,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023201,E-MTAB-9970,PRJEB42249,ERS5494249,HEPG2_P_batch3,HepG2,Tumor,Hepatocellular carcinoma,HepG2,HepG2,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023193,E-MTAB-9970,PRJEB42249,ERS5494241,HEP3B_Ali14_batch2,Hep3B,Tumor,Hepatocellular carcinoma,Hep3B,Hep3B,Sene,alisertib,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023192,E-MTAB-9970,PRJEB42249,ERS5494240,HEP3B_Ali7_batch3,Hep3B,Tumor,Hepatocellular carcinoma,Hep3B,Hep3B,Sene,alisertib,CIS,1,1,0,0,0,1,0,0,0,0,0
+ERR5023194,E-MTAB-9970,PRJEB42249,ERS5494242,HEP3B_Eto7_batch3,Hep3B,Tumor,Hepatocellular carcinoma,Hep3B,Hep3B,Sene,etoposide,CIS,1,1,0,1,0,0,0,0,0,0,0
+ERR5023195,E-MTAB-9970,PRJEB42249,ERS5494243,HEP3B_P_batch2,Hep3B,Tumor,Hepatocellular carcinoma,Hep3B,Hep3B,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023196,E-MTAB-9970,PRJEB42249,ERS5494244,HEP3B_P_batch3,Hep3B,Tumor,Hepatocellular carcinoma,Hep3B,Hep3B,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8060846,GSE121276,PRJNA496577,GSM3430711,4172_2_Hep3B-XL413_ACAGTGA,Hep3B,Tumor,Liver cancer cell line,Hep3B,Hep3B,Sene,XL413 treatment,CIS,1,1,0,0,0,0,1,0,0,0,0
+SRR8060845,GSE121276,PRJNA496577,GSM3430710,4172_1_Hep3B-control_TGACCAA,Hep3B,Tumor,Liver cancer cell line,Hep3B,Hep3B,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8060857,GSE121277,PRJNA496576,GSM3430720,4424_7_Hep3B_XL413_GAGTGGA,Hep3B,Tumor,Liver cancer cell line,Hep3B,Hep3B,Sene,XL413,CIS,1,1,0,0,0,0,1,0,0,0,0
+SRR8060854,GSE121277,PRJNA496576,GSM3430718,4424_5_Hep3B_control_GTTTCGG,Hep3B,Tumor,Liver cancer cell line,Hep3B,Hep3B,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023188,E-MTAB-9970,PRJEB42249,ERS5494236,HCT116_Ali14_batch1,HCT116,Tumor,Colorectal carcinoma,HCT116,HCT116,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023187,E-MTAB-9970,PRJEB42249,ERS5494235,HCT116_Ali7_batch3,HCT116,Tumor,Colorectal carcinoma,HCT116,HCT116,Sene,alisertib,CIS,1,1,1,0,0,1,0,0,0,0,0
+ERR5023189,E-MTAB-9970,PRJEB42249,ERS5494237,HCT116_Eto7_batch3,HCT116,Tumor,Colorectal carcinoma,HCT116,HCT116,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023190,E-MTAB-9970,PRJEB42249,ERS5494238,HCT116_P_batch1,HCT116,Tumor,Colorectal carcinoma,HCT116,HCT116,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023191,E-MTAB-9970,PRJEB42249,ERS5494239,HCT116_P_batch3,HCT116,Tumor,Colorectal carcinoma,HCT116,HCT116,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702571,GSE110397,PRJNA433624,GSM2990645,H460 Combo 1,H460,Tumor,Human-derived non-small cell lung cancer cell line,H460,H460,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702575,GSE110397,PRJNA433624,GSM2990649,H460 Combo 2,H460,Tumor,Human-derived non-small cell lung cancer cell line,H460,H460,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702568,GSE110397,PRJNA433624,GSM2990642,H460 Vehicle 1,H460,Tumor,Human-derived non-small cell lung cancer cell line,H460,H460,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702572,GSE110397,PRJNA433624,GSM2990646,H460 Vehicle 2,H460,Tumor,Human-derived non-small cell lung cancer cell line,H460,H460,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702563,GSE110397,PRJNA433624,GSM2990637,H2030 Combo 1,H2030,Tumor,Lungs of a non-smoking male with non-small cell lung cancer cell,H2030,H2030,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702567,GSE110397,PRJNA433624,GSM2990641,H2030 Combo 2,H2030,Tumor,Lungs of a non-smoking male with non-small cell lung cancer cell,H2030,H2030,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702560,GSE110397,PRJNA433624,GSM2990634,H2030 Vehicle 1,H2030,Tumor,Lungs of a non-smoking male with non-small cell lung cancer cell,H2030,H2030,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702564,GSE110397,PRJNA433624,GSM2990638,H2030 Vehicle 2,H2030,Tumor,Lungs of a non-smoking male with non-small cell lung cancer cell,H2030,H2030,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805199,E-MTAB-5403,PRJEB19157,ERS1510138,H22,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805200,E-MTAB-5403,PRJEB19157,ERS1510139,H23,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805201,E-MTAB-5403,PRJEB19157,ERS1510140,H24,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805202,E-MTAB-5403,PRJEB19157,ERS1510141,H25,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805203,E-MTAB-5403,PRJEB19157,ERS1510142,H26,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805204,E-MTAB-5403,PRJEB19157,ERS1510143,H27,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Ionizing Radiation,IRIS,0,1,0,0,0,1,1,0,1,0,0
+ERR1805188,E-MTAB-5403,PRJEB19157,ERS1510127,C1,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805189,E-MTAB-5403,PRJEB19157,ERS1510128,C2,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805190,E-MTAB-5403,PRJEB19157,ERS1510129,C3,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805191,E-MTAB-5403,PRJEB19157,ERS1510130,H1,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805196,E-MTAB-5403,PRJEB19157,ERS1510135,H2,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805205,E-MTAB-5403,PRJEB19157,ERS1510144,H3,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805206,E-MTAB-5403,PRJEB19157,ERS1510145,H4,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805207,E-MTAB-5403,PRJEB19157,ERS1510146,H5,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805208,E-MTAB-5403,PRJEB19157,ERS1510147,H6,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805209,E-MTAB-5403,PRJEB19157,ERS1510148,H7,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805210,E-MTAB-5403,PRJEB19157,ERS1510149,H8,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR1805211,E-MTAB-5403,PRJEB19157,ERS1510150,H9,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8956965,GSE121276,PRJNA496577,GSM3736359,4172_9_BJ-control_CCGTCCC,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9601028,GSE133292,PRJNA551006,GSM3905168,"Foreskin fibroblasts, RNA-seq deep senescence rep1",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,bleomycin,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9601029,GSE133292,PRJNA551006,GSM3905169,"Foreskin fibroblasts, RNA-seq deep senescence rep2",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,bleomycin,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9601026,GSE133292,PRJNA551006,GSM3905166,"Foreskin fibroblasts, RNA-seq senescence rep1",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,bleomycin,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9601027,GSE133292,PRJNA551006,GSM3905167,"Foreskin fibroblasts, RNA-seq senescence rep2",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,bleomycin,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9601022,GSE133292,PRJNA551006,GSM3905162,"Foreskin fibroblasts, RNA-seq growing rep1",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9601023,GSE133292,PRJNA551006,GSM3905163,"Foreskin fibroblasts, RNA-seq growing rep2",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9601024,GSE133292,PRJNA551006,GSM3905164,"Foreskin fibroblasts, RNA-seq quiescence rep1",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9601025,GSE133292,PRJNA551006,GSM3905165,"Foreskin fibroblasts, RNA-seq quiescence rep2",BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1210372,GSE56293,PRJNA243087,GSM1358451,late_9_11,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Stress-induced premature (SIPS),RS,0,1,0,0,0,1,1,1,0,0,0
+SRR1210368,GSE56293,PRJNA243087,GSM1358447,late_9_24,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Stress-induced premature (SIPS),RS,0,1,0,0,0,1,1,1,0,0,0
+SRR1210369,GSE56293,PRJNA243087,GSM1358448,late_sb_9_11,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Stress-induced premature (SIPS)+48 hours with p38-MAPK inhibitor SB203580 (Millipore),RS+drug,0,1,0,0,0,1,1,1,0,0,0
+SRR1210371,GSE56293,PRJNA243087,GSM1358450,late_sb_9_24,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,Stress-induced premature (SIPS)+48 hours with p38-MAPK inhibitor SB203580 (Millipore),RS+drug,0,1,0,0,0,1,1,1,0,0,0
+SRR1210370,GSE56293,PRJNA243087,GSM1358449,young_9_11,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1210373,GSE56293,PRJNA243087,GSM1358452,young_9_24,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660540,GSE63577,PRJNA268292,GSM1553091,BJ_OLD_1,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,"	population doublings: 72",RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660541,GSE63577,PRJNA268292,GSM1553092,BJ_OLD_2,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,"	population doublings: 72",RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660542,GSE63577,PRJNA268292,GSM1553093,BJ_OLD_3,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Sene,"	population doublings: 72",RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660537,GSE63577,PRJNA268292,GSM1553088,BJ_Y1,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660538,GSE63577,PRJNA268292,GSM1553089,BJ_Y2,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660539,GSE63577,PRJNA268292,GSM1553090,BJ_Y3,BJ,Normal,Primary foreskin fibroblasts,Fibroblasts,BJ,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284462,GSE123380,PRJNA508601,GSM3502429,A_BJ_ras,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,doxycyline,OIS,1,0,0,0,0,1,0,0,1,0,0
+SRR8284463,GSE123380,PRJNA508601,GSM3502430,B_BJ_ras,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,doxycyline,OIS,1,0,0,0,0,1,0,0,1,0,0
+SRR8284460,GSE123380,PRJNA508601,GSM3502427,A_BJ,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284464,GSE123380,PRJNA508601,GSM3502431,A_clone_4,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284465,GSE123380,PRJNA508601,GSM3502432,B_clone_4,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284466,GSE123380,PRJNA508601,GSM3502433,A_clone_5,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284467,GSE123380,PRJNA508601,GSM3502434,B_clone_5,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284468,GSE123380,PRJNA508601,GSM3502435,A_clone_8,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8284469,GSE123380,PRJNA508601,GSM3502436,B_clone_8,BJ-hTERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932982,GSE130099,PRJNA533830,GSM3731912,BJ-T-AKT1,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-myrAKT1 ,GMIS,0,1,1,1,0,1,0,0,1,0,0
+SRR8932983,GSE130099,PRJNA533830,GSM3731913,BJ-T-AKT2,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-myrAKT1 ,GMIS,0,1,1,1,0,1,0,0,0,0,0
+SRR8932984,GSE130099,PRJNA533830,GSM3731914,BJ-T-AKT3,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-myrAKT1 ,GMIS,0,1,1,1,0,1,0,0,0,0,0
+SRR8932979,GSE130099,PRJNA533830,GSM3731909,BJ-T1, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932980,GSE130099,PRJNA533830,GSM3731910,BJ-T2, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932981,GSE130099,PRJNA533830,GSM3731911,BJ-T3, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932988,GSE130100,PRJNA533831,GSM3731918,HRAS-NTC-1,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-HRASG12V ,OIS,0,1,1,1,0,1,0,0,0,0,0
+SRR8932989,GSE130100,PRJNA533831,GSM3731919,HRAS-NTC-2,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-HRASG12V ,OIS,0,1,1,1,0,1,0,0,0,0,0
+SRR8932990,GSE130100,PRJNA533831,GSM3731920,HRAS-NTC-3,BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Sene,pBabe-puro-HRASG12V ,OIS,0,1,1,1,0,1,0,0,0,0,0
+SRR8932985,GSE130100,PRJNA533831,GSM3731915,pBabe-NTC-1, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932986,GSE130100,PRJNA533831,GSM3731916,pBabe-NTC-2, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,Mutant,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8932987,GSE130100,PRJNA533831,GSM3731917,pBabe-NTC-3, BJ-TERT,Normal,Immortalized human foreskin fibroblasts,Fibroblasts,BJ-hTERT,Pro,Mutant,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6515355,GSE109700,PRJNA431791,GSM2948608,Deep Senescence rep1,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 16 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515356,GSE109700,PRJNA431791,GSM2948609,Deep Senescence rep2,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 16 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515357,GSE109700,PRJNA431791,GSM2948610,Deep Senescence rep3,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 16 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515352,GSE109700,PRJNA431791,GSM2948605,Early Senescence rep1,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 8 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515353,GSE109700,PRJNA431791,GSM2948606,Early Senescence rep2,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 8 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515354,GSE109700,PRJNA431791,GSM2948607,Early Senescence rep3,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Sene,"after serial passaging and entrance in Replicative Senescence, 8 weeks",RS,0,1,0,0,0,1,1,0,1,0,0
+SRR6515349,GSE109700,PRJNA431791,GSM2948602,Proliferating rep1,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6515350,GSE109700,PRJNA431791,GSM2948603,Proliferating rep2,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6515351,GSE109700,PRJNA431791,GSM2948604,Proliferating rep3,NA,Normal,Es-derived lung fibroblast cells,Fibroblasts,ES-LF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701716,GSE210020,PRJNA863375,GSM6415303,"senescent HDFs, ABT263, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50+5 micromolar of ABT263,RS+drug,0,1,0,0,0,1,0,0,0,0,0
+SRR20701706,GSE210020,PRJNA863375,GSM6415313,"senescent HDFs, ABT263, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 5 micromolar of ABT263,RS+drug,0,1,0,0,0,1,0,0,0,0,0
+SRR20701690,GSE210020,PRJNA863375,GSM6415323,"senescent HDFs, ABT263, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 5 micromolar of ABT263,RS+drug,0,1,0,0,0,1,0,0,0,0,0
+SRR20701718,GSE210020,PRJNA863375,GSM6415301,"senescent HDFs, control, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + DMSO,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR20701708,GSE210020,PRJNA863375,GSM6415311,"senescent HDFs, control, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50+DMSO,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR20701692,GSE210020,PRJNA863375,GSM6415321,"senescent HDFs, control, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + DMSO,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR20701715,GSE210020,PRJNA863375,GSM6415304,"senescent HDFs, MP470, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50+20 micromolar of MP470,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701705,GSE210020,PRJNA863375,GSM6415314,"senescent HDFs, MP470, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 20 micromolar of MP470,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701689,GSE210020,PRJNA863375,GSM6415324,"senescent HDFs, MP470, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 20 micromolar of MP470,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701717,GSE210020,PRJNA863375,GSM6415302,"senescent HDFs, Nintedanib, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 5 micromolar of Nintedanib,RS+drug,0,1,0,0,1,1,0,0,0,0,0
+SRR20701707,GSE210020,PRJNA863375,GSM6415312,"senescent HDFs, Nintedanib, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 5 micromolar of Nintedanib,RS+drug,0,1,0,0,1,1,0,0,0,0,0
+SRR20701691,GSE210020,PRJNA863375,GSM6415322,"senescent HDFs, Nintedanib, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 5 micromolar of Nintedanib,RS+drug,0,1,0,0,1,1,0,0,0,0,0
+SRR20701714,GSE210020,PRJNA863375,GSM6415305,"senescent HDFs, sunitinib, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50+10 micromolar of Sunitinib,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701704,GSE210020,PRJNA863375,GSM6415315,"senescent HDFs, sunitinib, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50 + 10 micromolar of Sunitinib,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701688,GSE210020,PRJNA863375,GSM6415325,"senescent HDFs, sunitinib, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,passage 50+10 micromolar of Sunitinib,RS+drug,0,0,0,0,0,0,0,0,0,0,0
+SRR20701679,GSE210020,PRJNA863375,GSM6415334,"non-senescent HDFs, Nintedanib for 3 days, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701680,GSE210020,PRJNA863375,GSM6415333,"non-senescent HDFs, control (DMSO for 3 days), bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701681,GSE210020,PRJNA863375,GSM6415332,"non-senescent HDFs, Nintedanib for 13 days, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701682,GSE210020,PRJNA863375,GSM6415331,"non-senescent HDFs, Nintedanib for 3 days then 10 day after withdrawal of the drug, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701683,GSE210020,PRJNA863375,GSM6415330,"non-senescent HDFs, sunitinib, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701684,GSE210020,PRJNA863375,GSM6415329,"non-senescent HDFs, MP470, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701685,GSE210020,PRJNA863375,GSM6415328,"non-senescent HDFs, ABT263, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701686,GSE210020,PRJNA863375,GSM6415327,"non-senescent HDFs, Nintedanib, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701687,GSE210020,PRJNA863375,GSM6415326,"non-senescent HDFs, control, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701693,GSE210020,PRJNA863375,GSM6415320,"non-senescent HDFs, sunitinib, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701694,GSE210020,PRJNA863375,GSM6415319,"non-senescent HDFs, MP470, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701695,GSE210020,PRJNA863375,GSM6415340,"non-senescent HDFs, Nintedanib for 13 days, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701696,GSE210020,PRJNA863375,GSM6415339,"non-senescent HDFs, Nintedanib for 3 days then 10 day after withdrawal of the drug, bio rep 3",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701697,GSE210020,PRJNA863375,GSM6415338,"non-senescent HDFs, Nintedanib for 3 days, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701698,GSE210020,PRJNA863375,GSM6415337,"non-senescent HDFs, control (DMSO for 3 days), bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701699,GSE210020,PRJNA863375,GSM6415336,"non-senescent HDFs, Nintedanib for 13 days, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701700,GSE210020,PRJNA863375,GSM6415335,"non-senescent HDFs, Nintedanib for 3 days then 10 day after withdrawal of the drug, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701701,GSE210020,PRJNA863375,GSM6415318,"non-senescent HDFs, ABT263, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701702,GSE210020,PRJNA863375,GSM6415317,"non-senescent HDFs, Nintedanib, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701703,GSE210020,PRJNA863375,GSM6415316,"non-senescent HDFs, control, bio rep 2",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701709,GSE210020,PRJNA863375,GSM6415310,"non-senescent HDFs, sunitinib, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701710,GSE210020,PRJNA863375,GSM6415309,"non-senescent HDFs, MP470, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701711,GSE210020,PRJNA863375,GSM6415308,"non-senescent HDFs, ABT263, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701712,GSE210020,PRJNA863375,GSM6415307,"non-senescent HDFs, Nintedanib, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR20701713,GSE210020,PRJNA863375,GSM6415306,"non-senescent HDFs, control, bio rep 1",HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5169358,GSE93535,PRJNA361062,GSM2454324,SIPS_1,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,population doubling: 15,RS,0,1,0,0,0,1,0,0,1,0,0
+SRR5169359,GSE93535,PRJNA361062,GSM2454325,SIPS_2,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,population doubling: 15,RS,0,1,0,0,0,1,0,0,1,0,0
+SRR5169360,GSE93535,PRJNA361062,GSM2454326,SIPS_3,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Sene,population doubling: 15,RS,0,1,0,0,0,1,0,0,1,0,0
+SRR5169351,GSE93535,PRJNA361062,GSM2454318,Q_1,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5169352,GSE93535,PRJNA361062,GSM2454319,Q_2,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5169353,GSE93535,PRJNA361062,GSM2454320,Q_3,HDF,Normal,Human dermal fibroblast,Fibroblasts,HDF,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660546,GSE63577,PRJNA268292,GSM1553097,HFF_PD74_1,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660547,GSE63577,PRJNA268292,GSM1553098,HFF_PD74_2,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660548,GSE63577,PRJNA268292,GSM1553099,HFF_PD74_3,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660543,GSE63577,PRJNA268292,GSM1553094,HFF_PD16_1,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660544,GSE63577,PRJNA268292,GSM1553095,HFF_PD16_2,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660545,GSE63577,PRJNA268292,GSM1553096,HFF_PD16_3,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1736366,GSE64553,PRJNA271291,GSM1574146,HFF_PD74_woRotenone1,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1736367,GSE64553,PRJNA271291,GSM1574147,HFF_PD74_woRotenone2,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1736368,GSE64553,PRJNA271291,GSM1574148,HFF_PD74_woRotenone3,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Sene,PD74,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1736336,GSE64553,PRJNA271291,GSM1574116,HFF_PD22_woRotenone1,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1736337,GSE64553,PRJNA271291,GSM1574117,HFF_PD22_woRotenone2,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1736338,GSE64553,PRJNA271291,GSM1574118,HFF_PD22_woRotenone3,HFF,Normal,Human foreskin fibroblasts,Fibroblasts,HFF,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6048193,GSE103938,PRJNA407729,GSM2786636,OSKM_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,OSKM expressing vector,GMIS,0,1,0,1,0,1,0,0,0,0,0
+SRR6048200,GSE103938,PRJNA407729,GSM2786643,OSKM_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,OSKM expressing vector,GMIS,0,1,0,0,0,1,0,0,1,0,0
+SRR6048207,GSE103938,PRJNA407729,GSM2786650,OSKM_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,OSKM expressing vector,GMIS,0,1,0,0,0,1,0,0,1,0,0
+SRR6048196,GSE103938,PRJNA407729,GSM2786639,RAS_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,RAS expressing vector,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR6048203,GSE103938,PRJNA407729,GSM2786646,RAS_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,RAS expressing vector,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR6048210,GSE103938,PRJNA407729,GSM2786653,RAS_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,RAS expressing vector,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR6048192,GSE103938,PRJNA407729,GSM2786635,Prolif_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6048199,GSE103938,PRJNA407729,GSM2786642,Prolif_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6048206,GSE103938,PRJNA407729,GSM2786649,Prolif_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6869122,GSE112068,PRJNA439216,GSM3056984,IMR-90 40_8d,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,bleomycin,CIS,0,1,0,0,0,0,0,0,0,0,0
+SRR6869103,GSE112068,PRJNA439216,GSM3056966,IMR-90 0_0d,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6869105,GSE112068,PRJNA439216,GSM3056967,IMR-90 0_4d,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6869106,GSE112068,PRJNA439216,GSM3056968,IMR-90 0_8d,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR7697061,GSE118583,PRJNA486152,GSM3333748,IMR-90_IR_senescent_1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 Gy gamma-radiation,IRIS,0,1,0,0,0,0,1,0,0,0,0
+SRR7697062,GSE118583,PRJNA486152,GSM3333749,IMR-90_IR_senescent_2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 Gy gamma-radiation,IRIS,0,1,0,0,0,0,1,0,0,0,0
+SRR7697063,GSE118583,PRJNA486152,GSM3333750,IMR-90_IR_senescent_3,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 Gy gamma-radiation,IRIS,0,1,0,0,0,0,1,0,0,0,0
+SRR7697058,GSE118583,PRJNA486152,GSM3333745,IMR-90_IR_control1_1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR7697059,GSE118583,PRJNA486152,GSM3333746,IMR-90_IR_control1_2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR7697060,GSE118583,PRJNA486152,GSM3333747,IMR-90_IR_control1_3,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016159,GSE130727,PRJNA541183,GSM3752534,IMR-90 IR+ 1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016160,GSE130727,PRJNA541183,GSM3752535,IMR-90 IR+ 2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016161,GSE130727,PRJNA541183,GSM3752536,IMR-90 PDL52 1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,PDL52,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016162,GSE130727,PRJNA541183,GSM3752537,IMR-90 PDL52 2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,PDL52,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016157,GSE130727,PRJNA541183,GSM3752532,IMR-90 PDL15 1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016158,GSE130727,PRJNA541183,GSM3752533,IMR-90 PDL15 2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9667283,GSE134088,PRJNA553757,GSM3936876,H2O2 rep1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,H2O2 for 2 h,OSIS,0,0,1,0,0,1,0,0,0,0,0
+SRR9667284,GSE134088,PRJNA553757,GSM3936877,H2O2 rep2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,H2O2 for 2 h,OSIS,0,0,1,0,0,1,0,0,0,0,0
+SRR9667285,GSE134088,PRJNA553757,GSM3936878,H2O2 rep3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,H2O2 for 2 h,OSIS,0,0,1,0,0,1,0,0,0,0,0
+SRR9667280,GSE134088,PRJNA553757,GSM3936873,Ctrl rep1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9667281,GSE134088,PRJNA553757,GSM3936874,Ctrl rep2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9667282,GSE134088,PRJNA553757,GSM3936875,Ctrl rep3,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188539,GSE180361,PRJNA747991,GSM5461461,IM_p16_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,pWZL p16,OIS,0,0,0,0,0,0,0,0,1,1,0
+SRR15188540,GSE180361,PRJNA747991,GSM5461462,IM_p16_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,pWZL p16,OIS,0,0,0,0,0,0,0,0,1,1,0
+SRR15188541,GSE180361,PRJNA747991,GSM5461463,IM_p16_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,pWZL p16,OIS,0,0,0,0,0,0,0,0,1,1,0
+SRR15188542,GSE180361,PRJNA747991,GSM5461464,IM_v_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188543,GSE180361,PRJNA747991,GSM5461465,IM_v_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR15188544,GSE180361,PRJNA747991,GSM5461466,IM_v_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR21236058,GSE212085,PRJNA873928,GSM6509097,4_Doxo_150nM,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR21236057,GSE212085,PRJNA873928,GSM6509098,5_Doxo_150nM,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR21236056,GSE212085,PRJNA873928,GSM6509099,6_Doxo_150nM,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR21236059,GSE212085,PRJNA873928,GSM6509096,3_Ctrl,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR21236060,GSE212085,PRJNA873928,GSM6509095,2_Ctrl,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR21236061,GSE212085,PRJNA873928,GSM6509094,1_Ctrl,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR23053191,GSE222676,PRJNA923006,GSM6928849,Senescent ABCA1 knockout IMR90 cells rep1,IMR90 cells,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,ABCA1 knockout+10 days after exposure to bleomycin (10 ug/ml for 24 h),CIS+GM,0,0,0,0,0,0,0,0,0,0,1
+SRR23053190,GSE222676,PRJNA923006,GSM6928850,Senescent ABCA1 knockout IMR90 cells rep2,IMR90 cells,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,ABCA1 knockout + 10 days after exposure to bleomycin (10 ug/ml for 24 h),CIS+GM,0,0,0,0,0,0,0,0,0,0,1
+SRR23053193,GSE222676,PRJNA923006,GSM6928847,Senescent wild-type IMR90 cells rep1,IMR90 cells,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 days after exposure to bleomycin (10 ug/ml for 24 h),CIS,0,0,0,0,0,0,0,0,0,0,1
+SRR23053192,GSE222676,PRJNA923006,GSM6928848,Senescent wild-type IMR90 cells rep2,IMR90 cells,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,10 days after exposure to bleomycin (10 ug/ml for 24 h),CIS,0,0,0,0,0,0,0,0,0,0,1
+SRR1051231,GSE53356,PRJNA231833,GSM1290017,PD88.1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Replicative,RS,0,1,0,0,0,1,0,0,1,1,0
+SRR1051232,GSE53356,PRJNA231833,GSM1290018,PD88.2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Replicative,RS,0,1,0,0,0,1,0,0,1,1,0
+SRR1051229,GSE53356,PRJNA231833,GSM1290015,PD32.1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1051230,GSE53356,PRJNA231833,GSM1290016,PD32.2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,Gene Editing,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1567488,GSE61130,PRJNA260300,GSM1498120,EV + 4OHT Rep1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT [100nM],OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567492,GSE61130,PRJNA260300,GSM1498124,EV + 4OHT Rep2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT [100nM],OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567496,GSE61130,PRJNA260300,GSM1498128,EV + 4OHT Rep3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567489,GSE61130,PRJNA260300,GSM1498121,ZFP36L1wt +4OHT Rep1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT+ZFP36L1wt,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567493,GSE61130,PRJNA260300,GSM1498125,ZFP36L1wt +4OHT Rep2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT+ZFP36L1wt,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567497,GSE61130,PRJNA260300,GSM1498129,ZFP36L1wt +4OHT Rep3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT+ZFP36L1wt,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1567487,GSE61130,PRJNA260300,GSM1498119,EV - 4OHT Rep1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1567491,GSE61130,PRJNA260300,GSM1498123,EV - 4OHT Rep2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1567495,GSE61130,PRJNA260300,GSM1498127,EV - 4OHT Rep3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660552,GSE63577,PRJNA268292,GSM1553103,IMR90_O1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,population doublings: 57,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660553,GSE63577,PRJNA268292,GSM1553104,IMR90_O2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,population doublings: 57,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660554,GSE63577,PRJNA268292,GSM1553105,IMR90_O3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,population doublings: 57,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660549,GSE63577,PRJNA268292,GSM1553100,IMR90_Y1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660550,GSE63577,PRJNA268292,GSM1553101,IMR90_Y2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660551,GSE63577,PRJNA268292,GSM1553102,IMR90_Y3,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184444,GSE72407,PRJNA293984,GSM1861982,DDIS rep 1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184445,GSE72407,PRJNA293984,GSM1861983,DDIS rep 2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184446,GSE72407,PRJNA293984,GSM1861984,DDIS rep 3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184447,GSE72407,PRJNA293984,GSM1861985,DDIS rep 4,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184448,GSE72407,PRJNA293984,GSM1861986,DDIS rep 5,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184449,GSE72407,PRJNA293984,GSM1861987,DDIS rep 6,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184450,GSE72407,PRJNA293984,GSM1861988,DDIS rep 7,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184451,GSE72407,PRJNA293984,GSM1861989,DDIS rep 8,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,Etoposide,CIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184436,GSE72407,PRJNA293984,GSM1861974,RIS rep 1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184437,GSE72407,PRJNA293984,GSM1861975,RIS rep 2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184438,GSE72407,PRJNA293984,GSM1861976,RIS rep 3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184439,GSE72407,PRJNA293984,GSM1861977,RIS rep 4,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184440,GSE72407,PRJNA293984,GSM1861978,RIS rep 5,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184441,GSE72407,PRJNA293984,GSM1861979,RIS rep 6,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184442,GSE72407,PRJNA293984,GSM1861980,RIS rep 7,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184443,GSE72407,PRJNA293984,GSM1861981,RIS rep 8,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,4OHT,OIS,0,1,0,0,0,0,1,0,1,0,0
+SRR2184428,GSE72407,PRJNA293984,GSM1861966,Control rep 1,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184429,GSE72407,PRJNA293984,GSM1861967,Control rep 2,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184430,GSE72407,PRJNA293984,GSM1861968,Control rep 3,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184431,GSE72407,PRJNA293984,GSM1861969,Control rep 4,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,p16-induced Senescence,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184432,GSE72407,PRJNA293984,GSM1861970,Control rep 5,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,p16-induced Senescence,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184433,GSE72407,PRJNA293984,GSM1861971,Control rep 6,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,p16-induced Senescence,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184434,GSE72407,PRJNA293984,GSM1861972,Control rep 7,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2184435,GSE72407,PRJNA293984,GSM1861973,Control rep 8,IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932916,GSE74324,PRJNA299683,GSM1917143,Senescent IMR90 DMSO_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen + DMSO 48h,OIS,0,1,0,0,0,0,1,0,0,0,0
+SRR2932917,GSE74324,PRJNA299683,GSM1917144,Senescent IMR90 DMSO_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen + DMSO 48h,OIS,0,1,0,0,0,0,1,0,0,0,0
+SRR2932918,GSE74324,PRJNA299683,GSM1917145,Senescent IMR90 DMSO_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen + DMSO 48h,OIS,0,1,0,0,0,0,1,0,0,0,0
+SRR2932862,GSE74324,PRJNA299683,GSM1917089,Senescent IMR90 shRen_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen,OIS,0,1,0,0,0,1,1,0,1,0,0
+SRR2932863,GSE74324,PRJNA299683,GSM1917090,Senescent IMR90 shRen_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen,OIS,0,1,0,0,0,1,1,0,1,0,0
+SRR2932864,GSE74324,PRJNA299683,GSM1917091,Senescent IMR90 shRen_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,cotransduced with pWZL HRASV12 and shRen,OIS,0,1,0,0,0,1,1,0,1,0,0
+SRR2932856,GSE74324,PRJNA299683,GSM1917083,Proliferating IMR90 shRen_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932857,GSE74324,PRJNA299683,GSM1917084,Proliferating IMR90 shRen_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932858,GSE74324,PRJNA299683,GSM1917085,Proliferating IMR90 shRen_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932859,GSE74324,PRJNA299683,GSM1917086,Quiescent IMR90 shRen_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932860,GSE74324,PRJNA299683,GSM1917087,Quiescent IMR90 shRen_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932861,GSE74324,PRJNA299683,GSM1917088,Quiescent IMR90 shRen_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932910,GSE74324,PRJNA299683,GSM1917137,Proliferating IMR90 DMSO_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932911,GSE74324,PRJNA299683,GSM1917138,Proliferating IMR90 DMSO_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932912,GSE74324,PRJNA299683,GSM1917139,Proliferating IMR90 DMSO_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932913,GSE74324,PRJNA299683,GSM1917140,Quiescent IMR90 DMSO_1,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932914,GSE74324,PRJNA299683,GSM1917141,Quiescent IMR90 DMSO_2,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2932915,GSE74324,PRJNA299683,GSM1917142,Quiescent IMR90 DMSO_3,IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Quie,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494715,GSE98440,PRJNA385098,GSM2595526,IMR90_I10_fact_RNA-Seq (senescent),IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494713,GSE98440,PRJNA385098,GSM2595524,IMR90_I10_polyA_RNA-Seq (senescent),IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494716,GSE98440,PRJNA385098,GSM2595527,IMR90_I79_fact_RNA-Seq (senescent),IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494714,GSE98440,PRJNA385098,GSM2595525,IMR90_I79_polyA_RNA-Seq (senescent),IMR-90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494702,GSE98440,PRJNA385098,GSM2595513,IMR90_I10_polyA_RNA-Seq (proliferating),IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494703,GSE98440,PRJNA385098,GSM2595514,IMR90_I79_polyA_RNA-Seq (proliferating),IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494704,GSE98440,PRJNA385098,GSM2595515,IMR90_I10_fact_RNA-Seq (proliferating),IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494705,GSE98440,PRJNA385098,GSM2595516,IMR90_I79_fact_RNA-Seq (proliferating),IMR90,Normal,Human diploid lung fibroblast,Fibroblasts,IMR-90,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6389412,GSE108278,PRJNA423028,GSM2894519,shScr #1 d10,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Sene,doxycyline,OIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6389413,GSE108278,PRJNA423028,GSM2894520,shScr #2 d10,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Sene,doxycyline,OIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6389404,GSE108278,PRJNA423028,GSM2894511,shScr #1 d0,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6389405,GSE108278,PRJNA423028,GSM2894512,shScr #2 d0,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6389406,GSE108278,PRJNA423028,GSM2894513,shIL1R #1 d0,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6389407,GSE108278,PRJNA423028,GSM2894514,shIL1R #2 d0,IMR90 hTERT,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR23053194,GSE222676,PRJNA923006,GSM6928846,Proliferating ABCA1 knockout IMR90 cells rep2,IMR90 cells,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,IMR-90 hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8699529,GSE128055,PRJNA526214,GSM3660962,MRC5 KRAS(G12V) (IonXpress_008),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,KRas(V12D) overexpression,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699530,GSE128055,PRJNA526214,GSM3660963,MRC5 KRAS(G12V) (IonXpress_016),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,KRas(V12D) overexpression,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699531,GSE128055,PRJNA526214,GSM3660964,MRC5 KRAS(G12V) (IonXpress_024),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,KRas(V12D) overexpression,OIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699524,GSE128055,PRJNA526214,GSM3660957,MRC5 si-lsg1-76 (IonXpress_002),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,LSG1 knockdown,GMIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699526,GSE128055,PRJNA526214,GSM3660959,MRC5 si-lsg1-76 (IonXpress_004),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,LSG1 knockdown,GMIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699528,GSE128055,PRJNA526214,GSM3660961,MRC5 si-lsg1-76 (IonXpress_006),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,LSG1 knockdown,GMIS,0,1,0,0,0,1,0,0,1,0,0
+SRR8699523,GSE128055,PRJNA526214,GSM3660956,MRC5 si-con18 (IonXpress_001),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8699525,GSE128055,PRJNA526214,GSM3660958,MRC5 si-con18 (IonXpress_003),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8699527,GSE128055,PRJNA526214,GSM3660960,MRC5 si-con18 (IonXpress_005),MRC5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660534,GSE63577,PRJNA268292,GSM1553085,MRC_5_PD72-1,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,population doublings: 72,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660535,GSE63577,PRJNA268292,GSM1553086,MRC_5_PD72-2,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,population doublings: 72,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660536,GSE63577,PRJNA268292,GSM1553087,MRC_5_PD72-3,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Sene,population doublings: 72,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1736309,GSE64553,PRJNA271291,GSM1574089,MRC5_PD38wo_1,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1736310,GSE64553,PRJNA271291,GSM1574090,MRC5_PD38wo_2,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1736311,GSE64553,PRJNA271291,GSM1574091,MRC5_PD38wo_3,MRC-5,Normal,Diploid fibroblast cells,Fibroblasts,MRC-5,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6325555,GSE107399,PRJNA419983,GSM2866282,Neuron Patient567 RTT Rep1,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Sene,GM17567 (1461A>G in the gene encoding methyl-CpG 521 binding protein 2 (MECP2)),MIS,0,0,0,0,0,1,0,0,0,0,0
+SRR6325556,GSE107399,PRJNA419983,GSM2866283,Neuron Patient567 RTT Rep2,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Sene,GM17567 (1461A>G in the gene encoding methyl-CpG 521 binding protein 2 (MECP2)),MIS,0,0,0,0,0,1,0,0,0,0,0
+SRR6325557,GSE107399,PRJNA419983,GSM2866285,Neuron Patient982 RTT Rep1,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Sene,"GM07982 (frameshift mutation, 705delG, in the gene encoding methyl-CpG binding protein 2 (MECP2))",MIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6325558,GSE107399,PRJNA419983,GSM2866286,Neuron Patient982 RTT Rep2,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Sene,"GM07982 (frameshift mutation, 705delG, in the gene encoding methyl-CpG binding protein 2 (MECP2))",MIS,0,1,0,0,0,1,0,0,0,0,0
+SRR6325551,GSE107399,PRJNA419983,GSM2866277,Neuron Normal WT Rep1,NA,Normal,Neuron primary fibroblast,Fibroblasts,NPF,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6325552,GSE107399,PRJNA419983,GSM2866278,Neuron Patient567 Normal WT Rep1,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6325553,GSE107399,PRJNA419983,GSM2866279,Neuron Patient982 Normal WT Rep1,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6325554,GSE107399,PRJNA419983,GSM2866281,Neuron Patient982 Normal WT Rep2,NA,Disease,Neuron primary fibroblast,Fibroblasts,NPF,Diff,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2970877,GSE75643,PRJNA302675,GSM1961162,BRAF OIS Day 10 Rep 1,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Sene,pBabe-puro-BRAFE600 (OIS),OIS,0,1,1,0,0,1,0,0,1,0,0
+SRR2970883,GSE75643,PRJNA302675,GSM1961168,BRAF OIS Day 10 Rep 2,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Sene,pBabe-puro-BRAFE600 (OIS),OIS,0,1,1,0,0,1,0,0,1,0,0
+SRR2970889,GSE75643,PRJNA302675,GSM1961174,BRAF OIS Day 10 Rep 3,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Sene,pBabe-puro-BRAFE600 (OIS),OIS,0,1,1,0,0,1,0,0,1,0,0
+SRR2970876,GSE75643,PRJNA302675,GSM1961161,Cycling Day 10 Rep 1,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,EV,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2970882,GSE75643,PRJNA302675,GSM1961167,Cycling Day 10 Rep 2,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,None,NA,0,0,0,0,0,0,0,0,1,0,0
+SRR2970888,GSE75643,PRJNA302675,GSM1961173,Cycling Day 10 Rep 3,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,None,NA,0,0,0,0,0,0,0,0,1,0,0
+SRR2970891,GSE75643,PRJNA302675,GSM1961176,Cycling Control Serum 1,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,None,NA,0,0,0,0,0,0,0,0,1,0,0
+SRR2970892,GSE75643,PRJNA302675,GSM1961177,Quiescent Serum Starvation 1,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2970893,GSE75643,PRJNA302675,GSM1961178,Cycling Control Serum 2,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,None,NA,0,0,0,0,0,0,0,0,1,0,0
+SRR2970894,GSE75643,PRJNA302675,GSM1961179,Quiescent Serum Starvation 2,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2970895,GSE75643,PRJNA302675,GSM1961180,Cycling Control Serum 3,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR2970896,GSE75643,PRJNA302675,GSM1961181,Quiescent Serum Starvation 3,Tig3,Normal,Diploid embryonic lung fibroblasts,Fibroblasts,Tig3,Quie,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955421,GSE130306,PRJNA535444,GSM3735855,RNAseq_RS_Senescent_Rep1,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Replicative,RS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955422,GSE130306,PRJNA535444,GSM3735856,RNAseq_RS_Senescent_Rep2,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Replicative,RS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955423,GSE130306,PRJNA535444,GSM3735857,RNAseq_RS_Senescent_Rep3,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Replicative,RS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955418,GSE130306,PRJNA535444,GSM3735852,RNAseq_RS_Proliferative_Rep1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955419,GSE130306,PRJNA535444,GSM3735853,RNAseq_RS_Proliferative_Rep2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955420,GSE130306,PRJNA535444,GSM3735854,RNAseq_RS_Proliferative_Rep3,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016165,GSE130727,PRJNA541183,GSM3752540,WI-38 Dox+ 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,2 米g/mL Dox (Sigma) for 24 h,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016173,GSE130727,PRJNA541183,GSM3752548,WI-38 Dox+ 1 Repeat,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,2 米g/mL Dox (Sigma) for 24 h,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016166,GSE130727,PRJNA541183,GSM3752541,WI-38 Dox+ 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,2 米g/mL Dox (Sigma) for 24 h,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016174,GSE130727,PRJNA541183,GSM3752549,WI-38 Dox+ 2 Repeat,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,2 米g/mL Dox (Sigma) for 24 h,CIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016169,GSE130727,PRJNA541183,GSM3752544,WI-38 HRAS(G12v) 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,"Treatment with lentivirus expressing HRASG12V at 10 MOI, and puromycin (1 米g/mL)",OIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016170,GSE130727,PRJNA541183,GSM3752545,WI-38 HRAS(G12v) 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,"Treatment with lentivirus expressing HRASG12V at 10 MOI, and puromycin (1 米g/mL)",OIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016177,GSE130727,PRJNA541183,GSM3752552,WI-38 IR+ 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,10 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016178,GSE130727,PRJNA541183,GSM3752553,WI-38 IR+ 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,10 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016179,GSE130727,PRJNA541183,GSM3752554,WI-38 Replicative Exhaustion 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,PDL53-55,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016180,GSE130727,PRJNA541183,GSM3752555,WI-38 Replicative Exhaustion 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,PDL53-55,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016163,GSE130727,PRJNA541183,GSM3752538,WI-38 Dox- 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016164,GSE130727,PRJNA541183,GSM3752539,WI-38 Dox- 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016167,GSE130727,PRJNA541183,GSM3752542,WI-38 EV 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016168,GSE130727,PRJNA541183,GSM3752543,WI-38 EV 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016171,GSE130727,PRJNA541183,GSM3752546,WI-38 Dox- 1 Repeat,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016172,GSE130727,PRJNA541183,GSM3752547,WI-38 Dox- 2 Repeat,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016175,GSE130727,PRJNA541183,GSM3752550,WI-38 IR- 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016176,GSE130727,PRJNA541183,GSM3752551,WI-38 IR- 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016181,GSE130727,PRJNA541183,GSM3752556,WI-38 Proliferating Control 1,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016182,GSE130727,PRJNA541183,GSM3752557,WI-38 Proliferating Control 2,WI-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR616154,GSE42213,PRJNA179305,GSM1035446,Ras_rep1_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,infected with pBABE-puro-H-RasG12V,OIS,1,1,0,0,0,0,0,0,0,1,0
+SRR616155,GSE42213,PRJNA179305,GSM1035447,Ras_rep2_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,infected with pBABE-puro-H-RasG12V,OIS,1,1,0,0,0,0,0,0,0,1,0
+SRR616156,GSE42213,PRJNA179305,GSM1035448,Ras_rep3_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,infected with pBABE-puro-H-RasG12V,OIS,1,1,0,0,0,0,0,0,0,1,0
+SRR616151,GSE42213,PRJNA179305,GSM1035443,Proliferatives_rep1_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR616152,GSE42213,PRJNA179305,GSM1035444,Proliferatives_rep2_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR616153,GSE42213,PRJNA179305,GSM1035445,Proliferatives_rep3_RNAseq,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660558,GSE63577,PRJNA268292,GSM1553109,WI_38_O1,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Aging,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660559,GSE63577,PRJNA268292,GSM1553110,WI_38_O2,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Aging,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660560,GSE63577,PRJNA268292,GSM1553111,WI_38_O3,WI38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Sene,Aging,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR1660555,GSE63577,PRJNA268292,GSM1553106,WI_38_Y1,Wi-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660556,GSE63577,PRJNA268292,GSM1553107,WI_38_Y2,Wi-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1660557,GSE63577,PRJNA268292,GSM1553108,WI_38_Y3,Wi-38,Normal,Human diploid lung fibroblast,Fibroblasts,WI-38,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955416,GSE130306,PRJNA535444,GSM3735850,RNAseq_OISD10_Rep1,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955417,GSE130306,PRJNA535444,GSM3735851,RNAseq_OISD10_Rep2,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955411,GSE130306,PRJNA535444,GSM3735845,RNAseq_OISD4_Rep1,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955412,GSE130306,PRJNA535444,GSM3735846,RNAseq_OISD4_Rep2,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955413,GSE130306,PRJNA535444,GSM3735847,RNAseq_OISD4_Rep3,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955414,GSE130306,PRJNA535444,GSM3735848,RNAseq_OISD6_Rep1,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955415,GSE130306,PRJNA535444,GSM3735849,RNAseq_OISD6_Rep2,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,1,1,0,0,0,0,0,0,0,0
+SRR8955405,GSE130306,PRJNA535444,GSM3735839,RNAseq_OISD0_Rep1,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955406,GSE130306,PRJNA535444,GSM3735840,RNAseq_OISD0_Rep2,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8955407,GSE130306,PRJNA535444,GSM3735841,RNAseq_OISD0_Rep3,WI-38hTERT/GFP-RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6031935,GSE85085,PRJNA336104,GSM2781952,Strand-specific RNA-seq in senescent cells- Replicate #1,WI38 hTERT RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,0,0,0,0,0,0,0,0,0,0
+SRR6031937,GSE85085,PRJNA336104,GSM2781954,Strand-specific RNA-seq in senescent cells- Replicate #2,WI38 hTERT RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Sene,4-hydroxytamoxifen,OIS,0,0,0,0,0,0,0,0,0,0,0
+SRR6031934,GSE85085,PRJNA336104,GSM2781951,Strand-specific RNA-seq in proliferative cells- Replicate #1,WI38 hTERT RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6031936,GSE85085,PRJNA336104,GSM2781953,Strand-specific RNA-seq in proliferative cells- Replicate #2,WI38 hTERT RAF1-ER,Normal,Immortalized human diploid lung fibroblast,Fibroblasts,WI-38 hTERT RAF1-ER,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615000,GSE166034,PRJNA699009,GSM5060476,BEC_DMSO_444,NA,Normal,Basal epithelial cells,Epithelial cell,BEC,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615001,GSE166034,PRJNA699009,GSM5060477,BEC_DMSO_445,NA,Normal,Basal epithelial cells,Epithelial cell,BEC,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13614995,GSE166033,PRJNA699008,GSM5060471,Doxorubicin_919,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13614996,GSE166033,PRJNA699008,GSM5060472,Doxorubicin_921,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13614997,GSE166033,PRJNA699008,GSM5060473,Doxorubicin_923,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13614998,GSE166033,PRJNA699008,GSM5060474,Doxorubicin_925,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13614999,GSE166033,PRJNA699008,GSM5060475,Doxorubicin_927,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13614990,GSE166033,PRJNA699008,GSM5060466,DMSO_918,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13614991,GSE166033,PRJNA699008,GSM5060467,DMSO_920,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13614992,GSE166033,PRJNA699008,GSM5060468,DMSO_922,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13614993,GSE166033,PRJNA699008,GSM5060469,DMSO_924,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13614994,GSE166033,PRJNA699008,GSM5060470,DMSO_926,NA,Normal,Normal human bronchial epithelial cells,Epithelial cell,NHBE,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR16988074,GSE189208,PRJNA781967,GSM5696146,5_Senescent_030711 ,NA,Normal,Primary prostate epithelial cells,Epithelial cell,PrECs,Sene,seven population doublings (PD),RS,0,0,0,0,0,0,0,0,0,0,0
+SRR16988075,GSE189208,PRJNA781967,GSM5696147,6_ Senescent_030711 ,NA,Normal,Primary prostate epithelial cells,Epithelial cell,PrECs,Sene,seven population doublings (PD),RS,0,0,0,0,0,0,0,0,0,0,0
+SRR16988072,GSE189208,PRJNA781967,GSM5696144,1_Active_060110 ,NA,Normal,Primary prostate epithelial cells,Epithelial cell,PrECs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR16988073,GSE189208,PRJNA781967,GSM5696145,2_Active_060110 ,NA,Normal,Primary prostate epithelial cells,Epithelial cell,PrECs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12293738,GSE154919,PRJNA647882,GSM4683642,ArCK KO control single cell clone 1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid+STAT1 KO,Aneuploid+GM,0,1,0,0,0,1,0,0,0,0,0
+SRR12293739,GSE154919,PRJNA647882,GSM4683643,ArCK KO control single cell clone 2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid+STAT1 KO,Aneuploid+GM,0,1,0,0,0,1,0,0,0,0,0
+SRR12293712,GSE154919,PRJNA647882,GSM4683616,RPE1-hTERT ArCK cells rep1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR12293713,GSE154919,PRJNA647882,GSM4683617,RPE1-hTERT ArCK cells rep2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR12293714,GSE154919,PRJNA647882,GSM4683618,RPE1-hTERT ArCK cells rep3,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR12293725,GSE154919,PRJNA647882,GSM4683629,RPE1-hTERT doxorubicin treated cells rep1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid+doxorubicin,Aneuploid+CIS,0,1,0,0,0,1,0,0,1,0,0
+SRR12293726,GSE154919,PRJNA647882,GSM4683630,RPE1-hTERT doxorubicin treated cells rep2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid+doxorubicin,Aneuploid+CIS,0,1,0,0,0,1,0,0,1,0,0
+SRR12293715,GSE154919,PRJNA647882,GSM4683619,RPE1-hTERT control cells rep2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12293716,GSE154919,PRJNA647882,GSM4683620,RPE1-hTERT control cells rep3,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12293724,GSE154919,PRJNA647882,GSM4683628,RPE1-hTERT control cells rep1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12293733,GSE154919,PRJNA647882,GSM4683637,Cycling KO control single cell clone 1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR12293734,GSE154919,PRJNA647882,GSM4683638,Cycling KO control single cell clone 2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13765154,GSE154919,PRJNA647882,GSM5100733,RPE-1 hTERT control cells rep7,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13765155,GSE154919,PRJNA647882,GSM5100734,RPE-1 hTERT control cells rep8,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13765156,GSE154919,PRJNA647882,GSM5100735,RPE-1 hTERT control cells rep9,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3712761,GSE83647,PRJNA326596,GSM2211741,Aneuploid arrested cells replicate 1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR3712762,GSE83647,PRJNA326596,GSM2211742,Aneuploid arrested cells replicate 2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR3712763,GSE83647,PRJNA326596,GSM2211743,Aneuploid arrested cells replicate 3,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Sene,Aneuploid,Aneuploid,0,1,0,0,0,1,0,0,0,0,0
+SRR3712756,GSE83647,PRJNA326596,GSM2211736,Euploid control replicate 1,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR3712757,GSE83647,PRJNA326596,GSM2211737,Euploid control replicate 2,RPE1-hTERT,Normal,Immortalized retinal pigment epithelial cells,Epithelial cell,RPE1-hTERT,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615008,GSE166034,PRJNA699009,GSM5060484,SAEC_Doxorubicin_500nM_438,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13615009,GSE166034,PRJNA699009,GSM5060485,SAEC_Doxorubicin_500nM_439,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Sene,Doxorubicin,CIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13615010,GSE166034,PRJNA699009,GSM5060486,SAEC_H2O2_100uM_440,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Sene,H2O2,OSIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13615011,GSE166034,PRJNA699009,GSM5060487,SAEC_H2O2_100uM_441,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Sene,H2O2,OSIS,0,1,0,0,0,1,1,1,0,0,0
+SRR13615006,GSE166034,PRJNA699009,GSM5060482,SAEC_DMSO_436,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615007,GSE166034,PRJNA699009,GSM5060483,SAEC_DMSO_437,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615012,GSE166034,PRJNA699009,GSM5060488,SAEC_H2O2_50uM_442,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13615013,GSE166034,PRJNA699009,GSM5060489,SAEC_H2O2_50uM_443,NA,Normal,Small airway epithelial cells,Epithelial cell,SAEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016148,GSE130727,PRJNA541183,GSM3752523,HAEC IR+ 1,HAEC,Normal,Human aortic endothelial cells,Endothelial cell,HAEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016149,GSE130727,PRJNA541183,GSM3752524,HAEC IR+ 2,HAEC,Normal,Human aortic endothelial cells,Endothelial cell,HAEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016150,GSE130727,PRJNA541183,GSM3752525,HAEC IR+ 3,HAEC,Normal,Human aortic endothelial cells,Endothelial cell,HAEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016146,GSE130727,PRJNA541183,GSM3752521,HAEC IR- 1,HAEC,Normal,Human aortic endothelial cells,Endothelial cell,HAEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016147,GSE130727,PRJNA541183,GSM3752522,HAEC IR- 2,HAEC,Normal,Human aortic endothelial cells,Endothelial cell,HAEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8564864,GSE126426,PRJNA521866,GSM3601224,AXI rep1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Axitinib (25 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564865,GSE126426,PRJNA521866,GSM3601225,AXI rep2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Axitinib (25 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564866,GSE126426,PRJNA521866,GSM3601226,AXI rep3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Axitinib (25 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564861,GSE126426,PRJNA521866,GSM3601221,DOXO rep1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Doxorubicin (5 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564862,GSE126426,PRJNA521866,GSM3601222,DOXO rep2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Doxorubicin (5 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564863,GSE126426,PRJNA521866,GSM3601223,DOXO rep3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,Doxorubicin (5 米M) one-hour pulse,CIS,0,1,0,0,0,0,1,1,0,0,0
+SRR8564858,GSE126426,PRJNA521866,GSM3601218,HUVEC rep1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,IR,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8564859,GSE126426,PRJNA521866,GSM3601219,HUVEC rep2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,IR,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8564860,GSE126426,PRJNA521866,GSM3601220,HUVEC rep3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016154,GSE130727,PRJNA541183,GSM3752529,HUVEC IR+ 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016155,GSE130727,PRJNA541183,GSM3752530,HUVEC IR+ 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016156,GSE130727,PRJNA541183,GSM3752531,HUVEC IR+ 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,4 Gy of ionizing radiation exposure,IRIS,0,1,0,0,0,1,0,0,0,0,0
+SRR9016151,GSE130727,PRJNA541183,GSM3752526,HUVEC IR- 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016152,GSE130727,PRJNA541183,GSM3752527,HUVEC IR- 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR9016153,GSE130727,PRJNA541183,GSM3752528,HUVEC IR- 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783655,GSE206677,PRJNA851762,GSM6260376,Senescent Ecs 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR19783654,GSE206677,PRJNA851762,GSM6260377,Senescent Ecs 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR19783652,GSE206677,PRJNA851762,GSM6260378,Senescent Ecs 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR19783653,GSE206677,PRJNA851762,GSM6260378,Senescent Ecs 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20,RS,0,1,0,0,0,1,0,0,0,0,0
+SRR19783662,GSE206677,PRJNA851762,GSM6260370,Senescent ECs infected with SARS-CoV-2 at 72 hpi 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20 + SARS-CoV-2 ,RS+virus,0,0,0,0,0,0,0,0,0,0,0
+SRR19783661,GSE206677,PRJNA851762,GSM6260371,Senescent ECs infected with SARS-CoV-2 at 72 hpi 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20 + SARS-CoV-2 ,RS+virus,0,0,0,0,0,0,0,0,0,0,0
+SRR19783660,GSE206677,PRJNA851762,GSM6260372,Senescent ECs infected with SARS-CoV-2 at 72 hpi 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,passage 18-20 + SARS-CoV-2 ,RS+virus,0,0,0,0,0,0,0,0,0,0,0
+SRR19783656,GSE206677,PRJNA851762,GSM6260375,Young Ecs 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783657,GSE206677,PRJNA851762,GSM6260374,Young Ecs 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783658,GSE206677,PRJNA851762,GSM6260374,Young Ecs 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783659,GSE206677,PRJNA851762,GSM6260373,Young Ecs 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783663,GSE206677,PRJNA851762,GSM6260369,Young ECs infected with SARS-CoV-2 at 72 hpi 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783664,GSE206677,PRJNA851762,GSM6260369,Young ECs infected with SARS-CoV-2 at 72 hpi 3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783665,GSE206677,PRJNA851762,GSM6260368,Young ECs infected with SARS-CoV-2 at 72 hpi 2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR19783666,GSE206677,PRJNA851762,GSM6260367,Young ECs infected with SARS-CoV-2 at 72 hpi 1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR23240584,GSE223759,PRJNA928338,GSM6994945,HUVEC_palbociclib_1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,2米M palbociclib 72hr (3),CIS,1,1,0,0,0,0,0,0,0,0,0
+SRR23240583,GSE223759,PRJNA928338,GSM6994946,HUVEC_palbociclib_2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,2米M palbociclib 72hr (3),CIS,1,1,0,0,0,0,0,0,0,0,0
+SRR23240581,GSE223759,PRJNA928338,GSM6994947,HUVEC_palbociclib_3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,2米M palbociclib 72hr (3),CIS,1,1,0,0,0,0,0,0,0,0,0
+SRR23240585,GSE223759,PRJNA928338,GSM6994944,HUVEC_vehicle_3,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR23240586,GSE223759,PRJNA928338,GSM6994943,HUVEC_vehicle_2,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR23240587,GSE223759,PRJNA928338,GSM6994942,HUVEC_vehicle_1,HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494710,GSE98440,PRJNA385098,GSM2595521,HUVEC_D1_RNA-Seq (senescent),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494711,GSE98440,PRJNA385098,GSM2595522,HUVEC_D2_RNA-Seq (senescent),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494712,GSE98440,PRJNA385098,GSM2595523,HUVEC_D3_RNA-Seq (senescent),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Sene,senescent (replicative),RS,0,1,1,0,0,1,0,0,0,0,0
+SRR5494699,GSE98440,PRJNA385098,GSM2595510,HUVEC_D1_RNA-Seq (proliferating),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494700,GSE98440,PRJNA385098,GSM2595511,HUVEC_D2_RNA-Seq (proliferating),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5494701,GSE98440,PRJNA385098,GSM2595512,HUVEC_D3_RNA-Seq (proliferating),HUVEC,Normal,Human umbilical vein endothelial cells,Endothelial cell,HUVEC,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR11214365,GSE146197,PRJNA609692,GSM4368000,D5,DBTRG-05MG,Tumor,Glial cell from glioblastoma,DBTRG-05MG,DBTRG-05MG,Sene,1mM dbcAMP_48h,CIS,0,0,0,0,0,0,0,0,0,0,1
+SRR11214361,GSE146197,PRJNA609692,GSM4367996,D1,DBTRG-05MG,Tumor,Glial cell from glioblastoma,DBTRG-05MG,DBTRG-05MG,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485879,GSE174204,PRJNA728731,GSM5289384,Caco-2/15 cells infected with lentivirus shNCOR1_655 rep1,Caco-2/15 ,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,0,1,0,0,0,0,1,0,0,0,0
+SRR14485880,GSE174204,PRJNA728731,GSM5289385,Caco-2/15 cells infected with lentivirus shNCOR1_655 rep2,Caco-2/15 ,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,1,1,0,0,0,0,1,0,0,0,0
+SRR14485881,GSE174204,PRJNA728731,GSM5289386,Caco-2/15 cells infected with lentivirus shNCOR1_655 rep3,Caco-2/15 ,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Sene,Lentivirus Sigma Mission shRNA shNCOR1_655 clone ID TRCN0000060655,GMIS,1,1,0,0,0,0,1,0,0,0,0
+SRR14485876,GSE174204,PRJNA728731,GSM5289381,Caco-2/15 cells infected with lentivirus shNonTarget rep1,Caco-2/15,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485877,GSE174204,PRJNA728731,GSM5289382,Caco-2/15 cells infected with lentivirus shNonTarget rep2,Caco-2/15,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR14485878,GSE174204,PRJNA728731,GSM5289383,Caco-2/15 cells infected with lentivirus shNonTarget rep3,Caco-2/15,Tumor,Colon cancer cell line,Caco-2/15,Caco-2/15,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591340,GSE126750,PRJNA523186,GSM3612124,H2O2_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591338,GSE126750,PRJNA523186,GSM3612124,H2O2_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591339,GSE126750,PRJNA523186,GSM3612124,H2O2_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591341,GSE126750,PRJNA523186,GSM3612125,H2O2_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591342,GSE126750,PRJNA523186,GSM3612125,H2O2_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591343,GSE126750,PRJNA523186,GSM3612125,H2O2_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591344,GSE126750,PRJNA523186,GSM3612126,H2O2_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591345,GSE126750,PRJNA523186,GSM3612126,H2O2_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591346,GSE126750,PRJNA523186,GSM3612126,H2O2_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"150 米M H2O2, 2 h",OSIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591356,GSE126750,PRJNA523186,GSM3612130,IL1b_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591357,GSE126750,PRJNA523186,GSM3612130,IL1b_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591358,GSE126750,PRJNA523186,GSM3612130,IL1b_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591359,GSE126750,PRJNA523186,GSM3612131,IL1b_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591360,GSE126750,PRJNA523186,GSM3612131,IL1b_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591361,GSE126750,PRJNA523186,GSM3612131,IL1b_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591362,GSE126750,PRJNA523186,GSM3612132,IL1b_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591363,GSE126750,PRJNA523186,GSM3612132,IL1b_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591364,GSE126750,PRJNA523186,GSM3612132,IL1b_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"3 ng/ml IL1b, 24h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591330,GSE126750,PRJNA523186,GSM3612121,ROT_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591331,GSE126750,PRJNA523186,GSM3612121,ROT_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591329,GSE126750,PRJNA523186,GSM3612121,ROT_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591332,GSE126750,PRJNA523186,GSM3612122,ROT_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591333,GSE126750,PRJNA523186,GSM3612122,ROT_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591334,GSE126750,PRJNA523186,GSM3612122,ROT_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591335,GSE126750,PRJNA523186,GSM3612123,ROT_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591336,GSE126750,PRJNA523186,GSM3612123,ROT_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591337,GSE126750,PRJNA523186,GSM3612123,ROT_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"900 nM rotenone, 16 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591348,GSE126750,PRJNA523186,GSM3612127,TNFa_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591349,GSE126750,PRJNA523186,GSM3612127,TNFa_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591347,GSE126750,PRJNA523186,GSM3612127,TNFa_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591350,GSE126750,PRJNA523186,GSM3612128,TNFa_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591351,GSE126750,PRJNA523186,GSM3612128,TNFa_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591352,GSE126750,PRJNA523186,GSM3612128,TNFa_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591354,GSE126750,PRJNA523186,GSM3612129,TNFa_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591355,GSE126750,PRJNA523186,GSM3612129,TNFa_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591353,GSE126750,PRJNA523186,GSM3612129,TNFa_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Sene,"10 ng/ml TNFa + 3 ng/ml IL1a, 24 h",CIS,0,1,0,0,0,1,1,0,0,0,0
+SRR8591320,GSE126750,PRJNA523186,GSM3612118,DMSO_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591321,GSE126750,PRJNA523186,GSM3612118,DMSO_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591322,GSE126750,PRJNA523186,GSM3612118,DMSO_A,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591323,GSE126750,PRJNA523186,GSM3612119,DMSO_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591324,GSE126750,PRJNA523186,GSM3612119,DMSO_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591325,GSE126750,PRJNA523186,GSM3612119,DMSO_B,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591326,GSE126750,PRJNA523186,GSM3612120,DMSO_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591327,GSE126750,PRJNA523186,GSM3612120,DMSO_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR8591328,GSE126750,PRJNA523186,GSM3612120,DMSO_C,NA,Normal,Cerebellar astrocytes,Astrocytes,CAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR10804561,GSE142730,PRJNA598137,GSM4238296,"iPSC-derived astrocytes, Contr-L3",NA,Normal,iPSC-derived astrocytes,Astrocytes,iPSC-astrocyte,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR10804562,GSE142730,PRJNA598137,GSM4238297,"iPSC-derived astrocytes, Contr-L9",NA,Normal,iPSC-derived astrocytes,Astrocytes,iPSC-astrocyte,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1485146,GSE58910,PRJNA253866,GSM1422183,astrocyte_senescent_rep1,NA,Normal,Primary astrocytes,Astrocytes,PAs,Sene,200 米M hydrogen peroxide for 2hr,CIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1485147,GSE58910,PRJNA253866,GSM1422184,astrocyte_senescent_rep2,NA,Normal,Primary astrocytes,Astrocytes,PAs,Sene,200 米M hydrogen peroxide for 2hr,CIS,0,1,0,0,0,1,0,0,1,0,0
+SRR1485144,GSE58910,PRJNA253866,GSM1422181,astrocyte_pre-sen_rep1,NA,Normal,Primary astrocytes,Astrocytes,PAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR1485145,GSE58910,PRJNA253866,GSM1422182,astrocyte_pre-sen_rep2,NA,Normal,Primary astrocytes,Astrocytes,PAs,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+ERR5023184,E-MTAB-9970,PRJEB42249,ERS5494232,A549_Ali14_batch1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,alisertib,CIS,0,1,0,0,0,0,1,0,0,0,0
+ERR5023183,E-MTAB-9970,PRJEB42249,ERS5494231,A549_Ali7_batch3,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,alisertib,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023185,E-MTAB-9970,PRJEB42249,ERS5494233,A549_Eto7_batch3,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,etoposide,CIS,1,1,1,1,0,1,0,0,0,0,0
+ERR5023186,E-MTAB-9970,PRJEB42249,ERS5494234,A549_P_batch3,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5931955,GSE102639,PRJNA398256,GSM2742115,4422_3_A549_VX680_R1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,VX680,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931956,GSE102639,PRJNA398256,GSM2742116,4422_4_A549_VX680_R2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,VX680,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931957,GSE102639,PRJNA398256,GSM2742117,4422_5_A549_AZD1132_R1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,AZD1132,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931958,GSE102639,PRJNA398256,GSM2742118,4422_6_A549_AZD1132_R2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,AZD1132,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931959,GSE102639,PRJNA398256,GSM2742119,4422_7_A549_MLN8237_R1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,MLN8237,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931960,GSE102639,PRJNA398256,GSM2742120,4422_8_A549_MLN8237_R2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,MLN8237,CIS,0,1,0,1,0,1,0,0,0,0,0
+SRR5931953,GSE102639,PRJNA398256,GSM2742113,4422_1_A549_untreated_R1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5931954,GSE102639,PRJNA398256,GSM2742114,4422_2_A549_untreated_R2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702555,GSE110397,PRJNA433624,GSM2990629,A549 Combo 1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702559,GSE110397,PRJNA433624,GSM2990633,A549 Combo 2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Sene,"DMSO, trametinib, palbociclib",CIS,0,1,0,0,0,0,1,0,0,0,0
+SRR6702552,GSE110397,PRJNA433624,GSM2990626,A549 Vehicle 1,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR6702556,GSE110397,PRJNA433624,GSM2990630,A549 Vehicle 2,A549,Tumor,Non-small cell lung carcinoma,A549,A549,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR5931952,GSE102639,PRJNA398256,GSM2742112,4222_2_A375-crSMARCB1,A375,Tumor,Melanoma cell,A375,A375,Sene,SMARCB1 KO,GMIS,0,1,0,1,0,0,0,0,0,0,0
+SRR5931951,GSE102639,PRJNA398256,GSM2742111,4222_1_A375-NTC,A375,Tumor,Melanoma cell,A375,A375,Pro,RS,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13426312,GSE164726,PRJNA691744,GSM5017803,cMYC_exp2_1,A375,Tumor,Melanoma cell,A375,A375,Sene,cMyc knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426313,GSE164726,PRJNA691744,GSM5017804,cMYC_exp2_2,A375,Tumor,Melanoma cell,A375,A375,Sene,cMyc knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426306,GSE164726,PRJNA691744,GSM5017797,PHF10_total_exp1_1,A375,Tumor,Melanoma cell,A375,A375,Sene,PHF10 knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426307,GSE164726,PRJNA691744,GSM5017798,PHF10_total_exp1_2,A375,Tumor,Melanoma cell,A375,A375,Sene,PHF10 knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426308,GSE164726,PRJNA691744,GSM5017799,PHF10_total_exp1_3,A375,Tumor,Melanoma cell,A375,A375,Sene,PHF10 knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426309,GSE164726,PRJNA691744,GSM5017800,PHF10_total_exp1_4,A375,Tumor,Melanoma cell,A375,A375,Sene,PHF10 knockdown,GMIS,1,1,0,0,0,0,0,0,0,0,0
+SRR13426314,GSE164726,PRJNA691744,GSM5017805,Control_exp2_1,A375,Tumor,Melanoma cell,A375,A375,Pro,None,NA,0,0,0,0,0,0,0,0,0,0,0
+SRR13426315,GSE164726,PRJNA691744,GSM5017806,Control_exp2_2,A375,Tumor,Melanoma cell,A375,A375,Pro,Chemotherapy,NA,0,0,0,0,0,0,0,0,0,0,0

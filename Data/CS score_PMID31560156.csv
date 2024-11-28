@@ -1,0 +1,1261 @@
+﻿entrezgene,Gene symbol,description,num_trial,num_over,p-val,q_val,expression
+113791,PIK3IP1,phosphoinositide-3-kinase interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:24942],18,12,1.07E-10,1.14E-08,Overexpressed
+6505,SLC1A1,solute carrier family 1 member 1 [Source:HGNC Symbol;Acc:HGNC:10939],20,12,6.42E-10,5.13E-08,Overexpressed
+85236,HIST1H2BK,histone cluster 1 H2B family member k [Source:HGNC Symbol;Acc:HGNC:13954],18,11,2.58E-09,1.89E-07,Overexpressed
+94241,TP53INP1,tumor protein p53 inducible nuclear protein 1 [Source:HGNC Symbol;Acc:HGNC:18022],19,11,5.75E-09,2.16E-07,Overexpressed
+3488,IGFBP5,insulin like growth factor binding protein 5 [Source:HGNC Symbol;Acc:HGNC:5474],19,11,5.75E-09,2.52E-07,Overexpressed
+2537,IFI6,interferon alpha inducible protein 6 [Source:HGNC Symbol;Acc:HGNC:4054],19,11,5.75E-09,3.03E-07,Overexpressed
+64393,ZMAT3,zinc finger matrin-type 3 [Source:HGNC Symbol;Acc:HGNC:29983],20,11,1.20E-08,3.73E-07,Overexpressed
+23710,GABARAPL1,GABA type A receptor associated protein like 1 [Source:HGNC Symbol;Acc:HGNC:4068],19,11,5.75E-09,3.79E-07,Overexpressed
+65018,PINK1,PTEN induced putative kinase 1 [Source:HGNC Symbol;Acc:HGNC:14581],16,10,1.03E-08,3.88E-07,Overexpressed
+51646,YPEL5,yippee like 5 [Source:HGNC Symbol;Acc:HGNC:18329],20,11,1.20E-08,4.15E-07,Overexpressed
+5066,PAM,peptidylglycine alpha-amidating monooxygenase [Source:HGNC Symbol;Acc:HGNC:8596],21,11,2.36E-08,6.61E-07,Overexpressed
+3490,IGFBP7,insulin like growth factor binding protein 7 [Source:HGNC Symbol;Acc:HGNC:5476],21,11,2.36E-08,7.16E-07,Overexpressed
+8365,HIST1H4H,histone cluster 1 H4 family member h [Source:HGNC Symbol;Acc:HGNC:4788],17,10,2.35E-08,7.77E-07,Overexpressed
+84679,SLC9A7,solute carrier family 9 member A7 [Source:HGNC Symbol;Acc:HGNC:17123],18,10,4.97E-08,1.34E-06,Overexpressed
+50484,RRM2B,ribonucleotide reductase regulatory TP53 inducible subunit M2B [Source:HGNC Symbol;Acc:HGNC:17296],18,10,4.97E-08,1.43E-06,Overexpressed
+439921,MXRA7,matrix remodeling associated 7 [Source:HGNC Symbol;Acc:HGNC:7541],18,10,4.97E-08,1.53E-06,Overexpressed
+9076,CLDN1,claudin 1 [Source:HGNC Symbol;Acc:HGNC:2032],19,10,9.86E-08,2.76E-06,Overexpressed
+8334,HIST1H2AC,histone cluster 1 H2A family member c [Source:HGNC Symbol;Acc:HGNC:4733],19,10,9.86E-08,2.92E-06,Overexpressed
+6303,SAT1,spermidine/spermine N1-acetyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:10540],20,10,1.85E-07,4.89E-06,Overexpressed
+5676,PSG7,pregnancy specific beta-1-glycoprotein 7 (gene/pseudogene) [Source:HGNC Symbol;Acc:HGNC:9524],9,7,1.98E-07,5.06E-06,Overexpressed
+51449,PCYOX1,prenylcysteine oxidase 1 [Source:HGNC Symbol;Acc:HGNC:20588],20,10,1.85E-07,5.12E-06,Overexpressed
+1026,CDKN1A,cyclin dependent kinase inhibitor 1A [Source:HGNC Symbol;Acc:HGNC:1784],16,9,2.07E-07,5.14E-06,Overexpressed
+3006,HIST1H1C,histone cluster 1 H1 family member c [Source:HGNC Symbol;Acc:HGNC:4716],20,10,1.85E-07,5.38E-06,Overexpressed
+25891,PAMR1,peptidase domain containing associated with muscle regeneration 1 [Source:HGNC Symbol;Acc:HGNC:24554],20,10,1.85E-07,5.66E-06,Overexpressed
+84168,ANTXR1,anthrax toxin receptor 1 [Source:HGNC Symbol;Acc:HGNC:21014],21,10,3.32E-07,7.60E-06,Overexpressed
+6990,DYNLT3,dynein light chain Tctex-type 3 [Source:HGNC Symbol;Acc:HGNC:11694],21,10,3.32E-07,7.87E-06,Overexpressed
+6678,SPARC,secreted protein acidic and cysteine rich [Source:HGNC Symbol;Acc:HGNC:11219],21,10,3.32E-07,8.16E-06,Overexpressed
+2896,GRN,granulin precursor [Source:HGNC Symbol;Acc:HGNC:4601],21,10,3.32E-07,8.48E-06,Overexpressed
+11080,DNAJB4,DnaJ heat shock protein family (Hsp40) member B4 [Source:HGNC Symbol;Acc:HGNC:14886],21,10,3.32E-07,8.81E-06,Overexpressed
+56204,FAM214A,family with sequence similarity 214 member A [Source:HGNC Symbol;Acc:HGNC:25609],17,9,4.13E-07,9.01E-06,Overexpressed
+5672,PSG4,pregnancy specific beta-1-glycoprotein 4 [Source:HGNC Symbol;Acc:HGNC:9521],13,8,3.94E-07,9.06E-06,Overexpressed
+151556,GPR155,G protein-coupled receptor 155 [Source:HGNC Symbol;Acc:HGNC:22951],17,9,4.13E-07,9.30E-06,Overexpressed
+8347,HIST1H2BC,histone cluster 1 H2B family member c [Source:HGNC Symbol;Acc:HGNC:4757],18,9,7.77E-07,1.79E-05,Overexpressed
+595,CCND1,cyclin D1 [Source:HGNC Symbol;Acc:HGNC:1582],18,9,7.77E-07,1.84E-05,Overexpressed
+221468,TMEM217,transmembrane protein 217 [Source:HGNC Symbol;Acc:HGNC:21238],18,9,7.77E-07,1.90E-05,Overexpressed
+8349,HIST2H2BE,histone cluster 2 H2B family member e [Source:HGNC Symbol;Acc:HGNC:4760],19,9,1.39E-06,2.96E-05,Overexpressed
+5327,PLAT,"plasminogen activator, tissue type [Source:HGNC Symbol;Acc:HGNC:9051]",19,9,1.39E-06,3.03E-05,Overexpressed
+51148,CERCAM,cerebral endothelial cell adhesion molecule [Source:HGNC Symbol;Acc:HGNC:23723],19,9,1.39E-06,3.11E-05,Overexpressed
+4599,MX1,MX dynamin like GTPase 1 [Source:HGNC Symbol;Acc:HGNC:7532],19,9,1.39E-06,3.19E-05,Overexpressed
+28962,OSTM1,osteopetrosis associated transmembrane protein 1 [Source:HGNC Symbol;Acc:HGNC:21652],19,9,1.39E-06,3.27E-05,Overexpressed
+2621,GAS6,growth arrest specific 6 [Source:HGNC Symbol;Acc:HGNC:4168],19,9,1.39E-06,3.35E-05,Overexpressed
+11259,FILIP1L,filamin A interacting protein 1 like [Source:HGNC Symbol;Acc:HGNC:24589],19,9,1.39E-06,3.44E-05,Overexpressed
+10346,TRIM22,tripartite motif containing 22 [Source:HGNC Symbol;Acc:HGNC:16379],19,9,1.39E-06,3.54E-05,Overexpressed
+8605,PLA2G4C,phospholipase A2 group IVC [Source:HGNC Symbol;Acc:HGNC:9037],15,8,1.74E-06,3.83E-05,Overexpressed
+9891,NUAK1,NUAK family kinase 1 [Source:HGNC Symbol;Acc:HGNC:14311],20,9,2.37E-06,4.24E-05,Overexpressed
+8992,ATP6V0E1,ATPase H+ transporting V0 subunit e1 [Source:HGNC Symbol;Acc:HGNC:863],20,9,2.37E-06,4.32E-05,Overexpressed
+8614,STC2,stanniocalcin 2 [Source:HGNC Symbol;Acc:HGNC:11374],20,9,2.37E-06,4.39E-05,Overexpressed
+84251,SGIP1,SH3 domain GRB2 like endophilin interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:25412],20,9,2.37E-06,4.47E-05,Overexpressed
+64065,PERP,"PERP, TP53 apoptosis effector [Source:HGNC Symbol;Acc:HGNC:17637]",20,9,2.37E-06,4.56E-05,Overexpressed
+57515,SERINC1,serine incorporator 1 [Source:HGNC Symbol;Acc:HGNC:13464],20,9,2.37E-06,4.64E-05,Overexpressed
+55558,PLXNA3,plexin A3 [Source:HGNC Symbol;Acc:HGNC:9101],20,9,2.37E-06,4.73E-05,Overexpressed
+54532,USP53,ubiquitin specific peptidase 53 [Source:HGNC Symbol;Acc:HGNC:29255],20,9,2.37E-06,4.82E-05,Overexpressed
+4060,LUM,lumican [Source:HGNC Symbol;Acc:HGNC:6724],20,9,2.37E-06,4.92E-05,Overexpressed
+333,APLP1,amyloid beta precursor like protein 1 [Source:HGNC Symbol;Acc:HGNC:597],20,9,2.37E-06,5.02E-05,Overexpressed
+2745,GLRX,glutaredoxin [Source:HGNC Symbol;Acc:HGNC:4330],20,9,2.37E-06,5.13E-05,Overexpressed
+2335,FN1,fibronectin 1 [Source:HGNC Symbol;Acc:HGNC:3778],20,9,2.37E-06,5.24E-05,Overexpressed
+10457,GPNMB,glycoprotein nmb [Source:HGNC Symbol;Acc:HGNC:4462],20,9,2.37E-06,5.35E-05,Overexpressed
+10370,CITED2,Cbp/p300 interacting transactivator with Glu/Asp rich carboxy-terminal domain 2 [Source:HGNC Symbol;Acc:HGNC:1987],20,9,2.37E-06,5.47E-05,Overexpressed
+5669,PSG1,pregnancy specific beta-1-glycoprotein 1 [Source:HGNC Symbol;Acc:HGNC:9514],16,8,3.28E-06,6.21E-05,Overexpressed
+5673,PSG5,pregnancy specific beta-1-glycoprotein 5 [Source:HGNC Symbol;Acc:HGNC:9522],12,7,3.63E-06,6.91E-05,Overexpressed
+8722,CTSF,cathepsin F [Source:HGNC Symbol;Acc:HGNC:2531],21,9,3.90E-06,7.20E-05,Overexpressed
+537,ATP6AP1,ATPase H+ transporting accessory protein 1 [Source:HGNC Symbol;Acc:HGNC:868],21,9,3.90E-06,7.31E-05,Overexpressed
+51706,CYB5R1,cytochrome b5 reductase 1 [Source:HGNC Symbol;Acc:HGNC:13397],21,9,3.90E-06,7.43E-05,Overexpressed
+9118,INA,internexin neuronal intermediate filament protein alpha [Source:HGNC Symbol;Acc:HGNC:6057],17,8,5.82E-06,0.000107458,Overexpressed
+57575,PCDH10,protocadherin 10 [Source:HGNC Symbol;Acc:HGNC:13404],17,8,5.82E-06,0.000109039,Overexpressed
+5675,PSG6,pregnancy specific beta-1-glycoprotein 6 [Source:HGNC Symbol;Acc:HGNC:9523],17,8,5.82E-06,0.000110666,Overexpressed
+54674,LRRN3,leucine rich repeat neuronal 3 [Source:HGNC Symbol;Acc:HGNC:17200],17,8,5.82E-06,0.000112343,Overexpressed
+283209,PGM2L1,phosphoglucomutase 2 like 1 [Source:HGNC Symbol;Acc:HGNC:20898],17,8,5.82E-06,0.000114071,Overexpressed
+10159,ATP6AP2,ATPase H+ transporting accessory protein 2 [Source:HGNC Symbol;Acc:HGNC:18305],17,8,5.82E-06,0.000115854,Overexpressed
+7107,GPR137B,G protein-coupled receptor 137B [Source:HGNC Symbol;Acc:HGNC:11862],18,8,9.86E-06,0.000179162,Overexpressed
+57169,ZNFX1,zinc finger NFX1-type containing 1 [Source:HGNC Symbol;Acc:HGNC:29271],18,8,9.86E-06,0.000181459,Overexpressed
+56911,MAP3K7CL,MAP3K7 C-terminal like [Source:HGNC Symbol;Acc:HGNC:16457],18,8,9.86E-06,0.000183815,Overexpressed
+55076,TMEM45A,transmembrane protein 45A [Source:HGNC Symbol;Acc:HGNC:25480],18,8,9.86E-06,0.000186234,Overexpressed
+5055,SERPINB2,serpin family B member 2 [Source:HGNC Symbol;Acc:HGNC:8584],18,8,9.86E-06,0.000188717,Overexpressed
+3017,HIST1H2BD,histone cluster 1 H2B family member d [Source:HGNC Symbol;Acc:HGNC:4747],18,8,9.86E-06,0.000191267,Overexpressed
+26999,CYFIP2,cytoplasmic FMR1 interacting protein 2 [Source:HGNC Symbol;Acc:HGNC:13760],18,8,9.86E-06,0.000193888,Overexpressed
+26503,SLC17A5,solute carrier family 17 member 5 [Source:HGNC Symbol;Acc:HGNC:10933],18,8,9.86E-06,0.00019658,Overexpressed
+26353,HSPB8,heat shock protein family B (small) member 8 [Source:HGNC Symbol;Acc:HGNC:30171],18,8,9.86E-06,0.000199349,Overexpressed
+1509,CTSD,cathepsin D [Source:HGNC Symbol;Acc:HGNC:2529],18,8,9.86E-06,0.000202197,Overexpressed
+98,ACYP2,acylphosphatase 2 [Source:HGNC Symbol;Acc:HGNC:180],19,8,1.60E-05,0.000249379,Overexpressed
+9445,ITM2B,integral membrane protein 2B [Source:HGNC Symbol;Acc:HGNC:6174],19,8,1.60E-05,0.000251824,Overexpressed
+91624,NEXN,nexilin F-actin binding protein [Source:HGNC Symbol;Acc:HGNC:29557],19,8,1.60E-05,0.000254317,Overexpressed
+84886,C1orf198,chromosome 1 open reading frame 198 [Source:HGNC Symbol;Acc:HGNC:25900],19,8,1.60E-05,0.00025686,Overexpressed
+79966,SCD5,stearoyl-CoA desaturase 5 [Source:HGNC Symbol;Acc:HGNC:21088],19,8,1.60E-05,0.000259455,Overexpressed
+79783,SUGCT,succinyl-CoA:glutarate-CoA transferase [Source:HGNC Symbol;Acc:HGNC:16001],19,8,1.60E-05,0.000262102,Overexpressed
+7042,TGFB2,transforming growth factor beta 2 [Source:HGNC Symbol;Acc:HGNC:11768],14,7,1.39E-05,0.000263678,Overexpressed
+7077,TIMP2,TIMP metallopeptidase inhibitor 2 [Source:HGNC Symbol;Acc:HGNC:11821],19,8,1.60E-05,0.000264804,Overexpressed
+5670,PSG2,pregnancy specific beta-1-glycoprotein 2 [Source:HGNC Symbol;Acc:HGNC:9519],14,7,1.39E-05,0.000266933,Overexpressed
+64838,FNDC4,fibronectin type III domain containing 4 [Source:HGNC Symbol;Acc:HGNC:20239],19,8,1.60E-05,0.000267563,Overexpressed
+51560,RAB6B,"RAB6B, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:14902]",14,7,1.39E-05,0.00027027,Overexpressed
+427,ASAH1,N-acylsphingosine amidohydrolase 1 [Source:HGNC Symbol;Acc:HGNC:735],19,8,1.60E-05,0.000270379,Overexpressed
+4189,DNAJB9,DnaJ heat shock protein family (Hsp40) member B9 [Source:HGNC Symbol;Acc:HGNC:6968],19,8,1.60E-05,0.000273255,Overexpressed
+4035,LRP1,LDL receptor related protein 1 [Source:HGNC Symbol;Acc:HGNC:6692],19,8,1.60E-05,0.000276194,Overexpressed
+3897,L1CAM,L1 cell adhesion molecule [Source:HGNC Symbol;Acc:HGNC:6470],19,8,1.60E-05,0.000279196,Overexpressed
+2744,GLS,glutaminase [Source:HGNC Symbol;Acc:HGNC:4331],19,8,1.60E-05,0.000282264,Overexpressed
+27075,TSPAN13,tetraspanin 13 [Source:HGNC Symbol;Acc:HGNC:21643],19,8,1.60E-05,0.0002854,Overexpressed
+25798,BRI3,brain protein I3 [Source:HGNC Symbol;Acc:HGNC:1109],19,8,1.60E-05,0.000288607,Overexpressed
+23673,STX12,syntaxin 12 [Source:HGNC Symbol;Acc:HGNC:11430],19,8,1.60E-05,0.000291887,Overexpressed
+23586,DDX58,DExD/H-box helicase 58 [Source:HGNC Symbol;Acc:HGNC:19102],19,8,1.60E-05,0.000295242,Overexpressed
+221955,DAGLB,diacylglycerol lipase beta [Source:HGNC Symbol;Acc:HGNC:28923],19,8,1.60E-05,0.000298675,Overexpressed
+1803,DPP4,dipeptidyl peptidase 4 [Source:HGNC Symbol;Acc:HGNC:3009],19,8,1.60E-05,0.000302188,Overexpressed
+1346,COX7A1,cytochrome c oxidase subunit 7A1 [Source:HGNC Symbol;Acc:HGNC:2287],19,8,1.60E-05,0.000305786,Overexpressed
+114907,FBXO32,F-box protein 32 [Source:HGNC Symbol;Acc:HGNC:16731],19,8,1.60E-05,0.00030947,Overexpressed
+8507,ENC1,ectodermal-neural cortex 1 [Source:HGNC Symbol;Acc:HGNC:3345],20,8,2.51E-05,0.000365719,Overexpressed
+83857,TMTC1,transmembrane and tetratricopeptide repeat containing 1 [Source:HGNC Symbol;Acc:HGNC:24099],20,8,2.51E-05,0.000368742,Overexpressed
+83604,TMEM47,transmembrane protein 47 [Source:HGNC Symbol;Acc:HGNC:18515],20,8,2.51E-05,0.000371815,Overexpressed
+800,CALD1,caldesmon 1 [Source:HGNC Symbol;Acc:HGNC:1441],20,8,2.51E-05,0.000374939,Overexpressed
+6772,STAT1,signal transducer and activator of transcription 1 [Source:HGNC Symbol;Acc:HGNC:11362],20,8,2.51E-05,0.000378117,Overexpressed
+6609,SMPD1,sphingomyelin phosphodiesterase 1 [Source:HGNC Symbol;Acc:HGNC:11120],20,8,2.51E-05,0.000381348,Overexpressed
+64747,MFSD1,major facilitator superfamily domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25874],20,8,2.51E-05,0.000384636,Overexpressed
+56674,TMEM9B,TMEM9 domain family member B [Source:HGNC Symbol;Acc:HGNC:1168],20,8,2.51E-05,0.000387981,Overexpressed
+55108,BSDC1,BSD domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25501],20,8,2.51E-05,0.000391384,Overexpressed
+5332,PLCB4,phospholipase C beta 4 [Source:HGNC Symbol;Acc:HGNC:9059],20,8,2.51E-05,0.000394847,Overexpressed
+493,ATP2B4,ATPase plasma membrane Ca2+ transporting 4 [Source:HGNC Symbol;Acc:HGNC:817],20,8,2.51E-05,0.000398373,Overexpressed
+3482,IGF2R,insulin like growth factor 2 receptor [Source:HGNC Symbol;Acc:HGNC:5467],20,8,2.51E-05,0.000401962,Overexpressed
+23659,PLA2G15,phospholipase A2 group XV [Source:HGNC Symbol;Acc:HGNC:17163],20,8,2.51E-05,0.000405616,Overexpressed
+23385,NCSTN,nicastrin [Source:HGNC Symbol;Acc:HGNC:17091],20,8,2.51E-05,0.000409337,Overexpressed
+8503,PIK3R3,phosphoinositide-3-kinase regulatory subunit 3 [Source:HGNC Symbol;Acc:HGNC:8981],15,7,2.46E-05,0.000409868,Overexpressed
+2152,F3,"coagulation factor III, tissue factor [Source:HGNC Symbol;Acc:HGNC:3541]",20,8,2.51E-05,0.000413127,Overexpressed
+81631,MAP1LC3B,microtubule associated protein 1 light chain 3 beta [Source:HGNC Symbol;Acc:HGNC:13352],15,7,2.46E-05,0.000413772,Overexpressed
+11098,PRSS23,serine protease 23 [Source:HGNC Symbol;Acc:HGNC:14370],20,8,2.51E-05,0.000416988,Overexpressed
+5507,PPP1R3C,protein phosphatase 1 regulatory subunit 3C [Source:HGNC Symbol;Acc:HGNC:9293],15,7,2.46E-05,0.00041775,Overexpressed
+9550,ATP6V1G1,ATPase H+ transporting V1 subunit G1 [Source:HGNC Symbol;Acc:HGNC:864],21,8,3.82E-05,0.000569397,Overexpressed
+8804,CREG1,cellular repressor of E1A stimulated genes 1 [Source:HGNC Symbol;Acc:HGNC:2351],21,8,3.82E-05,0.000573777,Overexpressed
+59277,NTN4,netrin 4 [Source:HGNC Symbol;Acc:HGNC:13658],21,8,3.82E-05,0.000578225,Overexpressed
+5352,PLOD2,"procollagen-lysine,2-oxoglutarate 5-dioxygenase 2 [Source:HGNC Symbol;Acc:HGNC:9082]",21,8,3.82E-05,0.000582743,Overexpressed
+523,ATP6V1A,ATPase H+ transporting V1 subunit A [Source:HGNC Symbol;Acc:HGNC:851],21,8,3.82E-05,0.000587331,Overexpressed
+27122,DKK3,dickkopf WNT signaling pathway inhibitor 3 [Source:HGNC Symbol;Acc:HGNC:2893],21,8,3.82E-05,0.000591993,Overexpressed
+25999,CLIP3,CAP-Gly domain containing linker protein 3 [Source:HGNC Symbol;Acc:HGNC:24314],21,8,3.82E-05,0.000596729,Overexpressed
+1845,DUSP3,dual specificity phosphatase 3 [Source:HGNC Symbol;Acc:HGNC:3069],21,8,3.82E-05,0.000601541,Overexpressed
+1508,CTSB,cathepsin B [Source:HGNC Symbol;Acc:HGNC:2527],21,8,3.82E-05,0.000606431,Overexpressed
+283316,CD163L1,CD163 molecule like 1 [Source:HGNC Symbol;Acc:HGNC:30375],16,7,4.12E-05,0.000614907,Overexpressed
+23031,MAST3,microtubule associated serine/threonine kinase 3 [Source:HGNC Symbol;Acc:HGNC:19036],16,7,4.12E-05,0.000619566,Overexpressed
+8325,FZD8,frizzled class receptor 8 [Source:HGNC Symbol;Acc:HGNC:4046],12,6,5.97E-05,0.000956617,Overexpressed
+100507421,TMEM178B,transmembrane protein 178B [Source:HGNC Symbol;Acc:HGNC:44112],12,6,5.97E-05,0.000963756,Overexpressed
+9518,GDF15,growth differentiation factor 15 [Source:HGNC Symbol;Acc:HGNC:30142],17,7,6.59E-05,0.001026288,Overexpressed
+9411,ARHGAP29,Rho GTPase activating protein 29 [Source:HGNC Symbol;Acc:HGNC:30207],17,7,6.59E-05,0.001033567,Overexpressed
+57528,KCTD16,potassium channel tetramerization domain containing 16 [Source:HGNC Symbol;Acc:HGNC:29244],17,7,6.59E-05,0.00104095,Overexpressed
+56654,NPDC1,"neural proliferation, differentiation and control 1 [Source:HGNC Symbol;Acc:HGNC:7899]",17,7,6.59E-05,0.001048439,Overexpressed
+5621,PRNP,prion protein [Source:HGNC Symbol;Acc:HGNC:9449],17,7,6.59E-05,0.001056036,Overexpressed
+124936,CYB5D2,cytochrome b5 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:28471],17,7,6.59E-05,0.001063744,Overexpressed
+11096,ADAMTS5,ADAM metallopeptidase with thrombospondin type 1 motif 5 [Source:HGNC Symbol;Acc:HGNC:221],17,7,6.59E-05,0.001071566,Overexpressed
+79157,MFSD11,major facilitator superfamily domain containing 11 [Source:HGNC Symbol;Acc:HGNC:25458],18,7,0.000101565,0.001548925,Overexpressed
+7832,BTG2,BTG anti-proliferation factor 2 [Source:HGNC Symbol;Acc:HGNC:1131],18,7,0.000101565,0.001558667,Overexpressed
+57658,CALCOCO1,calcium binding and coiled-coil domain 1 [Source:HGNC Symbol;Acc:HGNC:29306],18,7,0.000101565,0.001568532,Overexpressed
+55654,TMEM127,transmembrane protein 127 [Source:HGNC Symbol;Acc:HGNC:26038],18,7,0.000101565,0.001578523,Overexpressed
+340371,NRBP2,nuclear receptor binding protein 2 [Source:HGNC Symbol;Acc:HGNC:19339],13,6,0.000104577,0.001585674,Overexpressed
+5274,SERPINI1,serpin family I member 1 [Source:HGNC Symbol;Acc:HGNC:8943],18,7,0.000101565,0.001588641,Overexpressed
+10608,MXD4,MAX dimerization protein 4 [Source:HGNC Symbol;Acc:HGNC:13906],13,6,0.000104577,0.001595523,Overexpressed
+50808,AK3,adenylate kinase 3 [Source:HGNC Symbol;Acc:HGNC:17376],18,7,0.000101565,0.001598891,Overexpressed
+4321,MMP12,matrix metallopeptidase 12 [Source:HGNC Symbol;Acc:HGNC:7158],18,7,0.000101565,0.001609273,Overexpressed
+3433,IFIT2,interferon induced protein with tetratricopeptide repeats 2 [Source:HGNC Symbol;Acc:HGNC:5409],18,7,0.000101565,0.001619791,Overexpressed
+2517,FUCA1,alpha-L-fucosidase 1 [Source:HGNC Symbol;Acc:HGNC:4006],18,7,0.000101565,0.001630448,Overexpressed
+23479,ISCU,iron-sulfur cluster assembly enzyme [Source:HGNC Symbol;Acc:HGNC:29882],18,7,0.000101565,0.001641245,Overexpressed
+22837,COBLL1,cordon-bleu WH2 repeat protein like 1 [Source:HGNC Symbol;Acc:HGNC:23571],18,7,0.000101565,0.001652187,Overexpressed
+2195,FAT1,FAT atypical cadherin 1 [Source:HGNC Symbol;Acc:HGNC:3595],18,7,0.000101565,0.001663276,Overexpressed
+219285,SAMD9L,sterile alpha motif domain containing 9 like [Source:HGNC Symbol;Acc:HGNC:1349],18,7,0.000101565,0.001674514,Overexpressed
+2043,EPHA4,EPH receptor A4 [Source:HGNC Symbol;Acc:HGNC:3388],18,7,0.000101565,0.001685905,Overexpressed
+153222,CREBRF,CREB3 regulatory factor [Source:HGNC Symbol;Acc:HGNC:24050],18,7,0.000101565,0.001697453,Overexpressed
+133746,JMY,"junction mediating and regulatory protein, p53 cofactor [Source:HGNC Symbol;Acc:HGNC:28916]",18,7,0.000101565,0.001709159,Overexpressed
+10826,FAXDC2,fatty acid hydroxylase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:1334],18,7,0.000101565,0.001721028,Overexpressed
+10133,OPTN,optineurin [Source:HGNC Symbol;Acc:HGNC:17142],18,7,0.000101565,0.001733063,Overexpressed
+9636,ISG15,ISG15 ubiquitin-like modifier [Source:HGNC Symbol;Acc:HGNC:4053],19,7,0.000151463,0.00206519,Overexpressed
+948,CD36,CD36 molecule [Source:HGNC Symbol;Acc:HGNC:1663],19,7,0.000151463,0.00207578,Overexpressed
+84898,PLXDC2,plexin domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21013],19,7,0.000151463,0.00208648,Overexpressed
+84572,GNPTG,N-acetylglucosamine-1-phosphate transferase gamma subunit [Source:HGNC Symbol;Acc:HGNC:23026],19,7,0.000151463,0.002097291,Overexpressed
+80256,FAM214B,family with sequence similarity 214 member B [Source:HGNC Symbol;Acc:HGNC:25666],19,7,0.000151463,0.002108215,Overexpressed
+788,SLC25A20,solute carrier family 25 member 20 [Source:HGNC Symbol;Acc:HGNC:1421],19,7,0.000151463,0.002119252,Overexpressed
+7466,WFS1,wolframin ER transmembrane glycoprotein [Source:HGNC Symbol;Acc:HGNC:12762],19,7,0.000151463,0.002130406,Overexpressed
+6272,SORT1,sortilin 1 [Source:HGNC Symbol;Acc:HGNC:11186],19,7,0.000151463,0.002141678,Overexpressed
+57179,KIAA1191,KIAA1191 [Source:HGNC Symbol;Acc:HGNC:29209],19,7,0.000151463,0.00215307,Overexpressed
+55214,P3H2,prolyl 3-hydroxylase 2 [Source:HGNC Symbol;Acc:HGNC:19317],19,7,0.000151463,0.002164584,Overexpressed
+51768,TM7SF3,transmembrane 7 superfamily member 3 [Source:HGNC Symbol;Acc:HGNC:23049],19,7,0.000151463,0.002176221,Overexpressed
+51257,MARCH2,membrane associated ring-CH-type finger 2 [Source:HGNC Symbol;Acc:HGNC:28038],19,7,0.000151463,0.002187985,Overexpressed
+51084,CRYL1,crystallin lambda 1 [Source:HGNC Symbol;Acc:HGNC:18246],19,7,0.000151463,0.002199876,Overexpressed
+4601,MXI1,"MAX interactor 1, dimerization protein [Source:HGNC Symbol;Acc:HGNC:7534]",19,7,0.000151463,0.002211897,Overexpressed
+4240,MFGE8,milk fat globule-EGF factor 8 protein [Source:HGNC Symbol;Acc:HGNC:7036],19,7,0.000151463,0.00222405,Overexpressed
+3915,LAMC1,laminin subunit gamma 1 [Source:HGNC Symbol;Acc:HGNC:6492],19,7,0.000151463,0.002236338,Overexpressed
+3797,KIF3C,kinesin family member 3C [Source:HGNC Symbol;Acc:HGNC:6321],19,7,0.000151463,0.002248762,Overexpressed
+3759,KCNJ2,potassium voltage-gated channel subfamily J member 2 [Source:HGNC Symbol;Acc:HGNC:6263],19,7,0.000151463,0.002261325,Overexpressed
+3423,IDS,iduronate 2-sulfatase [Source:HGNC Symbol;Acc:HGNC:5389],19,7,0.000151463,0.002274029,Overexpressed
+3074,HEXB,hexosaminidase subunit beta [Source:HGNC Symbol;Acc:HGNC:4879],19,7,0.000151463,0.002286877,Overexpressed
+3029,HAGH,hydroxyacylglutathione hydrolase [Source:HGNC Symbol;Acc:HGNC:4805],19,7,0.000151463,0.00229987,Overexpressed
+283537,SLC46A3,solute carrier family 46 member 3 [Source:HGNC Symbol;Acc:HGNC:27501],19,7,0.000151463,0.002313013,Overexpressed
+27345,KCNMB4,potassium calcium-activated channel subfamily M regulatory beta subunit 4 [Source:HGNC Symbol;Acc:HGNC:6289],19,7,0.000151463,0.002326306,Overexpressed
+27244,SESN1,sestrin 1 [Source:HGNC Symbol;Acc:HGNC:21595],19,7,0.000151463,0.002339753,Overexpressed
+256691,MAMDC2,MAM domain containing 2 [Source:HGNC Symbol;Acc:HGNC:23673],19,7,0.000151463,0.002353356,Overexpressed
+23576,DDAH1,dimethylarginine dimethylaminohydrolase 1 [Source:HGNC Symbol;Acc:HGNC:2715],19,7,0.000151463,0.002367118,Overexpressed
+6840,SVIL,supervillin [Source:HGNC Symbol;Acc:HGNC:11480],14,6,0.000172564,0.002375306,Overexpressed
+23505,TMEM131,transmembrane protein 131 [Source:HGNC Symbol;Acc:HGNC:30366],19,7,0.000151463,0.002381042,Overexpressed
+5678,PSG9,pregnancy specific beta-1-glycoprotein 9 [Source:HGNC Symbol;Acc:HGNC:9526],14,6,0.000172564,0.002387243,Overexpressed
+1774,DNASE1L1,deoxyribonuclease 1 like 1 [Source:HGNC Symbol;Acc:HGNC:2957],19,7,0.000151463,0.002395131,Overexpressed
+54809,SAMD9,sterile alpha motif domain containing 9 [Source:HGNC Symbol;Acc:HGNC:1348],14,6,0.000172564,0.002399299,Overexpressed
+1601,DAB2,"DAB2, clathrin adaptor protein [Source:HGNC Symbol;Acc:HGNC:2662]",19,7,0.000151463,0.002409388,Overexpressed
+132671,SPATA18,spermatogenesis associated 18 [Source:HGNC Symbol;Acc:HGNC:29579],14,6,0.000172564,0.002411479,Overexpressed
+1295,COL8A1,collagen type VIII alpha 1 chain [Source:HGNC Symbol;Acc:HGNC:2215],19,7,0.000151463,0.002423816,Overexpressed
+113612,CYP2U1,cytochrome P450 family 2 subfamily U member 1 [Source:HGNC Symbol;Acc:HGNC:20582],19,7,0.000151463,0.002438417,Overexpressed
+10962,MLLT11,"MLLT11, transcription factor 7 cofactor [Source:HGNC Symbol;Acc:HGNC:16997]",19,7,0.000151463,0.002453195,Overexpressed
+10618,TGOLN2,trans-golgi network protein 2 [Source:HGNC Symbol;Acc:HGNC:15450],19,7,0.000151463,0.002468154,Overexpressed
+10140,TOB1,"transducer of ERBB2, 1 [Source:HGNC Symbol;Acc:HGNC:11979]",19,7,0.000151463,0.002483296,Overexpressed
+9249,DHRS3,dehydrogenase/reductase 3 [Source:HGNC Symbol;Acc:HGNC:17693],20,7,0.00021949,0.002681725,Overexpressed
+8745,ADAM23,ADAM metallopeptidase domain 23 [Source:HGNC Symbol;Acc:HGNC:202],20,7,0.00021949,0.00269304,Overexpressed
+81533,ITFG1,integrin alpha FG-GAP repeat containing 1 [Source:HGNC Symbol;Acc:HGNC:30697],20,7,0.00021949,0.002704451,Overexpressed
+80255,SLC35F5,solute carrier family 35 member F5 [Source:HGNC Symbol;Acc:HGNC:23617],20,7,0.00021949,0.00271596,Overexpressed
+7078,TIMP3,TIMP metallopeptidase inhibitor 3 [Source:HGNC Symbol;Acc:HGNC:11822],20,7,0.00021949,0.002727566,Overexpressed
+6575,SLC20A2,solute carrier family 20 member 2 [Source:HGNC Symbol;Acc:HGNC:10947],20,7,0.00021949,0.002739273,Overexpressed
+6415,SELENOW,selenoprotein W [Source:HGNC Symbol;Acc:HGNC:10752],20,7,0.00021949,0.00275108,Overexpressed
+5796,PTPRK,"protein tyrosine phosphatase, receptor type K [Source:HGNC Symbol;Acc:HGNC:9674]",20,7,0.00021949,0.002762989,Overexpressed
+57185,NIPAL3,NIPA like domain containing 3 [Source:HGNC Symbol;Acc:HGNC:25233],20,7,0.00021949,0.002775002,Overexpressed
+5631,PRPS1,phosphoribosyl pyrophosphate synthetase 1 [Source:HGNC Symbol;Acc:HGNC:9462],20,7,0.00021949,0.00278712,Overexpressed
+54664,TMEM106B,transmembrane protein 106B [Source:HGNC Symbol;Acc:HGNC:22407],20,7,0.00021949,0.002799344,Overexpressed
+5351,PLOD1,"procollagen-lysine,2-oxoglutarate 5-dioxygenase 1 [Source:HGNC Symbol;Acc:HGNC:9081]",20,7,0.00021949,0.002811676,Overexpressed
+527,ATP6V0C,ATPase H+ transporting V0 subunit c [Source:HGNC Symbol;Acc:HGNC:855],20,7,0.00021949,0.002824117,Overexpressed
+5164,PDK2,pyruvate dehydrogenase kinase 2 [Source:HGNC Symbol;Acc:HGNC:8810],20,7,0.00021949,0.002836669,Overexpressed
+51566,ARMCX3,"armadillo repeat containing, X-linked 3 [Source:HGNC Symbol;Acc:HGNC:24065]",20,7,0.00021949,0.002849333,Overexpressed
+51129,ANGPTL4,angiopoietin like 4 [Source:HGNC Symbol;Acc:HGNC:16039],20,7,0.00021949,0.00286211,Overexpressed
+51094,ADIPOR1,adiponectin receptor 1 [Source:HGNC Symbol;Acc:HGNC:24040],20,7,0.00021949,0.002875002,Overexpressed
+4193,MDM2,MDM2 proto-oncogene [Source:HGNC Symbol;Acc:HGNC:6973],20,7,0.00021949,0.002888011,Overexpressed
+4126,MANBA,mannosidase beta [Source:HGNC Symbol;Acc:HGNC:6831],20,7,0.00021949,0.002901139,Overexpressed
+4017,LOXL2,lysyl oxidase like 2 [Source:HGNC Symbol;Acc:HGNC:6666],20,7,0.00021949,0.002914386,Overexpressed
+26056,RAB11FIP5,RAB11 family interacting protein 5 [Source:HGNC Symbol;Acc:HGNC:24845],20,7,0.00021949,0.002927755,Overexpressed
+26020,LRP10,LDL receptor related protein 10 [Source:HGNC Symbol;Acc:HGNC:14553],20,7,0.00021949,0.002941247,Overexpressed
+25874,MPC2,mitochondrial pyruvate carrier 2 [Source:HGNC Symbol;Acc:HGNC:24515],20,7,0.00021949,0.002954864,Overexpressed
+23324,MAN2B2,mannosidase alpha class 2B member 2 [Source:HGNC Symbol;Acc:HGNC:29623],20,7,0.00021949,0.002968607,Overexpressed
+231,AKR1B1,aldo-keto reductase family 1 member B [Source:HGNC Symbol;Acc:HGNC:381],20,7,0.00021949,0.002982479,Overexpressed
+22924,MAPRE3,microtubule associated protein RP/EB family member 3 [Source:HGNC Symbol;Acc:HGNC:6892],20,7,0.00021949,0.002996481,Overexpressed
+2247,FGF2,fibroblast growth factor 2 [Source:HGNC Symbol;Acc:HGNC:3676],20,7,0.00021949,0.003010616,Overexpressed
+1848,DUSP6,dual specificity phosphatase 6 [Source:HGNC Symbol;Acc:HGNC:3072],20,7,0.00021949,0.003024884,Overexpressed
+1647,GADD45A,growth arrest and DNA damage inducible alpha [Source:HGNC Symbol;Acc:HGNC:4095],20,7,0.00021949,0.003039288,Overexpressed
+1522,CTSZ,cathepsin Z [Source:HGNC Symbol;Acc:HGNC:2547],20,7,0.00021949,0.00305383,Overexpressed
+1410,CRYAB,crystallin alpha B [Source:HGNC Symbol;Acc:HGNC:2389],20,7,0.00021949,0.003068512,Overexpressed
+127262,TPRG1L,tumor protein p63 regulated 1 like [Source:HGNC Symbol;Acc:HGNC:27007],20,7,0.00021949,0.003083336,Overexpressed
+122786,FRMD6,FERM domain containing 6 [Source:HGNC Symbol;Acc:HGNC:19839],20,7,0.00021949,0.003098304,Overexpressed
+116254,GINM1,glycoprotein integral membrane 1 [Source:HGNC Symbol;Acc:HGNC:21074],20,7,0.00021949,0.003113417,Overexpressed
+11227,GALNT5,polypeptide N-acetylgalactosaminyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:4127],20,7,0.00021949,0.003128679,Overexpressed
+10631,POSTN,periostin [Source:HGNC Symbol;Acc:HGNC:16953],20,7,0.00021949,0.003144091,Overexpressed
+10424,PGRMC2,progesterone receptor membrane component 2 [Source:HGNC Symbol;Acc:HGNC:16089],20,7,0.00021949,0.003159656,Overexpressed
+1030,CDKN2B,cyclin dependent kinase inhibitor 2B [Source:HGNC Symbol;Acc:HGNC:1788],20,7,0.00021949,0.003175376,Overexpressed
+5026,P2RX5,purinergic receptor P2X 5 [Source:HGNC Symbol;Acc:HGNC:8536],10,5,0.000259316,0.003277095,Overexpressed
+91947,ARRDC4,arrestin domain containing 4 [Source:HGNC Symbol;Acc:HGNC:28087],15,6,0.000271213,0.003323562,Overexpressed
+8793,TNFRSF10D,TNF receptor superfamily member 10d [Source:HGNC Symbol;Acc:HGNC:11907],15,6,0.000271213,0.003336963,Overexpressed
+80235,PIGZ,phosphatidylinositol glycan anchor biosynthesis class Z [Source:HGNC Symbol;Acc:HGNC:30596],15,6,0.000271213,0.003350473,Overexpressed
+57103,TIGAR,TP53 induced glycolysis regulatory phosphatase [Source:HGNC Symbol;Acc:HGNC:1185],15,6,0.000271213,0.003364093,Overexpressed
+55359,STYK1,serine/threonine/tyrosine kinase 1 [Source:HGNC Symbol;Acc:HGNC:18889],15,6,0.000271213,0.003377824,Overexpressed
+51669,SARAF,store-operated calcium entry associated regulatory factor [Source:HGNC Symbol;Acc:HGNC:28789],15,6,0.000271213,0.003391667,Overexpressed
+352954,CASTOR3,CASTOR family member 3 [Source:HGNC Symbol;Acc:HGNC:29954],15,6,0.000271213,0.003405625,Overexpressed
+2495,FTH1,ferritin heavy chain 1 [Source:HGNC Symbol;Acc:HGNC:3976],15,6,0.000271213,0.003419698,Overexpressed
+23492,CBX7,chromobox 7 [Source:HGNC Symbol;Acc:HGNC:1557],15,6,0.000271213,0.003433887,Overexpressed
+128989,TANGO2,transport and golgi organization 2 homolog [Source:HGNC Symbol;Acc:HGNC:25439],15,6,0.000271213,0.003448195,Overexpressed
+975,CD81,CD81 molecule [Source:HGNC Symbol;Acc:HGNC:1701],21,7,0.00031014,0.003767091,Overexpressed
+9528,TMEM59,transmembrane protein 59 [Source:HGNC Symbol;Acc:HGNC:1239],21,7,0.00031014,0.003781692,Overexpressed
+8682,PEA15,proliferation and apoptosis adaptor protein 15 [Source:HGNC Symbol;Acc:HGNC:8822],21,7,0.00031014,0.003796407,Overexpressed
+6781,STC1,stanniocalcin 1 [Source:HGNC Symbol;Acc:HGNC:11373],21,7,0.00031014,0.003811236,Overexpressed
+669,BPGM,bisphosphoglycerate mutase [Source:HGNC Symbol;Acc:HGNC:1093],21,7,0.00031014,0.003826183,Overexpressed
+27063,ANKRD1,ankyrin repeat domain 1 [Source:HGNC Symbol;Acc:HGNC:15819],21,7,0.00031014,0.003841246,Overexpressed
+25802,LMOD1,leiomodin 1 [Source:HGNC Symbol;Acc:HGNC:6647],21,7,0.00031014,0.003856429,Overexpressed
+1264,CNN1,calponin 1 [Source:HGNC Symbol;Acc:HGNC:2155],21,7,0.00031014,0.003871732,Overexpressed
+10955,SERINC3,serine incorporator 3 [Source:HGNC Symbol;Acc:HGNC:11699],21,7,0.00031014,0.003887158,Overexpressed
+10512,SEMA3C,semaphorin 3C [Source:HGNC Symbol;Acc:HGNC:10725],21,7,0.00031014,0.003902706,Overexpressed
+9145,SYNGR1,synaptogyrin 1 [Source:HGNC Symbol;Acc:HGNC:11498],16,6,0.000409243,0.005136021,Overexpressed
+64859,NABP1,nucleic acid binding protein 1 [Source:HGNC Symbol;Acc:HGNC:26232],16,6,0.000409243,0.005155329,Overexpressed
+6448,SGSH,N-sulfoglucosamine sulfohydrolase [Source:HGNC Symbol;Acc:HGNC:10818],16,6,0.000409243,0.005174783,Overexpressed
+57717,PCDHB16,protocadherin beta 16 [Source:HGNC Symbol;Acc:HGNC:14546],16,6,0.000409243,0.005194385,Overexpressed
+202333,CMYA5,cardiomyopathy associated 5 [Source:HGNC Symbol;Acc:HGNC:14305],16,6,0.000409243,0.005214135,Overexpressed
+162963,ZNF610,zinc finger protein 610 [Source:HGNC Symbol;Acc:HGNC:26687],16,6,0.000409243,0.005234036,Overexpressed
+147948,ZNF582,zinc finger protein 582 [Source:HGNC Symbol;Acc:HGNC:26421],16,6,0.000409243,0.00525409,Overexpressed
+144811,LACC1,laccase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:26789],16,6,0.000409243,0.005274298,Overexpressed
+2629,GBA,glucosylceramidase beta [Source:HGNC Symbol;Acc:HGNC:4177],11,5,0.000449017,0.005733937,Overexpressed
+8743,TNFSF10,TNF superfamily member 10 [Source:HGNC Symbol;Acc:HGNC:11925],17,6,0.000596519,0.007890735,Overexpressed
+6890,TAP1,"transporter 1, ATP binding cassette subfamily B member [Source:HGNC Symbol;Acc:HGNC:43]",17,6,0.000596519,0.007919428,Overexpressed
+6857,SYT1,synaptotagmin 1 [Source:HGNC Symbol;Acc:HGNC:11509],17,6,0.000596519,0.007948332,Overexpressed
+55754,TMEM30A,transmembrane protein 30A [Source:HGNC Symbol;Acc:HGNC:16667],17,6,0.000596519,0.007977446,Overexpressed
+285761,DCBLD1,"discoidin, CUB and LCCL domain containing 1 [Source:HGNC Symbol;Acc:HGNC:21479]",17,6,0.000596519,0.008006775,Overexpressed
+266812,NAP1L5,nucleosome assembly protein 1 like 5 [Source:HGNC Symbol;Acc:HGNC:19968],17,6,0.000596519,0.00803632,Overexpressed
+124935,SLC43A2,solute carrier family 43 member 2 [Source:HGNC Symbol;Acc:HGNC:23087],17,6,0.000596519,0.008066085,Overexpressed
+115201,ATG4A,autophagy related 4A cysteine peptidase [Source:HGNC Symbol;Acc:HGNC:16489],17,6,0.000596519,0.00809607,Overexpressed
+65065,NBEAL1,neurobeachin like 1 [Source:HGNC Symbol;Acc:HGNC:20681],12,5,0.000727083,0.009988628,Overexpressed
+196051,PLPP4,phospholipid phosphatase 4 [Source:HGNC Symbol;Acc:HGNC:23531],12,5,0.000727083,0.010024688,Overexpressed
+900,CCNG1,cyclin G1 [Source:HGNC Symbol;Acc:HGNC:1592],18,6,0.000843996,0.010619789,Overexpressed
+8848,TSC22D1,TSC22 domain family member 1 [Source:HGNC Symbol;Acc:HGNC:16826],18,6,0.000843996,0.010653718,Overexpressed
+84418,CYSTM1,cysteine rich transmembrane module containing 1 [Source:HGNC Symbol;Acc:HGNC:30239],18,6,0.000843996,0.010687865,Overexpressed
+83941,TM2D1,TM2 domain containing 1 [Source:HGNC Symbol;Acc:HGNC:24142],18,6,0.000843996,0.010722231,Overexpressed
+80219,COQ10B,coenzyme Q10B [Source:HGNC Symbol;Acc:HGNC:25819],18,6,0.000843996,0.010756819,Overexpressed
+6844,VAMP2,vesicle associated membrane protein 2 [Source:HGNC Symbol;Acc:HGNC:12643],18,6,0.000843996,0.010791631,Overexpressed
+57574,MARCH4,membrane associated ring-CH-type finger 4 [Source:HGNC Symbol;Acc:HGNC:29269],18,6,0.000843996,0.010826668,Overexpressed
+55296,TBC1D19,TBC1 domain family member 19 [Source:HGNC Symbol;Acc:HGNC:25624],18,6,0.000843996,0.010861934,Overexpressed
+55008,HERC6,HECT and RLD domain containing E3 ubiquitin protein ligase family member 6 [Source:HGNC Symbol;Acc:HGNC:26072],18,6,0.000843996,0.010897431,Overexpressed
+54884,RETSAT,retinol saturase [Source:HGNC Symbol;Acc:HGNC:25991],18,6,0.000843996,0.01093316,Overexpressed
+54800,KLHL24,kelch like family member 24 [Source:HGNC Symbol;Acc:HGNC:25947],18,6,0.000843996,0.010969125,Overexpressed
+54622,ARL15,ADP ribosylation factor like GTPase 15 [Source:HGNC Symbol;Acc:HGNC:25945],18,6,0.000843996,0.011005326,Overexpressed
+51200,CPA4,carboxypeptidase A4 [Source:HGNC Symbol;Acc:HGNC:15740],18,6,0.000843996,0.011041768,Overexpressed
+4043,LRPAP1,LDL receptor related protein associated protein 1 [Source:HGNC Symbol;Acc:HGNC:6701],18,6,0.000843996,0.011078451,Overexpressed
+389337,ARHGEF37,Rho guanine nucleotide exchange factor 37 [Source:HGNC Symbol;Acc:HGNC:34430],18,6,0.000843996,0.01111538,Overexpressed
+389336,C5orf46,chromosome 5 open reading frame 46 [Source:HGNC Symbol;Acc:HGNC:33768],18,6,0.000843996,0.011152555,Overexpressed
+3635,INPP5D,inositol polyphosphate-5-phosphatase D [Source:HGNC Symbol;Acc:HGNC:6079],18,6,0.000843996,0.011189979,Overexpressed
+355,FAS,Fas cell surface death receptor [Source:HGNC Symbol;Acc:HGNC:11920],18,6,0.000843996,0.011227656,Overexpressed
+3434,IFIT1,interferon induced protein with tetratricopeptide repeats 1 [Source:HGNC Symbol;Acc:HGNC:5407],18,6,0.000843996,0.011265587,Overexpressed
+2907,GRINA,glutamate ionotropic receptor NMDA type subunit associated protein 1 [Source:HGNC Symbol;Acc:HGNC:4589],18,6,0.000843996,0.011303776,Overexpressed
+284,ANGPT1,angiopoietin 1 [Source:HGNC Symbol;Acc:HGNC:484],18,6,0.000843996,0.011342224,Overexpressed
+27072,VPS41,"VPS41, HOPS complex subunit [Source:HGNC Symbol;Acc:HGNC:12713]",18,6,0.000843996,0.011380935,Overexpressed
+23596,OPN3,opsin 3 [Source:HGNC Symbol;Acc:HGNC:14007],18,6,0.000843996,0.01141991,Overexpressed
+2352,FOLR3,folate receptor 3 [Source:HGNC Symbol;Acc:HGNC:3795],18,6,0.000843996,0.011459154,Overexpressed
+2318,FLNC,filamin C [Source:HGNC Symbol;Acc:HGNC:3756],18,6,0.000843996,0.011498668,Overexpressed
+1906,EDN1,endothelin 1 [Source:HGNC Symbol;Acc:HGNC:3176],18,6,0.000843996,0.011538456,Overexpressed
+166336,PRICKLE2,prickle planar cell polarity protein 2 [Source:HGNC Symbol;Acc:HGNC:20340],18,6,0.000843996,0.01157852,Overexpressed
+147463,ANKRD29,ankyrin repeat domain 29 [Source:HGNC Symbol;Acc:HGNC:27110],18,6,0.000843996,0.011618864,Overexpressed
+130507,UBR3,ubiquitin protein ligase E3 component n-recognin 3 (putative) [Source:HGNC Symbol;Acc:HGNC:30467],18,6,0.000843996,0.011659489,Overexpressed
+11253,MAN1B1,mannosidase alpha class 1B member 1 [Source:HGNC Symbol;Acc:HGNC:6823],18,6,0.000843996,0.011700399,Overexpressed
+11230,PRAF2,PRA1 domain family member 2 [Source:HGNC Symbol;Acc:HGNC:28911],18,6,0.000843996,0.011741598,Overexpressed
+10957,PNRC1,proline rich nuclear receptor coactivator 1 [Source:HGNC Symbol;Acc:HGNC:17278],18,6,0.000843996,0.011783088,Overexpressed
+10577,NPC2,NPC intracellular cholesterol transporter 2 [Source:HGNC Symbol;Acc:HGNC:14537],18,6,0.000843996,0.011824872,Overexpressed
+10570,DPYSL4,dihydropyrimidinase like 4 [Source:HGNC Symbol;Acc:HGNC:3016],18,6,0.000843996,0.011866953,Overexpressed
+10404,CPQ,carboxypeptidase Q [Source:HGNC Symbol;Acc:HGNC:16910],18,6,0.000843996,0.011909335,Overexpressed
+10129,FRY,FRY microtubule binding protein [Source:HGNC Symbol;Acc:HGNC:20367],18,6,0.000843996,0.011952021,Overexpressed
+9581,PREPL,prolyl endopeptidase like [Source:HGNC Symbol;Acc:HGNC:30228],19,6,0.001163626,0.013189598,Overexpressed
+94103,ORMDL3,ORMDL sphingolipid biosynthesis regulator 3 [Source:HGNC Symbol;Acc:HGNC:16038],19,6,0.001163626,0.013224864,Overexpressed
+93210,PGAP3,post-GPI attachment to proteins 3 [Source:HGNC Symbol;Acc:HGNC:23719],19,6,0.001163626,0.01326032,Overexpressed
+9060,PAPSS2,3'-phosphoadenosine 5'-phosphosulfate synthase 2 [Source:HGNC Symbol;Acc:HGNC:8604],19,6,0.001163626,0.013295966,Overexpressed
+9050,PSTPIP2,proline-serine-threonine phosphatase interacting protein 2 [Source:HGNC Symbol;Acc:HGNC:9581],19,6,0.001163626,0.013331804,Overexpressed
+894,CCND2,cyclin D2 [Source:HGNC Symbol;Acc:HGNC:1583],19,6,0.001163626,0.013367836,Overexpressed
+8780,RIOK3,RIO kinase 3 [Source:HGNC Symbol;Acc:HGNC:11451],19,6,0.001163626,0.013404063,Overexpressed
+8728,ADAM19,ADAM metallopeptidase domain 19 [Source:HGNC Symbol;Acc:HGNC:197],19,6,0.001163626,0.013440487,Overexpressed
+84961,FBXL20,F-box and leucine rich repeat protein 20 [Source:HGNC Symbol;Acc:HGNC:24679],19,6,0.001163626,0.01347711,Overexpressed
+79627,OGFRL1,opioid growth factor receptor like 1 [Source:HGNC Symbol;Acc:HGNC:21378],19,6,0.001163626,0.013513932,Overexpressed
+79016,DDA1,DET1 and DDB1 associated 1 [Source:HGNC Symbol;Acc:HGNC:28360],19,6,0.001163626,0.013550957,Overexpressed
+79001,VKORC1,vitamin K epoxide reductase complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:23663],19,6,0.001163626,0.013588185,Overexpressed
+7057,THBS1,thrombospondin 1 [Source:HGNC Symbol;Acc:HGNC:11785],19,6,0.001163626,0.013625618,Overexpressed
+7052,TGM2,transglutaminase 2 [Source:HGNC Symbol;Acc:HGNC:11778],19,6,0.001163626,0.013663258,Overexpressed
+6659,SOX4,SRY-box 4 [Source:HGNC Symbol;Acc:HGNC:11200],19,6,0.001163626,0.013701106,Overexpressed
+64778,FNDC3B,fibronectin type III domain containing 3B [Source:HGNC Symbol;Acc:HGNC:24670],19,6,0.001163626,0.013739165,Overexpressed
+63874,ABHD4,abhydrolase domain containing 4 [Source:HGNC Symbol;Acc:HGNC:20154],19,6,0.001163626,0.013777435,Overexpressed
+59338,PLEKHA1,pleckstrin homology domain containing A1 [Source:HGNC Symbol;Acc:HGNC:14335],19,6,0.001163626,0.01381592,Overexpressed
+5920,RARRES3,retinoic acid receptor responder 3 [Source:HGNC Symbol;Acc:HGNC:9869],19,6,0.001163626,0.01385462,Overexpressed
+5797,PTPRM,"protein tyrosine phosphatase, receptor type M [Source:HGNC Symbol;Acc:HGNC:9675]",19,6,0.001163626,0.013893537,Overexpressed
+57414,RHBDD2,rhomboid domain containing 2 [Source:HGNC Symbol;Acc:HGNC:23082],19,6,0.001163626,0.013932674,Overexpressed
+5638,PRRG1,proline rich and Gla domain 1 [Source:HGNC Symbol;Acc:HGNC:9469],19,6,0.001163626,0.013972032,Overexpressed
+55741,EDEM2,ER degradation enhancing alpha-mannosidase like protein 2 [Source:HGNC Symbol;Acc:HGNC:15877],19,6,0.001163626,0.014011613,Overexpressed
+55733,HHAT,hedgehog acyltransferase [Source:HGNC Symbol;Acc:HGNC:18270],19,6,0.001163626,0.014051418,Overexpressed
+55624,POMGNT1,"protein O-linked mannose N-acetylglucosaminyltransferase 1 (beta 1,2-) [Source:HGNC Symbol;Acc:HGNC:19139]",19,6,0.001163626,0.014091451,Overexpressed
+55332,DRAM1,DNA damage regulated autophagy modulator 1 [Source:HGNC Symbol;Acc:HGNC:25645],19,6,0.001163626,0.014131712,Overexpressed
+54453,RIN2,Ras and Rab interactor 2 [Source:HGNC Symbol;Acc:HGNC:18750],19,6,0.001163626,0.014172204,Overexpressed
+53349,ZFYVE1,zinc finger FYVE-type containing 1 [Source:HGNC Symbol;Acc:HGNC:13180],19,6,0.001163626,0.014212929,Overexpressed
+51778,MYOZ2,myozenin 2 [Source:HGNC Symbol;Acc:HGNC:1330],19,6,0.001163626,0.014253888,Overexpressed
+51393,TRPV2,transient receptor potential cation channel subfamily V member 2 [Source:HGNC Symbol;Acc:HGNC:18082],19,6,0.001163626,0.014295084,Overexpressed
+51313,FAM198B,family with sequence similarity 198 member B [Source:HGNC Symbol;Acc:HGNC:25312],19,6,0.001163626,0.014336519,Overexpressed
+3781,KCNN2,potassium calcium-activated channel subfamily N member 2 [Source:HGNC Symbol;Acc:HGNC:6291],19,6,0.001163626,0.014378195,Overexpressed
+351,APP,amyloid beta precursor protein [Source:HGNC Symbol;Acc:HGNC:620],19,6,0.001163626,0.014420114,Overexpressed
+3486,IGFBP3,insulin like growth factor binding protein 3 [Source:HGNC Symbol;Acc:HGNC:5472],19,6,0.001163626,0.014462278,Overexpressed
+3431,SP110,SP110 nuclear body protein [Source:HGNC Symbol;Acc:HGNC:5401],19,6,0.001163626,0.01450469,Overexpressed
+3429,IFI27,interferon alpha inducible protein 27 [Source:HGNC Symbol;Acc:HGNC:5397],19,6,0.001163626,0.014547351,Overexpressed
+316,AOX1,aldehyde oxidase 1 [Source:HGNC Symbol;Acc:HGNC:553],19,6,0.001163626,0.014590263,Overexpressed
+29995,LMCD1,LIM and cysteine rich domains 1 [Source:HGNC Symbol;Acc:HGNC:6633],19,6,0.001163626,0.01463343,Overexpressed
+2852,GPER1,G protein-coupled estrogen receptor 1 [Source:HGNC Symbol;Acc:HGNC:4485],19,6,0.001163626,0.014676852,Overexpressed
+2817,GPC1,glypican 1 [Source:HGNC Symbol;Acc:HGNC:4449],19,6,0.001163626,0.014720533,Overexpressed
+2760,GM2A,GM2 ganglioside activator [Source:HGNC Symbol;Acc:HGNC:4367],19,6,0.001163626,0.014764475,Overexpressed
+85461,TANC1,"tetratricopeptide repeat, ankyrin repeat and coiled-coil containing 1 [Source:HGNC Symbol;Acc:HGNC:29364]",13,5,0.001116149,0.014778383,Overexpressed
+27242,TNFRSF21,TNF receptor superfamily member 21 [Source:HGNC Symbol;Acc:HGNC:13469],19,6,0.001163626,0.01480868,Overexpressed
+83895,KRTAP1-5,keratin associated protein 1-5 [Source:HGNC Symbol;Acc:HGNC:16777],13,5,0.001116149,0.014825003,Overexpressed
+26137,ZBTB20,zinc finger and BTB domain containing 20 [Source:HGNC Symbol;Acc:HGNC:13503],19,6,0.001163626,0.014853151,Overexpressed
+8344,HIST1H2BE,histone cluster 1 H2B family member e [Source:HGNC Symbol;Acc:HGNC:4753],13,5,0.001116149,0.014871917,Overexpressed
+23382,AHCYL2,adenosylhomocysteinase like 2 [Source:HGNC Symbol;Acc:HGNC:22204],19,6,0.001163626,0.014897889,Overexpressed
+51030,TVP23B,trans-golgi network vesicle protein 23 homolog B [Source:HGNC Symbol;Acc:HGNC:20399],13,5,0.001116149,0.01491913,Overexpressed
+23313,KIAA0930,KIAA0930 [Source:HGNC Symbol;Acc:HGNC:1314],19,6,0.001163626,0.014942898,Overexpressed
+22998,LIMCH1,LIM and calponin homology domains 1 [Source:HGNC Symbol;Acc:HGNC:29191],19,6,0.001163626,0.014988179,Overexpressed
+22990,PCNX1,pecanex homolog 1 [Source:HGNC Symbol;Acc:HGNC:19740],19,6,0.001163626,0.015033736,Overexpressed
+22936,ELL2,elongation factor for RNA polymerase II 2 [Source:HGNC Symbol;Acc:HGNC:17064],19,6,0.001163626,0.015079571,Overexpressed
+2273,FHL1,four and a half LIM domains 1 [Source:HGNC Symbol;Acc:HGNC:3702],19,6,0.001163626,0.015125686,Overexpressed
+2055,CLN8,"CLN8, transmembrane ER and ERGIC protein [Source:HGNC Symbol;Acc:HGNC:2079]",19,6,0.001163626,0.015172084,Overexpressed
+2720,GLB1,galactosidase beta 1 [Source:HGNC Symbol;Acc:HGNC:4298],8,4,0.001145931,0.015216074,Overexpressed
+154743,BMT2,base methyltransferase of 25S rRNA 2 homolog [Source:HGNC Symbol;Acc:HGNC:26475],19,6,0.001163626,0.015218767,Overexpressed
+1490,CTGF,connective tissue growth factor [Source:HGNC Symbol;Acc:HGNC:2500],19,6,0.001163626,0.015265738,Overexpressed
+11337,GABARAP,GABA type A receptor-associated protein [Source:HGNC Symbol;Acc:HGNC:4067],19,6,0.001163626,0.015313001,Overexpressed
+10904,BLCAP,bladder cancer associated protein [Source:HGNC Symbol;Acc:HGNC:1055],19,6,0.001163626,0.015360557,Overexpressed
+10486,CAP2,cyclase associated actin cytoskeleton regulatory protein 2 [Source:HGNC Symbol;Acc:HGNC:20039],19,6,0.001163626,0.015408409,Overexpressed
+10335,MRVI1,murine retrovirus integration site 1 homolog [Source:HGNC Symbol;Acc:HGNC:7237],19,6,0.001163626,0.01545656,Overexpressed
+9734,HDAC9,histone deacetylase 9 [Source:HGNC Symbol;Acc:HGNC:14065],20,6,0.001568256,0.017027465,Overexpressed
+9670,IPO13,importin 13 [Source:HGNC Symbol;Acc:HGNC:16853],20,6,0.001568256,0.017068201,Overexpressed
+9114,ATP6V0D1,ATPase H+ transporting V0 subunit d1 [Source:HGNC Symbol;Acc:HGNC:13724],20,6,0.001568256,0.017109132,Overexpressed
+8795,TNFRSF10B,TNF receptor superfamily member 10b [Source:HGNC Symbol;Acc:HGNC:11905],20,6,0.001568256,0.017150259,Overexpressed
+80232,WDR26,WD repeat domain 26 [Source:HGNC Symbol;Acc:HGNC:21208],20,6,0.001568256,0.017191585,Overexpressed
+7905,REEP5,receptor accessory protein 5 [Source:HGNC Symbol;Acc:HGNC:30077],20,6,0.001568256,0.017233111,Overexpressed
+7763,ZFAND5,zinc finger AN1-type containing 5 [Source:HGNC Symbol;Acc:HGNC:13008],20,6,0.001568256,0.017274838,Overexpressed
+7474,WNT5A,Wnt family member 5A [Source:HGNC Symbol;Acc:HGNC:12784],20,6,0.001568256,0.017316767,Overexpressed
+7328,UBE2H,ubiquitin conjugating enzyme E2 H [Source:HGNC Symbol;Acc:HGNC:12484],20,6,0.001568256,0.0173589,Overexpressed
+7169,TPM2,tropomyosin 2 [Source:HGNC Symbol;Acc:HGNC:12011],20,6,0.001568256,0.017401239,Overexpressed
+6892,TAPBP,TAP binding protein [Source:HGNC Symbol;Acc:HGNC:11566],20,6,0.001568256,0.017443785,Overexpressed
+91775,NXPE3,neurexophilin and PC-esterase domain family member 3 [Source:HGNC Symbol;Acc:HGNC:28238],14,5,0.001640363,0.017452066,Overexpressed
+64750,SMURF2,SMAD specific E3 ubiquitin protein ligase 2 [Source:HGNC Symbol;Acc:HGNC:16809],20,6,0.001568256,0.017486539,Overexpressed
+79837,PIP4K2C,phosphatidylinositol-5-phosphate 4-kinase type 2 gamma [Source:HGNC Symbol;Acc:HGNC:23786],14,5,0.001640363,0.017492559,Overexpressed
+6237,RRAS,RAS related [Source:HGNC Symbol;Acc:HGNC:10447],20,6,0.001568256,0.017529503,Overexpressed
+6884,TAF13,TATA-box binding protein associated factor 13 [Source:HGNC Symbol;Acc:HGNC:11546],14,5,0.001640363,0.017533239,Overexpressed
+58472,SQOR,sulfide quinone oxidoreductase [Source:HGNC Symbol;Acc:HGNC:20390],20,6,0.001568256,0.01757268,Overexpressed
+57088,PLSCR4,phospholipid scramblase 4 [Source:HGNC Symbol;Acc:HGNC:16497],14,5,0.001640363,0.017574109,Overexpressed
+56128,PCDHB8,protocadherin beta 8 [Source:HGNC Symbol;Acc:HGNC:8693],14,5,0.001640363,0.01761517,Overexpressed
+57659,ZBTB4,zinc finger and BTB domain containing 4 [Source:HGNC Symbol;Acc:HGNC:23847],20,6,0.001568256,0.017616069,Overexpressed
+55129,ANO10,anoctamin 10 [Source:HGNC Symbol;Acc:HGNC:25519],14,5,0.001640363,0.017656423,Overexpressed
+57556,SEMA6A,semaphorin 6A [Source:HGNC Symbol;Acc:HGNC:10738],20,6,0.001568256,0.017659673,Overexpressed
+55106,SLFN12,schlafen family member 12 [Source:HGNC Symbol;Acc:HGNC:25500],14,5,0.001640363,0.01769787,Overexpressed
+57493,HEG1,heart development protein with EGF like domains 1 [Source:HGNC Symbol;Acc:HGNC:29227],20,6,0.001568256,0.017703494,Overexpressed
+388115,CCDC9B,coiled-coil domain containing 9B [Source:HGNC Symbol;Acc:HGNC:33488],14,5,0.001640363,0.017739512,Overexpressed
+57153,SLC44A2,solute carrier family 44 member 2 [Source:HGNC Symbol;Acc:HGNC:17292],20,6,0.001568256,0.017747532,Overexpressed
+344148,NCKAP5,NCK associated protein 5 [Source:HGNC Symbol;Acc:HGNC:29847],14,5,0.001640363,0.017781351,Overexpressed
+5648,MASP1,mannan binding lectin serine peptidase 1 [Source:HGNC Symbol;Acc:HGNC:6901],20,6,0.001568256,0.01779179,Overexpressed
+29967,LRP12,LDL receptor related protein 12 [Source:HGNC Symbol;Acc:HGNC:31708],14,5,0.001640363,0.017823387,Overexpressed
+54947,LPCAT2,lysophosphatidylcholine acyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:26032],20,6,0.001568256,0.01783627,Overexpressed
+291,SLC25A4,solute carrier family 25 member 4 [Source:HGNC Symbol;Acc:HGNC:10990],14,5,0.001640363,0.017865623,Overexpressed
+51635,DHRS7,dehydrogenase/reductase 7 [Source:HGNC Symbol;Acc:HGNC:21524],20,6,0.001568256,0.017880972,Overexpressed
+126820,WDR63,WD repeat domain 63 [Source:HGNC Symbol;Acc:HGNC:30711],14,5,0.001640363,0.017908059,Overexpressed
+51573,GDE1,glycerophosphodiester phosphodiesterase 1 [Source:HGNC Symbol;Acc:HGNC:29644],20,6,0.001568256,0.017925899,Overexpressed
+1029,CDKN2A,cyclin dependent kinase inhibitor 2A [Source:HGNC Symbol;Acc:HGNC:1787],14,5,0.001640363,0.017950697,Overexpressed
+4638,MYLK,myosin light chain kinase [Source:HGNC Symbol;Acc:HGNC:7590],20,6,0.001568256,0.017971053,Overexpressed
+412,STS,steroid sulfatase [Source:HGNC Symbol;Acc:HGNC:11425],20,6,0.001568256,0.018016434,Overexpressed
+4015,LOX,lysyl oxidase [Source:HGNC Symbol;Acc:HGNC:6664],20,6,0.001568256,0.018062045,Overexpressed
+390,RND3,Rho family GTPase 3 [Source:HGNC Symbol;Acc:HGNC:671],20,6,0.001568256,0.018107888,Overexpressed
+378,ARF4,ADP ribosylation factor 4 [Source:HGNC Symbol;Acc:HGNC:655],20,6,0.001568256,0.018153964,Overexpressed
+3693,ITGB5,integrin subunit beta 5 [Source:HGNC Symbol;Acc:HGNC:6160],20,6,0.001568256,0.018200275,Overexpressed
+3685,ITGAV,integrin subunit alpha V [Source:HGNC Symbol;Acc:HGNC:6150],20,6,0.001568256,0.018246823,Overexpressed
+3673,ITGA2,integrin subunit alpha 2 [Source:HGNC Symbol;Acc:HGNC:6137],20,6,0.001568256,0.01829361,Overexpressed
+347735,SERINC2,serine incorporator 2 [Source:HGNC Symbol;Acc:HGNC:23231],20,6,0.001568256,0.018340637,Overexpressed
+307,ANXA4,annexin A4 [Source:HGNC Symbol;Acc:HGNC:542],20,6,0.001568256,0.018387907,Overexpressed
+2804,GOLGB1,golgin B1 [Source:HGNC Symbol;Acc:HGNC:4429],20,6,0.001568256,0.018435421,Overexpressed
+2673,GFPT1,glutamine--fructose-6-phosphate transaminase 1 [Source:HGNC Symbol;Acc:HGNC:4241],20,6,0.001568256,0.018483181,Overexpressed
+26123,TCTN3,tectonic family member 3 [Source:HGNC Symbol;Acc:HGNC:24519],20,6,0.001568256,0.018531189,Overexpressed
+26064,RAI14,retinoic acid induced 14 [Source:HGNC Symbol;Acc:HGNC:14873],20,6,0.001568256,0.018579448,Overexpressed
+22808,MRAS,muscle RAS oncogene homolog [Source:HGNC Symbol;Acc:HGNC:7227],20,6,0.001568256,0.018627958,Overexpressed
+2202,EFEMP1,EGF containing fibulin extracellular matrix protein 1 [Source:HGNC Symbol;Acc:HGNC:3218],20,6,0.001568256,0.018676722,Overexpressed
+1318,SLC31A2,solute carrier family 31 member 2 [Source:HGNC Symbol;Acc:HGNC:11017],20,6,0.001568256,0.018725743,Overexpressed
+115817,DHRS1,dehydrogenase/reductase 1 [Source:HGNC Symbol;Acc:HGNC:16445],20,6,0.001568256,0.018775021,Overexpressed
+112770,GLMP,glycosylated lysosomal membrane protein [Source:HGNC Symbol;Acc:HGNC:29436],20,6,0.001568256,0.018824559,Overexpressed
+11221,DUSP10,dual specificity phosphatase 10 [Source:HGNC Symbol;Acc:HGNC:3065],20,6,0.001568256,0.01887436,Overexpressed
+10966,RAB40B,"RAB40B, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:18284]",20,6,0.001568256,0.018924424,Overexpressed
+10397,NDRG1,N-myc downstream regulated 1 [Source:HGNC Symbol;Acc:HGNC:7679],20,6,0.001568256,0.018974755,Overexpressed
+64114,TMBIM1,transmembrane BAX inhibitor motif containing 1 [Source:HGNC Symbol;Acc:HGNC:23410],9,4,0.001952841,0.021567754,Overexpressed
+7168,TPM1,tropomyosin 1 [Source:HGNC Symbol;Acc:HGNC:12010],21,6,0.002071502,0.023027974,Overexpressed
+3913,LAMB2,laminin subunit beta 2 [Source:HGNC Symbol;Acc:HGNC:6487],21,6,0.002071502,0.023080911,Overexpressed
+2034,EPAS1,endothelial PAS domain protein 1 [Source:HGNC Symbol;Acc:HGNC:3374],21,6,0.002071502,0.023134093,Overexpressed
+9123,SLC16A3,solute carrier family 16 member 3 [Source:HGNC Symbol;Acc:HGNC:10924],15,5,0.002324938,0.024932101,Overexpressed
+90411,MCFD2,multiple coagulation factor deficiency 2 [Source:HGNC Symbol;Acc:HGNC:18451],15,5,0.002324938,0.02498595,Overexpressed
+8974,P4HA2,prolyl 4-hydroxylase subunit alpha 2 [Source:HGNC Symbol;Acc:HGNC:8547],15,5,0.002324938,0.025040032,Overexpressed
+84709,MGARP,mitochondria localized glutamic acid rich protein [Source:HGNC Symbol;Acc:HGNC:29969],15,5,0.002324938,0.025094349,Overexpressed
+83657,DYNLRB2,dynein light chain roadblock-type 2 [Source:HGNC Symbol;Acc:HGNC:15467],15,5,0.002324938,0.025148902,Overexpressed
+80380,PDCD1LG2,programmed cell death 1 ligand 2 [Source:HGNC Symbol;Acc:HGNC:18731],15,5,0.002324938,0.025203693,Overexpressed
+80328,ULBP2,UL16 binding protein 2 [Source:HGNC Symbol;Acc:HGNC:14894],15,5,0.002324938,0.025258723,Overexpressed
+718,C3,complement C3 [Source:HGNC Symbol;Acc:HGNC:1318],15,5,0.002324938,0.025313993,Overexpressed
+57205,ATP10D,ATPase phospholipid transporting 10D (putative) [Source:HGNC Symbol;Acc:HGNC:13549],15,5,0.002324938,0.025369507,Overexpressed
+57192,MCOLN1,mucolipin 1 [Source:HGNC Symbol;Acc:HGNC:13356],15,5,0.002324938,0.025425264,Overexpressed
+56851,EMC7,ER membrane protein complex subunit 7 [Source:HGNC Symbol;Acc:HGNC:24301],15,5,0.002324938,0.025481266,Overexpressed
+55959,SULF2,sulfatase 2 [Source:HGNC Symbol;Acc:HGNC:20392],15,5,0.002324938,0.025537516,Overexpressed
+55313,CPPED1,calcineurin like phosphoesterase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25632],15,5,0.002324938,0.025594015,Overexpressed
+5476,CTSA,cathepsin A [Source:HGNC Symbol;Acc:HGNC:9251],15,5,0.002324938,0.025650765,Overexpressed
+54682,MANSC1,MANSC domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25505],15,5,0.002324938,0.025707767,Overexpressed
+54480,CHPF2,chondroitin polymerizing factor 2 [Source:HGNC Symbol;Acc:HGNC:29270],15,5,0.002324938,0.025765022,Overexpressed
+51513,ETV7,ETS variant 7 [Source:HGNC Symbol;Acc:HGNC:18160],15,5,0.002324938,0.025822533,Overexpressed
+387763,C11orf96,chromosome 11 open reading frame 96 [Source:HGNC Symbol;Acc:HGNC:38675],15,5,0.002324938,0.025880302,Overexpressed
+3437,IFIT3,interferon induced protein with tetratricopeptide repeats 3 [Source:HGNC Symbol;Acc:HGNC:5411],15,5,0.002324938,0.02593833,Overexpressed
+3106,HLA-B,"major histocompatibility complex, class I, B [Source:HGNC Symbol;Acc:HGNC:4932]",15,5,0.002324938,0.025996618,Overexpressed
+272,AMPD3,adenosine monophosphate deaminase 3 [Source:HGNC Symbol;Acc:HGNC:470],15,5,0.002324938,0.026055169,Overexpressed
+22911,WDR47,WD repeat domain 47 [Source:HGNC Symbol;Acc:HGNC:29141],15,5,0.002324938,0.026113984,Overexpressed
+221662,RBM24,RNA binding motif protein 24 [Source:HGNC Symbol;Acc:HGNC:21539],15,5,0.002324938,0.026173066,Overexpressed
+1606,DGKA,diacylglycerol kinase alpha [Source:HGNC Symbol;Acc:HGNC:2849],15,5,0.002324938,0.026232415,Overexpressed
+147685,C19orf18,chromosome 19 open reading frame 18 [Source:HGNC Symbol;Acc:HGNC:28642],15,5,0.002324938,0.026292034,Overexpressed
+140606,SELENOM,selenoprotein M [Source:HGNC Symbol;Acc:HGNC:30397],15,5,0.002324938,0.026351925,Overexpressed
+131583,FAM43A,family with sequence similarity 43 member A [Source:HGNC Symbol;Acc:HGNC:26888],15,5,0.002324938,0.026412089,Overexpressed
+1008,CDH10,cadherin 10 [Source:HGNC Symbol;Acc:HGNC:1749],15,5,0.002324938,0.026472529,Overexpressed
+9751,SNPH,syntaphilin [Source:HGNC Symbol;Acc:HGNC:15931],16,5,0.003195709,0.035031368,Overexpressed
+9644,SH3PXD2A,SH3 and PX domains 2A [Source:HGNC Symbol;Acc:HGNC:23664],16,5,0.003195709,0.035103301,Overexpressed
+347273,CAVIN4,caveolae associated protein 4 [Source:HGNC Symbol;Acc:HGNC:33742],10,4,0.003081857,0.035162806,Overexpressed
+92737,DNER,delta/notch like EGF repeat containing [Source:HGNC Symbol;Acc:HGNC:24456],16,5,0.003195709,0.03517553,Overexpressed
+92565,FANK1,fibronectin type III and ankyrin repeat domains 1 [Source:HGNC Symbol;Acc:HGNC:23527],16,5,0.003195709,0.035248057,Overexpressed
+92255,LMBRD2,LMBR1 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25287],16,5,0.003195709,0.035320883,Overexpressed
+858,CAV2,caveolin 2 [Source:HGNC Symbol;Acc:HGNC:1528],16,5,0.003195709,0.035394011,Overexpressed
+84419,C15orf48,chromosome 15 open reading frame 48 [Source:HGNC Symbol;Acc:HGNC:29898],16,5,0.003195709,0.035467443,Overexpressed
+7345,UCHL1,ubiquitin C-terminal hydrolase L1 [Source:HGNC Symbol;Acc:HGNC:12513],16,5,0.003195709,0.03554118,Overexpressed
+59353,TMEM35A,transmembrane protein 35A [Source:HGNC Symbol;Acc:HGNC:25864],16,5,0.003195709,0.035615224,Overexpressed
+58480,RHOU,ras homolog family member U [Source:HGNC Symbol;Acc:HGNC:17794],16,5,0.003195709,0.035689577,Overexpressed
+5654,HTRA1,HtrA serine peptidase 1 [Source:HGNC Symbol;Acc:HGNC:9476],16,5,0.003195709,0.035764242,Overexpressed
+56133,PCDHB2,protocadherin beta 2 [Source:HGNC Symbol;Acc:HGNC:8687],16,5,0.003195709,0.035839219,Overexpressed
+4314,MMP3,matrix metallopeptidase 3 [Source:HGNC Symbol;Acc:HGNC:7173],16,5,0.003195709,0.035914512,Overexpressed
+3988,LIPA,"lipase A, lysosomal acid type [Source:HGNC Symbol;Acc:HGNC:6617]",16,5,0.003195709,0.035990121,Overexpressed
+3627,CXCL10,C-X-C motif chemokine ligand 10 [Source:HGNC Symbol;Acc:HGNC:10637],16,5,0.003195709,0.03606605,Overexpressed
+3383,ICAM1,intercellular adhesion molecule 1 [Source:HGNC Symbol;Acc:HGNC:5344],16,5,0.003195709,0.036142299,Overexpressed
+283130,SLC25A45,solute carrier family 25 member 45 [Source:HGNC Symbol;Acc:HGNC:27442],16,5,0.003195709,0.036218872,Overexpressed
+26994,RNF11,ring finger protein 11 [Source:HGNC Symbol;Acc:HGNC:10056],16,5,0.003195709,0.03629577,Overexpressed
+23780,APOL2,apolipoprotein L2 [Source:HGNC Symbol;Acc:HGNC:619],16,5,0.003195709,0.036372995,Overexpressed
+23158,TBC1D9,TBC1 domain family member 9 [Source:HGNC Symbol;Acc:HGNC:21710],16,5,0.003195709,0.036450549,Overexpressed
+203259,FAM219A,family with sequence similarity 219 member A [Source:HGNC Symbol;Acc:HGNC:19920],16,5,0.003195709,0.036528435,Overexpressed
+158038,LINGO2,leucine rich repeat and Ig domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21207],16,5,0.003195709,0.036606654,Overexpressed
+113146,AHNAK2,AHNAK nucleoprotein 2 [Source:HGNC Symbol;Acc:HGNC:20125],16,5,0.003195709,0.036685209,Overexpressed
+9144,SYNGR2,synaptogyrin 2 [Source:HGNC Symbol;Acc:HGNC:11499],17,5,0.004278705,0.046503267,Overexpressed
+83464,APH1B,"aph-1 homolog B, gamma-secretase subunit [Source:HGNC Symbol;Acc:HGNC:24080]",17,5,0.004278705,0.046591844,Overexpressed
+80210,ARMC9,armadillo repeat containing 9 [Source:HGNC Symbol;Acc:HGNC:20730],17,5,0.004278705,0.04668076,Overexpressed
+7857,SCG2,secretogranin II [Source:HGNC Symbol;Acc:HGNC:10575],17,5,0.004278705,0.046770016,Overexpressed
+7844,RNF103,ring finger protein 103 [Source:HGNC Symbol;Acc:HGNC:12859],17,5,0.004278705,0.046859614,Overexpressed
+7098,TLR3,toll like receptor 3 [Source:HGNC Symbol;Acc:HGNC:11849],17,5,0.004278705,0.046949555,Overexpressed
+685,BTC,betacellulin [Source:HGNC Symbol;Acc:HGNC:1121],17,5,0.004278705,0.047039843,Overexpressed
+64374,SIL1,SIL1 nucleotide exchange factor [Source:HGNC Symbol;Acc:HGNC:24624],17,5,0.004278705,0.047130478,Overexpressed
+64135,IFIH1,interferon induced with helicase C domain 1 [Source:HGNC Symbol;Acc:HGNC:18873],17,5,0.004278705,0.047221464,Overexpressed
+57157,PHTF2,putative homeodomain transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:13411],17,5,0.004278705,0.047312801,Overexpressed
+55971,BAIAP2L1,BAI1 associated protein 2 like 1 [Source:HGNC Symbol;Acc:HGNC:21649],17,5,0.004278705,0.047404493,Overexpressed
+54805,CNNM2,cyclin and CBS domain divalent metal cation transport mediator 2 [Source:HGNC Symbol;Acc:HGNC:103],17,5,0.004278705,0.04749654,Overexpressed
+5420,PODXL,podocalyxin like [Source:HGNC Symbol;Acc:HGNC:9171],17,5,0.004278705,0.047588946,Overexpressed
+50650,ARHGEF3,Rho guanine nucleotide exchange factor 3 [Source:HGNC Symbol;Acc:HGNC:683],17,5,0.004278705,0.047681712,Overexpressed
+50617,ATP6V0A4,ATPase H+ transporting V0 subunit a4 [Source:HGNC Symbol;Acc:HGNC:866],17,5,0.004278705,0.04777484,Overexpressed
+492311,IGIP,IgA inducing protein [Source:HGNC Symbol;Acc:HGNC:33847],17,5,0.004278705,0.047868333,Overexpressed
+4675,NAP1L3,nucleosome assembly protein 1 like 3 [Source:HGNC Symbol;Acc:HGNC:7639],17,5,0.004278705,0.047962193,Overexpressed
+441631,TSPAN11,tetraspanin 11 [Source:HGNC Symbol;Acc:HGNC:30795],17,5,0.004278705,0.048056421,Overexpressed
+4232,MEST,mesoderm specific transcript [Source:HGNC Symbol;Acc:HGNC:7028],17,5,0.004278705,0.04815102,Overexpressed
+401474,SAMD12,sterile alpha motif domain containing 12 [Source:HGNC Symbol;Acc:HGNC:31750],17,5,0.004278705,0.048245993,Overexpressed
+399694,SHC4,SHC adaptor protein 4 [Source:HGNC Symbol;Acc:HGNC:16743],17,5,0.004278705,0.04834134,Overexpressed
+386618,KCTD4,potassium channel tetramerization domain containing 4 [Source:HGNC Symbol;Acc:HGNC:23227],17,5,0.004278705,0.048437066,Overexpressed
+27175,TUBG2,tubulin gamma 2 [Source:HGNC Symbol;Acc:HGNC:12419],17,5,0.004278705,0.048533171,Overexpressed
+26270,FBXO6,F-box protein 6 [Source:HGNC Symbol;Acc:HGNC:13585],17,5,0.004278705,0.048629659,Overexpressed
+26037,SIPA1L1,signal induced proliferation associated 1 like 1 [Source:HGNC Symbol;Acc:HGNC:20284],17,5,0.004278705,0.04872653,Overexpressed
+23639,LRRC6,leucine rich repeat containing 6 [Source:HGNC Symbol;Acc:HGNC:16725],17,5,0.004278705,0.048823789,Overexpressed
+23213,SULF1,sulfatase 1 [Source:HGNC Symbol;Acc:HGNC:20391],17,5,0.004278705,0.048921437,Overexpressed
+22999,RIMS1,regulating synaptic membrane exocytosis 1 [Source:HGNC Symbol;Acc:HGNC:17282],17,5,0.004278705,0.049019475,Overexpressed
+222663,SCUBE3,"signal peptide, CUB domain and EGF like domain containing 3 [Source:HGNC Symbol;Acc:HGNC:13655]",17,5,0.004278705,0.049117908,Overexpressed
+220213,OTUD1,OTU deubiquitinase 1 [Source:HGNC Symbol;Acc:HGNC:27346],17,5,0.004278705,0.049216737,Overexpressed
+220002,CYB561A3,cytochrome b561 family member A3 [Source:HGNC Symbol;Acc:HGNC:23014],17,5,0.004278705,0.049315964,Overexpressed
+21,ABCA3,ATP binding cassette subfamily A member 3 [Source:HGNC Symbol;Acc:HGNC:33],17,5,0.004278705,0.049415592,Overexpressed
+1734,DIO2,iodothyronine deiodinase 2 [Source:HGNC Symbol;Acc:HGNC:2884],17,5,0.004278705,0.049515624,Overexpressed
+1643,DDB2,damage specific DNA binding protein 2 [Source:HGNC Symbol;Acc:HGNC:2718],17,5,0.004278705,0.049616061,Overexpressed
+162073,ITPRIPL2,ITPRIP like 2 [Source:HGNC Symbol;Acc:HGNC:27257],17,5,0.004278705,0.049716907,Overexpressed
+10628,TXNIP,thioredoxin interacting protein [Source:HGNC Symbol;Acc:HGNC:16952],17,5,0.004278705,0.049818163,Overexpressed
+10410,IFITM3,interferon induced transmembrane protein 3 [Source:HGNC Symbol;Acc:HGNC:5414],17,5,0.004278705,0.049919833,Overexpressed
+10085,EDIL3,EGF like repeats and discoidin domains 3 [Source:HGNC Symbol;Acc:HGNC:3173],17,5,0.004278705,0.050021919,Overexpressed
+55872,PBK,PDZ binding kinase [Source:HGNC Symbol;Acc:HGNC:18282],20,13,9.25E-11,7.66E-09,Underexpressed
+9156,EXO1,exonuclease 1 [Source:HGNC Symbol;Acc:HGNC:3511],21,13,2.26E-10,1.12E-08,Underexpressed
+890,CCNA2,cyclin A2 [Source:HGNC Symbol;Acc:HGNC:1578],21,13,2.26E-10,1.49E-08,Underexpressed
+54892,NCAPG2,non-SMC condensin II complex subunit G2 [Source:HGNC Symbol;Acc:HGNC:21904],20,13,9.25E-11,1.53E-08,Underexpressed
+83540,NUF2,"NUF2, NDC80 kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:14621]",19,12,8.16E-10,2.59E-08,Underexpressed
+51203,NUSAP1,nucleolar and spindle associated protein 1 [Source:HGNC Symbol;Acc:HGNC:18538],19,12,8.16E-10,2.96E-08,Underexpressed
+221150,SKA3,spindle and kinetochore associated complex subunit 3 [Source:HGNC Symbol;Acc:HGNC:20262],19,12,8.16E-10,3.45E-08,Underexpressed
+10460,TACC3,transforming acidic coiled-coil containing protein 3 [Source:HGNC Symbol;Acc:HGNC:11524],19,12,8.16E-10,4.14E-08,Underexpressed
+6790,AURKA,aurora kinase A [Source:HGNC Symbol;Acc:HGNC:11393],20,12,1.90E-09,4.74E-08,Underexpressed
+65008,MRPL1,mitochondrial ribosomal protein L1 [Source:HGNC Symbol;Acc:HGNC:14275],20,12,1.90E-09,5.17E-08,Underexpressed
+55355,HJURP,Holliday junction recognition protein [Source:HGNC Symbol;Acc:HGNC:25444],20,12,1.90E-09,5.68E-08,Underexpressed
+4085,MAD2L1,mitotic arrest deficient 2 like 1 [Source:HGNC Symbol;Acc:HGNC:6763],20,12,1.90E-09,6.32E-08,Underexpressed
+7083,TK1,thymidine kinase 1 [Source:HGNC Symbol;Acc:HGNC:11830],21,12,4.13E-09,1.11E-07,Underexpressed
+83879,CDCA7,cell division cycle associated 7 [Source:HGNC Symbol;Acc:HGNC:14628],18,11,7.00E-09,1.80E-07,Underexpressed
+699,BUB1,BUB1 mitotic checkpoint serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:1148],18,11,7.00E-09,1.93E-07,Underexpressed
+9833,MELK,maternal embryonic leucine zipper kinase [Source:HGNC Symbol;Acc:HGNC:16870],19,11,1.55E-08,3.17E-07,Underexpressed
+983,CDK1,cyclin dependent kinase 1 [Source:HGNC Symbol;Acc:HGNC:1722],19,11,1.55E-08,3.32E-07,Underexpressed
+7272,TTK,TTK protein kinase [Source:HGNC Symbol;Acc:HGNC:12401],19,11,1.55E-08,3.49E-07,Underexpressed
+54443,ANLN,anillin actin binding protein [Source:HGNC Symbol;Acc:HGNC:14082],19,11,1.55E-08,3.67E-07,Underexpressed
+51514,DTL,denticleless E3 ubiquitin protein ligase homolog [Source:HGNC Symbol;Acc:HGNC:30288],19,11,1.55E-08,3.88E-07,Underexpressed
+4172,MCM3,minichromosome maintenance complex component 3 [Source:HGNC Symbol;Acc:HGNC:6945],19,11,1.55E-08,4.11E-07,Underexpressed
+332,BIRC5,baculoviral IAP repeat containing 5 [Source:HGNC Symbol;Acc:HGNC:593],19,11,1.55E-08,4.36E-07,Underexpressed
+9319,TRIP13,thyroid hormone receptor interactor 13 [Source:HGNC Symbol;Acc:HGNC:12307],20,11,3.21E-08,6.41E-07,Underexpressed
+79682,CENPU,centromere protein U [Source:HGNC Symbol;Acc:HGNC:21348],20,11,3.21E-08,6.67E-07,Underexpressed
+29028,ATAD2,"ATPase family, AAA domain containing 2 [Source:HGNC Symbol;Acc:HGNC:30123]",20,11,3.21E-08,6.95E-07,Underexpressed
+11130,ZWINT,ZW10 interacting kinetochore protein [Source:HGNC Symbol;Acc:HGNC:13195],20,11,3.21E-08,7.25E-07,Underexpressed
+9768,PCLAF,PCNA clamp associated factor [Source:HGNC Symbol;Acc:HGNC:28961],21,11,6.29E-08,1.06E-06,Underexpressed
+9493,KIF23,kinesin family member 23 [Source:HGNC Symbol;Acc:HGNC:6392],21,11,6.29E-08,1.09E-06,Underexpressed
+7913,DEK,DEK proto-oncogene [Source:HGNC Symbol;Acc:HGNC:2768],21,11,6.29E-08,1.13E-06,Underexpressed
+7570,ZNF22,zinc finger protein 22 [Source:HGNC Symbol;Acc:HGNC:13012],21,11,6.29E-08,1.16E-06,Underexpressed
+6241,RRM2,ribonucleotide reductase regulatory subunit M2 [Source:HGNC Symbol;Acc:HGNC:10452],21,11,6.29E-08,1.20E-06,Underexpressed
+9353,SLIT2,slit guidance ligand 2 [Source:HGNC Symbol;Acc:HGNC:11086],17,10,5.81E-08,1.21E-06,Underexpressed
+11065,UBE2C,ubiquitin conjugating enzyme E2 C [Source:HGNC Symbol;Acc:HGNC:15937],21,11,6.29E-08,1.24E-06,Underexpressed
+22974,TPX2,"TPX2, microtubule nucleation factor [Source:HGNC Symbol;Acc:HGNC:1249]",17,10,5.81E-08,1.25E-06,Underexpressed
+10606,PAICS,phosphoribosylaminoimidazole carboxylase and phosphoribosylaminoimidazolesuccinocarboxamide synthase [Source:HGNC Symbol;Acc:HGNC:8587],21,11,6.29E-08,1.28E-06,Underexpressed
+89958,SAPCD2,suppressor APC domain containing 2 [Source:HGNC Symbol;Acc:HGNC:28055],18,10,1.22E-07,2.00E-06,Underexpressed
+55055,ZWILCH,zwilch kinetochore protein [Source:HGNC Symbol;Acc:HGNC:25468],18,10,1.22E-07,2.05E-06,Underexpressed
+4288,MKI67,marker of proliferation Ki-67 [Source:HGNC Symbol;Acc:HGNC:7107],18,10,1.22E-07,2.11E-06,Underexpressed
+3015,H2AFZ,H2A histone family member Z [Source:HGNC Symbol;Acc:HGNC:4741],18,10,1.22E-07,2.16E-06,Underexpressed
+157313,CDCA2,cell division cycle associated 2 [Source:HGNC Symbol;Acc:HGNC:14623],18,10,1.22E-07,2.22E-06,Underexpressed
+1063,CENPF,centromere protein F [Source:HGNC Symbol;Acc:HGNC:1857],18,10,1.22E-07,2.28E-06,Underexpressed
+9787,DLGAP5,DLG associated protein 5 [Source:HGNC Symbol;Acc:HGNC:16864],19,10,2.40E-07,2.89E-06,Underexpressed
+86,ACTL6A,actin like 6A [Source:HGNC Symbol;Acc:HGNC:24124],19,10,2.40E-07,2.93E-06,Underexpressed
+84823,LMNB2,lamin B2 [Source:HGNC Symbol;Acc:HGNC:6638],19,10,2.40E-07,2.98E-06,Underexpressed
+8318,CDC45,cell division cycle 45 [Source:HGNC Symbol;Acc:HGNC:1739],19,10,2.40E-07,3.03E-06,Underexpressed
+79019,CENPM,centromere protein M [Source:HGNC Symbol;Acc:HGNC:18352],19,10,2.40E-07,3.08E-06,Underexpressed
+7153,TOP2A,DNA topoisomerase II alpha [Source:HGNC Symbol;Acc:HGNC:11989],19,10,2.40E-07,3.13E-06,Underexpressed
+5902,RANBP1,RAN binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9847],19,10,2.40E-07,3.19E-06,Underexpressed
+56944,OLFML3,olfactomedin like 3 [Source:HGNC Symbol;Acc:HGNC:24956],19,10,2.40E-07,3.24E-06,Underexpressed
+55215,FANCI,Fanconi anemia complementation group I [Source:HGNC Symbol;Acc:HGNC:25568],19,10,2.40E-07,3.30E-06,Underexpressed
+4605,MYBL2,MYB proto-oncogene like 2 [Source:HGNC Symbol;Acc:HGNC:7548],19,10,2.40E-07,3.36E-06,Underexpressed
+3838,KPNA2,karyopherin subunit alpha 2 [Source:HGNC Symbol;Acc:HGNC:6395],19,10,2.40E-07,3.42E-06,Underexpressed
+3832,KIF11,kinesin family member 11 [Source:HGNC Symbol;Acc:HGNC:6388],19,10,2.40E-07,3.49E-06,Underexpressed
+3070,HELLS,"helicase, lymphoid specific [Source:HGNC Symbol;Acc:HGNC:4861]",19,10,2.40E-07,3.55E-06,Underexpressed
+23397,NCAPH,non-SMC condensin I complex subunit H [Source:HGNC Symbol;Acc:HGNC:1112],19,10,2.40E-07,3.62E-06,Underexpressed
+2237,FEN1,flap structure-specific endonuclease 1 [Source:HGNC Symbol;Acc:HGNC:3650],19,10,2.40E-07,3.70E-06,Underexpressed
+64105,CENPK,centromere protein K [Source:HGNC Symbol;Acc:HGNC:29479],15,9,2.18E-07,3.73E-06,Underexpressed
+219844,HYLS1,"HYLS1, centriolar and ciliogenesis associated [Source:HGNC Symbol;Acc:HGNC:26558]",19,10,2.40E-07,3.77E-06,Underexpressed
+2305,FOXM1,forkhead box M1 [Source:HGNC Symbol;Acc:HGNC:3818],15,9,2.18E-07,3.82E-06,Underexpressed
+116461,TSEN15,tRNA splicing endonuclease subunit 15 [Source:HGNC Symbol;Acc:HGNC:16791],19,10,2.40E-07,3.85E-06,Underexpressed
+10212,DDX39A,DExD-box helicase 39A [Source:HGNC Symbol;Acc:HGNC:17821],15,9,2.18E-07,3.91E-06,Underexpressed
+10615,SPAG5,sperm associated antigen 5 [Source:HGNC Symbol;Acc:HGNC:13452],19,10,2.40E-07,3.93E-06,Underexpressed
+10403,NDC80,"NDC80, kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:16909]",19,10,2.40E-07,4.02E-06,Underexpressed
+1033,CDKN3,cyclin dependent kinase inhibitor 3 [Source:HGNC Symbol;Acc:HGNC:1791],19,10,2.40E-07,4.11E-06,Underexpressed
+2289,FKBP5,FK506 binding protein 5 [Source:HGNC Symbol;Acc:HGNC:3721],12,8,3.36E-07,4.24E-06,Underexpressed
+991,CDC20,cell division cycle 20 [Source:HGNC Symbol;Acc:HGNC:1723],16,9,4.65E-07,4.57E-06,Underexpressed
+9055,PRC1,protein regulator of cytokinesis 1 [Source:HGNC Symbol;Acc:HGNC:9341],16,9,4.65E-07,4.62E-06,Underexpressed
+899,CCNF,cyclin F [Source:HGNC Symbol;Acc:HGNC:1591],16,9,4.65E-07,4.67E-06,Underexpressed
+6749,SSRP1,structure specific recognition protein 1 [Source:HGNC Symbol;Acc:HGNC:11327],16,9,4.65E-07,4.73E-06,Underexpressed
+9212,AURKB,aurora kinase B [Source:HGNC Symbol;Acc:HGNC:11390],20,10,4.49E-07,4.75E-06,Underexpressed
+64151,NCAPG,non-SMC condensin I complex subunit G [Source:HGNC Symbol;Acc:HGNC:24304],16,9,4.65E-07,4.78E-06,Underexpressed
+6636,SNRPF,small nuclear ribonucleoprotein polypeptide F [Source:HGNC Symbol;Acc:HGNC:11162],20,10,4.49E-07,4.81E-06,Underexpressed
+220988,HNRNPA3,heterogeneous nuclear ribonucleoprotein A3 [Source:HGNC Symbol;Acc:HGNC:24941],16,9,4.65E-07,4.84E-06,Underexpressed
+6632,SNRPD1,small nuclear ribonucleoprotein D1 polypeptide [Source:HGNC Symbol;Acc:HGNC:11158],20,10,4.49E-07,4.87E-06,Underexpressed
+200916,RPL22L1,ribosomal protein L22 like 1 [Source:HGNC Symbol;Acc:HGNC:27610],16,9,4.65E-07,4.90E-06,Underexpressed
+6421,SFPQ,splicing factor proline and glutamine rich [Source:HGNC Symbol;Acc:HGNC:10774],20,10,4.49E-07,4.93E-06,Underexpressed
+57122,NUP107,nucleoporin 107 [Source:HGNC Symbol;Acc:HGNC:29914],20,10,4.49E-07,4.99E-06,Underexpressed
+55635,DEPDC1,DEP domain containing 1 [Source:HGNC Symbol;Acc:HGNC:22949],20,10,4.49E-07,5.06E-06,Underexpressed
+55165,CEP55,centrosomal protein 55 [Source:HGNC Symbol;Acc:HGNC:1161],20,10,4.49E-07,5.13E-06,Underexpressed
+51053,GMNN,"geminin, DNA replication inhibitor [Source:HGNC Symbol;Acc:HGNC:17493]",20,10,4.49E-07,5.19E-06,Underexpressed
+51002,TPRKB,TP53RK binding protein [Source:HGNC Symbol;Acc:HGNC:24259],20,10,4.49E-07,5.26E-06,Underexpressed
+4678,NASP,nuclear autoantigenic sperm protein [Source:HGNC Symbol;Acc:HGNC:7644],20,10,4.49E-07,5.34E-06,Underexpressed
+4175,MCM6,minichromosome maintenance complex component 6 [Source:HGNC Symbol;Acc:HGNC:6949],20,10,4.49E-07,5.41E-06,Underexpressed
+4173,MCM4,minichromosome maintenance complex component 4 [Source:HGNC Symbol;Acc:HGNC:6947],20,10,4.49E-07,5.49E-06,Underexpressed
+3184,HNRNPD,heterogeneous nuclear ribonucleoprotein D [Source:HGNC Symbol;Acc:HGNC:5036],20,10,4.49E-07,5.57E-06,Underexpressed
+3178,HNRNPA1,heterogeneous nuclear ribonucleoprotein A1 [Source:HGNC Symbol;Acc:HGNC:5031],20,10,4.49E-07,5.65E-06,Underexpressed
+2146,EZH2,enhancer of zeste 2 polycomb repressive complex 2 subunit [Source:HGNC Symbol;Acc:HGNC:3527],20,10,4.49E-07,5.73E-06,Underexpressed
+10664,CTCF,CCCTC-binding factor [Source:HGNC Symbol;Acc:HGNC:13723],20,10,4.49E-07,5.81E-06,Underexpressed
+10051,SMC4,structural maintenance of chromosomes 4 [Source:HGNC Symbol;Acc:HGNC:14013],20,10,4.49E-07,5.90E-06,Underexpressed
+990,CDC6,cell division cycle 6 [Source:HGNC Symbol;Acc:HGNC:1744],21,10,7.99E-07,8.09E-06,Underexpressed
+8833,GMPS,guanine monophosphate synthase [Source:HGNC Symbol;Acc:HGNC:4378],21,10,7.99E-07,8.18E-06,Underexpressed
+7298,TYMS,thymidylate synthetase [Source:HGNC Symbol;Acc:HGNC:12441],21,10,7.99E-07,8.26E-06,Underexpressed
+7112,TMPO,thymopoietin [Source:HGNC Symbol;Acc:HGNC:11875],21,10,7.99E-07,8.35E-06,Underexpressed
+6387,CXCL12,C-X-C motif chemokine ligand 12 [Source:HGNC Symbol;Acc:HGNC:10672],21,10,7.99E-07,8.44E-06,Underexpressed
+3930,LBR,lamin B receptor [Source:HGNC Symbol;Acc:HGNC:6518],21,10,7.99E-07,8.54E-06,Underexpressed
+10797,MTHFD2,"methylenetetrahydrofolate dehydrogenase (NADP+ dependent) 2, methenyltetrahydrofolate cyclohydrolase [Source:HGNC Symbol;Acc:HGNC:7434]",21,10,7.99E-07,8.63E-06,Underexpressed
+79801,SHCBP1,SHC binding and spindle associated 1 [Source:HGNC Symbol;Acc:HGNC:29547],17,9,9.23E-07,8.87E-06,Underexpressed
+63979,FIGNL1,fidgetin like 1 [Source:HGNC Symbol;Acc:HGNC:13286],17,9,9.23E-07,8.96E-06,Underexpressed
+54821,ERCC6L,"ERCC excision repair 6 like, spindle assembly checkpoint helicase [Source:HGNC Symbol;Acc:HGNC:20794]",17,9,9.23E-07,9.04E-06,Underexpressed
+51659,GINS2,GINS complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:24575],17,9,9.23E-07,9.13E-06,Underexpressed
+29899,GPSM2,G protein signaling modulator 2 [Source:HGNC Symbol;Acc:HGNC:29501],17,9,9.23E-07,9.22E-06,Underexpressed
+220134,SKA1,spindle and kinetochore associated complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:28109],17,9,9.23E-07,9.32E-06,Underexpressed
+10635,RAD51AP1,RAD51 associated protein 1 [Source:HGNC Symbol;Acc:HGNC:16956],17,9,9.23E-07,9.41E-06,Underexpressed
+10024,TROAP,trophinin associated protein [Source:HGNC Symbol;Acc:HGNC:12327],17,9,9.23E-07,9.51E-06,Underexpressed
+9232,PTTG1,pituitary tumor-transforming 1 [Source:HGNC Symbol;Acc:HGNC:9690],18,9,1.72E-06,1.60E-05,Underexpressed
+8317,CDC7,cell division cycle 7 [Source:HGNC Symbol;Acc:HGNC:1745],18,9,1.72E-06,1.61E-05,Underexpressed
+79968,WDR76,WD repeat domain 76 [Source:HGNC Symbol;Acc:HGNC:25773],18,9,1.72E-06,1.62E-05,Underexpressed
+5422,POLA1,"DNA polymerase alpha 1, catalytic subunit [Source:HGNC Symbol;Acc:HGNC:9173]",14,8,1.78E-06,1.63E-05,Underexpressed
+5984,RFC4,replication factor C subunit 4 [Source:HGNC Symbol;Acc:HGNC:9972],18,9,1.72E-06,1.64E-05,Underexpressed
+1058,CENPA,centromere protein A [Source:HGNC Symbol;Acc:HGNC:1851],14,8,1.78E-06,1.64E-05,Underexpressed
+55771,PRR11,proline rich 11 [Source:HGNC Symbol;Acc:HGNC:25619],18,9,1.72E-06,1.65E-05,Underexpressed
+55723,ASF1B,anti-silencing function 1B histone chaperone [Source:HGNC Symbol;Acc:HGNC:20996],18,9,1.72E-06,1.66E-05,Underexpressed
+55646,LYAR,Ly1 antibody reactive [Source:HGNC Symbol;Acc:HGNC:26021],18,9,1.72E-06,1.68E-05,Underexpressed
+5557,PRIM1,DNA primase subunit 1 [Source:HGNC Symbol;Acc:HGNC:9369],18,9,1.72E-06,1.69E-05,Underexpressed
+54478,PIMREG,PICALM interacting mitotic regulator [Source:HGNC Symbol;Acc:HGNC:25483],18,9,1.72E-06,1.71E-05,Underexpressed
+5347,PLK1,polo like kinase 1 [Source:HGNC Symbol;Acc:HGNC:9077],18,9,1.72E-06,1.72E-05,Underexpressed
+5198,PFAS,phosphoribosylformylglycinamidine synthase [Source:HGNC Symbol;Acc:HGNC:8863],18,9,1.72E-06,1.74E-05,Underexpressed
+51444,RNF138,ring finger protein 138 [Source:HGNC Symbol;Acc:HGNC:17765],18,9,1.72E-06,1.75E-05,Underexpressed
+3161,HMMR,hyaluronan mediated motility receptor [Source:HGNC Symbol;Acc:HGNC:5012],18,9,1.72E-06,1.77E-05,Underexpressed
+29089,UBE2T,ubiquitin conjugating enzyme E2 T [Source:HGNC Symbol;Acc:HGNC:25009],18,9,1.72E-06,1.79E-05,Underexpressed
+23165,NUP205,nucleoporin 205 [Source:HGNC Symbol;Acc:HGNC:18658],18,9,1.72E-06,1.80E-05,Underexpressed
+1894,ECT2,epithelial cell transforming 2 [Source:HGNC Symbol;Acc:HGNC:3155],18,9,1.72E-06,1.82E-05,Underexpressed
+11340,EXOSC8,exosome component 8 [Source:HGNC Symbol;Acc:HGNC:17035],18,9,1.72E-06,1.84E-05,Underexpressed
+10541,ANP32B,acidic nuclear phosphoprotein 32 family member B [Source:HGNC Symbol;Acc:HGNC:16677],18,9,1.72E-06,1.85E-05,Underexpressed
+9133,CCNB2,cyclin B2 [Source:HGNC Symbol;Acc:HGNC:1580],19,9,3.06E-06,2.72E-05,Underexpressed
+9128,PRPF4,pre-mRNA processing factor 4 [Source:HGNC Symbol;Acc:HGNC:17349],19,9,3.06E-06,2.74E-05,Underexpressed
+9126,SMC3,structural maintenance of chromosomes 3 [Source:HGNC Symbol;Acc:HGNC:2468],19,9,3.06E-06,2.76E-05,Underexpressed
+89891,WDR34,WD repeat domain 34 [Source:HGNC Symbol;Acc:HGNC:28296],19,9,3.06E-06,2.78E-05,Underexpressed
+84722,PSRC1,proline and serine rich coiled-coil 1 [Source:HGNC Symbol;Acc:HGNC:24472],19,9,3.06E-06,2.80E-05,Underexpressed
+81611,ANP32E,acidic nuclear phosphoprotein 32 family member E [Source:HGNC Symbol;Acc:HGNC:16673],19,9,3.06E-06,2.82E-05,Underexpressed
+79731,NARS2,"asparaginyl-tRNA synthetase 2, mitochondrial [Source:HGNC Symbol;Acc:HGNC:26274]",19,9,3.06E-06,2.84E-05,Underexpressed
+79023,NUP37,nucleoporin 37 [Source:HGNC Symbol;Acc:HGNC:29929],19,9,3.06E-06,2.86E-05,Underexpressed
+64785,GINS3,GINS complex subunit 3 [Source:HGNC Symbol;Acc:HGNC:25851],19,9,3.06E-06,2.88E-05,Underexpressed
+63967,CLSPN,claspin [Source:HGNC Symbol;Acc:HGNC:19715],19,9,3.06E-06,2.90E-05,Underexpressed
+55706,NDC1,NDC1 transmembrane nucleoporin [Source:HGNC Symbol;Acc:HGNC:25525],19,9,3.06E-06,2.93E-05,Underexpressed
+51071,DERA,deoxyribose-phosphate aldolase [Source:HGNC Symbol;Acc:HGNC:24269],19,9,3.06E-06,2.95E-05,Underexpressed
+4953,ODC1,ornithine decarboxylase 1 [Source:HGNC Symbol;Acc:HGNC:8109],19,9,3.06E-06,2.97E-05,Underexpressed
+3833,KIFC1,kinesin family member C1 [Source:HGNC Symbol;Acc:HGNC:6389],19,9,3.06E-06,2.99E-05,Underexpressed
+3148,HMGB2,high mobility group box 2 [Source:HGNC Symbol;Acc:HGNC:5000],19,9,3.06E-06,3.02E-05,Underexpressed
+25886,POC1A,POC1 centriolar protein A [Source:HGNC Symbol;Acc:HGNC:24488],19,9,3.06E-06,3.04E-05,Underexpressed
+1062,CENPE,centromere protein E [Source:HGNC Symbol;Acc:HGNC:1856],19,9,3.06E-06,3.07E-05,Underexpressed
+1031,CDKN2C,cyclin dependent kinase inhibitor 2C [Source:HGNC Symbol;Acc:HGNC:1789],19,9,3.06E-06,3.09E-05,Underexpressed
+55388,MCM10,minichromosome maintenance 10 replication initiation factor [Source:HGNC Symbol;Acc:HGNC:18043],15,8,3.56E-06,3.20E-05,Underexpressed
+51602,NOP58,NOP58 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:29926],15,8,3.56E-06,3.22E-05,Underexpressed
+2178,FANCE,Fanconi anemia complementation group E [Source:HGNC Symbol;Acc:HGNC:3586],15,8,3.56E-06,3.24E-05,Underexpressed
+83461,CDCA3,cell division cycle associated 3 [Source:HGNC Symbol;Acc:HGNC:14624],20,9,5.19E-06,4.38E-05,Underexpressed
+6941,TCF19,transcription factor 19 [Source:HGNC Symbol;Acc:HGNC:11629],20,9,5.19E-06,4.41E-05,Underexpressed
+6428,SRSF3,serine and arginine rich splicing factor 3 [Source:HGNC Symbol;Acc:HGNC:10785],20,9,5.19E-06,4.43E-05,Underexpressed
+5983,RFC3,replication factor C subunit 3 [Source:HGNC Symbol;Acc:HGNC:9971],20,9,5.19E-06,4.46E-05,Underexpressed
+5827,PXMP2,peroxisomal membrane protein 2 [Source:HGNC Symbol;Acc:HGNC:9716],20,9,5.19E-06,4.49E-05,Underexpressed
+5427,POLE2,"DNA polymerase epsilon 2, accessory subunit [Source:HGNC Symbol;Acc:HGNC:9178]",20,9,5.19E-06,4.52E-05,Underexpressed
+51435,SCARA3,scavenger receptor class A member 3 [Source:HGNC Symbol;Acc:HGNC:19000],20,9,5.19E-06,4.55E-05,Underexpressed
+5118,PCOLCE,procollagen C-endopeptidase enhancer [Source:HGNC Symbol;Acc:HGNC:8738],20,9,5.19E-06,4.57E-05,Underexpressed
+5111,PCNA,proliferating cell nuclear antigen [Source:HGNC Symbol;Acc:HGNC:8729],20,9,5.19E-06,4.60E-05,Underexpressed
+4751,NEK2,NIMA related kinase 2 [Source:HGNC Symbol;Acc:HGNC:7745],20,9,5.19E-06,4.63E-05,Underexpressed
+4174,MCM5,minichromosome maintenance complex component 5 [Source:HGNC Symbol;Acc:HGNC:6948],20,9,5.19E-06,4.66E-05,Underexpressed
+3615,IMPDH2,inosine monophosphate dehydrogenase 2 [Source:HGNC Symbol;Acc:HGNC:6053],20,9,5.19E-06,4.69E-05,Underexpressed
+3181,HNRNPA2B1,heterogeneous nuclear ribonucleoprotein A2/B1 [Source:HGNC Symbol;Acc:HGNC:5033],20,9,5.19E-06,4.72E-05,Underexpressed
+3146,HMGB1,high mobility group box 1 [Source:HGNC Symbol;Acc:HGNC:4983],20,9,5.19E-06,4.75E-05,Underexpressed
+26271,FBXO5,F-box protein 5 [Source:HGNC Symbol;Acc:HGNC:13584],20,9,5.19E-06,4.78E-05,Underexpressed
+2091,FBL,fibrillarin [Source:HGNC Symbol;Acc:HGNC:3599],20,9,5.19E-06,4.82E-05,Underexpressed
+165,AEBP1,AE binding protein 1 [Source:HGNC Symbol;Acc:HGNC:303],20,9,5.19E-06,4.85E-05,Underexpressed
+10535,RNASEH2A,ribonuclease H2 subunit A [Source:HGNC Symbol;Acc:HGNC:18518],20,9,5.19E-06,4.88E-05,Underexpressed
+10468,FST,follistatin [Source:HGNC Symbol;Acc:HGNC:3971],20,9,5.19E-06,4.91E-05,Underexpressed
+10236,HNRNPR,heterogeneous nuclear ribonucleoprotein R [Source:HGNC Symbol;Acc:HGNC:5047],20,9,5.19E-06,4.95E-05,Underexpressed
+1019,CDK4,cyclin dependent kinase 4 [Source:HGNC Symbol;Acc:HGNC:1773],20,9,5.19E-06,4.98E-05,Underexpressed
+891,CCNB1,cyclin B1 [Source:HGNC Symbol;Acc:HGNC:1579],16,8,6.66E-06,5.76E-05,Underexpressed
+84057,MND1,meiotic nuclear divisions 1 [Source:HGNC Symbol;Acc:HGNC:24839],16,8,6.66E-06,5.79E-05,Underexpressed
+79902,NUP85,nucleoporin 85 [Source:HGNC Symbol;Acc:HGNC:8734],16,8,6.66E-06,5.83E-05,Underexpressed
+259266,ASPM,abnormal spindle microtubule assembly [Source:HGNC Symbol;Acc:HGNC:19048],16,8,6.66E-06,5.86E-05,Underexpressed
+994,CDC25B,cell division cycle 25B [Source:HGNC Symbol;Acc:HGNC:1726],21,9,8.49E-06,7.48E-05,Underexpressed
+5501,PPP1CC,protein phosphatase 1 catalytic subunit gamma [Source:HGNC Symbol;Acc:HGNC:9283],21,9,8.49E-06,7.52E-05,Underexpressed
+3182,HNRNPAB,heterogeneous nuclear ribonucleoprotein A/B [Source:HGNC Symbol;Acc:HGNC:5034],21,9,8.49E-06,7.56E-05,Underexpressed
+1854,DUT,deoxyuridine triphosphatase [Source:HGNC Symbol;Acc:HGNC:3078],21,9,8.49E-06,7.61E-05,Underexpressed
+1164,CKS2,CDC28 protein kinase regulatory subunit 2 [Source:HGNC Symbol;Acc:HGNC:2000],21,9,8.49E-06,7.65E-05,Underexpressed
+93323,HAUS8,HAUS augmin like complex subunit 8 [Source:HGNC Symbol;Acc:HGNC:30532],17,8,1.18E-05,0.00010164,Underexpressed
+81610,FAM83D,family with sequence similarity 83 member D [Source:HGNC Symbol;Acc:HGNC:16122],17,8,1.18E-05,0.000102178,Underexpressed
+79733,E2F8,E2F transcription factor 8 [Source:HGNC Symbol;Acc:HGNC:24727],17,8,1.18E-05,0.000102722,Underexpressed
+7851,MALL,"mal, T cell differentiation protein like [Source:HGNC Symbol;Acc:HGNC:6818]",17,8,1.18E-05,0.000103271,Underexpressed
+7552,ZNF711,zinc finger protein 711 [Source:HGNC Symbol;Acc:HGNC:13128],17,8,1.18E-05,0.000103826,Underexpressed
+27316,RBMX,"RNA binding motif protein, X-linked [Source:HGNC Symbol;Acc:HGNC:9910]",9,6,1.12E-05,0.000104037,Underexpressed
+701,BUB1B,BUB1 mitotic checkpoint serine/threonine kinase B [Source:HGNC Symbol;Acc:HGNC:1149],17,8,1.18E-05,0.000104387,Underexpressed
+55329,MNS1,meiosis specific nuclear structural 1 [Source:HGNC Symbol;Acc:HGNC:29636],17,8,1.18E-05,0.000104955,Underexpressed
+55143,CDCA8,cell division cycle associated 8 [Source:HGNC Symbol;Acc:HGNC:14629],17,8,1.18E-05,0.000105528,Underexpressed
+4176,MCM7,minichromosome maintenance complex component 7 [Source:HGNC Symbol;Acc:HGNC:6950],17,8,1.18E-05,0.000106108,Underexpressed
+4001,LMNB1,lamin B1 [Source:HGNC Symbol;Acc:HGNC:6637],17,8,1.18E-05,0.000106694,Underexpressed
+2189,FANCG,Fanconi anemia complementation group G [Source:HGNC Symbol;Acc:HGNC:3588],17,8,1.18E-05,0.000107287,Underexpressed
+728833,FAM72D,family with sequence similarity 72 member D [Source:HGNC Symbol;Acc:HGNC:33593],6,5,1.24E-05,0.000107835,Underexpressed
+142,PARP1,poly(ADP-ribose) polymerase 1 [Source:HGNC Symbol;Acc:HGNC:270],17,8,1.18E-05,0.000107886,Underexpressed
+1163,CKS1B,CDC28 protein kinase regulatory subunit 1B [Source:HGNC Symbol;Acc:HGNC:19083],17,8,1.18E-05,0.000108492,Underexpressed
+10196,PRMT3,protein arginine methyltransferase 3 [Source:HGNC Symbol;Acc:HGNC:30163],17,8,1.18E-05,0.000109105,Underexpressed
+8364,HIST1H4C,histone cluster 1 H4 family member c [Source:HGNC Symbol;Acc:HGNC:4787],13,7,1.38E-05,0.000121018,Underexpressed
+389114,ZNF662,zinc finger protein 662 [Source:HGNC Symbol;Acc:HGNC:31930],13,7,1.38E-05,0.000121645,Underexpressed
+24137,KIF4A,kinesin family member 4A [Source:HGNC Symbol;Acc:HGNC:13339],13,7,1.38E-05,0.000122279,Underexpressed
+83990,BRIP1,BRCA1 interacting protein C-terminal helicase 1 [Source:HGNC Symbol;Acc:HGNC:20473],18,8,1.98E-05,0.000173765,Underexpressed
+8208,CHAF1B,chromatin assembly factor 1 subunit B [Source:HGNC Symbol;Acc:HGNC:1911],18,8,1.98E-05,0.000174608,Underexpressed
+6432,SRSF7,serine and arginine rich splicing factor 7 [Source:HGNC Symbol;Acc:HGNC:10789],18,8,1.98E-05,0.00017546,Underexpressed
+5888,RAD51,RAD51 recombinase [Source:HGNC Symbol;Acc:HGNC:9817],18,8,1.98E-05,0.00017632,Underexpressed
+55504,TNFRSF19,TNF receptor superfamily member 19 [Source:HGNC Symbol;Acc:HGNC:11915],18,8,1.98E-05,0.000177189,Underexpressed
+55299,BRIX1,"BRX1, biogenesis of ribosomes [Source:HGNC Symbol;Acc:HGNC:24170]",18,8,1.98E-05,0.000178066,Underexpressed
+338773,TMEM119,transmembrane protein 119 [Source:HGNC Symbol;Acc:HGNC:27884],18,8,1.98E-05,0.000178952,Underexpressed
+26147,PHF19,PHD finger protein 19 [Source:HGNC Symbol;Acc:HGNC:24566],18,8,1.98E-05,0.000179846,Underexpressed
+2521,FUS,FUS RNA binding protein [Source:HGNC Symbol;Acc:HGNC:4010],18,8,1.98E-05,0.00018075,Underexpressed
+195828,ZNF367,zinc finger protein 367 [Source:HGNC Symbol;Acc:HGNC:18320],18,8,1.98E-05,0.000181663,Underexpressed
+1719,DHFR,dihydrofolate reductase [Source:HGNC Symbol;Acc:HGNC:2861],18,8,1.98E-05,0.000182585,Underexpressed
+113130,CDCA5,cell division cycle associated 5 [Source:HGNC Symbol;Acc:HGNC:14626],18,8,1.98E-05,0.000183517,Underexpressed
+11222,MRPL3,mitochondrial ribosomal protein L3 [Source:HGNC Symbol;Acc:HGNC:10379],18,8,1.98E-05,0.000184458,Underexpressed
+84319,CMSS1,cms1 ribosomal small subunit homolog (yeast) [Source:HGNC Symbol;Acc:HGNC:28666],14,7,2.59E-05,0.00023533,Underexpressed
+56992,KIF15,kinesin family member 15 [Source:HGNC Symbol;Acc:HGNC:17273],14,7,2.59E-05,0.000236451,Underexpressed
+387103,CENPW,centromere protein W [Source:HGNC Symbol;Acc:HGNC:21488],14,7,2.59E-05,0.000237582,Underexpressed
+1736,DKC1,dyskerin pseudouridine synthase 1 [Source:HGNC Symbol;Acc:HGNC:2890],14,7,2.59E-05,0.000238724,Underexpressed
+93081,TEX30,testis expressed 30 [Source:HGNC Symbol;Acc:HGNC:25188],19,8,3.20E-05,0.000274906,Underexpressed
+8886,DDX18,DEAD-box helicase 18 [Source:HGNC Symbol;Acc:HGNC:2741],19,8,3.20E-05,0.000276097,Underexpressed
+81929,SEH1L,SEH1 like nucleoporin [Source:HGNC Symbol;Acc:HGNC:30379],19,8,3.20E-05,0.000277297,Underexpressed
+79866,BORA,"bora, aurora kinase A activator [Source:HGNC Symbol;Acc:HGNC:24724]",19,8,3.20E-05,0.000278508,Underexpressed
+7398,USP1,ubiquitin specific peptidase 1 [Source:HGNC Symbol;Acc:HGNC:12607],19,8,3.20E-05,0.000279729,Underexpressed
+6502,SKP2,S-phase kinase associated protein 2 [Source:HGNC Symbol;Acc:HGNC:10901],19,8,3.20E-05,0.000280962,Underexpressed
+63901,FAM111A,family with sequence similarity 111 member A [Source:HGNC Symbol;Acc:HGNC:24725],19,8,3.20E-05,0.000282205,Underexpressed
+6119,RPA3,replication protein A3 [Source:HGNC Symbol;Acc:HGNC:10291],19,8,3.20E-05,0.000283459,Underexpressed
+55632,G2E3,G2/M-phase specific E3 ubiquitin protein ligase [Source:HGNC Symbol;Acc:HGNC:20338],19,8,3.20E-05,0.000284725,Underexpressed
+55319,TMA16,translation machinery associated 16 homolog [Source:HGNC Symbol;Acc:HGNC:25638],19,8,3.20E-05,0.000286001,Underexpressed
+55093,WDYHV1,WDYHV motif containing 1 [Source:HGNC Symbol;Acc:HGNC:25490],19,8,3.20E-05,0.00028729,Underexpressed
+4869,NPM1,nucleophosmin 1 [Source:HGNC Symbol;Acc:HGNC:7910],19,8,3.20E-05,0.00028859,Underexpressed
+440,ASNS,asparagine synthetase (glutamine-hydrolyzing) [Source:HGNC Symbol;Acc:HGNC:753],19,8,3.20E-05,0.000289901,Underexpressed
+3005,H1F0,H1 histone family member 0 [Source:HGNC Symbol;Acc:HGNC:4714],19,8,3.20E-05,0.000291225,Underexpressed
+28960,DCPS,"decapping enzyme, scavenger [Source:HGNC Symbol;Acc:HGNC:29812]",19,8,3.20E-05,0.000292561,Underexpressed
+26586,CKAP2,cytoskeleton associated protein 2 [Source:HGNC Symbol;Acc:HGNC:1990],19,8,3.20E-05,0.000293909,Underexpressed
+1978,EIF4EBP1,eukaryotic translation initiation factor 4E binding protein 1 [Source:HGNC Symbol;Acc:HGNC:3288],19,8,3.20E-05,0.00029527,Underexpressed
+1786,DNMT1,DNA methyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:2976],19,8,3.20E-05,0.000296643,Underexpressed
+113174,SAAL1,serum amyloid A like 1 [Source:HGNC Symbol;Acc:HGNC:25158],19,8,3.20E-05,0.000298029,Underexpressed
+10465,PPIH,peptidylprolyl isomerase H [Source:HGNC Symbol;Acc:HGNC:14651],19,8,3.20E-05,0.000299429,Underexpressed
+1017,CDK2,cyclin dependent kinase 2 [Source:HGNC Symbol;Acc:HGNC:1771],19,8,3.20E-05,0.000300841,Underexpressed
+6472,SHMT2,serine hydroxymethyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:10852],15,7,4.55E-05,0.000413757,Underexpressed
+5176,SERPINF1,serpin family F member 1 [Source:HGNC Symbol;Acc:HGNC:8824],15,7,4.55E-05,0.000415525,Underexpressed
+10112,KIF20A,kinesin family member 20A [Source:HGNC Symbol;Acc:HGNC:9787],15,7,4.55E-05,0.000417309,Underexpressed
+9585,KIF20B,kinesin family member 20B [Source:HGNC Symbol;Acc:HGNC:7212],20,8,4.98E-05,0.000433482,Underexpressed
+90459,ERI1,exoribonuclease 1 [Source:HGNC Symbol;Acc:HGNC:23994],20,8,4.98E-05,0.000435223,Underexpressed
+8835,SOCS2,suppressor of cytokine signaling 2 [Source:HGNC Symbol;Acc:HGNC:19382],20,8,4.98E-05,0.000436978,Underexpressed
+8815,BANF1,barrier to autointegration factor 1 [Source:HGNC Symbol;Acc:HGNC:17397],20,8,4.98E-05,0.000438747,Underexpressed
+6626,SNRPA,small nuclear ribonucleoprotein polypeptide A [Source:HGNC Symbol;Acc:HGNC:11151],20,8,4.98E-05,0.000440531,Underexpressed
+5931,RBBP7,"RB binding protein 7, chromatin remodeling factor [Source:HGNC Symbol;Acc:HGNC:9890]",20,8,4.98E-05,0.000442329,Underexpressed
+5558,PRIM2,DNA primase subunit 2 [Source:HGNC Symbol;Acc:HGNC:9370],20,8,4.98E-05,0.000444142,Underexpressed
+53371,NUP54,nucleoporin 54 [Source:HGNC Symbol;Acc:HGNC:17359],20,8,4.98E-05,0.00044597,Underexpressed
+4436,MSH2,mutS homolog 2 [Source:HGNC Symbol;Acc:HGNC:7325],20,8,4.98E-05,0.000447812,Underexpressed
+3925,STMN1,stathmin 1 [Source:HGNC Symbol;Acc:HGNC:6510],20,8,4.98E-05,0.000449671,Underexpressed
+3609,ILF3,interleukin enhancer binding factor 3 [Source:HGNC Symbol;Acc:HGNC:6038],20,8,4.98E-05,0.000451544,Underexpressed
+273,AMPH,amphiphysin [Source:HGNC Symbol;Acc:HGNC:471],20,8,4.98E-05,0.000453433,Underexpressed
+23468,CBX5,chromobox 5 [Source:HGNC Symbol;Acc:HGNC:1555],20,8,4.98E-05,0.000455339,Underexpressed
+23347,SMCHD1,structural maintenance of chromosomes flexible hinge domain containing 1 [Source:HGNC Symbol;Acc:HGNC:29090],20,8,4.98E-05,0.00045726,Underexpressed
+10452,TOMM40,translocase of outer mitochondrial membrane 40 [Source:HGNC Symbol;Acc:HGNC:18001],20,8,4.98E-05,0.000459197,Underexpressed
+9735,KNTC1,kinetochore associated 1 [Source:HGNC Symbol;Acc:HGNC:17255],16,7,7.57E-05,0.000664235,Underexpressed
+91607,SLFN11,schlafen family member 11 [Source:HGNC Symbol;Acc:HGNC:26633],16,7,7.57E-05,0.000666713,Underexpressed
+83987,CCDC8,coiled-coil domain containing 8 [Source:HGNC Symbol;Acc:HGNC:25367],16,7,7.57E-05,0.000669211,Underexpressed
+708,C1QBP,complement C1q binding protein [Source:HGNC Symbol;Acc:HGNC:1243],16,7,7.57E-05,0.000671726,Underexpressed
+57405,SPC25,"SPC25, NDC80 kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:24031]",16,7,7.57E-05,0.000674261,Underexpressed
+9775,EIF4A3,eukaryotic translation initiation factor 4A3 [Source:HGNC Symbol;Acc:HGNC:18683],21,8,7.52E-05,0.000674543,Underexpressed
+440145,MZT1,mitotic spindle organizing protein 1 [Source:HGNC Symbol;Acc:HGNC:33830],16,7,7.57E-05,0.000676815,Underexpressed
+8727,CTNNAL1,catenin alpha like 1 [Source:HGNC Symbol;Acc:HGNC:2512],21,8,7.52E-05,0.000677118,Underexpressed
+6929,TCF3,transcription factor 3 [Source:HGNC Symbol;Acc:HGNC:11633],21,8,7.52E-05,0.000679712,Underexpressed
+6434,TRA2B,transformer 2 beta homolog [Source:HGNC Symbol;Acc:HGNC:10781],21,8,7.52E-05,0.000682326,Underexpressed
+5425,POLD2,"DNA polymerase delta 2, accessory subunit [Source:HGNC Symbol;Acc:HGNC:9176]",21,8,7.52E-05,0.000684961,Underexpressed
+4361,MRE11,"MRE11 homolog, double strand break repair nuclease [Source:HGNC Symbol;Acc:HGNC:7230]",21,8,7.52E-05,0.000687615,Underexpressed
+4144,MAT2A,methionine adenosyltransferase 2A [Source:HGNC Symbol;Acc:HGNC:6904],21,8,7.52E-05,0.000690291,Underexpressed
+3608,ILF2,interleukin enhancer binding factor 2 [Source:HGNC Symbol;Acc:HGNC:6037],21,8,7.52E-05,0.000692987,Underexpressed
+3251,HPRT1,hypoxanthine phosphoribosyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:5157],21,8,7.52E-05,0.000695705,Underexpressed
+11335,CBX3,chromobox 3 [Source:HGNC Symbol;Acc:HGNC:1553],21,8,7.52E-05,0.000698444,Underexpressed
+11051,NUDT21,nudix hydrolase 21 [Source:HGNC Symbol;Acc:HGNC:13870],21,8,7.52E-05,0.000701205,Underexpressed
+10915,TCERG1,transcription elongation regulator 1 [Source:HGNC Symbol;Acc:HGNC:15630],21,8,7.52E-05,0.000703987,Underexpressed
+10592,SMC2,structural maintenance of chromosomes 2 [Source:HGNC Symbol;Acc:HGNC:14011],21,8,7.52E-05,0.000706792,Underexpressed
+84798,C19orf48,chromosome 19 open reading frame 48 [Source:HGNC Symbol;Acc:HGNC:29667],12,6,0.000101781,0.000939746,Underexpressed
+10969,EBNA1BP2,EBNA1 binding protein 2 [Source:HGNC Symbol;Acc:HGNC:15531],12,6,0.000101781,0.000943227,Underexpressed
+9088,PKMYT1,"protein kinase, membrane associated tyrosine/threonine 1 [Source:HGNC Symbol;Acc:HGNC:29650]",17,7,0.000120396,0.00106971,Underexpressed
+9079,LDB2,LIM domain binding 2 [Source:HGNC Symbol;Acc:HGNC:6533],17,7,0.000120396,0.001073398,Underexpressed
+84950,PRPF38A,pre-mRNA processing factor 38A [Source:HGNC Symbol;Acc:HGNC:25930],17,7,0.000120396,0.001077113,Underexpressed
+84034,EMILIN2,elastin microfibril interfacer 2 [Source:HGNC Symbol;Acc:HGNC:19881],17,7,0.000120396,0.001080853,Underexpressed
+81620,CDT1,chromatin licensing and DNA replication factor 1 [Source:HGNC Symbol;Acc:HGNC:24576],17,7,0.000120396,0.001084619,Underexpressed
+7443,VRK1,vaccinia related kinase 1 [Source:HGNC Symbol;Acc:HGNC:12718],17,7,0.000120396,0.001088411,Underexpressed
+6664,SOX11,SRY-box 11 [Source:HGNC Symbol;Acc:HGNC:11191],17,7,0.000120396,0.00109223,Underexpressed
+6635,SNRPE,small nuclear ribonucleoprotein polypeptide E [Source:HGNC Symbol;Acc:HGNC:11161],17,7,0.000120396,0.001096076,Underexpressed
+641,BLM,Bloom syndrome RecQ like helicase [Source:HGNC Symbol;Acc:HGNC:1058],17,7,0.000120396,0.001099949,Underexpressed
+580,BARD1,BRCA1 associated RING domain 1 [Source:HGNC Symbol;Acc:HGNC:952],17,7,0.000120396,0.001103849,Underexpressed
+57819,LSM2,"LSM2 homolog, U6 small nuclear RNA and mRNA degradation associated [Source:HGNC Symbol;Acc:HGNC:13940]",17,7,0.000120396,0.001107778,Underexpressed
+5757,PTMA,prothymosin alpha [Source:HGNC Symbol;Acc:HGNC:9623],17,7,0.000120396,0.001111734,Underexpressed
+5634,PRPS2,phosphoribosyl pyrophosphate synthetase 2 [Source:HGNC Symbol;Acc:HGNC:9465],17,7,0.000120396,0.001115719,Underexpressed
+55789,DEPDC1B,DEP domain containing 1B [Source:HGNC Symbol;Acc:HGNC:24902],17,7,0.000120396,0.001119732,Underexpressed
+54962,TIPIN,TIMELESS interacting protein [Source:HGNC Symbol;Acc:HGNC:30750],17,7,0.000120396,0.001123774,Underexpressed
+5393,EXOSC9,exosome component 9 [Source:HGNC Symbol;Acc:HGNC:9137],17,7,0.000120396,0.001127846,Underexpressed
+4171,MCM2,minichromosome maintenance complex component 2 [Source:HGNC Symbol;Acc:HGNC:6944],17,7,0.000120396,0.001131947,Underexpressed
+3151,HMGN2,high mobility group nucleosomal binding domain 2 [Source:HGNC Symbol;Acc:HGNC:4986],17,7,0.000120396,0.001136079,Underexpressed
+151246,SGO2,shugoshin 2 [Source:HGNC Symbol;Acc:HGNC:30812],17,7,0.000120396,0.00114024,Underexpressed
+150468,CKAP2L,cytoskeleton associated protein 2 like [Source:HGNC Symbol;Acc:HGNC:26877],17,7,0.000120396,0.001144432,Underexpressed
+995,CDC25C,cell division cycle 25C [Source:HGNC Symbol;Acc:HGNC:1727],18,7,0.00018442,0.001614287,Underexpressed
+9837,GINS1,GINS complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:28980],18,7,0.00018442,0.001619332,Underexpressed
+9700,ESPL1,"extra spindle pole bodies like 1, separase [Source:HGNC Symbol;Acc:HGNC:16856]",18,7,0.00018442,0.001624408,Underexpressed
+9317,PTER,phosphotriesterase related [Source:HGNC Symbol;Acc:HGNC:9590],18,7,0.00018442,0.001629516,Underexpressed
+8884,SLC5A6,solute carrier family 5 member 6 [Source:HGNC Symbol;Acc:HGNC:11041],18,7,0.00018442,0.001634657,Underexpressed
+84955,NUDCD1,NudC domain containing 1 [Source:HGNC Symbol;Acc:HGNC:24306],18,7,0.00018442,0.00163983,Underexpressed
+84293,FAM213A,family with sequence similarity 213 member A [Source:HGNC Symbol;Acc:HGNC:28651],18,7,0.00018442,0.001645035,Underexpressed
+7019,TFAM,"transcription factor A, mitochondrial [Source:HGNC Symbol;Acc:HGNC:11741]",18,7,0.00018442,0.001650274,Underexpressed
+6877,TAF5,TATA-box binding protein associated factor 5 [Source:HGNC Symbol;Acc:HGNC:11539],18,7,0.00018442,0.001655547,Underexpressed
+5885,RAD21,RAD21 cohesin complex component [Source:HGNC Symbol;Acc:HGNC:9811],18,7,0.00018442,0.001660853,Underexpressed
+55839,CENPN,centromere protein N [Source:HGNC Symbol;Acc:HGNC:30873],18,7,0.00018442,0.001666193,Underexpressed
+55835,CENPJ,centromere protein J [Source:HGNC Symbol;Acc:HGNC:17272],18,7,0.00018442,0.001671568,Underexpressed
+55320,MIS18BP1,MIS18 binding protein 1 [Source:HGNC Symbol;Acc:HGNC:20190],18,7,0.00018442,0.001676978,Underexpressed
+4522,MTHFD1,"methylenetetrahydrofolate dehydrogenase, cyclohydrolase and formyltetrahydrofolate synthetase 1 [Source:HGNC Symbol;Acc:HGNC:7432]",18,7,0.00018442,0.001682423,Underexpressed
+6294,SAFB,scaffold attachment factor B [Source:HGNC Symbol;Acc:HGNC:10520],13,6,0.000177152,0.001685586,Underexpressed
+4521,NUDT1,nudix hydrolase 1 [Source:HGNC Symbol;Acc:HGNC:8048],18,7,0.00018442,0.001687903,Underexpressed
+11113,CIT,citron rho-interacting serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:1985],13,6,0.000177152,0.001691359,Underexpressed
+4255,MGMT,O-6-methylguanine-DNA methyltransferase [Source:HGNC Symbol;Acc:HGNC:7059],18,7,0.00018442,0.001693419,Underexpressed
+401466,C8orf59,chromosome 8 open reading frame 59 [Source:HGNC Symbol;Acc:HGNC:32235],18,7,0.00018442,0.001698971,Underexpressed
+374393,FAM111B,family with sequence similarity 111 member B [Source:HGNC Symbol;Acc:HGNC:24200],18,7,0.00018442,0.00170456,Underexpressed
+348235,SKA2,spindle and kinetochore associated complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:28006],18,7,0.00018442,0.001710185,Underexpressed
+348093,RBPMS2,"RNA binding protein, mRNA processing factor 2 [Source:HGNC Symbol;Acc:HGNC:19098]",18,7,0.00018442,0.001715848,Underexpressed
+23658,LSM5,"LSM5 homolog, U6 small nuclear RNA and mRNA degradation associated [Source:HGNC Symbol;Acc:HGNC:17162]",18,7,0.00018442,0.001721549,Underexpressed
+220042,DDIAS,DNA damage induced apoptosis suppressor [Source:HGNC Symbol;Acc:HGNC:26351],18,7,0.00018442,0.001727287,Underexpressed
+2118,ETV4,ETS variant 4 [Source:HGNC Symbol;Acc:HGNC:3493],18,7,0.00018442,0.001733064,Underexpressed
+203068,TUBB,tubulin beta class I [Source:HGNC Symbol;Acc:HGNC:20778],18,7,0.00018442,0.00173888,Underexpressed
+1809,DPYSL3,dihydropyrimidinase like 3 [Source:HGNC Symbol;Acc:HGNC:3015],18,7,0.00018442,0.001744734,Underexpressed
+115106,HAUS1,HAUS augmin like complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:25174],18,7,0.00018442,0.001750629,Underexpressed
+11157,LSM6,"LSM6 homolog, U6 small nuclear RNA and mRNA degradation associated [Source:HGNC Symbol;Acc:HGNC:17017]",18,7,0.00018442,0.001756563,Underexpressed
+11004,KIF2C,kinesin family member 2C [Source:HGNC Symbol;Acc:HGNC:6393],18,7,0.00018442,0.001762538,Underexpressed
+8570,KHSRP,KH-type splicing regulatory protein [Source:HGNC Symbol;Acc:HGNC:6316],19,7,0.000273358,0.002329743,Underexpressed
+81035,COLEC12,collectin subfamily member 12 [Source:HGNC Symbol;Acc:HGNC:16016],19,7,0.000273358,0.002336306,Underexpressed
+8089,YEATS4,YEATS domain containing 4 [Source:HGNC Symbol;Acc:HGNC:24859],19,7,0.000273358,0.002342905,Underexpressed
+80321,CEP70,centrosomal protein 70 [Source:HGNC Symbol;Acc:HGNC:29972],19,7,0.000273358,0.002349542,Underexpressed
+80179,MYO19,myosin XIX [Source:HGNC Symbol;Acc:HGNC:26234],19,7,0.000273358,0.002356217,Underexpressed
+79776,ZFHX4,zinc finger homeobox 4 [Source:HGNC Symbol;Acc:HGNC:30939],19,7,0.000273358,0.00236293,Underexpressed
+79723,SUV39H2,suppressor of variegation 3-9 homolog 2 [Source:HGNC Symbol;Acc:HGNC:17287],19,7,0.000273358,0.002369681,Underexpressed
+65108,MARCKSL1,MARCKS like 1 [Source:HGNC Symbol;Acc:HGNC:7142],19,7,0.000273358,0.002376471,Underexpressed
+6491,STIL,"STIL, centriolar assembly protein [Source:HGNC Symbol;Acc:HGNC:10879]",19,7,0.000273358,0.0023833,Underexpressed
+5982,RFC2,replication factor C subunit 2 [Source:HGNC Symbol;Acc:HGNC:9970],19,7,0.000273358,0.002390168,Underexpressed
+55183,RIF1,replication timing regulatory factor 1 [Source:HGNC Symbol;Acc:HGNC:23207],19,7,0.000273358,0.002397076,Underexpressed
+55166,CENPQ,centromere protein Q [Source:HGNC Symbol;Acc:HGNC:21347],19,7,0.000273358,0.002404025,Underexpressed
+54742,LY6K,lymphocyte antigen 6 family member K [Source:HGNC Symbol;Acc:HGNC:24225],19,7,0.000273358,0.002411013,Underexpressed
+5426,POLE,"DNA polymerase epsilon, catalytic subunit [Source:HGNC Symbol;Acc:HGNC:9177]",19,7,0.000273358,0.002418042,Underexpressed
+54069,MIS18A,MIS18 kinetochore protein A [Source:HGNC Symbol;Acc:HGNC:1286],19,7,0.000273358,0.002425112,Underexpressed
+5396,PRRX1,paired related homeobox 1 [Source:HGNC Symbol;Acc:HGNC:9142],19,7,0.000273358,0.002432224,Underexpressed
+51642,MRPL48,mitochondrial ribosomal protein L48 [Source:HGNC Symbol;Acc:HGNC:16653],19,7,0.000273358,0.002439378,Underexpressed
+9824,ARHGAP11A,Rho GTPase activating protein 11A [Source:HGNC Symbol;Acc:HGNC:15783],14,6,0.00029058,0.002444418,Underexpressed
+51512,GTSE1,G2 and S-phase expressed 1 [Source:HGNC Symbol;Acc:HGNC:13698],19,7,0.000273358,0.002446574,Underexpressed
+91461,PKDCC,"protein kinase domain containing, cytoplasmic [Source:HGNC Symbol;Acc:HGNC:25123]",14,6,0.00029058,0.002451134,Underexpressed
+51334,PRR16,proline rich 16 [Source:HGNC Symbol;Acc:HGNC:29654],19,7,0.000273358,0.002453812,Underexpressed
+84296,GINS4,GINS complex subunit 4 [Source:HGNC Symbol;Acc:HGNC:28226],14,6,0.00029058,0.002457886,Underexpressed
+5036,PA2G4,proliferation-associated 2G4 [Source:HGNC Symbol;Acc:HGNC:8550],19,7,0.000273358,0.002461093,Underexpressed
+79447,PAGR1,PAXIP1 associated glutamate rich protein 1 [Source:HGNC Symbol;Acc:HGNC:28707],14,6,0.00029058,0.002464676,Underexpressed
+3638,INSIG1,insulin induced gene 1 [Source:HGNC Symbol;Acc:HGNC:6083],19,7,0.000273358,0.002468418,Underexpressed
+29893,PSMC3IP,PSMC3 interacting protein [Source:HGNC Symbol;Acc:HGNC:17928],14,6,0.00029058,0.002471503,Underexpressed
+3589,IL11,interleukin 11 [Source:HGNC Symbol;Acc:HGNC:5966],19,7,0.000273358,0.002475786,Underexpressed
+29127,RACGAP1,Rac GTPase activating protein 1 [Source:HGNC Symbol;Acc:HGNC:9804],14,6,0.00029058,0.002478368,Underexpressed
+3185,HNRNPF,heterogeneous nuclear ribonucleoprotein F [Source:HGNC Symbol;Acc:HGNC:5039],19,7,0.000273358,0.002483199,Underexpressed
+286319,TUSC1,tumor suppressor candidate 1 [Source:HGNC Symbol;Acc:HGNC:31010],14,6,0.00029058,0.002485272,Underexpressed
+27436,EML4,echinoderm microtubule associated protein like 4 [Source:HGNC Symbol;Acc:HGNC:1316],19,7,0.000273358,0.002490656,Underexpressed
+121642,ALKBH2,"alkB homolog 2, alpha-ketoglutarate dependent dioxygenase [Source:HGNC Symbol;Acc:HGNC:32487]",14,6,0.00029058,0.002492214,Underexpressed
+27258,LSM3,"LSM3 homolog, U6 small nuclear RNA and mRNA degradation associated [Source:HGNC Symbol;Acc:HGNC:17874]",19,7,0.000273358,0.002498158,Underexpressed
+11339,OIP5,Opa interacting protein 5 [Source:HGNC Symbol;Acc:HGNC:20300],14,6,0.00029058,0.002499195,Underexpressed
+1958,EGR1,early growth response 1 [Source:HGNC Symbol;Acc:HGNC:3238],19,7,0.000273358,0.002505705,Underexpressed
+1622,DBI,"diazepam binding inhibitor, acyl-CoA binding protein [Source:HGNC Symbol;Acc:HGNC:2690]",19,7,0.000273358,0.002513298,Underexpressed
+158,ADSL,adenylosuccinate lyase [Source:HGNC Symbol;Acc:HGNC:291],19,7,0.000273358,0.002520938,Underexpressed
+1434,CSE1L,chromosome segregation 1 like [Source:HGNC Symbol;Acc:HGNC:2431],19,7,0.000273358,0.002528623,Underexpressed
+116496,FAM129A,family with sequence similarity 129 member A [Source:HGNC Symbol;Acc:HGNC:16784],19,7,0.000273358,0.002536356,Underexpressed
+11198,SUPT16H,"SPT16 homolog, facilitates chromatin remodeling subunit [Source:HGNC Symbol;Acc:HGNC:11465]",19,7,0.000273358,0.002544136,Underexpressed
+1111,CHEK1,checkpoint kinase 1 [Source:HGNC Symbol;Acc:HGNC:1925],19,7,0.000273358,0.002551965,Underexpressed
+11073,TOPBP1,DNA topoisomerase II binding protein 1 [Source:HGNC Symbol;Acc:HGNC:17008],19,7,0.000273358,0.002559841,Underexpressed
+10278,EFS,embryonal Fyn-associated substrate [Source:HGNC Symbol;Acc:HGNC:16898],19,7,0.000273358,0.002567766,Underexpressed
+10036,CHAF1A,chromatin assembly factor 1 subunit A [Source:HGNC Symbol;Acc:HGNC:1910],19,7,0.000273358,0.002575741,Underexpressed
+9933,PUM3,pumilio RNA binding family member 3 [Source:HGNC Symbol;Acc:HGNC:29676],20,7,0.00039374,0.003206958,Underexpressed
+84230,LRRC8C,leucine rich repeat containing 8 VRAC subunit C [Source:HGNC Symbol;Acc:HGNC:25075],20,7,0.00039374,0.003214995,Underexpressed
+79017,GGCT,gamma-glutamylcyclotransferase [Source:HGNC Symbol;Acc:HGNC:21705],20,7,0.00039374,0.003223073,Underexpressed
+7372,UMPS,uridine monophosphate synthetase [Source:HGNC Symbol;Acc:HGNC:12563],20,7,0.00039374,0.003231192,Underexpressed
+64960,MRPS15,mitochondrial ribosomal protein S15 [Source:HGNC Symbol;Acc:HGNC:14504],20,7,0.00039374,0.003239351,Underexpressed
+64429,ZDHHC6,zinc finger DHHC-type containing 6 [Source:HGNC Symbol;Acc:HGNC:19160],20,7,0.00039374,0.003247552,Underexpressed
+6319,SCD,stearoyl-CoA desaturase [Source:HGNC Symbol;Acc:HGNC:10571],20,7,0.00039374,0.003255795,Underexpressed
+617,BCS1L,"BCS1 homolog, ubiquinol-cytochrome c reductase complex chaperone [Source:HGNC Symbol;Acc:HGNC:1020]",20,7,0.00039374,0.003264079,Underexpressed
+5725,PTBP1,polypyrimidine tract binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9583],20,7,0.00039374,0.003272406,Underexpressed
+56942,CMC2,C-X9-C motif containing 2 [Source:HGNC Symbol;Acc:HGNC:24447],20,7,0.00039374,0.003280775,Underexpressed
+55038,CDCA4,cell division cycle associated 4 [Source:HGNC Symbol;Acc:HGNC:14625],20,7,0.00039374,0.003289187,Underexpressed
+54780,NSMCE4A,"NSE4 homolog A, SMC5-SMC6 complex component [Source:HGNC Symbol;Acc:HGNC:25935]",20,7,0.00039374,0.003297643,Underexpressed
+8356,HIST1H3J,histone cluster 1 H3 family member j [Source:HGNC Symbol;Acc:HGNC:4774],10,5,0.000404718,0.003305845,Underexpressed
+54468,MIOS,meiosis regulator for oocyte development [Source:HGNC Symbol;Acc:HGNC:21905],20,7,0.00039374,0.003306142,Underexpressed
+5424,POLD1,"DNA polymerase delta 1, catalytic subunit [Source:HGNC Symbol;Acc:HGNC:9175]",20,7,0.00039374,0.003314685,Underexpressed
+51668,HSPB11,heat shock protein family B (small) member 11 [Source:HGNC Symbol;Acc:HGNC:25019],20,7,0.00039374,0.003323272,Underexpressed
+51611,DPH5,diphthamide biosynthesis 5 [Source:HGNC Symbol;Acc:HGNC:24270],20,7,0.00039374,0.003331904,Underexpressed
+4192,MDK,midkine [Source:HGNC Symbol;Acc:HGNC:6972],20,7,0.00039374,0.003340581,Underexpressed
+4147,MATN2,matrilin 2 [Source:HGNC Symbol;Acc:HGNC:6908],20,7,0.00039374,0.003349303,Underexpressed
+3159,HMGA1,high mobility group AT-hook 1 [Source:HGNC Symbol;Acc:HGNC:5010],20,7,0.00039374,0.003358071,Underexpressed
+3014,H2AFX,H2A histone family member X [Source:HGNC Symbol;Acc:HGNC:4739],20,7,0.00039374,0.003366885,Underexpressed
+2752,GLUL,glutamate-ammonia ligase [Source:HGNC Symbol;Acc:HGNC:4341],20,7,0.00039374,0.003375745,Underexpressed
+27235,COQ2,"coenzyme Q2, polyprenyltransferase [Source:HGNC Symbol;Acc:HGNC:25223]",20,7,0.00039374,0.003384652,Underexpressed
+26528,DAZAP1,DAZ associated protein 1 [Source:HGNC Symbol;Acc:HGNC:2683],20,7,0.00039374,0.003393606,Underexpressed
+23580,CDC42EP4,CDC42 effector protein 4 [Source:HGNC Symbol;Acc:HGNC:17147],20,7,0.00039374,0.003402608,Underexpressed
+23028,KDM1A,lysine demethylase 1A [Source:HGNC Symbol;Acc:HGNC:29079],20,7,0.00039374,0.003411657,Underexpressed
+2113,ETS1,"ETS proto-oncogene 1, transcription factor [Source:HGNC Symbol;Acc:HGNC:3488]",20,7,0.00039374,0.003420755,Underexpressed
+2023,ENO1,enolase 1 [Source:HGNC Symbol;Acc:HGNC:3350],20,7,0.00039374,0.003429901,Underexpressed
+123811,FOPNL,FGFR1OP N-terminal like [Source:HGNC Symbol;Acc:HGNC:26435],20,7,0.00039374,0.003439097,Underexpressed
+11270,NRM,nurim [Source:HGNC Symbol;Acc:HGNC:8003],20,7,0.00039374,0.003448342,Underexpressed
+1075,CTSC,cathepsin C [Source:HGNC Symbol;Acc:HGNC:2528],20,7,0.00039374,0.003457636,Underexpressed
+10733,PLK4,polo like kinase 4 [Source:HGNC Symbol;Acc:HGNC:11397],20,7,0.00039374,0.003466981,Underexpressed
+10657,KHDRBS1,"KH RNA binding domain containing, signal transduction associated 1 [Source:HGNC Symbol;Acc:HGNC:18116]",20,7,0.00039374,0.003476377,Underexpressed
+10631,POSTN,periostin [Source:HGNC Symbol;Acc:HGNC:16953],20,7,0.00039374,0.003485824,Underexpressed
+10155,TRIM28,tripartite motif containing 28 [Source:HGNC Symbol;Acc:HGNC:16384],20,7,0.00039374,0.003495322,Underexpressed
+10054,UBA2,ubiquitin like modifier activating enzyme 2 [Source:HGNC Symbol;Acc:HGNC:30661],20,7,0.00039374,0.003504872,Underexpressed
+90390,MED30,mediator complex subunit 30 [Source:HGNC Symbol;Acc:HGNC:23032],15,6,0.000453984,0.003603596,Underexpressed
+8438,RAD54L,RAD54 like [Source:HGNC Symbol;Acc:HGNC:9826],15,6,0.000453984,0.003612156,Underexpressed
+81930,KIF18A,kinesin family member 18A [Source:HGNC Symbol;Acc:HGNC:29441],15,6,0.000453984,0.003620756,Underexpressed
+8125,ANP32A,acidic nuclear phosphoprotein 32 family member A [Source:HGNC Symbol;Acc:HGNC:13233],15,6,0.000453984,0.003629398,Underexpressed
+6240,RRM1,ribonucleotide reductase catalytic subunit M1 [Source:HGNC Symbol;Acc:HGNC:10451],15,6,0.000453984,0.003638081,Underexpressed
+57650,CIP2A,cell proliferation regulating inhibitor of protein phosphatase 2A [Source:HGNC Symbol;Acc:HGNC:29302],15,6,0.000453984,0.003646805,Underexpressed
+55721,IQCC,IQ motif containing C [Source:HGNC Symbol;Acc:HGNC:25545],15,6,0.000453984,0.003655571,Underexpressed
+55536,CDCA7L,cell division cycle associated 7 like [Source:HGNC Symbol;Acc:HGNC:30777],15,6,0.000453984,0.00366438,Underexpressed
+55157,DARS2,"aspartyl-tRNA synthetase 2, mitochondrial [Source:HGNC Symbol;Acc:HGNC:25538]",15,6,0.000453984,0.003673231,Underexpressed
+55010,PARPBP,PARP1 binding protein [Source:HGNC Symbol;Acc:HGNC:26074],15,6,0.000453984,0.003682125,Underexpressed
+54898,ELOVL2,ELOVL fatty acid elongase 2 [Source:HGNC Symbol;Acc:HGNC:14416],15,6,0.000453984,0.003691062,Underexpressed
+51134,CEP83,centrosomal protein 83 [Source:HGNC Symbol;Acc:HGNC:17966],15,6,0.000453984,0.003700043,Underexpressed
+283431,GAS2L3,growth arrest specific 2 like 3 [Source:HGNC Symbol;Acc:HGNC:27475],15,6,0.000453984,0.003709067,Underexpressed
+27338,UBE2S,ubiquitin conjugating enzyme E2 S [Source:HGNC Symbol;Acc:HGNC:17895],15,6,0.000453984,0.003718136,Underexpressed
+26227,PHGDH,phosphoglycerate dehydrogenase [Source:HGNC Symbol;Acc:HGNC:8923],15,6,0.000453984,0.003727249,Underexpressed
+151648,SGO1,shugoshin 1 [Source:HGNC Symbol;Acc:HGNC:25088],15,6,0.000453984,0.003736407,Underexpressed
+145508,CEP128,centrosomal protein 128 [Source:HGNC Symbol;Acc:HGNC:20359],15,6,0.000453984,0.00374561,Underexpressed
+116832,RPL39L,ribosomal protein L39 like [Source:HGNC Symbol;Acc:HGNC:17094],15,6,0.000453984,0.003754858,Underexpressed
+10926,DBF4,DBF4 zinc finger [Source:HGNC Symbol;Acc:HGNC:17364],15,6,0.000453984,0.003764153,Underexpressed
+10721,POLQ,DNA polymerase theta [Source:HGNC Symbol;Acc:HGNC:9186],15,6,0.000453984,0.003773493,Underexpressed
+10376,TUBA1B,tubulin alpha 1b [Source:HGNC Symbol;Acc:HGNC:18809],15,6,0.000453984,0.00378288,Underexpressed
+6631,SNRPC,small nuclear ribonucleoprotein polypeptide C [Source:HGNC Symbol;Acc:HGNC:11157],21,7,0.000553004,0.004456248,Underexpressed
+5932,RBBP8,"RB binding protein 8, endonuclease [Source:HGNC Symbol;Acc:HGNC:9891]",21,7,0.000553004,0.004466588,Underexpressed
+5106,PCK2,"phosphoenolpyruvate carboxykinase 2, mitochondrial [Source:HGNC Symbol;Acc:HGNC:8725]",21,7,0.000553004,0.004476975,Underexpressed
+4670,HNRNPM,heterogeneous nuclear ribonucleoprotein M [Source:HGNC Symbol;Acc:HGNC:5046],21,7,0.000553004,0.004487411,Underexpressed
+4528,MTIF2,mitochondrial translational initiation factor 2 [Source:HGNC Symbol;Acc:HGNC:7441],21,7,0.000553004,0.004497896,Underexpressed
+3189,HNRNPH3,heterogeneous nuclear ribonucleoprotein H3 [Source:HGNC Symbol;Acc:HGNC:5043],21,7,0.000553004,0.004508429,Underexpressed
+3149,HMGB3,high mobility group box 3 [Source:HGNC Symbol;Acc:HGNC:5004],21,7,0.000553004,0.004519012,Underexpressed
+23450,SF3B3,splicing factor 3b subunit 3 [Source:HGNC Symbol;Acc:HGNC:10770],21,7,0.000553004,0.004529645,Underexpressed
+1615,DARS,aspartyl-tRNA synthetase [Source:HGNC Symbol;Acc:HGNC:2678],21,7,0.000553004,0.004540328,Underexpressed
+10492,SYNCRIP,synaptotagmin binding cytoplasmic RNA interacting protein [Source:HGNC Symbol;Acc:HGNC:16918],21,7,0.000553004,0.004551062,Underexpressed
+9592,IER2,immediate early response 2 [Source:HGNC Symbol;Acc:HGNC:28871],16,6,0.000680977,0.005438007,Underexpressed
+9521,EEF1E1,eukaryotic translation elongation factor 1 epsilon 1 [Source:HGNC Symbol;Acc:HGNC:3212],16,6,0.000680977,0.005450012,Underexpressed
+79980,DSN1,"DSN1 homolog, MIS12 kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:16165]",16,6,0.000680977,0.005462069,Underexpressed
+79913,ACTR5,ARP5 actin related protein 5 homolog [Source:HGNC Symbol;Acc:HGNC:14671],16,6,0.000680977,0.00547418,Underexpressed
+64946,CENPH,centromere protein H [Source:HGNC Symbol;Acc:HGNC:17268],16,6,0.000680977,0.005486345,Underexpressed
+55280,CWF19L1,"CWF19 like 1, cell cycle control (S. pombe) [Source:HGNC Symbol;Acc:HGNC:25613]",16,6,0.000680977,0.005498564,Underexpressed
+55159,RFWD3,ring finger and WD repeat domain 3 [Source:HGNC Symbol;Acc:HGNC:25539],16,6,0.000680977,0.005510838,Underexpressed
+54974,THG1L,tRNA-histidine guanylyltransferase 1 like [Source:HGNC Symbol;Acc:HGNC:26053],16,6,0.000680977,0.005523166,Underexpressed
+51001,MTERF3,mitochondrial transcription termination factor 3 [Source:HGNC Symbol;Acc:HGNC:24258],16,6,0.000680977,0.00553555,Underexpressed
+3835,KIF22,kinesin family member 22 [Source:HGNC Symbol;Acc:HGNC:6391],16,6,0.000680977,0.00554799,Underexpressed
+9582,APOBEC3B,apolipoprotein B mRNA editing enzyme catalytic subunit 3B [Source:HGNC Symbol;Acc:HGNC:17352],11,5,0.000696728,0.005551982,Underexpressed
+2956,MSH6,mutS homolog 6 [Source:HGNC Symbol;Acc:HGNC:7329],16,6,0.000680977,0.005560485,Underexpressed
+140707,BRI3BP,BRI3 binding protein [Source:HGNC Symbol;Acc:HGNC:14251],11,5,0.000696728,0.005564157,Underexpressed
+29107,NXT1,nuclear transport factor 2 like export factor 1 [Source:HGNC Symbol;Acc:HGNC:15913],16,6,0.000680977,0.005573037,Underexpressed
+117854,TRIM6,tripartite motif containing 6 [Source:HGNC Symbol;Acc:HGNC:16277],11,5,0.000696728,0.005576386,Underexpressed
+2491,CENPI,centromere protein I [Source:HGNC Symbol;Acc:HGNC:3968],16,6,0.000680977,0.005585646,Underexpressed
+202,CRYBG1,crystallin beta-gamma domain containing 1 [Source:HGNC Symbol;Acc:HGNC:356],16,6,0.000680977,0.005598312,Underexpressed
+165918,RNF168,ring finger protein 168 [Source:HGNC Symbol;Acc:HGNC:26661],16,6,0.000680977,0.005611035,Underexpressed
+157570,ESCO2,establishment of sister chromatid cohesion N-acetyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:27230],16,6,0.000680977,0.005623816,Underexpressed
+154141,MBOAT1,membrane bound O-acyltransferase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:21579],16,6,0.000680977,0.005636656,Underexpressed
+121053,C12orf45,chromosome 12 open reading frame 45 [Source:HGNC Symbol;Acc:HGNC:28628],16,6,0.000680977,0.005649555,Underexpressed
+116028,RMI2,RecQ mediated genome instability 2 [Source:HGNC Symbol;Acc:HGNC:28349],16,6,0.000680977,0.005662512,Underexpressed
+11331,PHB2,prohibitin 2 [Source:HGNC Symbol;Acc:HGNC:30306],16,6,0.000680977,0.00567553,Underexpressed
+11064,CNTRL,centriolin [Source:HGNC Symbol;Acc:HGNC:1858],16,6,0.000680977,0.005688607,Underexpressed
+10004,NAALADL1,N-acetylated alpha-linked acidic dipeptidase like 1 [Source:HGNC Symbol;Acc:HGNC:23536],16,6,0.000680977,0.005701745,Underexpressed
+8642,DCHS1,dachsous cadherin-related 1 [Source:HGNC Symbol;Acc:HGNC:13681],17,6,0.000986749,0.007929639,Underexpressed
+84515,MCM8,minichromosome maintenance 8 homologous recombination repair factor [Source:HGNC Symbol;Acc:HGNC:16147],17,6,0.000986749,0.007946023,Underexpressed
+81831,NETO2,neuropilin and tolloid like 2 [Source:HGNC Symbol;Acc:HGNC:14644],17,6,0.000986749,0.007962474,Underexpressed
+81691,REXO5,RNA exonuclease 5 [Source:HGNC Symbol;Acc:HGNC:24661],17,6,0.000986749,0.007978994,Underexpressed
+79075,DSCC1,DNA replication and sister chromatid cohesion 1 [Source:HGNC Symbol;Acc:HGNC:24453],17,6,0.000986749,0.007995582,Underexpressed
+672,BRCA1,"BRCA1, DNA repair associated [Source:HGNC Symbol;Acc:HGNC:1100]",17,6,0.000986749,0.00801224,Underexpressed
+6203,RPS9,ribosomal protein S9 [Source:HGNC Symbol;Acc:HGNC:10442],17,6,0.000986749,0.008028967,Underexpressed
+6150,MRPL23,mitochondrial ribosomal protein L23 [Source:HGNC Symbol;Acc:HGNC:10322],17,6,0.000986749,0.008045764,Underexpressed
+57697,FANCM,Fanconi anemia complementation group M [Source:HGNC Symbol;Acc:HGNC:23168],17,6,0.000986749,0.008062631,Underexpressed
+57415,C3orf14,chromosome 3 open reading frame 14 [Source:HGNC Symbol;Acc:HGNC:25024],17,6,0.000986749,0.00807957,Underexpressed
+55916,NXT2,nuclear transport factor 2 like export factor 2 [Source:HGNC Symbol;Acc:HGNC:18151],17,6,0.000986749,0.008096579,Underexpressed
+55270,NUDT15,nudix hydrolase 15 [Source:HGNC Symbol;Acc:HGNC:23063],17,6,0.000986749,0.008113661,Underexpressed
+55247,NEIL3,nei like DNA glycosylase 3 [Source:HGNC Symbol;Acc:HGNC:24573],17,6,0.000986749,0.008130814,Underexpressed
+51496,CTDSPL2,CTD small phosphatase like 2 [Source:HGNC Symbol;Acc:HGNC:26936],17,6,0.000986749,0.00814804,Underexpressed
+51377,UCHL5,ubiquitin C-terminal hydrolase L5 [Source:HGNC Symbol;Acc:HGNC:19678],17,6,0.000986749,0.00816534,Underexpressed
+50861,STMN3,stathmin 3 [Source:HGNC Symbol;Acc:HGNC:15926],17,6,0.000986749,0.008182713,Underexpressed
+5010,CLDN11,claudin 11 [Source:HGNC Symbol;Acc:HGNC:8514],17,6,0.000986749,0.00820016,Underexpressed
+4998,ORC1,origin recognition complex subunit 1 [Source:HGNC Symbol;Acc:HGNC:8487],17,6,0.000986749,0.008217682,Underexpressed
+3400,ID4,"inhibitor of DNA binding 4, HLH protein [Source:HGNC Symbol;Acc:HGNC:5363]",17,6,0.000986749,0.008235279,Underexpressed
+30968,STOML2,stomatin like 2 [Source:HGNC Symbol;Acc:HGNC:14559],17,6,0.000986749,0.008252951,Underexpressed
+2990,GUSB,glucuronidase beta [Source:HGNC Symbol;Acc:HGNC:4696],17,6,0.000986749,0.008270699,Underexpressed
+29015,SLC43A3,solute carrier family 43 member 3 [Source:HGNC Symbol;Acc:HGNC:17466],17,6,0.000986749,0.008288524,Underexpressed
+26175,TMEM251,transmembrane protein 251 [Source:HGNC Symbol;Acc:HGNC:20218],17,6,0.000986749,0.008306426,Underexpressed
+201973,PRIMPOL,primase and DNA directed polymerase [Source:HGNC Symbol;Acc:HGNC:26575],17,6,0.000986749,0.008324405,Underexpressed
+171586,ABHD3,abhydrolase domain containing 3 [Source:HGNC Symbol;Acc:HGNC:18718],17,6,0.000986749,0.008342462,Underexpressed
+118472,ZNF511,zinc finger protein 511 [Source:HGNC Symbol;Acc:HGNC:28445],17,6,0.000986749,0.008360598,Underexpressed
+115752,DIS3L,DIS3 like exosome 3'-5' exoribonuclease [Source:HGNC Symbol;Acc:HGNC:28698],17,6,0.000986749,0.008378813,Underexpressed
+10383,TUBB4B,tubulin beta 4B class IVb [Source:HGNC Symbol;Acc:HGNC:20771],17,6,0.000986749,0.008397107,Underexpressed
+146909,KIF18B,kinesin family member 18B [Source:HGNC Symbol;Acc:HGNC:27102],12,5,0.001121691,0.009185499,Underexpressed
+10528,NOP56,NOP56 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:15911],12,5,0.001121691,0.00920436,Underexpressed
+100127983,C8orf88,chromosome 8 open reading frame 88 [Source:HGNC Symbol;Acc:HGNC:44672],12,5,0.001121691,0.009223299,Underexpressed
+9928,KIF14,kinesin family member 14 [Source:HGNC Symbol;Acc:HGNC:19181],18,6,0.001387913,0.011118667,Underexpressed
+9111,NMI,N-myc and STAT interactor [Source:HGNC Symbol;Acc:HGNC:7854],18,6,0.001387913,0.01114009,Underexpressed
+90861,JPT2,Jupiter microtubule associated homolog 2 [Source:HGNC Symbol;Acc:HGNC:14137],18,6,0.001387913,0.011161596,Underexpressed
+8991,SELENBP1,selenium binding protein 1 [Source:HGNC Symbol;Acc:HGNC:10719],18,6,0.001387913,0.011183185,Underexpressed
+874,CBR3,carbonyl reductase 3 [Source:HGNC Symbol;Acc:HGNC:1549],18,6,0.001387913,0.011204858,Underexpressed
+84262,PSMG3,proteasome assembly chaperone 3 [Source:HGNC Symbol;Acc:HGNC:22420],18,6,0.001387913,0.011226615,Underexpressed
+834,CASP1,caspase 1 [Source:HGNC Symbol;Acc:HGNC:1499],18,6,0.001387913,0.011248457,Underexpressed
+79892,MCMBP,minichromosome maintenance complex binding protein [Source:HGNC Symbol;Acc:HGNC:25782],18,6,0.001387913,0.011270384,Underexpressed
+56952,PRTFDC1,phosphoribosyl transferase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:23333],18,6,0.001387913,0.011292396,Underexpressed
+55274,PHF10,PHD finger protein 10 [Source:HGNC Symbol;Acc:HGNC:18250],18,6,0.001387913,0.011314495,Underexpressed
+55013,MCUB,mitochondrial calcium uniporter dominant negative beta subunit [Source:HGNC Symbol;Acc:HGNC:26076],18,6,0.001387913,0.01133668,Underexpressed
+50509,COL5A3,collagen type V alpha 3 chain [Source:HGNC Symbol;Acc:HGNC:14864],18,6,0.001387913,0.011358953,Underexpressed
+4999,ORC2,origin recognition complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:8488],18,6,0.001387913,0.011381313,Underexpressed
+3613,IMPA2,inositol monophosphatase 2 [Source:HGNC Symbol;Acc:HGNC:6051],18,6,0.001387913,0.011403761,Underexpressed
+348654,GEN1,"GEN1, Holliday junction 5' flap endonuclease [Source:HGNC Symbol;Acc:HGNC:26881]",18,6,0.001387913,0.011426298,Underexpressed
+3202,HOXA5,homeobox A5 [Source:HGNC Symbol;Acc:HGNC:5106],18,6,0.001387913,0.011448924,Underexpressed
+30833,NT5C,"5', 3'-nucleotidase, cytosolic [Source:HGNC Symbol;Acc:HGNC:17144]",18,6,0.001387913,0.011471641,Underexpressed
+2983,GUCY1B1,guanylate cyclase 1 soluble subunit beta 1 [Source:HGNC Symbol;Acc:HGNC:4687],18,6,0.001387913,0.011494447,Underexpressed
+2669,GEM,GTP binding protein overexpressed in skeletal muscle [Source:HGNC Symbol;Acc:HGNC:4234],18,6,0.001387913,0.011517344,Underexpressed
+2618,GART,"phosphoribosylglycinamide formyltransferase, phosphoribosylglycinamide synthetase, phosphoribosylaminoimidazole synthetase [Source:HGNC Symbol;Acc:HGNC:4163]",18,6,0.001387913,0.011540333,Underexpressed
+25926,NOL11,nucleolar protein 11 [Source:HGNC Symbol;Acc:HGNC:24557],18,6,0.001387913,0.011563414,Underexpressed
+23306,NEMP1,nuclear envelope integral membrane protein 1 [Source:HGNC Symbol;Acc:HGNC:29001],18,6,0.001387913,0.011586587,Underexpressed
+2271,FH,fumarate hydratase [Source:HGNC Symbol;Acc:HGNC:3700],18,6,0.001387913,0.011609853,Underexpressed
+1841,DTYMK,deoxythymidylate kinase [Source:HGNC Symbol;Acc:HGNC:3061],18,6,0.001387913,0.011633213,Underexpressed
+165055,CCDC138,coiled-coil domain containing 138 [Source:HGNC Symbol;Acc:HGNC:26531],18,6,0.001387913,0.011656667,Underexpressed
+151188,ARL6IP6,ADP ribosylation factor like GTPase 6 interacting protein 6 [Source:HGNC Symbol;Acc:HGNC:24048],18,6,0.001387913,0.011680216,Underexpressed
+129401,NUP35,nucleoporin 35 [Source:HGNC Symbol;Acc:HGNC:29797],18,6,0.001387913,0.01170386,Underexpressed
+11213,IRAK3,interleukin 1 receptor associated kinase 3 [Source:HGNC Symbol;Acc:HGNC:17020],18,6,0.001387913,0.0117276,Underexpressed
+11177,BAZ1A,bromodomain adjacent to zinc finger domain 1A [Source:HGNC Symbol;Acc:HGNC:960],18,6,0.001387913,0.011751437,Underexpressed
+10714,POLD3,"DNA polymerase delta 3, accessory subunit [Source:HGNC Symbol;Acc:HGNC:20932]",18,6,0.001387913,0.01177537,Underexpressed
+10576,CCT2,chaperonin containing TCP1 subunit 2 [Source:HGNC Symbol;Acc:HGNC:1615],18,6,0.001387913,0.011799402,Underexpressed
+10157,AASS,aminoadipate-semialdehyde synthase [Source:HGNC Symbol;Acc:HGNC:17366],18,6,0.001387913,0.011823531,Underexpressed
+6950,TCP1,t-complex 1 [Source:HGNC Symbol;Acc:HGNC:11655],8,4,0.001637771,0.013499024,Underexpressed
+57412,AS3MT,arsenite methyltransferase [Source:HGNC Symbol;Acc:HGNC:17452],8,4,0.001637771,0.013524934,Underexpressed
+83596,BCL2L12,BCL2 like 12 [Source:HGNC Symbol;Acc:HGNC:13787],13,5,0.001712028,0.014179355,Underexpressed
+1663,DDX11,DEAD/H-box helicase 11 [Source:HGNC Symbol;Acc:HGNC:2736],13,5,0.001712028,0.014206467,Underexpressed
+9955,HS3ST3A1,heparan sulfate-glucosamine 3-sulfotransferase 3A1 [Source:HGNC Symbol;Acc:HGNC:5196],19,6,0.001902323,0.014630832,Underexpressed
+9702,CEP57,centrosomal protein 57 [Source:HGNC Symbol;Acc:HGNC:30794],19,6,0.001902323,0.014656277,Underexpressed
+9662,CEP135,centrosomal protein 135 [Source:HGNC Symbol;Acc:HGNC:29086],19,6,0.001902323,0.014681811,Underexpressed
+94031,HTRA3,HtrA serine peptidase 3 [Source:HGNC Symbol;Acc:HGNC:30406],19,6,0.001902323,0.014707433,Underexpressed
+92610,TIFA,TRAF interacting protein with forkhead associated domain [Source:HGNC Symbol;Acc:HGNC:19075],19,6,0.001902323,0.014733146,Underexpressed
+9134,CCNE2,cyclin E2 [Source:HGNC Symbol;Acc:HGNC:1590],19,6,0.001902323,0.014758948,Underexpressed
+90417,KNSTRN,kinetochore localized astrin/SPAG5 binding protein [Source:HGNC Symbol;Acc:HGNC:30767],19,6,0.001902323,0.014784841,Underexpressed
+9031,BAZ1B,bromodomain adjacent to zinc finger domain 1B [Source:HGNC Symbol;Acc:HGNC:961],19,6,0.001902323,0.014810825,Underexpressed
+9014,TAF1B,"TATA-box binding protein associated factor, RNA polymerase I subunit B [Source:HGNC Symbol;Acc:HGNC:11533]",19,6,0.001902323,0.0148369,Underexpressed
+8914,TIMELESS,timeless circadian regulator [Source:HGNC Symbol;Acc:HGNC:11813],19,6,0.001902323,0.014863068,Underexpressed
+8801,SUCLG2,succinate-CoA ligase GDP-forming beta subunit [Source:HGNC Symbol;Acc:HGNC:11450],19,6,0.001902323,0.014889327,Underexpressed
+84811,BUD13,BUD13 homolog [Source:HGNC Symbol;Acc:HGNC:28199],19,6,0.001902323,0.01491568,Underexpressed
+8225,GTPBP6,GTP binding protein 6 (putative) [Source:HGNC Symbol;Acc:HGNC:30189],19,6,0.001902323,0.014942126,Underexpressed
+8140,SLC7A5,solute carrier family 7 member 5 [Source:HGNC Symbol;Acc:HGNC:11063],19,6,0.001902323,0.014968667,Underexpressed
+80010,RMI1,RecQ mediated genome instability 1 [Source:HGNC Symbol;Acc:HGNC:25764],19,6,0.001902323,0.014995301,Underexpressed
+79746,ECHDC3,enoyl-CoA hydratase domain containing 3 [Source:HGNC Symbol;Acc:HGNC:23489],19,6,0.001902323,0.015022031,Underexpressed
+79003,MIS12,"MIS12, kinetochore complex component [Source:HGNC Symbol;Acc:HGNC:24967]",19,6,0.001902323,0.015048856,Underexpressed
+7291,TWIST1,twist family bHLH transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:12428],19,6,0.001902323,0.015075777,Underexpressed
+65003,MRPL11,mitochondrial ribosomal protein L11 [Source:HGNC Symbol;Acc:HGNC:14042],19,6,0.001902323,0.015102794,Underexpressed
+64710,NUCKS1,nuclear casein kinase and cyclin dependent kinase substrate 1 [Source:HGNC Symbol;Acc:HGNC:29923],19,6,0.001902323,0.015129909,Underexpressed
+5947,RBP1,retinol binding protein 1 [Source:HGNC Symbol;Acc:HGNC:9919],19,6,0.001902323,0.015157121,Underexpressed
+5933,RBL1,RB transcriptional corepressor like 1 [Source:HGNC Symbol;Acc:HGNC:9893],19,6,0.001902323,0.015184431,Underexpressed
+57570,TRMT5,tRNA methyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:23141],19,6,0.001902323,0.01521184,Underexpressed
+57472,CNOT6,CCR4-NOT transcription complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:14099],19,6,0.001902323,0.015239348,Underexpressed
+57001,SDHAF3,succinate dehydrogenase complex assembly factor 3 [Source:HGNC Symbol;Acc:HGNC:21752],19,6,0.001902323,0.015266955,Underexpressed
+56943,ENY2,"ENY2, transcription and export complex 2 subunit [Source:HGNC Symbol;Acc:HGNC:24449]",19,6,0.001902323,0.015294663,Underexpressed
+55972,SLC25A40,solute carrier family 25 member 40 [Source:HGNC Symbol;Acc:HGNC:29680],19,6,0.001902323,0.015322471,Underexpressed
+5577,PRKAR2B,protein kinase cAMP-dependent type II regulatory subunit beta [Source:HGNC Symbol;Acc:HGNC:9392],19,6,0.001902323,0.015350381,Underexpressed
+55179,FAIM,Fas apoptotic inhibitory molecule [Source:HGNC Symbol;Acc:HGNC:18703],19,6,0.001902323,0.015378393,Underexpressed
+55167,MSL2,MSL complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:25544],19,6,0.001902323,0.015406507,Underexpressed
+5433,POLR2D,RNA polymerase II subunit D [Source:HGNC Symbol;Acc:HGNC:9191],19,6,0.001902323,0.015434724,Underexpressed
+51177,PLEKHO1,pleckstrin homology domain containing O1 [Source:HGNC Symbol;Acc:HGNC:24310],19,6,0.001902323,0.015463045,Underexpressed
+51154,MRTO4,"MRT4 homolog, ribosome maturation factor [Source:HGNC Symbol;Acc:HGNC:18477]",19,6,0.001902323,0.015491469,Underexpressed
+4254,KITLG,KIT ligand [Source:HGNC Symbol;Acc:HGNC:6343],19,6,0.001902323,0.015519999,Underexpressed
+4045,LSAMP,limbic system-associated membrane protein [Source:HGNC Symbol;Acc:HGNC:6705],19,6,0.001902323,0.015548633,Underexpressed
+359845,RFLNB,refilin B [Source:HGNC Symbol;Acc:HGNC:28705],19,6,0.001902323,0.015577374,Underexpressed
+3192,HNRNPU,heterogeneous nuclear ribonucleoprotein U [Source:HGNC Symbol;Acc:HGNC:5048],19,6,0.001902323,0.015606221,Underexpressed
+292,SLC25A5,solute carrier family 25 member 5 [Source:HGNC Symbol;Acc:HGNC:10991],19,6,0.001902323,0.015635175,Underexpressed
+27340,UTP20,"UTP20, small subunit processome component [Source:HGNC Symbol;Acc:HGNC:17897]",19,6,0.001902323,0.015664237,Underexpressed
+27131,SNX5,sorting nexin 5 [Source:HGNC Symbol;Acc:HGNC:14969],19,6,0.001902323,0.015693406,Underexpressed
+23594,ORC6,origin recognition complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:17151],19,6,0.001902323,0.015722685,Underexpressed
+23310,NCAPD3,non-SMC condensin II complex subunit D3 [Source:HGNC Symbol;Acc:HGNC:28952],19,6,0.001902323,0.015752073,Underexpressed
+1870,E2F2,E2F transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:3114],19,6,0.001902323,0.015781572,Underexpressed
+147372,CCBE1,collagen and calcium binding EGF domains 1 [Source:HGNC Symbol;Acc:HGNC:29426],19,6,0.001902323,0.015811181,Underexpressed
+139818,DOCK11,dedicator of cytokinesis 11 [Source:HGNC Symbol;Acc:HGNC:23483],19,6,0.001902323,0.015840901,Underexpressed
+117178,SSX2IP,SSX family member 2 interacting protein [Source:HGNC Symbol;Acc:HGNC:16509],19,6,0.001902323,0.015870733,Underexpressed
+115572,FAM46B,family with sequence similarity 46 member B [Source:HGNC Symbol;Acc:HGNC:28273],19,6,0.001902323,0.015900678,Underexpressed
+115265,DDIT4L,DNA damage inducible transcript 4 like [Source:HGNC Symbol;Acc:HGNC:30555],19,6,0.001902323,0.015930736,Underexpressed
+1105,CHD1,chromodomain helicase DNA binding protein 1 [Source:HGNC Symbol;Acc:HGNC:1915],19,6,0.001902323,0.015960908,Underexpressed
+10426,TUBGCP3,tubulin gamma complex associated protein 3 [Source:HGNC Symbol;Acc:HGNC:18598],19,6,0.001902323,0.015991194,Underexpressed
+10131,TRAP1,TNF receptor associated protein 1 [Source:HGNC Symbol;Acc:HGNC:16264],19,6,0.001902323,0.016021596,Underexpressed
+10055,SAE1,SUMO1 activating enzyme subunit 1 [Source:HGNC Symbol;Acc:HGNC:30660],19,6,0.001902323,0.016052113,Underexpressed
+9987,HNRNPDL,heterogeneous nuclear ribonucleoprotein D like [Source:HGNC Symbol;Acc:HGNC:5037],20,6,0.002548858,0.019344355,Underexpressed
+94239,H2AFV,H2A histone family member V [Source:HGNC Symbol;Acc:HGNC:20664],20,6,0.002548858,0.019375707,Underexpressed
+8971,H1FX,H1 histone family member X [Source:HGNC Symbol;Acc:HGNC:4722],20,6,0.002548858,0.019407161,Underexpressed
+8880,FUBP1,far upstream element binding protein 1 [Source:HGNC Symbol;Acc:HGNC:4004],20,6,0.002548858,0.019438717,Underexpressed
+8607,RUVBL1,RuvB like AAA ATPase 1 [Source:HGNC Symbol;Acc:HGNC:10474],20,6,0.002548858,0.019470377,Underexpressed
+8520,HAT1,histone acetyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:4821],20,6,0.002548858,0.019502139,Underexpressed
+79832,QSER1,glutamine and serine rich 1 [Source:HGNC Symbol;Acc:HGNC:26154],20,6,0.002548858,0.019534005,Underexpressed
+6628,SNRPB,small nuclear ribonucleoprotein polypeptides B and B1 [Source:HGNC Symbol;Acc:HGNC:11153],20,6,0.002548858,0.019565976,Underexpressed
+6507,SLC1A3,solute carrier family 1 member 3 [Source:HGNC Symbol;Acc:HGNC:10941],20,6,0.002548858,0.019598051,Underexpressed
+633,BGN,biglycan [Source:HGNC Symbol;Acc:HGNC:1044],20,6,0.002548858,0.019630232,Underexpressed
+57552,NCEH1,neutral cholesterol ester hydrolase 1 [Source:HGNC Symbol;Acc:HGNC:29260],20,6,0.002548858,0.019662518,Underexpressed
+55755,CDK5RAP2,CDK5 regulatory subunit associated protein 2 [Source:HGNC Symbol;Acc:HGNC:18672],20,6,0.002548858,0.019694911,Underexpressed
+55170,PRMT6,protein arginine methyltransferase 6 [Source:HGNC Symbol;Acc:HGNC:18241],20,6,0.002548858,0.019727411,Underexpressed
+54433,GAR1,GAR1 ribonucleoprotein [Source:HGNC Symbol;Acc:HGNC:14264],20,6,0.002548858,0.019760019,Underexpressed
+54331,GNG2,G protein subunit gamma 2 [Source:HGNC Symbol;Acc:HGNC:4404],20,6,0.002548858,0.019792734,Underexpressed
+5292,PIM1,"Pim-1 proto-oncogene, serine/threonine kinase [Source:HGNC Symbol;Acc:HGNC:8986]",20,6,0.002548858,0.019825558,Underexpressed
+5214,PFKP,"phosphofructokinase, platelet [Source:HGNC Symbol;Acc:HGNC:8878]",20,6,0.002548858,0.01985849,Underexpressed
+51388,NIP7,"NIP7, nucleolar pre-rRNA processing protein [Source:HGNC Symbol;Acc:HGNC:24328]",20,6,0.002548858,0.019891533,Underexpressed
+91860,CALML4,calmodulin like 4 [Source:HGNC Symbol;Acc:HGNC:18445],14,5,0.002501721,0.019916644,Underexpressed
+51118,UTP11,"UTP11, small subunit processome component [Source:HGNC Symbol;Acc:HGNC:24329]",20,6,0.002548858,0.019924685,Underexpressed
+8331,HIST1H2AJ,histone cluster 1 H2A family member j [Source:HGNC Symbol;Acc:HGNC:4727],14,5,0.002501721,0.019950631,Underexpressed
+509,ATP5F1C,ATP synthase F1 subunit gamma [Source:HGNC Symbol;Acc:HGNC:833],20,6,0.002548858,0.019957949,Underexpressed
+57082,KNL1,kinetochore scaffold 1 [Source:HGNC Symbol;Acc:HGNC:24054],14,5,0.002501721,0.019984735,Underexpressed
+5050,PAFAH1B3,platelet activating factor acetylhydrolase 1b catalytic subunit 3 [Source:HGNC Symbol;Acc:HGNC:8576],20,6,0.002548858,0.019991323,Underexpressed
+51805,COQ3,"coenzyme Q3, methyltransferase [Source:HGNC Symbol;Acc:HGNC:18175]",14,5,0.002501721,0.020018955,Underexpressed
+3187,HNRNPH1,heterogeneous nuclear ribonucleoprotein H1 [Source:HGNC Symbol;Acc:HGNC:5041],20,6,0.002548858,0.020024809,Underexpressed
+401494,HACD4,3-hydroxyacyl-CoA dehydratase 4 [Source:HGNC Symbol;Acc:HGNC:20920],14,5,0.002501721,0.020053293,Underexpressed
+29980,DONSON,downstream neighbor of SON [Source:HGNC Symbol;Acc:HGNC:2993],20,6,0.002548858,0.020058408,Underexpressed
+341,APOC1,apolipoprotein C1 [Source:HGNC Symbol;Acc:HGNC:607],14,5,0.002501721,0.020087749,Underexpressed
+26354,GNL3,G protein nucleolar 3 [Source:HGNC Symbol;Acc:HGNC:29931],20,6,0.002548858,0.02009212,Underexpressed
+339448,C1orf174,chromosome 1 open reading frame 174 [Source:HGNC Symbol;Acc:HGNC:27915],14,5,0.002501721,0.020122323,Underexpressed
+25927,CNRIP1,cannabinoid receptor interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:24546],20,6,0.002548858,0.020125945,Underexpressed
+286827,TRIM59,tripartite motif containing 59 [Source:HGNC Symbol;Acc:HGNC:30834],14,5,0.002501721,0.020157017,Underexpressed
+23649,POLA2,"DNA polymerase alpha 2, accessory subunit [Source:HGNC Symbol;Acc:HGNC:30073]",20,6,0.002548858,0.020159884,Underexpressed
+221184,CPNE2,copine 2 [Source:HGNC Symbol;Acc:HGNC:2315],14,5,0.002501721,0.020191831,Underexpressed
+22948,CCT5,chaperonin containing TCP1 subunit 5 [Source:HGNC Symbol;Acc:HGNC:1618],20,6,0.002548858,0.020193938,Underexpressed
+1677,DFFB,DNA fragmentation factor subunit beta [Source:HGNC Symbol;Acc:HGNC:2773],14,5,0.002501721,0.020226764,Underexpressed
+11117,EMILIN1,elastin microfibril interfacer 1 [Source:HGNC Symbol;Acc:HGNC:19880],20,6,0.002548858,0.020228107,Underexpressed
+166647,ADGRA3,adhesion G protein-coupled receptor A3 [Source:HGNC Symbol;Acc:HGNC:13839],14,5,0.002501721,0.02026182,Underexpressed
+10682,EBP,emopamil binding protein (sterol isomerase) [Source:HGNC Symbol;Acc:HGNC:3133],20,6,0.002548858,0.020262392,Underexpressed
+10153,CEBPZ,CCAAT/enhancer binding protein zeta [Source:HGNC Symbol;Acc:HGNC:24218],20,6,0.002548858,0.020296793,Underexpressed
+1009,CDH11,cadherin 11 [Source:HGNC Symbol;Acc:HGNC:1750],20,6,0.002548858,0.020331312,Underexpressed
+9610,RIN1,Ras and Rab interactor 1 [Source:HGNC Symbol;Acc:HGNC:18749],21,6,0.0033472,0.02595048,Underexpressed
+9590,AKAP12,A-kinase anchoring protein 12 [Source:HGNC Symbol;Acc:HGNC:370],21,6,0.0033472,0.025991218,Underexpressed
+9410,SNRNP40,small nuclear ribonucleoprotein U5 subunit 40 [Source:HGNC Symbol;Acc:HGNC:30857],21,6,0.0033472,0.026032085,Underexpressed
+9184,BUB3,"BUB3, mitotic checkpoint protein [Source:HGNC Symbol;Acc:HGNC:1151]",21,6,0.0033472,0.02607308,Underexpressed
+9183,ZW10,zw10 kinetochore protein [Source:HGNC Symbol;Acc:HGNC:13194],21,6,0.0033472,0.026114205,Underexpressed
+8836,GGH,gamma-glutamyl hydrolase [Source:HGNC Symbol;Acc:HGNC:4248],21,6,0.0033472,0.02615546,Underexpressed
+862,RUNX1T1,RUNX1 translocation partner 1 [Source:HGNC Symbol;Acc:HGNC:1535],21,6,0.0033472,0.026196845,Underexpressed
+7514,XPO1,exportin 1 [Source:HGNC Symbol;Acc:HGNC:12825],21,6,0.0033472,0.026238362,Underexpressed
+6949,TCOF1,treacle ribosome biogenesis factor 1 [Source:HGNC Symbol;Acc:HGNC:11654],21,6,0.0033472,0.02628001,Underexpressed
+6629,SNRPB2,small nuclear ribonucleoprotein polypeptide B2 [Source:HGNC Symbol;Acc:HGNC:11155],21,6,0.0033472,0.02632179,Underexpressed
+64943,NT5DC2,5'-nucleotidase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:25717],21,6,0.0033472,0.026363704,Underexpressed
+6418,SET,SET nuclear proto-oncogene [Source:HGNC Symbol;Acc:HGNC:10760],21,6,0.0033472,0.026405751,Underexpressed
+5720,PSME1,proteasome activator subunit 1 [Source:HGNC Symbol;Acc:HGNC:9568],21,6,0.0033472,0.026447933,Underexpressed
+5168,ENPP2,ectonucleotide pyrophosphatase/phosphodiesterase 2 [Source:HGNC Symbol;Acc:HGNC:3357],21,6,0.0033472,0.02649025,Underexpressed
+5116,PCNT,pericentrin [Source:HGNC Symbol;Acc:HGNC:16068],21,6,0.0033472,0.026532702,Underexpressed
+328,APEX1,apurinic/apyrimidinic endodeoxyribonuclease 1 [Source:HGNC Symbol;Acc:HGNC:587],21,6,0.0033472,0.026575291,Underexpressed
+22929,SEPHS1,selenophosphate synthetase 1 [Source:HGNC Symbol;Acc:HGNC:19685],21,6,0.0033472,0.026618016,Underexpressed
+2130,EWSR1,EWS RNA binding protein 1 [Source:HGNC Symbol;Acc:HGNC:3508],21,6,0.0033472,0.026660879,Underexpressed
+2037,EPB41L2,erythrocyte membrane protein band 4.1 like 2 [Source:HGNC Symbol;Acc:HGNC:3379],21,6,0.0033472,0.026703881,Underexpressed
+1293,COL6A3,collagen type VI alpha 3 chain [Source:HGNC Symbol;Acc:HGNC:2213],21,6,0.0033472,0.026747021,Underexpressed
+9918,NCAPD2,non-SMC condensin I complex subunit D2 [Source:HGNC Symbol;Acc:HGNC:24305],15,5,0.003525589,0.026977545,Underexpressed
+84267,C9orf64,chromosome 9 open reading frame 64 [Source:HGNC Symbol;Acc:HGNC:28144],15,5,0.003525589,0.027018922,Underexpressed
+8354,HIST1H3I,histone cluster 1 H3 family member i [Source:HGNC Symbol;Acc:HGNC:4771],15,5,0.003525589,0.027060425,Underexpressed
+79833,GEMIN6,gem nuclear organelle associated protein 6 [Source:HGNC Symbol;Acc:HGNC:20044],15,5,0.003525589,0.027102057,Underexpressed
+79792,GSDMD,gasdermin D [Source:HGNC Symbol;Acc:HGNC:25697],15,5,0.003525589,0.027143816,Underexpressed
+56925,LXN,latexin [Source:HGNC Symbol;Acc:HGNC:13347],15,5,0.003525589,0.027185705,Underexpressed
+54733,SLC35F2,solute carrier family 35 member F2 [Source:HGNC Symbol;Acc:HGNC:23615],15,5,0.003525589,0.027227723,Underexpressed
+54492,NEURL1B,neuralized E3 ubiquitin protein ligase 1B [Source:HGNC Symbol;Acc:HGNC:35422],15,5,0.003525589,0.027269871,Underexpressed
+4493,MT1E,metallothionein 1E [Source:HGNC Symbol;Acc:HGNC:7397],15,5,0.003525589,0.02731215,Underexpressed
+26575,RGS17,regulator of G protein signaling 17 [Source:HGNC Symbol;Acc:HGNC:14088],15,5,0.003525589,0.02735456,Underexpressed
+2175,FANCA,Fanconi anemia complementation group A [Source:HGNC Symbol;Acc:HGNC:3582],15,5,0.003525589,0.027397102,Underexpressed
+2013,EMP2,epithelial membrane protein 2 [Source:HGNC Symbol;Acc:HGNC:3334],15,5,0.003525589,0.027439777,Underexpressed
+131076,CCDC58,coiled-coil domain containing 58 [Source:HGNC Symbol;Acc:HGNC:31136],15,5,0.003525589,0.027482585,Underexpressed
+113115,MTFR2,mitochondrial fission regulator 2 [Source:HGNC Symbol;Acc:HGNC:21115],15,5,0.003525589,0.027525526,Underexpressed
+10459,MAD2L2,mitotic arrest deficient 2 like 2 [Source:HGNC Symbol;Acc:HGNC:6764],15,5,0.003525589,0.027568602,Underexpressed
+728689,EIF3CL,eukaryotic translation initiation factor 3 subunit C like [Source:HGNC Symbol;Acc:HGNC:26347],5,3,0.003601738,0.027633047,Underexpressed
+6124,RPL4,ribosomal protein L4 [Source:HGNC Symbol;Acc:HGNC:10353],10,4,0.004356126,0.034473233,Underexpressed
+55559,HAUS7,HAUS augmin like complex subunit 7 [Source:HGNC Symbol;Acc:HGNC:32979],10,4,0.004356126,0.034525704,Underexpressed
+23636,NUP62,nucleoporin 62 [Source:HGNC Symbol;Acc:HGNC:8066],10,4,0.004356126,0.034578334,Underexpressed
+219348,PLAC9,placenta specific 9 [Source:HGNC Symbol;Acc:HGNC:19255],10,4,0.004356126,0.034631126,Underexpressed
+9945,GFPT2,glutamine-fructose-6-phosphate transaminase 2 [Source:HGNC Symbol;Acc:HGNC:4242],16,5,0.004818595,0.036926992,Underexpressed
+9900,SV2A,synaptic vesicle glycoprotein 2A [Source:HGNC Symbol;Acc:HGNC:20566],16,5,0.004818595,0.036980354,Underexpressed
+9816,URB2,URB2 ribosome biogenesis 2 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:HGNC:28967],16,5,0.004818595,0.037033871,Underexpressed
+92745,SLC38A5,solute carrier family 38 member 5 [Source:HGNC Symbol;Acc:HGNC:18070],16,5,0.004818595,0.037087544,Underexpressed
+91975,ZNF300,zinc finger protein 300 [Source:HGNC Symbol;Acc:HGNC:13091],16,5,0.004818595,0.037141372,Underexpressed
+9015,TAF1A,"TATA-box binding protein associated factor, RNA polymerase I subunit A [Source:HGNC Symbol;Acc:HGNC:11532]",16,5,0.004818595,0.037195356,Underexpressed
+84930,MASTL,microtubule associated serine/threonine kinase like [Source:HGNC Symbol;Acc:HGNC:19042],16,5,0.004818595,0.037249498,Underexpressed
+84547,PGBD1,piggyBac transposable element derived 1 [Source:HGNC Symbol;Acc:HGNC:19398],16,5,0.004818595,0.037303798,Underexpressed
+84128,WDR75,WD repeat domain 75 [Source:HGNC Symbol;Acc:HGNC:25725],16,5,0.004818595,0.037358256,Underexpressed
+83903,HASPIN,histone H3 associated protein kinase [Source:HGNC Symbol;Acc:HGNC:19682],16,5,0.004818595,0.037412873,Underexpressed
+79752,ZFAND1,zinc finger AN1-type containing 1 [Source:HGNC Symbol;Acc:HGNC:25858],16,5,0.004818595,0.03746765,Underexpressed
+7270,TTF1,transcription termination factor 1 [Source:HGNC Symbol;Acc:HGNC:12397],16,5,0.004818595,0.037522588,Underexpressed
+5806,PTX3,pentraxin 3 [Source:HGNC Symbol;Acc:HGNC:9692],16,5,0.004818595,0.037577687,Underexpressed
+5742,PTGS1,prostaglandin-endoperoxide synthase 1 [Source:HGNC Symbol;Acc:HGNC:9604],16,5,0.004818595,0.037632949,Underexpressed
+57333,RCN3,reticulocalbin 3 [Source:HGNC Symbol;Acc:HGNC:21145],16,5,0.004818595,0.037688373,Underexpressed
+55148,UBR7,ubiquitin protein ligase E3 component n-recognin 7 (putative) [Source:HGNC Symbol;Acc:HGNC:20344],16,5,0.004818595,0.03774396,Underexpressed
+54855,FAM46C,family with sequence similarity 46 member C [Source:HGNC Symbol;Acc:HGNC:24712],16,5,0.004818595,0.037799712,Underexpressed
+54801,HAUS6,HAUS augmin like complex subunit 6 [Source:HGNC Symbol;Acc:HGNC:25948],16,5,0.004818595,0.037855629,Underexpressed
+51319,RSRC1,arginine and serine rich coiled-coil 1 [Source:HGNC Symbol;Acc:HGNC:24152],16,5,0.004818595,0.037911711,Underexpressed
+4893,NRAS,"NRAS proto-oncogene, GTPase [Source:HGNC Symbol;Acc:HGNC:7989]",16,5,0.004818595,0.03796796,Underexpressed
+3037,HAS2,hyaluronan synthase 2 [Source:HGNC Symbol;Acc:HGNC:4819],16,5,0.004818595,0.038024376,Underexpressed
+3024,HIST1H1A,histone cluster 1 H1 family member a [Source:HGNC Symbol;Acc:HGNC:4715],16,5,0.004818595,0.03808096,Underexpressed
+3009,HIST1H1B,histone cluster 1 H1 family member b [Source:HGNC Symbol;Acc:HGNC:4719],16,5,0.004818595,0.038137713,Underexpressed
+29128,UHRF1,ubiquitin like with PHD and ring finger domains 1 [Source:HGNC Symbol;Acc:HGNC:12556],16,5,0.004818595,0.038194635,Underexpressed
+29108,PYCARD,PYD and CARD domain containing [Source:HGNC Symbol;Acc:HGNC:16608],16,5,0.004818595,0.038251727,Underexpressed
+27301,APEX2,apurinic/apyrimidinic endodeoxyribonuclease 2 [Source:HGNC Symbol;Acc:HGNC:17889],16,5,0.004818595,0.03830899,Underexpressed
+2177,FANCD2,Fanconi anemia complementation group D2 [Source:HGNC Symbol;Acc:HGNC:3585],16,5,0.004818595,0.038366424,Underexpressed
+2171,FABP5,fatty acid binding protein 5 [Source:HGNC Symbol;Acc:HGNC:3560],16,5,0.004818595,0.038424032,Underexpressed
+1665,DHX15,DEAH-box helicase 15 [Source:HGNC Symbol;Acc:HGNC:2738],16,5,0.004818595,0.038481812,Underexpressed
+164284,APCDD1L,APC down-regulated 1 like [Source:HGNC Symbol;Acc:HGNC:26892],16,5,0.004818595,0.038539767,Underexpressed
+135293,PM20D2,peptidase M20 domain containing 2 [Source:HGNC Symbol;Acc:HGNC:21408],16,5,0.004818595,0.038597896,Underexpressed
+1306,COL15A1,collagen type XV alpha 1 chain [Source:HGNC Symbol;Acc:HGNC:2192],16,5,0.004818595,0.038656201,Underexpressed
+124222,PAQR4,progestin and adipoQ receptor family member 4 [Source:HGNC Symbol;Acc:HGNC:26386],16,5,0.004818595,0.038714682,Underexpressed
+115004,CGAS,cyclic GMP-AMP synthase [Source:HGNC Symbol;Acc:HGNC:21367],16,5,0.004818595,0.038773341,Underexpressed
+10189,ALYREF,Aly/REF export factor [Source:HGNC Symbol;Acc:HGNC:19071],16,5,0.004818595,0.038832178,Underexpressed
+875,CBS,cystathionine-beta-synthase [Source:HGNC Symbol;Acc:HGNC:1550],11,4,0.006447211,0.049374556,Underexpressed
+9984,THOC1,THO complex 1 [Source:HGNC Symbol;Acc:HGNC:19070],17,5,0.006415198,0.04941834,Underexpressed
+8106,PABPN1,poly(A) binding protein nuclear 1 [Source:HGNC Symbol;Acc:HGNC:8565],11,4,0.006447211,0.049441916,Underexpressed
+9960,USP3,ubiquitin specific peptidase 3 [Source:HGNC Symbol;Acc:HGNC:12626],17,5,0.006415198,0.049486222,Underexpressed
+6125,RPL5,ribosomal protein L5 [Source:HGNC Symbol;Acc:HGNC:10360],11,4,0.006447211,0.049509459,Underexpressed
+9843,HEPH,hephaestin [Source:HGNC Symbol;Acc:HGNC:4866],17,5,0.006415198,0.049554292,Underexpressed
+54930,HAUS4,HAUS augmin like complex subunit 4 [Source:HGNC Symbol;Acc:HGNC:20163],11,4,0.006447211,0.049577188,Underexpressed
+9627,SNCAIP,synuclein alpha interacting protein [Source:HGNC Symbol;Acc:HGNC:11139],17,5,0.006415198,0.049622548,Underexpressed
+25788,RAD54B,RAD54 homolog B (S. cerevisiae) [Source:HGNC Symbol;Acc:HGNC:17228],11,4,0.006447211,0.049645102,Underexpressed
+94274,PPP1R14A,protein phosphatase 1 regulatory inhibitor subunit 14A [Source:HGNC Symbol;Acc:HGNC:14871],17,5,0.006415198,0.049690993,Underexpressed
+91694,LONRF1,LON peptidase N-terminal domain and ring finger 1 [Source:HGNC Symbol;Acc:HGNC:26302],17,5,0.006415198,0.049759627,Underexpressed
+8877,SPHK1,sphingosine kinase 1 [Source:HGNC Symbol;Acc:HGNC:11240],17,5,0.006415198,0.049828451,Underexpressed
+84318,CCDC77,coiled-coil domain containing 77 [Source:HGNC Symbol;Acc:HGNC:28203],17,5,0.006415198,0.049897465,Underexpressed
+84206,MEX3B,mex-3 RNA binding family member B [Source:HGNC Symbol;Acc:HGNC:25297],17,5,0.006415198,0.049966671,Underexpressed
+84131,CEP78,centrosomal protein 78 [Source:HGNC Symbol;Acc:HGNC:25740],17,5,0.006415198,0.050036069,Underexpressed
+84058,WDR54,WD repeat domain 54 [Source:HGNC Symbol;Acc:HGNC:25770],17,5,0.006415198,0.050105661,Underexpressed
+83690,CRISPLD1,cysteine rich secretory protein LCCL domain containing 1 [Source:HGNC Symbol;Acc:HGNC:18206],17,5,0.006415198,0.050175446,Underexpressed
+8091,HMGA2,high mobility group AT-hook 2 [Source:HGNC Symbol;Acc:HGNC:5009],17,5,0.006415198,0.050245425,Underexpressed
+79083,MLPH,melanophilin [Source:HGNC Symbol;Acc:HGNC:29643],17,5,0.006415198,0.0503156,Underexpressed
+7133,TNFRSF1B,TNF receptor superfamily member 1B [Source:HGNC Symbol;Acc:HGNC:11917],17,5,0.006415198,0.050385972,Underexpressed
+65997,RASL11B,RAS like family 11 member B [Source:HGNC Symbol;Acc:HGNC:23804],17,5,0.006415198,0.050456541,Underexpressed
+64965,MRPS9,mitochondrial ribosomal protein S9 [Source:HGNC Symbol;Acc:HGNC:14501],17,5,0.006415198,0.050527307,Underexpressed
+6422,SFRP1,secreted frizzled related protein 1 [Source:HGNC Symbol;Acc:HGNC:10776],17,5,0.006415198,0.050598272,Underexpressed
+6217,RPS16,ribosomal protein S16 [Source:HGNC Symbol;Acc:HGNC:10396],17,5,0.006415198,0.050669437,Underexpressed
+5892,RAD51D,RAD51 paralog D [Source:HGNC Symbol;Acc:HGNC:9823],17,5,0.006415198,0.050740803,Underexpressed
+54619,CCNJ,cyclin J [Source:HGNC Symbol;Acc:HGNC:23434],17,5,0.006415198,0.050812369,Underexpressed
+54360,CYTL1,cytokine like 1 [Source:HGNC Symbol;Acc:HGNC:24435],17,5,0.006415198,0.050884138,Underexpressed
+51765,STK26,serine/threonine kinase 26 [Source:HGNC Symbol;Acc:HGNC:18174],17,5,0.006415198,0.05095611,Underexpressed
+51303,FKBP11,FK506 binding protein 11 [Source:HGNC Symbol;Acc:HGNC:18624],17,5,0.006415198,0.051028286,Underexpressed
+3306,HSPA2,heat shock protein family A (Hsp70) member 2 [Source:HGNC Symbol;Acc:HGNC:5235],17,5,0.006415198,0.051100667,Underexpressed
+3183,HNRNPC,heterogeneous nuclear ribonucleoprotein C (C1/C2) [Source:HGNC Symbol;Acc:HGNC:5035],17,5,0.006415198,0.051173253,Underexpressed
+285753,CEP57L1,centrosomal protein 57 like 1 [Source:HGNC Symbol;Acc:HGNC:21561],17,5,0.006415198,0.051246045,Underexpressed
+2526,FUT4,fucosyltransferase 4 [Source:HGNC Symbol;Acc:HGNC:4015],17,5,0.006415198,0.051319045,Underexpressed
+22976,PAXIP1,PAX interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:8624],17,5,0.006415198,0.051392254,Underexpressed
+22832,CEP162,centrosomal protein 162 [Source:HGNC Symbol;Acc:HGNC:21107],17,5,0.006415198,0.051465671,Underexpressed
+2079,ERH,"ERH, mRNA splicing and mitosis factor [Source:HGNC Symbol;Acc:HGNC:3447]",17,5,0.006415198,0.051539299,Underexpressed
+1911,PHC1,polyhomeotic homolog 1 [Source:HGNC Symbol;Acc:HGNC:3182],17,5,0.006415198,0.051613137,Underexpressed
+1763,DNA2,DNA replication helicase/nuclease 2 [Source:HGNC Symbol;Acc:HGNC:2939],17,5,0.006415198,0.051687188,Underexpressed
+169611,OLFML2A,olfactomedin like 2A [Source:HGNC Symbol;Acc:HGNC:27270],17,5,0.006415198,0.051761451,Underexpressed
+11174,ADAMTS6,ADAM metallopeptidase with thrombospondin type 1 motif 6 [Source:HGNC Symbol;Acc:HGNC:222],17,5,0.006415198,0.051835928,Underexpressed
+11091,WDR5,WD repeat domain 5 [Source:HGNC Symbol;Acc:HGNC:12757],17,5,0.006415198,0.051910619,Underexpressed
