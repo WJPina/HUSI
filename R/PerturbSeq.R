@@ -5,51 +5,25 @@ library(openxlsx)
 library(ggrepel)
 
 ### Calculate hUSI
-# /mnt/data2/zhouxl/hUSI/scPerturb_RPE1_CalculatehUSI_final.ipynb
+# scPerturb_RPE1_hUSI.ipynb
 
+### Other analysis and visualization
 dd='ReplogleWeissman2022_rpe1'
 res_husi=fread(paste0('/mnt/data2/zhouxl/hUSI/Results_data/RPE1_hUSI_',dd,'_fc_SenOCLR_l2_1_drop.csv'),sep='\t')[,-1] %>% as.data.frame()
 meta=fread(paste0('/mnt/data2/zhouxl/hUSI/Results_data/RPE1_hUSI_',dd,'_meta_SenOCLR_l2_1_drop.csv'),sep='\t')[,-1] %>% as.data.frame()
 
-score=meta %>% group_by(perturbation) %>% dplyr::summarise(husi=mean(hUSI))#for ReplogleWeissman2022_rpe1
+score=meta %>% group_by(perturbation) %>% dplyr::summarise(husi=mean(hUSI))
 res_husi=merge(res_husi,score,by.x="group",by.y='perturbation') %>% arrange(desc(deltaMean))
-# res_husi$type=ifelse(res_husi$fc>2 & res_husi$padj<0.05,"up",ifelse(res_husi$fc< -2 & res_husi$padj<0.05,"down","non"))
 
-# Volcano
-# pdf(paste0("/mnt/data2/zhouxl/hUSI/Figures/FiguresS3/",dd,"_volcano.pdf"),width=5.5,height = 4)
-# ggplot(res_husi, aes(x = fc, y = -log10(padj))) +
-#   geom_point(aes(size = -log10(padj), color = fc)) +
-#   geom_hline(yintercept = -log10(0.05),color='grey50',linetype='dashed')+
-#   geom_vline(xintercept = 1.5,color='grey50',linetype='dashed')+
-#   # geom_text_repel(data = top_n(res_husi_sig,n=5,"fc"), 
-#   #                 aes(label = group), size = 4, show.legend = FALSE,max.overlaps = 100) +
-#   coord_cartesian(clip = "off") +
-#   theme_bw() +
-#   theme(panel.grid.major = element_blank(),
-#         axis.text = element_text(size = 12),
-#         # axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
-#         axis.title = element_text(size = 14),
-#         legend.text = element_text(size = 12),
-#         legend.title = element_text(size = 14)) +
-#   scale_color_gradientn(colours = c('skyblue3', "grey80", 'tomato3')) +
-#   labs(x = 'Fold change', y = '-log10(Adjusted p value)')
-# dev.off()
+res_husi2=res_husi %>% filter(fc>1.5,padj<0.05) %>% arrange(desc(deltaMean));dim(res_husi2);head(res_husi2,10)
+openxlsx::write.xlsx(res_husi2,"./RPE1_hUSI_RPE1_fc_SenOCLR_l2_1_drop_signif_fc1.5_1057genes.csv")## Supplementary data 9
 
-
-res_husi2=res_husi %>% filter(fc>1.5,padj<0.05) %>% arrange(desc(deltaMean));dim(res_husi2)
-head(res_husi2,10)
-openxlsx::write.xlsx(res_husi2,"/mnt/data2/zhouxl/hUSI/Results_data/RPE1_hUSI_RPE1_fc_SenOCLR_l2_1_drop_signif_fc1.5_1057genes.csv")
-
-r1=openxlsx::read.xlsx("/mnt/data2/zhouxl/hUSI/SenCID_scPerturb_senescence_gene_res.xlsx",sheet = "RPE1_senescence_promoting");dim(r1)
+## TOP10
 tmp=res_husi2$group[1:10]
-table(tmp %in% r1$X1)
-setdiff(tmp,r1$X1)
-
 submeta=meta %>% filter(perturbation %in% c(tmp,"control"))
 submeta$perturbation=factor(submeta$perturbation,levels = c("control",tmp))
 
 mycol=c(pal_nejm(alpha = 0.8)(8),'#E5D2DD', '#53A85F', '#F1BB72')
-
 pdf("/mnt/data2/zhouxl/hUSI/Figures_new/Validation/scPerturb_seq_RPE1_boxplot2.pdf",width = 4.5,height = 3.5)
 ggplot(submeta,aes(x=perturbation,y=hUSI,fill=perturbation))+
   geom_boxplot()+theme_classic()+
@@ -63,24 +37,10 @@ ggplot(submeta,aes(x=perturbation,y=hUSI,fill=perturbation))+
         legend.text = element_text(size = 12),
         legend.title = element_text(size = 14))+NoLegend()+ylim(c(0,1))+scale_fill_manual(values = mycol)+#+scale_fill_nejm(alpha = 0.8)
   labs(x="Perturbation")
-  # geom_text(aes(x = 2, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 3, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 4, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 5, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 6, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 7, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 8, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 9, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 10, y = 1, label = "***"), size = 3.5)+
-  # geom_text(aes(x = 11, y = 1, label = "***"), size = 3.5)
 dev.off()
-
-table(c("UTP11","PWP1","AAMP","MAK16","NEPRO","WDR12") %in% res_husi2$group) 
-res_husi2[which(res_husi_sig$group %in% c("UTP11","PWP1","AAMP","MAK16","NEPRO","WDR12")),] %>% arrange(desc(fc))
 
 
 ## enrichment
-
 KEGG = read.gmt('/mnt/data1/wangj/GeneSets/KEGG_hsa.gmt')
 databases=list('KEGG'=KEGG)
 res=res_husi$deltaMean;names(res)=res_husi$group
@@ -123,8 +83,6 @@ df[,c('NES','p.adjust')]
 ids = c('DNA replication',
         'DNA replication proteins',
         'Cell cycle','p53 signaling pathway')
-
-# enrich_plot(gsea=fgseaList[[d]],data=df,pathway_id=ids,direction = 'up',save = T,database=d,dir = '/mnt/data2/zhouxl/hUSI/Figures/Model/')
 
 pdf('/mnt/data2/zhouxl/hUSI/Figures_new/Validation/scPerturb_enrichment.pdf',width =6,height =4.5)
 enrich_plot(gsea=fgseaList[[d]],data=df,pathway_id=ids,direction = 'up',save = F,database=d)
@@ -173,7 +131,7 @@ ggplot(meta,aes(x=group,y=hUSI,color=group))+
 dev.off()
 
 tpmRNA=data
-save(tpmRNA,meta,file="/mnt/data2/zhouxl/hUSI/data/Qiushi_RNA_seq/RNA_seq_TPM.RData")
+save(tpmRNA,meta,file="/mnt/data2/zhouxl/hUSI/data/Qiushi_RNA_seq/RNA_seq_TPM.RData")## can download from GSE282274
 
 
 
