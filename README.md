@@ -9,7 +9,7 @@
 #### R
 ```R
 ### make sure library packages in classifier.R have been installed
-source('classifier.R')
+source('sc/hUSI.R')
 ### exp: input normalized gene expression matrix 
 library(Seurat)
 load('Data/Aarts2017.rdata')
@@ -23,7 +23,7 @@ SenClass = GMM_hUSI(hUSI)
 #### Python
 ```python
 ### make sure import modules in hUSI.py have been installed
-from hUSI import cal_hUSI,SSE_hUSI,GMM_hUSI
+from sc.hUSI import cal_hUSI,SSE_hUSI,GMM_hUSI
 ### adata: input annadata formant with normalized gene expression matrix included as X
 import scanpy as sc
 adata = sc.read_h5ad('Data/Aarts2017.h5ad')
