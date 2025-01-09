@@ -6,35 +6,70 @@
 #### All scriptis for reproducing results in the manuascripts can be found in `HUSI/R` folder. All raw data used for model trianning and validation can be found in `HUSI/Data` folder. All figures in paper can be found in `HUSI/Results` folder.
 ## Usage
 #### Make sure you have already downloaded `HUSI/sc` folder.
-#### R
+#### Run in R (make sure packages below have been installed)
+`R==4.0.5 Seurat==4.2.1 mclust==6.0.1 dplyr==1.1.4 ggplot2==3.5.0 pROC==1.18.0`
 ```R
-### make sure library packages in classifier.R have been installed
 source('sc/hUSI.R')
 ### exp: input normalized gene expression matrix 
 library(Seurat)
 load('Data/Aarts2017.rdata')
 exp = GetAssayData(Aarts2017)
 hUSI = cal_hUSI(exp)
+
+### visualization using Seurat
+library(ggplot2)
+Aarts2017$hUSI = hUSI
+# Aarts2017 = NormalizeData(Aarts2017) # Aarts2017 has already normalized 
+Aarts2017 <- FindVariableFeatures(Aarts2017) %>% ScaleData() %>% RunPCA() %>% RunTSNE(dims=1:15)
+Idents(Aarts2017) <- 'Condition'
+png('R_demo_hUSI.png',width=900,height=800,res=250)
+FeaturePlot(Aarts2017,features='hUSI',label=T,pt.size=3)+
+scale_color_gradient2(low ='#3AB370' ,mid = "#EAE7CC",high = "#FD1593",midpoint = 0.5)
+dev.off()
+
+### exibite accurancy of hUSI
+library(pROC)
+roc_obj <- roc(Aarts2017$Condition, Aarts2017$hUSI, levels=c('non-senescent', 'senescent'), direction='<')
+auc_value <- auc(roc_obj)
+png('R_demo_ROC.png',width=900,height=800,res=250)
+plot(roc_obj, main="ROC Curve", col="#1c61b6")
+text(x=0.2, y=0.8, labels=paste("AUC =", round(auc_value, 3)), cex=1.2, col="red")
+dev.off()
+
 ### classify senescent group by SSE
 SenClass = SSE_hUSI(hUSI)
 ### classify senescent group by GMM
 SenClass = GMM_hUSI(hUSI)
 ```
-#### Python
+R_demo_hUSI            |  R_demo_ROC
+:-------------------------:|:-------------------------:
+![R_demo_hUSI](R_demo_hUSI.png) |  ![R_demo_ROC](R_demo_ROC.png)
+
+#### Run in Python (make sure modules below have been installed)
+`python==3.9.18 pandas==2.1.4 numpy==1.26.3 rpy2==3.5.16 matplotlib==3.8.2`
 ```python
-### make sure import modules in hUSI.py have been installed
 from sc.hUSI import cal_hUSI,SSE_hUSI,GMM_hUSI
 ### adata: input annadata formant with normalized gene expression matrix included as X
 import scanpy as sc
+import matplotlib.colors as clr
 adata = sc.read_h5ad('Data/Aarts2017.h5ad')
 ### make sure library packages in classifier.py and mclust in R have been installed
 hUSI = cal_hUSI(adata)
+### visualization using Scanpy
+adata.obs['hUSI'] = hUSI
+# sc.pp.normalize_total(adata) # Aarts2017 has already normalized 
+# sc.pp.log1p(adata) # Aarts2017 has already normalized 
+sc.pp.highly_variable_genes(adata,n_top_genes=2000)
+adata.raw = adata.copy()
+adata = adata[:,adata.var.highly_variable]
+sc.pp.pca(adata,n_comps=15)
+sc.pp.neighbors(adata)
+sc.tl.tsne(adata)
+color_self = clr.LinearSegmentedColormap.from_list('pink_grey', ['#3AB370',"#EAE7CC","#FD1593"], N=256)
+sc.pl.tsne(adata,color='hUSI',save='Python_demo_hUSI.png',size=30,cmap = color_self)
+
 ### classify senescent group by SSE
 SenClass = SSE_hUSI(hUSI)
 ### classify senescent group by GMM
 SenClass = GMM_hUSI(hUSI)
 ```
-#### package used
-`R==4.0.5 Seurat==4.2.1.9001 mclust==6.0.1 dplyr==1.1.4`
-
-`python==3.9.18 pandas==2.1.4 numpy==1.26.3 rpy2==3.5.16`
