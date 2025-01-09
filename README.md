@@ -5,7 +5,7 @@
 #### We recommend two methods based on different assumptions: (1) If assuming that there are only two cell states, senescence and non-senescence, in the dataset, we used a variance-based method—sum of square error (SSE)—for thresholding. SSE, as the well-performed binary clustering method for one dimension vector, can divide cells into senescence and non-senescence group by minimizing the variance of hUSI of two groups. (2) If assuming there are uncertain senescence states in the dataset, we use Gaussian Mixture Model (GMM)158 to estimate the optimal number of senescence states and the probability that each cell belongs to a specific state. Since GMM is frequently used as optimal thresholding tool in various scenarios, it is helpful to determine cellular senescence heterogeneity.
 #### All scriptis for reproducing results in the manuascripts can be found in `HUSI/R` folder. All raw data used for model trianning and validation can be found in `HUSI/Data` folder. All figures in paper can be found in `HUSI/Results` folder.
 ## Usage
-#### Make sure you have already clone the `HUSI` repository by `git@github.com:WJPina/HUSI.git`.
+#### Make sure you have already clone the `HUSI` repository by `git clone git@github.com:WJPina/HUSI.git` or downloaded the zip file.
 #### Run in R (make sure packages below have been installed)
 `R==4.0.5 Seurat==4.2.1 mclust==6.0.1 dplyr==1.1.4 ggplot2==3.5.0 pROC==1.18.0`
 ```R
