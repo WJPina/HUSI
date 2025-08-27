@@ -57,6 +57,11 @@ import matplotlib.colors as clr
 adata = sc.read_h5ad('Data/Aarts2017.h5ad')
 ### make sure library packages in classifier.py and mclust in R have been installed
 hUSI = cal_hUSI(adata)
+
+### we add a new function enabaling calculating hUSI parallelly in large scale dataset.
+# from sc.hUSI import cal_hUSI_parallel
+# hUSI = cal_hUSI_parallel(adata,n_jobs=20)
+
 ### visualization using Scanpy
 adata.obs['hUSI'] = hUSI
 # sc.pp.normalize_total(adata) # Aarts2017 has already normalized 

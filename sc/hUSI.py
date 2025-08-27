@@ -20,6 +20,34 @@ def cal_hUSI(adata):
     score = pd.Series(score,index=adata.obs_names)
     return score
 
+from concurrent.futures import ThreadPoolExecutor
+def calculate_correlation(args):
+    row_data, weights = args
+    return weights.corr(row_data, method='spearman')
+
+def cal_hUSI_parallel(adata, n_jobs=20):
+    # w = model
+    w = pd.read_csv('sc/SenOCLR_features.csv',index_col=0)
+    genes = list(set(w.index) & set(adata.var_names))
+    weights = w.Weight[genes]
+    
+    try:
+        exp = adata[:,genes].X.todense()
+    except:
+        exp = adata[:,genes].X
+    
+    exp = pd.DataFrame(exp, index=adata.obs_names, columns=genes)
+    row_weight_pairs = [(exp.iloc[i], weights) for i in range(len(exp))]
+    
+    # Calculate correlations in parallel
+    with ThreadPoolExecutor(max_workers=n_jobs) as executor:
+        score = list(executor.map(calculate_correlation, row_weight_pairs))
+    
+    score = minmax(score)
+    score = pd.Series(score, index=adata.obs_names)
+    
+    return score
+
 ### SSE
 def SSE_hUSI(scores):
     try:
